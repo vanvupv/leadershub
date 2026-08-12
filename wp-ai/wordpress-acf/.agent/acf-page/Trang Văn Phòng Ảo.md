@@ -80,7 +80,8 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 
 ---
 
-## 📝 6. Section 6: Consultation Form & Contact (Form Đăng Ký & Tư Vấn)
+## 📝 6. Section 6: Consultation Form & Contact (Form Đăng Ký & Tư Vấn) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Thu thập thông tin khách hàng muốn đăng ký thuê văn phòng ảo qua Airtable Form.
 - **Trường ACF (`group_lh_virtual` -> Tab 6. Form Tư Vấn & Đăng Ký):**
   1. `vo_cta_title` *(Type: text)* - Tiêu đề form (Mặc định: `Sẵn sàng để vươn xa?`).

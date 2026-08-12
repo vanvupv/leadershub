@@ -26,6 +26,10 @@ $showcase_image      = lh_field( 'vo_showcase_image', 'https://lh3.googleusercon
 $showcase_badge_text = lh_field( 'vo_showcase_badge_text', 'Tiêu chuẩn 5 sao' );
 $showcase_card_desc  = lh_field( 'vo_showcase_card_desc', 'Môi trường làm việc chuyên nghiệp được thiết kế theo tiêu chuẩn quốc tế.' );
 
+// ACF Variables: Section 6 Consultation Form & Contact
+$cta_title = lh_field( 'vo_cta_title', 'Sẵn sàng để vươn xa?' );
+$cta_desc  = lh_field( 'vo_cta_desc', 'Hãy gửi yêu cầu của bạn, đội ngũ tư vấn viên của The Leaders Hub sẽ liên hệ tư vấn trong thời gian sớm nhất trong giờ làm việc.' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -366,13 +370,23 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Consultation Form Section -->
+<?php if ( ! empty( $cta_title ) || ! empty( $cta_desc ) ) : ?>
 <section class="py-section-padding-desktop bg-surface-container overflow-hidden scroll-mt-20" id="register">
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="glass-card rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
             <div class="w-full md:w-1/2 p-12 bg-deep-navy text-white relative flex flex-col justify-between">
                 <div class="relative z-10">
-                    <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">Sẵn sàng để vươn xa?</h2>
-                    <p class="text-surface-variant font-body-lg mb-8">Hãy gửi yêu cầu của bạn, đội ngũ tư vấn viên của The Leaders Hub sẽ liên hệ tư vấn trong thời gian sớm nhất trong giờ làm việc.</p>
+                    <?php if ( ! empty( $cta_title ) ) : ?>
+                        <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">
+                            <?php echo esc_html( $cta_title ); ?>
+                        </h2>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $cta_desc ) ) : ?>
+                        <p class="text-surface-variant font-body-lg mb-8">
+                            <?php echo esc_html( $cta_desc ); ?>
+                        </p>
+                    <?php endif; ?>
                     <div class="space-y-4">
                         <div class="flex items-center gap-4">
                             <span class="material-symbols-outlined text-prestige-gold">call</span>
@@ -393,6 +407,8 @@ function lh_field( $name, $default = '' ) {
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php
 get_footer();
+?>
