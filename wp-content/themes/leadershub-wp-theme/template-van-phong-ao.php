@@ -18,6 +18,14 @@ $comp_title = ( function_exists( 'get_field' ) ? get_field( 'vo_comp_title' ) : 
 // ACF Variables: Section 4 Registration Process
 $process_title = ( function_exists( 'get_field' ) ? get_field( 'vo_process_title' ) : '' ) ?: '';
 
+// ACF Variables: Section 5 Environment Showcase
+$showcase_badge      = lh_field( 'vo_showcase_badge', 'VÌ SAO CHỌN THE LEADERS HUB' );
+$showcase_title      = lh_field( 'vo_showcase_title', 'Hạ tầng chuẩn mực / Dịch vụ tận tâm' );
+$showcase_content    = lh_field( 'vo_showcase_content', '<p>Chúng tôi hiểu rằng một địa chỉ giao dịch uy tín và chuyên nghiệp đóng vai trò quan trọng đối với sự thành công ban đầu của một thương hiệu. Do đó, Leaders Hub không chỉ cung cấp địa chỉ, mà còn cung cấp một đội ngũ hỗ trợ nhiệt tình đứng sau mọi giao dịch và tiếp đón khách hàng của bạn.</p>' );
+$showcase_image      = lh_field( 'vo_showcase_image', 'https://lh3.googleusercontent.com/aida/AP1WRLtyksja9WCL5cKjTcT3_BRk2m038DAazrOt-NquHXciE1NU1QnJCg48DfAGIEP9ZPvAEbb4cWAnjYp9WMlyi2lK77gsgOoxRToHb6EM_cjRAhHJhBRlMAGVfvcZG3_O_HB7UeC7dIEBozj0Ap2whBP_VKXP_gezK0X-mcB9bWe68yiFjRxIeIg81NtMiRxgMii4AhA3ZbqJ3OZVwMs90qntxXYe8pyHewB95ocmDalNJfT5fuTbblzXou0' );
+$showcase_badge_text = lh_field( 'vo_showcase_badge_text', 'Tiêu chuẩn 5 sao' );
+$showcase_card_desc  = lh_field( 'vo_showcase_card_desc', 'Môi trường làm việc chuyên nghiệp được thiết kế theo tiêu chuẩn quốc tế.' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -315,27 +323,47 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Environment Showcase -->
-<section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden">
+<?php if ( ! empty( $showcase_title ) || ! empty( $showcase_content ) || ! empty( $showcase_image ) ) : ?>
+<section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden" id="showcase">
     <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="relative">
-            <img alt="Lễ tân chuyên nghiệp" class="w-full h-auto rounded-2xl shadow-2xl" src="<?php echo esc_url( lh_field( 'vo_showcase_image', 'https://lh3.googleusercontent.com/aida/AP1WRLtyksja9WCL5cKjTcT3_BRk2m038DAazrOt-NquHXciE1NU1QnJCg48DfAGIEP9ZPvAEbb4cWAnjYp9WMlyi2lK77gsgOoxRToHb6EM_cjRAhHJhBRlMAGVfvcZG3_O_HB7UeC7dIEBozj0Ap2whBP_VKXP_gezK0X-mcB9bWe68yiFjRxIeIg81NtMiRxgMii4AhA3ZbqJ3OZVwMs90qntxXYe8pyHewB95ocmDalNJfT5fuTbblzXou0' ) ); ?>" />
-            <div class="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl hidden md:block max-w-[240px]">
-                <div class="flex items-center gap-4 mb-2">
-                    <span class="material-symbols-outlined text-prestige-gold" style="font-variation-settings: 'FILL' 1;">stars</span>
-                    <span class="font-label-sm text-deep-navy font-bold text-xs">Tiêu chuẩn 5 sao</span>
+            <?php if ( ! empty( $showcase_image ) ) : ?>
+                <img alt="<?php echo esc_attr( $showcase_title ); ?>" class="w-full h-auto rounded-2xl shadow-2xl" src="<?php echo esc_url( $showcase_image ); ?>" />
+            <?php endif; ?>
+
+            <?php if ( ! empty( $showcase_badge_text ) || ! empty( $showcase_card_desc ) ) : ?>
+                <div class="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl hidden md:block max-w-[240px]">
+                    <?php if ( ! empty( $showcase_badge_text ) ) : ?>
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="material-symbols-outlined text-prestige-gold" style="font-variation-settings: 'FILL' 1;">stars</span>
+                            <span class="font-label-sm text-deep-navy font-bold text-xs"><?php echo esc_html( $showcase_badge_text ); ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $showcase_card_desc ) ) : ?>
+                        <p class="text-xs text-on-surface-variant"><?php echo esc_html( $showcase_card_desc ); ?></p>
+                    <?php endif; ?>
                 </div>
-                <p class="text-xs text-on-surface-variant">Môi trường làm việc chuyên nghiệp được thiết kế theo tiêu chuẩn quốc tế.</p>
-            </div>
+            <?php endif; ?>
         </div>
         <div>
-            <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-4 font-bold">VÌ SAO CHỌN THE LEADERS HUB</span>
-            <h2 class="font-headline-xl text-headline-xl text-white mb-8 font-bold">Hạ tầng chuẩn mực / Dịch vụ tận tâm</h2>
-            <div class="space-y-6 text-surface-variant font-body-md text-sm leading-relaxed">
-                <p>Chúng tôi hiểu rằng một địa chỉ giao dịch uy tín và chuyên nghiệp đóng vai trò quan trọng đối với sự thành công ban đầu của một thương hiệu. Do đó, Leaders Hub không chỉ cung cấp địa chỉ, mà còn cung cấp một đội ngũ hỗ trợ nhiệt tình đứng sau mọi giao dịch và tiếp đón khách hàng của bạn.</p>
-            </div>
+            <?php if ( ! empty( $showcase_badge ) ) : ?>
+                <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-4 font-bold"><?php echo esc_html( $showcase_badge ); ?></span>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $showcase_title ) ) : ?>
+                <h2 class="font-headline-xl text-headline-xl text-white mb-8 font-bold"><?php echo esc_html( $showcase_title ); ?></h2>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $showcase_content ) ) : ?>
+                <div class="space-y-6 text-surface-variant font-body-md text-sm leading-relaxed">
+                    <?php echo wp_kses_post( $showcase_content ); ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Consultation Form Section -->
 <section class="py-section-padding-desktop bg-surface-container overflow-hidden scroll-mt-20" id="register">

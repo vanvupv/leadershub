@@ -67,7 +67,8 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 
 ---
 
-## 🏢 5. Section 5: Environment Showcase (Hạ Tầng & Vì Sao Chọn The Leaders Hub)
+## 🏢 5. Section 5: Environment Showcase (Hạ Tầng & Vì Sao Chọn The Leaders Hub) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Khẳng định chất lượng hạ tầng 5 sao và dịch vụ tiếp đón tận tâm.
 - **Trường ACF (`group_lh_virtual` -> Tab 5. Hạ Tầng & Vì Sao Chọn):**
   1. `vo_showcase_badge` *(Type: text)* - Badge nhỏ (Mặc định: `VÌ SAO CHỌN THE LEADERS HUB`).
