@@ -160,38 +160,6 @@ function lh_field( $name, $default = '' ) {
                     </div>
                 <?php endwhile; ?>
             </div>
-        <?php else : ?>
-            <!-- Default Fallback Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">local_cafe</span>
-                    </div>
-                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Pantry &amp; Cafe</h3>
-                    <p class="text-on-surface-variant font-body-md text-sm">Trà, cafe và nước uống cao cấp miễn phí phục vụ suốt ngày dài.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">support_agent</span>
-                    </div>
-                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Lễ tân chuyên nghiệp</h3>
-                    <p class="text-on-surface-variant font-body-md text-sm">Hỗ trợ nhận bưu phẩm và tiếp đón khách hàng tận tâm.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">print</span>
-                    </div>
-                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">In ấn &amp; IT Support</h3>
-                    <p class="text-on-surface-variant font-body-md text-sm">Hệ thống máy in hiện đại và đội ngũ IT hỗ trợ 24/7.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">meeting_room</span>
-                    </div>
-                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Phòng họp tiêu chuẩn</h3>
-                    <p class="text-on-surface-variant font-body-md text-sm">Các phòng họp được trang bị đầy đủ thiết bị trình chiếu cao cấp.</p>
-                </div>
-            </div>
         <?php endif; ?>
     </div>
 </section>
