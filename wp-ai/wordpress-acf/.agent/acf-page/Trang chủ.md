@@ -33,10 +33,12 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 ---
 
 ## 💰 3. Section 3: Pricing Plans (Bảng Giá Dịch Vụ Văn Phòng Ảo) - [ ] TODO
-- **Trạng thái:** ⏳ **TODO**
+- **Trạng thái:** ⏳ **TODO (Đang hoàn thiện)**
 - **Mục đích:** Trình bày rõ ràng bảng giá các gói văn phòng ảo giúp khách hàng dễ chọn lựa và so sánh.
-- **Trường ACF:**
-  1. `home_pricing_plans` *(Type: repeater)* - Danh sách các gói cước dịch vụ (Economy, Standard, Premium):
+- **Trường ACF (`group_lh_home` -> Tab Pricing):**
+  1. `home_pricing_title` *(Type: text)* - Tiêu đề chính Bảng giá (VD: `Các Gói Dịch Vụ Văn Phòng Ảo`).
+  2. `home_pricing_desc` *(Type: textarea)* - Mô tả ngắn (VD: `Chỉ từ 980,000đ/tháng...`).
+  3. `home_pricing_plans` *(Type: repeater)* - Danh sách các gói cước dịch vụ (Economy, Standard, Premium):
      - `name` *(Type: text)* - Tên gói dịch vụ.
      - `price` *(Type: text)* - Giá thuê theo tháng (VD: `980,000`).
      - `desc` *(Type: text)* - Mô tả đối tượng doanh nghiệp phù hợp.

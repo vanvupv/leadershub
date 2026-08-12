@@ -238,6 +238,18 @@ function leadershub_register_field_groups() {
                 'type' => 'tab',
             ),
             array(
+                'key' => 'field_home_pricing_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'home_pricing_title',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_home_pricing_desc',
+                'label' => 'Mô tả ngắn',
+                'name' => 'home_pricing_desc',
+                'type' => 'textarea',
+            ),
+            array(
                 'key' => 'field_home_pricing_plans',
                 'label' => 'Danh sách gói văn phòng ảo',
                 'name' => 'home_pricing_plans',
