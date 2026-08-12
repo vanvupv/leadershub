@@ -153,6 +153,13 @@ function leadershub_register_field_groups() {
                 'type' => 'text',
                 'default_value' => 'https://assets.mixkit.co/videos/preview/mixkit-modern-office-space-with-people-working-34322-large.mp4',
             ),
+            array(
+                'key' => 'field_home_hero_poster',
+                'label' => 'Ảnh dự phòng Video (Poster)',
+                'name' => 'home_hero_poster',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
 
             // TAB: SERVICES
             array(

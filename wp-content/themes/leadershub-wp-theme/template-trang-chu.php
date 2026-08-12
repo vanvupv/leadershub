@@ -19,7 +19,7 @@ function lh_field( $name, $default = '' ) {
 <!-- Hero Banner Section -->
 <header class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-deep-navy">
     <video autoplay muted loop playsinline
-        poster="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+        poster="<?php echo esc_url( lh_field( 'home_hero_poster', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80' ) ); ?>"
         class="absolute inset-0 w-full h-full object-cover z-0 opacity-40">
         <source src="<?php echo esc_url( lh_field( 'home_hero_video', 'https://assets.mixkit.co/videos/preview/mixkit-modern-office-space-with-people-working-34322-large.mp4' ) ); ?>" type="video/mp4">
     </video>
