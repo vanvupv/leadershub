@@ -67,3 +67,12 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
   4. `home_reviews_google_score` *(Type: text)* - Hiển thị điểm số & tổng số đánh giá (VD: `4.9/5 (120+ reviews)`).
   5. `home_reviews_shortcode` *(Type: text)* - Shortcode tự động hiển thị Widget đánh giá thật từ Plugin Google Reviews (VD: `[place_saved_reviews_widget]`).
   6. `home_reviews_list` *(Type: repeater)* - Danh sách đánh giá nhập tay (chỉ dùng nếu không dùng Plugin).
+
+---
+
+## 📰 6. Section 6: Latest News (Tin Tức Mới Nhất - WP_Query) - [ ] TODO
+- **Trạng thái:** ⏳ **TODO (Đang hoàn thiện)**
+- **Mục đích:** Truy vấn động 3 bài viết mới nhất từ WordPress Core (`post_type => 'post'`), hiển thị thông tin bài viết tự động.
+- **Trường ACF (`group_lh_home` -> Tab News):**
+  1. `home_news_title` *(Type: text)* - Tiêu đề chính Section Tin tức (VD: `Tin tức mới nhất`).
+  2. `home_news_btn_text` *(Type: text)* - Chữ hiển thị trên nút Xem Tất Cả (VD: `Xem tất cả`).

@@ -26,6 +26,8 @@ $reviews_title        = ( function_exists( 'get_field' ) ? get_field( 'home_revi
 $reviews_google_link  = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_google_link' ) : '' ) ?: '';
 $reviews_google_score = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_google_score' ) : '' ) ?: '';
 $reviews_shortcode    = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_shortcode' ) : '' ) ?: '';
+$news_title           = ( function_exists( 'get_field' ) ? get_field( 'home_news_title' ) : '' ) ?: 'Tin tức mới nhất';
+$news_btn_text        = ( function_exists( 'get_field' ) ? get_field( 'home_news_btn_text' ) : '' ) ?: 'Xem tất cả';
 ?>
 
 <!-- Hero Banner Section -->
@@ -501,11 +503,11 @@ if ( $news_query->have_posts() ) :
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="flex justify-between items-end mb-12">
             <div>
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Tin tức mới nhất</h2>
+                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold"><?php echo esc_html( $news_title ); ?></h2>
                 <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
             </div>
             <a href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/tin-tuc' ) ); ?>" class="text-sm font-semibold text-deep-navy hover:text-prestige-gold transition-colors flex items-center gap-1 border-b border-deep-navy/20 pb-1">
-                Xem tất cả <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                <?php echo esc_html( $news_btn_text ); ?> <span class="material-symbols-outlined text-xs">arrow_forward</span>
             </a>
         </div>
 

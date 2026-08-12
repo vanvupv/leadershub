@@ -412,6 +412,25 @@ function leadershub_register_field_groups() {
                         'type' => 'textarea',
                     ),
                 ),
+            // TAB: NEWS
+            array(
+                'key' => 'tab_home_news',
+                'label' => 'Tin Tức',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_home_news_title',
+                'label' => 'Tiêu đề Section Tin Tức',
+                'name' => 'home_news_title',
+                'type' => 'text',
+                'default_value' => 'Tin tức mới nhất',
+            ),
+            array(
+                'key' => 'field_home_news_btn_text',
+                'label' => 'Nút Xem Tất Cả (Text)',
+                'name' => 'home_news_btn_text',
+                'type' => 'text',
+                'default_value' => 'Xem tất cả',
             ),
         ),
         'location' => array(
