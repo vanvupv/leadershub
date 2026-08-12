@@ -77,7 +77,8 @@ Field Group ACF: `group_lh_serviced` (Cấu hình Trang Văn Phòng Cao Cấp - 
 
 ---
 
-## ⚙️ 6. Section 6: Service Steps (Quy Trình 3 Bước Tham Quan & Nhận Phòng)
+## ⚙️ 6. Section 6: Service Steps (Quy Trình 3 Bước Tham Quan & Nhận Phòng) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Hướng dẫn 3 bước đơn giản từ Đặt lịch tham quan -> Nhận báo giá -> Bàn giao sử dụng.
 - **Trường ACF (`group_lh_serviced` -> Tab 6. Quy Trình 3 Bước):**
   1. `so_process_title` *(Type: text)* - Tiêu đề section (Mặc định: `Quy trình đăng ký dịch vụ`).

@@ -48,6 +48,9 @@ $cta_capacity_label = lh_field( 'so_cta_capacity_label', 'Sức chứa' );
 $cta_capacity_val   = lh_field( 'so_cta_capacity_val', '1 - 20 nhân sự' );
 $cta_capacity_sub   = lh_field( 'so_cta_capacity_sub', 'Tùy biến linh hoạt' );
 
+// ACF Variables: Section 6 Service Steps
+$process_title = lh_field( 'so_process_title', 'Quy trình đăng ký dịch vụ' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -300,27 +303,38 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Service Steps -->
+<?php if ( function_exists( 'have_rows' ) && have_rows( 'so_process_steps' ) ) : ?>
 <section class="py-section-padding-desktop bg-surface">
     <div class="max-w-container-max mx-auto px-gutter">
+        <?php if ( ! empty( $process_title ) ) : ?>
+            <div class="text-center mb-12">
+                <h3 class="font-headline-xl text-headline-xl text-deep-navy font-bold"><?php echo esc_html( $process_title ); ?></h3>
+            </div>
+        <?php endif; ?>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="relative pt-12 group">
-                <span class="absolute top-0 left-0 text-9xl font-bold text-deep-navy opacity-5 -z-10 transition-opacity group-hover:opacity-10 select-none">01</span>
-                <h4 class="font-headline-md text-lg text-deep-navy mb-4 font-bold">Khám Phá và Trải Nghiệm</h4>
-                <p class="text-on-surface-variant text-sm">Đặt lịch tham quan trực tiếp không gian làm việc lý tưởng tại trung tâm của chúng tôi.</p>
-            </div>
-            <div class="relative pt-12 group">
-                <span class="absolute top-0 left-0 text-9xl font-bold text-deep-navy opacity-5 -z-10 transition-opacity group-hover:opacity-10 select-none">02</span>
-                <h4 class="font-headline-md text-lg text-deep-navy mb-4 font-bold">Nhận Báo Giá</h4>
-                <p class="text-on-surface-variant text-sm">Tư vấn diện tích phù hợp và nhận báo giá ưu đãi tùy theo nhu cầu thực tế của doanh nghiệp.</p>
-            </div>
-            <div class="relative pt-12 group">
-                <span class="absolute top-0 left-0 text-9xl font-bold text-deep-navy opacity-5 -z-10 transition-opacity group-hover:opacity-10 select-none">03</span>
-                <h4 class="font-headline-md text-lg text-deep-navy mb-4 font-bold">Vào Sử Dụng</h4>
-                <p class="text-on-surface-variant text-sm">Thời điểm bàn giao và bắt đầu sử dụng theo thỏa thuận và tình trạng sẵn có của phòng.</p>
-            </div>
+            <?php 
+            $step_idx = 1;
+            while ( have_rows( 'so_process_steps' ) ) : the_row();
+                $s_num   = get_sub_field( 'number' ) ?: sprintf( '%02d', $step_idx );
+                $s_title = get_sub_field( 'title' );
+                $s_desc  = get_sub_field( 'desc' );
+                $step_idx++;
+
+                if ( empty( $s_title ) ) continue;
+            ?>
+                <div class="relative pt-12 group">
+                    <span class="absolute top-0 left-0 text-9xl font-bold text-deep-navy opacity-5 -z-10 transition-opacity group-hover:opacity-10 select-none"><?php echo esc_html( $s_num ); ?></span>
+                    <h4 class="font-headline-md text-lg text-deep-navy mb-4 font-bold"><?php echo esc_html( $s_title ); ?></h4>
+                    <?php if ( ! empty( $s_desc ) ) : ?>
+                        <p class="text-on-surface-variant text-sm"><?php echo esc_html( $s_desc ); ?></p>
+                    <?php endif; ?>
+                </div>
+            <?php endwhile; ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php
 get_footer();
