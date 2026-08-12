@@ -12,6 +12,12 @@ $hero_image = ( function_exists( 'get_field' ) ? get_field( 'about_hero_image' )
 $hero_title = ( function_exists( 'get_field' ) ? get_field( 'about_hero_title' ) : '' ) ?: '';
 $hero_desc  = ( function_exists( 'get_field' ) ? get_field( 'about_hero_desc' ) : '' ) ?: '';
 
+// ACF Variables: Section 2 Brand Story
+$story_badge   = ( function_exists( 'get_field' ) ? get_field( 'about_story_badge' ) : '' ) ?: '';
+$story_title   = ( function_exists( 'get_field' ) ? get_field( 'about_story_title' ) : '' ) ?: '';
+$story_content = ( function_exists( 'get_field' ) ? get_field( 'about_story_content' ) : '' ) ?: '';
+$story_image   = ( function_exists( 'get_field' ) ? get_field( 'about_story_image' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -48,50 +54,61 @@ function lh_field( $name, $default = '' ) {
 </header>
 <?php endif; ?>
 
-<!-- Brand Story -->
-<section class="py-section-padding-desktop bg-white">
+<!-- Brand Story Section -->
+<?php if ( ! empty( $story_title ) || ! empty( $story_content ) || ! empty( $story_image ) || ( function_exists( 'have_rows' ) && have_rows( 'about_stats' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-white" id="brand-story">
     <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="order-2 md:order-1">
-            <span class="text-prestige-gold font-label-sm text-label-sm uppercase tracking-[0.2em] mb-4 block font-bold"><?php echo esc_html( lh_field( 'about_story_badge', 'Câu chuyện thương hiệu' ) ); ?></span>
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-8 font-bold"><?php echo esc_html( lh_field( 'about_story_title', 'Không gian làm việc chuyên nghiệp tại Capital Place' ) ); ?></h2>
-            <div class="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed">
-                <?php if ( lh_field( 'about_story_content' ) ) : ?>
-                    <?php echo wp_kses_post( lh_field( 'about_story_content' ) ); ?>
-                <?php else : ?>
-                    <p>Tọa lạc tại tầng 19, tháp 1, tòa nhà Capital Place - biểu tượng văn phòng hạng A tại số 29 Liễu Giai, The Leaders Hub cung cấp các giải pháp không gian làm việc chuyên nghiệp và địa chỉ kinh doanh uy tín cho mọi doanh nghiệp.</p>
-                    <p>Chúng tôi tập trung mang lại giá trị thực chất thông qua hạ tầng văn phòng hiện đại, quy trình vận hành đồng bộ và dịch vụ hỗ trợ chu đáo.</p>
-                <?php endif; ?>
-            </div>
+            <?php if ( ! empty( $story_badge ) ) : ?>
+                <span class="text-prestige-gold font-label-sm text-label-sm uppercase tracking-[0.2em] mb-4 block font-bold">
+                    <?php echo esc_html( $story_badge ); ?>
+                </span>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $story_title ) ) : ?>
+                <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-8 font-bold">
+                    <?php echo esc_html( $story_title ); ?>
+                </h2>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $story_content ) ) : ?>
+                <div class="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                    <?php echo wp_kses_post( $story_content ); ?>
+                </div>
+            <?php endif; ?>
             
-            <div class="mt-12 grid grid-cols-2 gap-8 border-t border-surface-container-highest pt-8">
-                <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_stats' ) ) : ?>
-                    <?php while ( have_rows( 'about_stats' ) ) : the_row(); ?>
+            <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_stats' ) ) : ?>
+                <div class="mt-12 grid grid-cols-2 gap-8 border-t border-surface-container-highest pt-8">
+                    <?php while ( have_rows( 'about_stats' ) ) : the_row();
+                        $stat_num   = get_sub_field( 'number' );
+                        $stat_label = get_sub_field( 'label' );
+                        if ( empty( $stat_num ) ) continue;
+                    ?>
                         <div>
-                            <div class="text-headline-md font-bold text-deep-navy text-2xl"><?php echo esc_html( get_sub_field( 'number' ) ); ?></div>
-                            <div class="text-label-sm text-on-surface-variant text-sm"><?php echo esc_html( get_sub_field( 'label' ) ); ?></div>
+                            <div class="text-headline-md font-bold text-deep-navy text-2xl"><?php echo esc_html( $stat_num ); ?></div>
+                            <?php if ( ! empty( $stat_label ) ) : ?>
+                                <div class="text-label-sm text-on-surface-variant text-sm"><?php echo esc_html( $stat_label ); ?></div>
+                            <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
-                <?php else : ?>
-                    <div>
-                        <div class="text-headline-md font-bold text-deep-navy text-2xl">500+</div>
-                        <div class="text-label-sm text-on-surface-variant text-sm">Doanh nghiệp tin tưởng</div>
-                    </div>
-                    <div>
-                        <div class="text-headline-md font-bold text-deep-navy text-2xl">10+</div>
-                        <div class="text-label-sm text-on-surface-variant text-sm">Năm kinh nghiệm</div>
-                    </div>
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
         </div>
         
-        <div class="order-1 md:order-2 relative">
-            <div class="absolute -top-12 -left-12 w-48 h-48 bg-prestige-gold/10 rounded-full blur-3xl"></div>
-            <div class="rounded-xl overflow-hidden shadow-2xl relative z-10 aspect-[4/5]">
-                <img class="w-full h-full object-cover" src="<?php echo esc_url( lh_field( 'about_story_image', 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80' ) ); ?>" alt="Hanoi Skyline View" />
+        <?php if ( ! empty( $story_image ) ) : ?>
+            <div class="order-1 md:order-2 relative">
+                <div class="absolute -top-12 -left-12 w-48 h-48 bg-prestige-gold/10 rounded-full blur-3xl"></div>
+                <div class="rounded-xl overflow-hidden shadow-2xl relative z-10 aspect-[4/5]">
+                    <img class="w-full h-full object-cover" 
+                         src="<?php echo esc_url( is_array( $story_image ) ? $story_image['url'] : $story_image ); ?>" 
+                         alt="<?php echo esc_attr( $story_title ?: 'Brand Story Image' ); ?>" 
+                         loading="lazy" />
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Core Values -->
 <section class="bg-surface-container-low py-section-padding-desktop overflow-hidden">

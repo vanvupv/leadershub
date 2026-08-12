@@ -14,9 +14,10 @@ Tài liệu quy định và cấu trúc 6 Section chính cho trang **Về Chúng
 
 ---
 
-## 📖 2. Section 2: Brand Story (Câu Chuyện Thương Hiệu & Chỉ Số)
+## 📖 2. Section 2: Brand Story (Câu Chuyện Thương Hiệu & Chỉ Số) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Giới thiệu quá trình phát triển, vị trí văn phòng hạng A tại tòa nhà Capital Place và các con số ấn tượng.
-- **Trường ACF (`group_lh_about` -> Tab Story):**
+- **Trường ACF (`group_lh_about` -> Tab 2. Câu Chuyện Thương Hiệu):**
   1. `about_story_badge` *(Type: text)* - Subtitle / Badge nhỏ (VD: `Câu chuyện thương hiệu`).
   2. `about_story_title` *(Type: text)* - Tiêu đề chính (VD: `Không gian làm việc chuyên nghiệp tại Capital Place`).
   3. `about_story_content` *(Type: wysiwyg / textarea)* - Nội dung bài viết chi tiết câu chuyện thương hiệu (Chấp nhận định dạng HTML/formatting).
