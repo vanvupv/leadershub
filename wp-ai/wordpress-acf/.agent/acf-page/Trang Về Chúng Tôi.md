@@ -4,9 +4,10 @@ Tài liệu quy định và cấu trúc 6 Section chính cho trang **Về Chúng
 
 ---
 
-## 📌 1. Section 1: Hero Banner (Banner Đầu Trang)
+## 📌 1. Section 1: Hero Banner (Banner Đầu Trang) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Hiển thị tiêu đề chính, mô tả ngắn và ảnh nền ấn tượng giới thiệu thương hiệu The Leaders Hub.
-- **Trường ACF (`group_lh_about` -> Tab Hero):**
+- **Trường ACF (`group_lh_about` -> Tab 1. Hero Banner):**
   1. `about_hero_image` *(Type: image)* - Hình ảnh nền Hero Banner (Khuyên dùng kích thước 1920x1080px).
   2. `about_hero_title` *(Type: text)* - Tiêu đề chính Hero Banner (Mặc định: `Về Chúng Tôi`).
   3. `about_hero_desc` *(Type: textarea)* - Đoạn văn mô tả ngắn giới thiệu hành trình thương hiệu.

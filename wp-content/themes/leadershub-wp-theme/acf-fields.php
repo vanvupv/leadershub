@@ -741,10 +741,10 @@ function leadershub_register_field_groups() {
         'key' => 'group_lh_about',
         'title' => 'Cấu hình Trang Về Chúng Tôi (About Us)',
         'fields' => array(
-            // TAB: HERO
+            // TAB 1: HERO BANNER
             array(
                 'key' => 'tab_about_hero',
-                'label' => 'Hero Banner',
+                'label' => '1. Hero Banner',
                 'type' => 'tab',
             ),
             array(
@@ -769,10 +769,10 @@ function leadershub_register_field_groups() {
                 'default_value' => 'Hành trình kiến tạo không gian làm việc chuyên nghiệp bậc nhất dành cho các nhà lãnh đạo và doanh nghiệp tinh hoa.',
             ),
 
-            // TAB: STORY
+            // TAB 2: BRAND STORY
             array(
                 'key' => 'tab_about_story',
-                'label' => 'Câu Chuyện Thương Hiệu',
+                'label' => '2. Câu Chuyện Thương Hiệu',
                 'type' => 'tab',
             ),
             array(
@@ -823,11 +823,93 @@ function leadershub_register_field_groups() {
                 ),
             ),
 
-            // TAB: GALLERY & CTA
+            // TAB 3: CORE VALUES
             array(
-                'key' => 'tab_about_gallery_cta',
-                'label' => 'Hình Ảnh & CTA',
+                'key' => 'tab_about_values',
+                'label' => '3. Giá Trị Cốt Lõi',
                 'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_values_title',
+                'label' => 'Tiêu đề Section Giá Trị Cốt Lõi',
+                'name' => 'about_values_title',
+                'type' => 'text',
+                'default_value' => 'Giá Trị Cốt Lõi',
+            ),
+            array(
+                'key' => 'field_about_values_list',
+                'label' => 'Danh sách Trụ Cột Giá Trị Cốt Lõi',
+                'name' => 'about_values_list',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_value_icon',
+                        'label' => 'Material Symbol Icon (VD: rocket_launch, visibility, diamond)',
+                        'name' => 'icon',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_value_title',
+                        'label' => 'Tên trụ cột (VD: Sứ mệnh, Tầm nhìn)',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_value_desc',
+                        'label' => 'Mô tả nội dung',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                    ),
+                ),
+            ),
+
+            // TAB 4: CERTIFICATIONS
+            array(
+                'key' => 'tab_about_cert',
+                'label' => '4. Chứng Nhận Tòa Nhà',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_cert_title',
+                'label' => 'Tiêu đề Section Chứng Nhận',
+                'name' => 'about_cert_title',
+                'type' => 'text',
+                'default_value' => 'Chứng nhận tòa nhà văn phòng Capital Place',
+            ),
+            array(
+                'key' => 'field_about_cert_logos',
+                'label' => 'Danh sách chứng nhận',
+                'name' => 'about_cert_logos',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_cert_name',
+                        'label' => 'Tên chứng nhận (VD: LEED GOLD)',
+                        'name' => 'name',
+                        'type' => 'text',
+                    ),
+                ),
+            ),
+
+            // TAB 5: REAL OFFICE GALLERY
+            array(
+                'key' => 'tab_about_gallery',
+                'label' => '5. Hình Ảnh Thực Tế',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_gallery_title',
+                'label' => 'Tiêu đề Section Hình Ảnh',
+                'name' => 'about_gallery_title',
+                'type' => 'text',
+                'default_value' => 'Hình ảnh thực tế',
+            ),
+            array(
+                'key' => 'field_about_gallery_desc',
+                'label' => 'Mô tả phụ Section Hình Ảnh',
+                'name' => 'about_gallery_desc',
+                'type' => 'text',
+                'default_value' => 'Khám phá không gian sống động tại The Leaders Hub',
             ),
             array(
                 'key' => 'field_about_gallery_image',
@@ -835,6 +917,27 @@ function leadershub_register_field_groups() {
                 'name' => 'about_gallery_image',
                 'type' => 'image',
                 'return_format' => 'url',
+            ),
+
+            // TAB 6: CTA & BROCHURE
+            array(
+                'key' => 'tab_about_cta',
+                'label' => '6. Kêu Gọi Hành Động (CTA)',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_cta_title',
+                'label' => 'Tiêu đề CTA',
+                'name' => 'about_cta_title',
+                'type' => 'text',
+                'default_value' => 'Bạn đã sẵn sàng nâng tầm thương hiệu?',
+            ),
+            array(
+                'key' => 'field_about_cta_desc',
+                'label' => 'Mô tả CTA',
+                'name' => 'about_cta_desc',
+                'type' => 'textarea',
+                'default_value' => 'Liên hệ ngay để nhận chương trình ưu đãi đặc biệt dành cho văn phòng dịch vụ trọn gói.',
             ),
             array(
                 'key' => 'field_about_brochure_url',

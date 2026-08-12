@@ -7,6 +7,11 @@
 
 get_header();
 
+// ACF Variables: Section 1 Hero Banner
+$hero_image = ( function_exists( 'get_field' ) ? get_field( 'about_hero_image' ) : '' ) ?: '';
+$hero_title = ( function_exists( 'get_field' ) ? get_field( 'about_hero_title' ) : '' ) ?: '';
+$hero_desc  = ( function_exists( 'get_field' ) ? get_field( 'about_hero_desc' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -16,21 +21,32 @@ function lh_field( $name, $default = '' ) {
 }
 ?>
 
-<!-- Hero Banner -->
+<!-- Hero Banner Section -->
+<?php if ( ! empty( $hero_title ) || ! empty( $hero_image ) || ! empty( $hero_desc ) ) : ?>
 <header class="relative h-[60vh] min-h-[500px] flex items-center justify-center pt-20">
     <div class="absolute inset-0 z-0 overflow-hidden">
         <div class="absolute inset-0 bg-deep-navy/40 z-10"></div>
-        <img class="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[10000ms]" src="<?php echo esc_url( lh_field( 'about_hero_image', 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80' ) ); ?>" alt="Capital Place Office" />
+        <?php if ( ! empty( $hero_image ) ) : ?>
+            <img class="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[10000ms]" 
+                 src="<?php echo esc_url( is_array( $hero_image ) ? $hero_image['url'] : $hero_image ); ?>" 
+                 alt="<?php echo esc_attr( $hero_title ?: 'Capital Place Office' ); ?>" 
+                 loading="eager" />
+        <?php endif; ?>
     </div>
     <div class="relative z-20 text-center px-gutter max-w-4xl">
-        <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6 drop-shadow-lg font-bold">
-            <?php echo esc_html( lh_field( 'about_hero_title', 'Về Chúng Tôi' ) ); ?>
-        </h1>
-        <p class="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto">
-            <?php echo esc_html( lh_field( 'about_hero_desc', 'Hành trình kiến tạo không gian làm việc chuyên nghiệp bậc nhất dành cho các nhà lãnh đạo và doanh nghiệp tinh hoa.' ) ); ?>
-        </p>
+        <?php if ( ! empty( $hero_title ) ) : ?>
+            <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6 drop-shadow-lg font-bold">
+                <?php echo esc_html( $hero_title ); ?>
+            </h1>
+        <?php endif; ?>
+        <?php if ( ! empty( $hero_desc ) ) : ?>
+            <p class="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto">
+                <?php echo esc_html( $hero_desc ); ?>
+            </p>
+        <?php endif; ?>
     </div>
 </header>
+<?php endif; ?>
 
 <!-- Brand Story -->
 <section class="py-section-padding-desktop bg-white">
