@@ -52,12 +52,16 @@ Tài liệu quy định và cấu trúc 6 Section chính cho trang **Về Chúng
 
 ---
 
-## 📷 5. Section 5: Real Office Space (Hình Ảnh Thực Tế)
-- **Mục đích:** Trình bày hình ảnh toàn cảnh không gian sống động tại The Leaders Hub.
-- **Trường ACF (`group_lh_about` -> Tab Gallery):**
+## 📷 5. Section 5: Real Office Space (Hình Ảnh Thực Tế) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
+- **Mục đích:** Trình bày hình ảnh toàn cảnh không gian sống động tại The Leaders Hub kèm chú thích ngắn (caption/alt text).
+- **Trường ACF (`group_lh_about` -> Tab 5. Hình Ảnh Thực Tế):**
   1. `about_gallery_title` *(Type: text)* - Tiêu đề chính (Mặc định: `Hình ảnh thực tế`).
   2. `about_gallery_desc` *(Type: text)* - Mô tả phụ (Mặc định: `Khám phá không gian sống động tại The Leaders Hub`).
-  3. `about_gallery_image` *(Type: image)* - File hình ảnh thực tế chất lượng cao.
+  3. `about_gallery_images` *(Type: repeater)* - Thư viện ảnh thực tế không gian / dịch vụ:
+     - `image` *(Type: image)* - File hình ảnh chất lượng cao.
+     - `title` *(Type: text)* - Tên khu vực / dịch vụ (VD: `Lễ tân 5 sao`, `Khu vực Lounge`).
+     - `desc` *(Type: textarea)* - Mô tả ngắn chú thích (Caption & Alt text).
 
 ---
 

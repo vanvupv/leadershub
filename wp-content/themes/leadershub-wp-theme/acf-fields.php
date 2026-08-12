@@ -926,11 +926,31 @@ function leadershub_register_field_groups() {
                 'default_value' => 'Khám phá không gian sống động tại The Leaders Hub',
             ),
             array(
-                'key' => 'field_about_gallery_image',
-                'label' => 'Hình ảnh thực tế không gian',
-                'name' => 'about_gallery_image',
-                'type' => 'image',
-                'return_format' => 'url',
+                'key' => 'field_about_gallery_images',
+                'label' => 'Thư viện ảnh thực tế không gian (Repeater)',
+                'name' => 'about_gallery_images',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_gallery_img_file',
+                        'label' => 'Hình ảnh thực tế',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                    array(
+                        'key' => 'field_gallery_img_title',
+                        'label' => 'Tên khu vực / Tên dịch vụ (VD: Lễ tân 5 sao)',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_gallery_img_desc',
+                        'label' => 'Mô tả ngắn / Chú thích (Caption & Alt text)',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                    ),
+                ),
             ),
 
             // TAB 6: CTA & BROCHURE

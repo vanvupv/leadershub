@@ -24,6 +24,10 @@ $values_title = ( function_exists( 'get_field' ) ? get_field( 'about_values_titl
 // ACF Variables: Section 4 Certifications & Partners
 $cert_title = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' ) : '' ) ?: '';
 
+// ACF Variables: Section 5 Real Office Gallery
+$gallery_title = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_title' ) : '' ) ?: '';
+$gallery_desc  = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_desc' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -210,18 +214,68 @@ function lh_field( $name, $default = '' ) {
 </section>
 <?php endif; ?>
 
-<!-- Real Office Space -->
-<section class="py-section-padding-desktop bg-white">
+<!-- Real Office Space Section -->
+<?php if ( ! empty( $gallery_title ) || ( function_exists( 'have_rows' ) && have_rows( 'about_gallery_images' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-white" id="gallery">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-16">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Hình ảnh thực tế</h2>
-            <p class="text-on-surface-variant font-body-md text-body-md mt-4">Khám phá không gian sống động tại The Leaders Hub</p>
-        </div>
-        <div class="rounded-2xl overflow-hidden shadow-2xl">
-            <img class="w-full h-auto hover:scale-[1.02] transition-transform duration-700" src="<?php echo esc_url( lh_field( 'about_gallery_image', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80' ) ); ?>" alt="Real Workspace Space" />
-        </div>
+        <?php if ( ! empty( $gallery_title ) || ! empty( $gallery_desc ) ) : ?>
+            <div class="text-center mb-16">
+                <?php if ( ! empty( $gallery_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                        <?php echo esc_html( $gallery_title ); ?>
+                    </h2>
+                <?php endif; ?>
+                <?php if ( ! empty( $gallery_desc ) ) : ?>
+                    <p class="text-on-surface-variant font-body-md text-body-md mt-4">
+                        <?php echo esc_html( $gallery_desc ); ?>
+                    </p>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_gallery_images' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php while ( have_rows( 'about_gallery_images' ) ) : the_row();
+                    $g_img   = get_sub_field( 'image' );
+                    $g_title = get_sub_field( 'title' );
+                    $g_desc  = get_sub_field( 'desc' );
+
+                    if ( empty( $g_img ) ) continue;
+                    $img_url = is_array( $g_img ) ? $g_img['url'] : $g_img;
+                ?>
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col">
+                        <div class="h-64 overflow-hidden relative">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                                 src="<?php echo esc_url( $img_url ); ?>" 
+                                 alt="<?php echo esc_attr( $g_title ?: $g_desc ?: 'Không gian The Leaders Hub' ); ?>" 
+                                 loading="lazy" />
+                            <?php if ( ! empty( $g_title ) ) : ?>
+                                <div class="absolute bottom-3 left-3 bg-deep-navy/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full font-bold">
+                                    <?php echo esc_html( $g_title ); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <?php if ( ! empty( $g_title ) || ! empty( $g_desc ) ) : ?>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <?php if ( ! empty( $g_title ) ) : ?>
+                                    <h3 class="font-headline-sm text-headline-sm font-bold text-deep-navy mb-2">
+                                        <?php echo esc_html( $g_title ); ?>
+                                    </h3>
+                                <?php endif; ?>
+                                <?php if ( ! empty( $g_desc ) ) : ?>
+                                    <p class="font-body-md text-body-md text-on-surface-variant text-sm leading-relaxed">
+                                        <?php echo esc_html( $g_desc ); ?>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- CTA Section -->
 <section class="py-section-padding-desktop bg-surface-container-low">
