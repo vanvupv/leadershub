@@ -12,6 +12,9 @@ $pricing_title    = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_ti
 $pricing_desc     = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_desc' ) : '' ) ?: '';
 $pricing_vat_note = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_vat_note' ) : '' ) ?: '';
 
+// ACF Variables: Section 3 Feature Comparison
+$comp_title = ( function_exists( 'get_field' ) ? get_field( 'vo_comp_title' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -196,58 +199,63 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Comparison Table Section -->
-<section class="py-section-padding-desktop bg-surface-container-low">
+<?php if ( ! empty( $comp_title ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_comp_rows' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-surface-container-low" id="comparison">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="mb-12">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">So Sánh Tiện Ích</h2>
-            <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
-        </div>
-        <div class="overflow-x-auto rounded-xl shadow-lg bg-white">
-            <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="bg-deep-navy text-white">
-                        <th class="p-6 font-label-sm text-sm font-semibold">Dịch vụ &amp; Tiện ích</th>
-                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Economy</th>
-                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Standard</th>
-                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Premium</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-surface-container-highest">
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Địa chỉ đăng ký GPKD Hạng A</td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Lễ tân chuyên nghiệp &amp; Tiếp khách</td>
-                        <td class="p-6 text-center text-on-surface-variant/30"><span class="material-symbols-outlined">close</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Sử dụng phòng họp hiện đại</td>
-                        <td class="p-6 text-center text-on-surface-variant/50 text-sm">Tính phí lẻ</td>
-                        <td class="p-6 text-center font-semibold text-sm">4 giờ/tháng</td>
-                        <td class="p-6 text-center font-semibold text-sm">10 giờ/tháng</td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Hỗ trợ nhận thư từ &amp; bưu phẩm</td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Cafe, trà &amp; nước uống pantry</td>
-                        <td class="p-6 text-center text-on-surface-variant/30"><span class="material-symbols-outlined">close</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <?php if ( ! empty( $comp_title ) ) : ?>
+            <div class="mb-12">
+                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                    <?php echo esc_html( $comp_title ); ?>
+                </h2>
+                <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
+            </div>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'vo_comp_rows' ) ) : ?>
+            <div class="overflow-x-auto rounded-xl shadow-lg bg-white">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-deep-navy text-white">
+                            <th class="p-6 font-label-sm text-sm font-semibold">Dịch vụ &amp; Tiện ích</th>
+                            <th class="p-6 font-label-sm text-sm text-center font-semibold">Economy</th>
+                            <th class="p-6 font-label-sm text-sm text-center font-semibold">Standard</th>
+                            <th class="p-6 font-label-sm text-sm text-center font-semibold">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-surface-container-highest">
+                        <?php while ( have_rows( 'vo_comp_rows' ) ) : the_row();
+                            $feat_name    = get_sub_field( 'feature_name' );
+                            $eco_val      = get_sub_field( 'economy_val' );
+                            $std_val      = get_sub_field( 'standard_val' );
+                            $pre_val      = get_sub_field( 'premium_val' );
+
+                            if ( empty( $feat_name ) ) continue;
+
+                            $render_val = function( $val ) {
+                                $v = strtolower( trim( $val ) );
+                                if ( in_array( $v, array( 'yes', 'check', '1', 'true' ), true ) ) {
+                                    return '<span class="material-symbols-outlined text-success-green">check</span>';
+                                }
+                                if ( in_array( $v, array( 'no', 'close', '0', 'false' ), true ) ) {
+                                    return '<span class="material-symbols-outlined text-on-surface-variant/30">close</span>';
+                                }
+                                return esc_html( $val );
+                            };
+                        ?>
+                            <tr>
+                                <td class="p-6 font-body-md text-sm"><?php echo esc_html( $feat_name ); ?></td>
+                                <td class="p-6 text-center text-sm"><?php echo $render_val( $eco_val ); ?></td>
+                                <td class="p-6 text-center text-sm"><?php echo $render_val( $std_val ); ?></td>
+                                <td class="p-6 text-center text-sm"><?php echo $render_val( $pre_val ); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Registration Process Section -->
 <section class="py-section-padding-desktop bg-surface overflow-hidden relative">

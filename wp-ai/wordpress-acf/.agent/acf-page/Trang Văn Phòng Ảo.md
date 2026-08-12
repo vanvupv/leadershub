@@ -41,7 +41,8 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 
 ---
 
-## 📊 3. Section 3: Feature Comparison Table (So Sánh Tiện Ích)
+## 📊 3. Section 3: Feature Comparison Table (So Sánh Tiện Ích) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** So sánh bảng chi tiết tính năng hỗ trợ từng gói dịch vụ minh bạch.
 - **Trường ACF (`group_lh_virtual` -> Tab 3. Bảng So Sánh Tiện Ích):**
   1. `vo_comp_title` *(Type: text)* - Tiêu đề section (Mặc định: `So Sánh Tiện Ích`).
