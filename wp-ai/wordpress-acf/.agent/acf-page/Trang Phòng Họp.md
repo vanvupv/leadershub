@@ -7,7 +7,8 @@ Field Group ACF: `group_lh_meeting` (Cấu hình Trang Phòng Họp - Meeting Ro
 
 ## 🎯 Danh Sách Section & Trường ACF Phân Theo Tab
 
-### 🚀 1. Section 1: Hero Banner (Phòng Họp Chuyên Nghiệp Hạng A)
+### 🚀 1. Section 1: Hero Banner (Phòng Họp Chuyên Nghiệp Hạng A) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Giới thiệu tổng quan hệ thống phòng họp sang trọng, đẳng cấp tại trung tâm Thủ đô.
 - **Trường ACF (`group_lh_meeting` -> Tab 1. Hero Banner):**
   1. `mr_hero_badge` *(Type: text)* - Badge nhỏ góc trên (Mặc định: `KHÔNG GIAN HẠNG A`).
@@ -24,7 +25,8 @@ Field Group ACF: `group_lh_meeting` (Cấu hình Trang Phòng Họp - Meeting Ro
 
 ---
 
-## 🏢 2. Section 2: Room Types Grid (Lựa Chọn Không Gian Phù Hợp)
+## 🏢 2. Section 2: Room Types Grid (Lựa Chọn Không Gian Phù Hợp) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Hiển thị danh sách các loại phòng họp (30m², 28m², v.v.) với đầy đủ thông số diện tích, sức chứa và tính năng.
 - **Trường ACF (`group_lh_meeting` -> Tab 2. Danh Sách Phòng Họp):**
   1. `mr_rooms_title` *(Type: text)* - Tiêu đề section (Mặc định: `Lựa chọn không gian phù hợp`).
@@ -40,7 +42,8 @@ Field Group ACF: `group_lh_meeting` (Cấu hình Trang Phòng Họp - Meeting Ro
 
 ---
 
-## ⚡ 3. Section 3: Specs & Amenities (Tiện Ích & Trang Thiết Bị Đi Kèm)
+## ⚡ 3. Section 3: Specs & Amenities (Tiện Ích & Trang Thiết Bị Đi Kèm) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Giới thiệu các trang thiết bị hiện đại (TV, Trà/Cà phê, IT Support) đi kèm theo tiêu chuẩn 5 sao.
 - **Trường ACF (`group_lh_meeting` -> Tab 3. Tiện Ích & Thiết Bị):**
   1. `mr_amenities_title` *(Type: text)* - Tiêu đề section (Mặc định: `Tiện ích & Trang thiết bị đi kèm`).
@@ -54,7 +57,8 @@ Field Group ACF: `group_lh_meeting` (Cấu hình Trang Phòng Họp - Meeting Ro
 
 ---
 
-## 📝 4. Section 4: Booking Form Section (Đặt Phòng Họp Ngay)
+## 📝 4. Section 4: Booking Form Section (Đặt Phòng Họp Ngay) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Form đăng ký giữ chỗ và hotline tư vấn trực tiếp qua Airtable iframe.
 - **Trường ACF (`group_lh_meeting` -> Tab 4. Đặt Phòng Họp):**
   1. `mr_booking_title` *(Type: text)* - Tiêu đề section (Mặc định: `Đặt phòng họp ngay`).
