@@ -37,13 +37,6 @@ $brochure_text     = ( function_exists( 'get_field' ) ? get_field( 'about_brochu
 $brochure_url      = ( function_exists( 'get_field' ) ? get_field( 'about_brochure_url' ) : '' ) ?: '';
 $cta_working_hours = ( function_exists( 'get_field' ) ? get_field( 'about_cta_working_hours' ) : '' ) ?: 'Hỗ trợ trong giờ làm việc';
 
-function lh_field( $name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $val = get_field( $name );
-        return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
-    }
-    return $default;
-}
 ?>
 
 <!-- Hero Banner Section -->

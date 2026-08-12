@@ -134,3 +134,27 @@ add_action( 'template_redirect', 'leadershub_strip_assets' );
 
 // Load ACF fields PHP declaration
 require_once get_template_directory() . '/acf-fields.php';
+
+/**
+ * ACF Helper Functions for The Leaders Hub Theme
+ */
+if ( ! function_exists( 'lh_field' ) ) {
+    function lh_field( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
+    }
+}
+
+if ( ! function_exists( 'lh_opt' ) ) {
+    function lh_opt( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name, 'option' );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
+    }
+}
+
