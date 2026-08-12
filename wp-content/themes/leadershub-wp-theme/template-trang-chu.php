@@ -7,22 +7,39 @@
 
 get_header();
 
-function lh_field( $name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $val = get_field( $name );
-        return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
-    }
-    return $default;
+// ==========================================
+// 1. KHAI BÁO BIẾN & SAFE FALLBACKS ĐẦU TEMPLATE (.agent Rules)
+// ==========================================
+$hero_title  = ( function_exists( 'get_field' ) ? get_field( 'home_hero_title' ) : '' ) ?: '';
+$hero_desc   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_desc' ) : '' ) ?: '';
+$hero_video  = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video' ) : '' ) ?: '';
+$hero_poster = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
+
+// Nếu chưa nhập trong ACF Admin, dùng dữ liệu mặc định ban đầu làm fallback an toàn
+if ( empty( $hero_title ) ) {
+    $hero_title = 'VĂN PHÒNG DỊCH VỤ <br /><span class="text-prestige-gold">THE LEADERS HUB - NƠI THÀNH CÔNG HỘI TỤ</span>';
+}
+if ( empty( $hero_desc ) ) {
+    $hero_desc = 'Giải pháp văn phòng trọn gói - Tiện lợi - Linh hoạt - Chuyên nghiệp cho các lãnh đạo và doanh nghiệp hàng đầu.';
+}
+if ( empty( $hero_video ) ) {
+    $hero_video = 'https://assets.mixkit.co/videos/preview/mixkit-modern-office-space-with-people-working-34322-large.mp4';
+}
+if ( empty( $hero_poster ) ) {
+    $hero_poster = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80';
 }
 ?>
 
 <!-- Hero Banner Section -->
+<?php if ( ! empty( $hero_title ) || ! empty( $hero_video ) ) : ?>
 <header class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-deep-navy">
-    <video autoplay muted loop playsinline
-        poster="<?php echo esc_url( lh_field( 'home_hero_poster', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80' ) ); ?>"
-        class="absolute inset-0 w-full h-full object-cover z-0 opacity-40">
-        <source src="<?php echo esc_url( lh_field( 'home_hero_video', 'https://assets.mixkit.co/videos/preview/mixkit-modern-office-space-with-people-working-34322-large.mp4' ) ); ?>" type="video/mp4">
-    </video>
+    <?php if ( ! empty( $hero_video ) ) : ?>
+        <video autoplay muted loop playsinline
+            <?php if ( ! empty( $hero_poster ) ) : ?>poster="<?php echo esc_url( $hero_poster ); ?>"<?php endif; ?>
+            class="absolute inset-0 w-full h-full object-cover z-0 opacity-40">
+            <source src="<?php echo esc_url( $hero_video ); ?>" type="video/mp4">
+        </video>
+    <?php endif; ?>
     <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-deep-navy/85 to-transparent z-10"></div>
 
     <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 gap-12 items-center">
@@ -30,12 +47,19 @@ function lh_field( $name, $default = '' ) {
             <span class="inline-block px-4 py-1 rounded-full bg-prestige-gold/20 text-prestige-gold font-label-sm text-xs tracking-widest uppercase font-bold border border-prestige-gold/30">
                 Premium Business Solution
             </span>
-            <h1 class="font-display-lg text-4xl md:text-6xl font-bold leading-tight">
-                <?php echo wp_kses_post( lh_field( 'home_hero_title', 'VĂN PHÒNG DỊCH VỤ <br /><span class="text-prestige-gold">THE LEADERS HUB - NƠI THÀNH CÔNG HỘI TỤ</span>' ) ); ?>
-            </h1>
-            <p class="font-body-lg text-base md:text-lg text-white/85 max-w-xl leading-relaxed">
-                <?php echo esc_html( lh_field( 'home_hero_desc', 'Giải pháp văn phòng trọn gói - Tiện lợi - Linh hoạt - Chuyên nghiệp cho các lãnh đạo và doanh nghiệp hàng đầu.' ) ); ?>
-            </p>
+            
+            <?php if ( ! empty( $hero_title ) ) : ?>
+                <h1 class="font-display-lg text-4xl md:text-6xl font-bold leading-tight">
+                    <?php echo wp_kses_post( $hero_title ); ?>
+                </h1>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $hero_desc ) ) : ?>
+                <p class="font-body-lg text-base md:text-lg text-white/85 max-w-xl leading-relaxed">
+                    <?php echo esc_html( $hero_desc ); ?>
+                </p>
+            <?php endif; ?>
+
             <div class="flex flex-wrap gap-4 pt-4">
                 <a href="#register" class="bg-success-green hover:bg-success-green/90 text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:scale-105 transition-transform duration-200 shadow-md uppercase tracking-wider font-semibold">Đăng ký tư vấn</a>
                 <a href="#services" class="border border-white/50 text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-white/10 transition-all font-semibold">Khám phá dịch vụ</a>
@@ -43,6 +67,7 @@ function lh_field( $name, $default = '' ) {
         </div>
     </div>
 </header>
+<?php endif; ?>
 
 <!-- Services Section (Danh mục dịch vụ) -->
 <section class="py-section-padding-desktop bg-white scroll-mt-20" id="services">
