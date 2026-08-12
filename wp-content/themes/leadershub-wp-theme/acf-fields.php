@@ -289,6 +289,20 @@ function leadershub_register_field_groups() {
                 'type' => 'tab',
             ),
             array(
+                'key' => 'field_home_gallery_subtitle',
+                'label' => 'Tiêu đề phụ / Subtitle',
+                'name' => 'home_gallery_subtitle',
+                'type' => 'text',
+                'default_value' => 'THƯ VIỆN HÌNH ẢNH',
+            ),
+            array(
+                'key' => 'field_home_gallery_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'home_gallery_title',
+                'type' => 'text',
+                'default_value' => 'Không Gian Thực Tế Tại The Leaders Hub',
+            ),
+            array(
                 'key' => 'field_home_gallery_images',
                 'label' => 'Danh sách hình ảnh thực tế',
                 'name' => 'home_gallery_images',

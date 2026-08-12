@@ -47,13 +47,15 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 ---
 
 ## 🖼️ 4. Section 4: Environment Showcase (Thư Viện Ảnh Không Gian Thực Tế) - [ ] TODO
-- **Trạng thái:** ⏳ **TODO**
-- **Mục đích:** Trực quan hóa hình ảnh thực tế 5 sao tại tòa tháp Capital Place (Khu lễ tân, Business Lounge, Pantry,...).
-- **Trường ACF:**
-  1. `home_gallery_images` *(Type: repeater)* - Thư viện ảnh thực tế không gian làm việc:
+- **Trạng thái:** ⏳ **TODO (Đang hoàn thiện)**
+- **Mục đích:** Trực quan hóa hình ảnh thực tế 5 sao tại tòa tháp Capital Place (Lễ tân, Lounge, Pantry, View thành phố, Văn phòng riêng, Hot desk, Phòng họp).
+- **Trường ACF (`group_lh_home` -> Tab Thư viện ảnh):**
+  1. `home_gallery_subtitle` *(Type: text)* - Tiêu đề phụ (VD: `THƯ VIỆN HÌNH ẢNH`).
+  2. `home_gallery_title` *(Type: text)* - Tiêu đề chính (VD: `Không Gian Thực Tế Tại The Leaders Hub`).
+  3. `home_gallery_images` *(Type: repeater)* - Thư viện ảnh thực tế không gian làm việc (Lễ tân, Lounge, Pantry, View thành phố, Văn phòng riêng, Hot desk, Phòng họp):
      - `image` *(Type: image)* - File hình ảnh thực tế chất lượng cao.
      - `title` *(Type: text)* - Tên khu vực không gian.
-     - `desc` *(Type: text)* - Ghi chú mô tả điểm nổi bật của khu vực.
+     - `desc` *(Type: text)* - Chú thích / Alt text mô tả chi tiết khu vực.
 
 ---
 

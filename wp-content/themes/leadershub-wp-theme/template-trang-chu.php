@@ -28,6 +28,8 @@ $reviews_google_score = ( function_exists( 'get_field' ) ? get_field( 'home_revi
 $reviews_shortcode    = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_shortcode' ) : '' ) ?: '';
 $news_title           = ( function_exists( 'get_field' ) ? get_field( 'home_news_title' ) : '' ) ?: 'Tin tức mới nhất';
 $news_btn_text        = ( function_exists( 'get_field' ) ? get_field( 'home_news_btn_text' ) : '' ) ?: 'Xem tất cả';
+$gallery_subtitle     = ( function_exists( 'get_field' ) ? get_field( 'home_gallery_subtitle' ) : '' ) ?: 'THƯ VIỆN HÌNH ẢNH';
+$gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gallery_title' ) : '' ) ?: 'Không Gian Thực Tế Tại The Leaders Hub';
 ?>
 
 <!-- Hero Banner Section -->
@@ -305,65 +307,58 @@ $news_btn_text        = ( function_exists( 'get_field' ) ? get_field( 'home_news
     </div>
 </section>
 
-<!-- Environment Showcase -->
-<section class="py-section-padding-desktop bg-surface-container-low">
+<!-- Environment Showcase Section -->
+<?php if ( ! empty( $gallery_title ) || ( function_exists( 'have_rows' ) && have_rows( 'home_gallery_images' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-surface-container-low scroll-mt-20" id="space">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-16">
-            <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">Thư viện hình ảnh</span>
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Không Gian Thực Tế Tại The Leaders Hub</h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_gallery_images' ) ) : ?>
+        <?php if ( ! empty( $gallery_subtitle ) || ! empty( $gallery_title ) ) : ?>
+            <div class="text-center mb-16">
+                <?php if ( ! empty( $gallery_subtitle ) ) : ?>
+                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold text-center">
+                        <?php echo esc_html( $gallery_subtitle ); ?>
+                    </span>
+                <?php endif; ?>
+                <?php if ( ! empty( $gallery_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold text-center">
+                        <?php echo esc_html( $gallery_title ); ?>
+                    </h2>
+                <?php endif; ?>
+                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4"></div>
+            </div>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_gallery_images' ) ) : ?>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php while ( have_rows( 'home_gallery_images' ) ) : the_row(); 
-                    $img = get_sub_field( 'image' );
+                    $img   = get_sub_field( 'image' );
                     $title = get_sub_field( 'title' );
-                    $desc = get_sub_field( 'desc' );
+                    $desc  = get_sub_field( 'desc' );
+
+                    if ( empty( $img ) ) continue;
+                    $img_url = is_array( $img ) ? $img['url'] : $img;
                 ?>
                     <div class="group relative rounded-xl overflow-hidden shadow-md bg-white aspect-[4/3] cursor-pointer">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                             src="<?php echo esc_url( $img_url ); ?>" 
+                             alt="<?php echo esc_attr( $title ?: 'Không gian thực tế tại The Leaders Hub' ); ?>" 
+                             loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                             <div>
-                                <h4 class="text-white font-semibold text-lg"><?php echo esc_html( $title ); ?></h4>
-                                <p class="text-prestige-gold text-xs mt-1"><?php echo esc_html( $desc ); ?></p>
+                                <?php if ( ! empty( $title ) ) : ?>
+                                    <h4 class="text-white font-semibold text-lg"><?php echo esc_html( $title ); ?></h4>
+                                <?php endif; ?>
+                                <?php if ( ! empty( $desc ) ) : ?>
+                                    <p class="text-prestige-gold text-xs mt-1 leading-relaxed"><?php echo esc_html( $desc ); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 <?php endwhile; ?>
-            <?php else : ?>
-                <!-- Image 1 -->
-                <div class="group relative rounded-xl overflow-hidden shadow-md bg-white aspect-[4/3] cursor-pointer">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-lg">Khu Vực Lễ Tân</h4>
-                            <p class="text-prestige-gold text-xs mt-1">Đội ngũ lễ tân chuyên nghiệp hỗ trợ chu đáo</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Image 2 -->
-                <div class="group relative rounded-xl overflow-hidden shadow-md bg-white aspect-[4/3] cursor-pointer">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-lg">Business Lounge</h4>
-                            <p class="text-prestige-gold text-xs mt-1">Nơi tiếp khách hàng và đối tác đẳng cấp</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Image 3 -->
-                <div class="group relative rounded-xl overflow-hidden shadow-md bg-white aspect-[4/3] cursor-pointer">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=800&q=80" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-lg">Khu Vực Pantry</h4>
-                            <p class="text-prestige-gold text-xs mt-1">Phục vụ trà, cafe hảo hạng miễn phí</p>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Professional Environment Showcase -->
 <section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden">
