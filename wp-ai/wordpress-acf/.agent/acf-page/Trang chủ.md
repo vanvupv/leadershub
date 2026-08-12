@@ -18,8 +18,8 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## 🏢 2. Section 2: Services (Danh Mục Dịch Vụ & Giải Pháp Văn Phòng) - [ ] TODO
-- **Trạng thái:** ⏳ **TODO (Đang hoàn thiện)**
+## 🏢 2. Section 2: Services (Danh Mục Dịch Vụ & Giải Pháp Văn Phòng) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Giới thiệu các loại hình văn phòng chuẩn quốc tế tại The Leaders Hub.
 - **Trường ACF (`group_lh_home` -> Tab Services):**
   1. `home_services_subtitle` *(Type: text)* - Tiêu đề phụ / Badge Section (VD: `GIẢI PHÁP CỦA CHÚNG TÔI`).
