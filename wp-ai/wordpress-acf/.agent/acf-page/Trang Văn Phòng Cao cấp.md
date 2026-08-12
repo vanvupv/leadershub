@@ -34,7 +34,8 @@ Field Group ACF: `group_lh_serviced` (Cấu hình Trang Văn Phòng Cao Cấp - 
 
 ---
 
-## ✨ 3. Section 3: Special Utilities Grid (Tiện Ích Đặc Quyền)
+## ✨ 3. Section 3: Special Utilities Grid (Tiện Ích Đặc Quyền) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Trình bày danh mục các tiện ích 5 sao đi kèm như Lounge Pantry & Cafe, Lễ tân chuyên nghiệp, In ấn & IT Support, Phòng họp tiêu chuẩn.
 - **Trường ACF (`group_lh_serviced` -> Tab 3. Tiện Ích Đặc Quyền):**
   1. `so_utils_badge` *(Type: text)* - Badge nhỏ góc trên (Mặc định: `TIỆN ÍCH ĐẶC QUYỀN`).

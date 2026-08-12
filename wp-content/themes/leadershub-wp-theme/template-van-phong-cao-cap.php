@@ -24,6 +24,10 @@ $intro_content = lh_field( 'so_intro_content', '<p>Tại The Leaders Hub, chúng
 $intro_image_1 = lh_field( 'so_intro_image_1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBe4Fcc5_yJMz0qbFJf7UJa9STWVjghx53tHceGjryBKP7_ha1hwuaCymDNsXCqlcdXX58986mHmZfz8zGoyb3yjixB0RXbrbP5AL6fzlI0LxZPRXto7dglTbu9xaS4zNpEdpcaSkCxac-LqY25dV6aHPBCx7l6ynSfiPCHP9kOQ5TkLD3k_ANjNQhokxqn9lZY_3bMMwE7KCGGVmBt6xHz53ylZx2irb1kpJptF2eKP36ytj0GjCCgJzIoadfCE5gtCTXHk8MdNwIg' );
 $intro_image_2 = lh_field( 'so_intro_image_2', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqrzM479luW7iWxlHGuRUfXV4Q1stJI1RoV5CfhFQ9GHJ0XD3shD7CQ3swtckwWPbKVXEwuyrae9uIHD7WQUNu5IdO5GwJiS4KYi2zDd5QCsJaVVN5YZ53unWXPGNzZ3HWXpfiw4j4pomiHDwDK1DOCMbTWrqFfg8j28tDED-QHGc7jilOjIJ3Y1dyxWYFr8OQs9zJvF52kMEaagZdrUGsKipmzZDEDMLinTAuj657W6tIu9WXKavBhRBovYMj8Xt7q-XCpgU1bLFk' );
 
+// ACF Variables: Section 3 Utilities Grid
+$utils_badge = lh_field( 'so_utils_badge', 'TIỆN ÍCH ĐẶC QUYỀN' );
+$utils_title = lh_field( 'so_utils_title', 'Hơn cả một văn phòng' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -121,48 +125,77 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Utilities Grid -->
+<?php if ( ! empty( $utils_title ) || ( function_exists( 'have_rows' ) && have_rows( 'so_utils_list' ) ) ) : ?>
 <section class="py-section-padding-desktop bg-surface">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-16">
-            <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest font-semibold">Tiện ích đặc quyền</span>
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy mt-4 font-bold">Hơn cả một văn phòng</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Pantry & Cafe -->
-            <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">local_cafe</span>
-                </div>
-                <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Pantry &amp; Cafe</h3>
-                <p class="text-on-surface-variant font-body-md text-sm">Trà, cafe và nước uống cao cấp miễn phí phục vụ suốt ngày dài.</p>
+        <?php if ( ! empty( $utils_badge ) || ! empty( $utils_title ) ) : ?>
+            <div class="text-center mb-16">
+                <?php if ( ! empty( $utils_badge ) ) : ?>
+                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest font-semibold"><?php echo esc_html( $utils_badge ); ?></span>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $utils_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mt-4 font-bold"><?php echo esc_html( $utils_title ); ?></h2>
+                <?php endif; ?>
             </div>
-            <!-- Reception -->
-            <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">support_agent</span>
-                </div>
-                <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Lễ tân chuyên nghiệp</h3>
-                <p class="text-on-surface-variant font-body-md text-sm">Hỗ trợ nhận bưu phẩm và tiếp đón khách hàng tận tâm.</p>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'so_utils_list' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <?php while ( have_rows( 'so_utils_list' ) ) : the_row();
+                    $u_icon  = get_sub_field( 'icon' ) ?: 'local_cafe';
+                    $u_title = get_sub_field( 'title' );
+                    $u_desc  = get_sub_field( 'desc' );
+
+                    if ( empty( $u_title ) ) continue;
+                ?>
+                    <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
+                        <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined"><?php echo esc_html( $u_icon ); ?></span>
+                        </div>
+                        <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold"><?php echo esc_html( $u_title ); ?></h3>
+                        <?php if ( ! empty( $u_desc ) ) : ?>
+                            <p class="text-on-surface-variant font-body-md text-sm"><?php echo esc_html( $u_desc ); ?></p>
+                        <?php endif; ?>
+                    </div>
+                <?php endwhile; ?>
             </div>
-            <!-- Printing -->
-            <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">print</span>
+        <?php else : ?>
+            <!-- Default Fallback Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
+                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">local_cafe</span>
+                    </div>
+                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Pantry &amp; Cafe</h3>
+                    <p class="text-on-surface-variant font-body-md text-sm">Trà, cafe và nước uống cao cấp miễn phí phục vụ suốt ngày dài.</p>
                 </div>
-                <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">In ấn &amp; IT Support</h3>
-                <p class="text-on-surface-variant font-body-md text-sm">Hệ thống máy in hiện đại và đội ngũ IT hỗ trợ 24/7.</p>
-            </div>
-            <!-- Meeting Room -->
-            <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
-                <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">meeting_room</span>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
+                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </div>
+                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Lễ tân chuyên nghiệp</h3>
+                    <p class="text-on-surface-variant font-body-md text-sm">Hỗ trợ nhận bưu phẩm và tiếp đón khách hàng tận tâm.</p>
                 </div>
-                <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Phòng họp tiêu chuẩn</h3>
-                <p class="text-on-surface-variant font-body-md text-sm">Các phòng họp được trang bị đầy đủ thiết bị trình chiếu cao cấp.</p>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
+                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">print</span>
+                    </div>
+                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">In ấn &amp; IT Support</h3>
+                    <p class="text-on-surface-variant font-body-md text-sm">Hệ thống máy in hiện đại và đội ngũ IT hỗ trợ 24/7.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-prestige-gold/20">
+                    <div class="w-12 h-12 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-prestige-gold group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">meeting_room</span>
+                    </div>
+                    <h3 class="font-headline-md text-lg text-deep-navy mb-3 font-bold">Phòng họp tiêu chuẩn</h3>
+                    <p class="text-on-surface-variant font-body-md text-sm">Các phòng họp được trang bị đầy đủ thiết bị trình chiếu cao cấp.</p>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Gallery -->
 <section class="py-section-padding-desktop bg-white">
