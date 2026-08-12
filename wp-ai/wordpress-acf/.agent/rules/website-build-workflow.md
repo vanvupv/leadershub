@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Quy trình Xây dựng Website WordPress Cơ bản với ACF
 
 Tài liệu này định nghĩa các bước tuần tự và các quy tắc (Rules) bắt buộc trong quá trình phát triển một website WordPress hoàn chỉnh sử dụng ACF.
@@ -32,3 +36,27 @@ Tài liệu này định nghĩa các bước tuần tự và các quy tắc (Rul
     * Với phần nội dung chi tiết bài viết, cần nhiều định dạng phong phú (in đậm, tạo danh sách, chèn liên kết), **bắt buộc** dùng trường **WYSIWYG Editor** (`wysiwyg`), xuất trực tiếp qua hàm `wp_kses_post($content)` (không bọc qua `wpautop()` để tránh lỗi nhân đôi thẻ đoạn văn `<p>`).
     * Trường **Textarea** chỉ dùng cho tiêu đề phụ (subtitle), đoạn mô tả ngắn (short description) hoặc các khối văn bản tĩnh đơn giản.
   * **Cấu hình định dạng Ảnh**: Đối với các trường Ảnh (`image`), luôn cấu hình trả về dạng mảng (`array`) hoặc ID để tận dụng hàm tối ưu ảnh native của WordPress (`wp_get_attachment_image()`), hỗ trợ tự động tải ảnh responsive (thuộc tính `srcset` và `sizes`) tăng tốc độ tải trang.
+
+---
+
+## Rule 4: Quy trình Xử lý Từng Trang & Từng Section Tuần Tự (Step-by-Step Page & Section Processing Workflow)
+* **Mục tiêu**: Đảm bảo luồng phát triển sản phẩm chặt chẽ, tối ưu trải nghiệm kiểm thử và giúp người dùng chủ động kiểm soát chất lượng từng phần của website.
+* **Cây Quy trình Xử lý**:
+  ```mermaid
+  graph TD
+      A[Chọn Trang Cần Phát Triển] --> B[Xử lý Section 1 từ trên xuống]
+      B --> C[Đăng ký ACF Field Group & Tab tương ứng]
+      C --> D[Khai báo biến & Safe Fallback rỗng ở đầu file Template]
+      D --> E[Render HTML Section bọc trong kiểm tra if !empty kèm Escaping]
+      E --> F[Kiểm thử & Xác nhận Section 1 Hoàn Hảo]
+      F --> G[Chuyển sang Section tiếp theo của Trang]
+      G --> H[Sau khi hoàn tất toàn bộ Section -> Chuyển sang Trang Tiếp Theo]
+  ```
+* **Quy tắc & Tiêu chuẩn**:
+  1. **Tuần tự theo Cấp độ Trang (Page Level)**: Tiến hành xử lý dứt điểm từng trang một (Trang chủ ➔ Trang Dịch vụ ➔ Trang Chi tiết ➔ ...). Không xây dựng dở dang cùng lúc nhiều trang.
+  2. **Tuần tự theo Cấp độ Section (Section Level)**: Trong cùng 1 trang, bắt buộc xử lý và kiểm thử dứt điểm từng **Section một** theo đúng thứ tự từ trên xuống dưới (Section 1: Hero Banner ➔ Section 2: Services ➔ Section 3: Pricing ➔ ...).
+  3. **Vòng đời Xử lý cho từng Section**:
+     - **Bước 1 (ACF Fields)**: Khai báo cấu hình field nhóm trong `acf-fields.php` (hoặc tài liệu `wp-ai/wordpress-acf/.agent/acf-page/[Tên trang].md`).
+     - **Bước 2 (Khai báo biến)**: Đưa toàn bộ hàm lấy dữ liệu `get_field()` / `get_sub_field()` lên **đầu file Template PHP**, gán Safe Fallback rỗng (`?: ''` cho text/url, `?: array()` cho repeater/link/image).
+     - **Bước 3 (Render HTML & Escape)**: Render giao diện HTML sạch bọc trong điều kiện `if ( ! empty(...) )` để chỉ hiển thị khi có dữ liệu thực tế nhập từ Admin.
+     - **Bước 4 (Nghiệm thu Section)**: Tiến hành kiểm thử giao diện và tương tác của Section hiện tại cùng người dùng trước khi tiến hành viết tiếp Section kế tiếp.
