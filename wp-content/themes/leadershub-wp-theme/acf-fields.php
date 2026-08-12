@@ -426,6 +426,8 @@ function leadershub_register_field_groups() {
                         'type' => 'textarea',
                     ),
                 ),
+            ),
+
             // TAB: NEWS
             array(
                 'key' => 'tab_home_news',
