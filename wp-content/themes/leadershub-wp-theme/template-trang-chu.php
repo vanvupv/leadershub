@@ -17,6 +17,8 @@ $hero_video    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video'
 $hero_poster   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
 $hero_btn_1    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_1' ) : array() ) ?: array();
 $hero_btn_2    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_2' ) : array() ) ?: array();
+$services_subtitle = ( function_exists( 'get_field' ) ? get_field( 'home_services_subtitle' ) : '' ) ?: '';
+$services_title    = ( function_exists( 'get_field' ) ? get_field( 'home_services_title' ) : '' ) ?: '';
 ?>
 
 <!-- Hero Banner Section -->
@@ -76,109 +78,61 @@ $hero_btn_2    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_2'
 <?php endif; ?>
 
 <!-- Services Section (Danh mục dịch vụ) -->
+<?php if ( ! empty( $services_title ) || ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) ) : ?>
 <section class="py-section-padding-desktop bg-white scroll-mt-20" id="services">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-16">
-            <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold text-center">GIẢI PHÁP CỦA CHÚNG TÔI</span>
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold text-center">Văn phòng chuẩn quốc tế</h2>
-        </div>
+        <?php if ( ! empty( $services_subtitle ) || ! empty( $services_title ) ) : ?>
+            <div class="text-center mb-16">
+                <?php if ( ! empty( $services_subtitle ) ) : ?>
+                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold text-center">
+                        <?php echo esc_html( $services_subtitle ); ?>
+                    </span>
+                <?php endif; ?>
+                <?php if ( ! empty( $services_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold text-center">
+                        <?php echo esc_html( $services_title ); ?>
+                    </h2>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) : ?>
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <?php while ( have_rows( 'home_services_list' ) ) : the_row();
                     $s_title = get_sub_field( 'title' );
                     $s_desc  = get_sub_field( 'desc' );
                     $s_link  = get_sub_field( 'link' );
                     $s_img   = get_sub_field( 'image' );
+
+                    if ( empty( $s_title ) ) continue;
                 ?>
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                        <div class="h-48 overflow-hidden relative">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="<?php echo esc_attr( $s_title ); ?>" src="<?php echo esc_url( $s_img ?: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80' ); ?>" />
-                        </div>
+                        <?php if ( ! empty( $s_img ) ) : ?>
+                            <div class="h-48 overflow-hidden relative">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="<?php echo esc_attr( $s_title ); ?>" src="<?php echo esc_url( $s_img ); ?>" />
+                            </div>
+                        <?php endif; ?>
                         <div class="p-8 flex-grow flex flex-col justify-between">
                             <div class="space-y-4">
                                 <span class="material-symbols-outlined text-prestige-gold text-3xl">domain</span>
                                 <h3 class="font-headline-md text-xl text-deep-navy font-bold"><?php echo esc_html( $s_title ); ?></h3>
-                                <p class="text-on-surface-variant text-sm leading-relaxed"><?php echo esc_html( $s_desc ); ?></p>
+                                <?php if ( ! empty( $s_desc ) ) : ?>
+                                    <p class="text-on-surface-variant text-sm leading-relaxed"><?php echo esc_html( $s_desc ); ?></p>
+                                <?php endif; ?>
                             </div>
-                            <a href="<?php echo esc_url( $s_link ?: '#register' ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
-                                Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-                            </a>
+                            <?php if ( ! empty( $s_link ) ) : ?>
+                                <a href="<?php echo esc_url( $s_link ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
+                                    Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endwhile; ?>
-            <?php else : ?>
-                <!-- Card 1: Văn phòng ảo -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Văn phòng ảo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" />
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <span class="material-symbols-outlined text-prestige-gold text-3xl">domain</span>
-                            <h3 class="font-headline-md text-xl text-deep-navy font-bold">Văn phòng ảo</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed">Địa chỉ kinh doanh tại trung tâm hạng A với chi phí tối ưu.</p>
-                        </div>
-                        <a href="<?php echo esc_url( home_url('/van-phong-ao') ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
-                            Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2: Văn phòng cao cấp -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Văn phòng cao cấp" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80" />
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <span class="material-symbols-outlined text-prestige-gold text-3xl">verified</span>
-                            <h3 class="font-headline-md text-xl text-deep-navy font-bold">Văn phòng cao cấp</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed">Không gian làm việc trọn gói, riêng tư và đầy đủ nội thất.</p>
-                        </div>
-                        <a href="<?php echo esc_url( home_url('/van-phong-cao-cap') ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
-                            Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 3: Phòng họp -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Phòng họp" src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=600&q=80" />
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <span class="material-symbols-outlined text-prestige-gold text-3xl">groups</span>
-                            <h3 class="font-headline-md text-xl text-deep-navy font-bold">Phòng họp</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed">Trang thiết bị hiện đại cho các buổi họp chiến lược quan trọng.</p>
-                        </div>
-                        <a href="<?php echo esc_url( home_url('/phong-hop') ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
-                            Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 4: Flexible Workspace -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Flexible Workspace" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80" />
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <span class="material-symbols-outlined text-prestige-gold text-3xl">workspace_premium</span>
-                            <h3 class="font-headline-md text-xl text-deep-navy font-bold">Flexible Workspace</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed">Không gian làm việc linh hoạt, chỗ ngồi cố định và bán riêng tư.</p>
-                        </div>
-                        <a href="#register" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
-                            Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Pricing Cards Section -->
 <section class="py-section-padding-desktop bg-surface" id="pricing">

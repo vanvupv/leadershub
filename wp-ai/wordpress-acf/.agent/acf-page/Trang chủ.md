@@ -19,10 +19,12 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 ---
 
 ## 🏢 2. Section 2: Services (Danh Mục Dịch Vụ & Giải Pháp Văn Phòng) - [ ] TODO
-- **Trạng thái:** ⏳ **TODO (Đang tiến hành)**
+- **Trạng thái:** ⏳ **TODO (Đang hoàn thiện)**
 - **Mục đích:** Giới thiệu các loại hình văn phòng chuẩn quốc tế tại The Leaders Hub.
-- **Trường ACF:**
-  1. `home_services_list` *(Type: repeater)* - Mảng danh sách các gói dịch vụ (Văn phòng ảo, Văn phòng cao cấp, Phòng họp, Flexible Workspace):
+- **Trường ACF (`group_lh_home` -> Tab Services):**
+  1. `home_services_subtitle` *(Type: text)* - Tiêu đề phụ / Badge Section (VD: `GIẢI PHÁP CỦA CHÚNG TÔI`).
+  2. `home_services_title` *(Type: text)* - Tiêu đề chính Section (VD: `Văn phòng chuẩn quốc tế`).
+  3. `home_services_list` *(Type: repeater)* - Mảng danh sách các gói dịch vụ (Văn phòng ảo, Văn phòng cao cấp, Phòng họp, Flexible Workspace):
      - `title` *(Type: text)* - Tên loại hình dịch vụ.
      - `desc` *(Type: textarea)* - Mô tả đặc điểm dịch vụ.
      - `link` *(Type: text/page_link)* - Đường dẫn chuyển hướng tới trang chi tiết dịch vụ.

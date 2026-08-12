@@ -185,6 +185,18 @@ function leadershub_register_field_groups() {
                 'type' => 'tab',
             ),
             array(
+                'key' => 'field_home_services_subtitle',
+                'label' => 'Tiêu đề phụ / Subtitle',
+                'name' => 'home_services_subtitle',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_home_services_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'home_services_title',
+                'type' => 'text',
+            ),
+            array(
                 'key' => 'field_home_services_repeater',
                 'label' => 'Danh sách thẻ dịch vụ',
                 'name' => 'home_services_list',
