@@ -21,6 +21,9 @@ $story_image   = ( function_exists( 'get_field' ) ? get_field( 'about_story_imag
 // ACF Variables: Section 3 Core Values
 $values_title = ( function_exists( 'get_field' ) ? get_field( 'about_values_title' ) : '' ) ?: '';
 
+// ACF Variables: Section 4 Certifications & Partners
+$cert_title = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -172,17 +175,40 @@ function lh_field( $name, $default = '' ) {
 </section>
 <?php endif; ?>
 
-<!-- Certifications & Partners -->
-<section class="bg-deep-navy py-16 text-white overflow-hidden">
+<!-- Certifications & Partners Section -->
+<?php if ( ! empty( $cert_title ) || ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) ) : ?>
+<section class="bg-deep-navy py-16 text-white overflow-hidden" id="certifications">
     <div class="max-w-container-max mx-auto px-gutter">
-        <h3 class="text-center font-label-sm text-xs uppercase tracking-widest text-white/50 mb-8 font-semibold">Chứng nhận tòa nhà văn phòng Capital Place</h3>
-        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-opacity">
-            <div class="h-8 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all font-bold text-lg md:text-xl">CAPITAL PLACE</div>
-            <div class="h-8 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all font-bold text-lg md:text-xl">ISO 9001:2015</div>
-            <div class="h-8 md:h-12 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all font-bold text-lg md:text-xl">LEED GOLD</div>
-        </div>
+        <?php if ( ! empty( $cert_title ) ) : ?>
+            <h3 class="text-center font-label-sm text-xs uppercase tracking-widest text-white/50 mb-8 font-semibold">
+                <?php echo esc_html( $cert_title ); ?>
+            </h3>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) : ?>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-70 hover:opacity-100 transition-opacity">
+                <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
+                    $c_name = get_sub_field( 'name' );
+                    $c_logo = get_sub_field( 'logo' );
+
+                    if ( empty( $c_name ) && empty( $c_logo ) ) continue;
+                ?>
+                    <div class="h-10 md:h-14 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all font-bold text-lg md:text-xl">
+                        <?php if ( ! empty( $c_logo ) ) : ?>
+                            <img class="max-h-full max-w-[180px] object-contain" 
+                                 src="<?php echo esc_url( is_array( $c_logo ) ? $c_logo['url'] : $c_logo ); ?>" 
+                                 alt="<?php echo esc_attr( $c_name ?: 'Certification Logo' ); ?>" 
+                                 loading="lazy" />
+                        <?php else : ?>
+                            <span class="tracking-wider uppercase"><?php echo esc_html( $c_name ); ?></span>
+                        <?php endif; ?>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Real Office Space -->
 <section class="py-section-padding-desktop bg-white">

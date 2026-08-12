@@ -885,7 +885,7 @@ function leadershub_register_field_groups() {
             ),
             array(
                 'key' => 'field_about_cert_logos',
-                'label' => 'Danh sách chứng nhận',
+                'label' => 'Danh sách chứng nhận & logo',
                 'name' => 'about_cert_logos',
                 'type' => 'repeater',
                 'sub_fields' => array(
@@ -894,6 +894,13 @@ function leadershub_register_field_groups() {
                         'label' => 'Tên chứng nhận (VD: LEED GOLD)',
                         'name' => 'name',
                         'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_cert_logo',
+                        'label' => 'Hình ảnh Logo chứng nhận',
+                        'name' => 'logo',
+                        'type' => 'image',
+                        'return_format' => 'url',
                     ),
                 ),
             ),

@@ -41,11 +41,14 @@ Tài liệu quy định và cấu trúc 6 Section chính cho trang **Về Chúng
 
 ---
 
-## 🏆 4. Section 4: Certifications & Partners (Chứng Nhận Tòa Nhà)
-- **Mục đích:** Khẳng định uy tín và tiêu chuẩn văn phòng hạng A thông qua các chứng chỉ quốc tế của Capital Place.
-- **Trường ACF (`group_lh_about` -> Tab Certifications):**
-  1. `about_cert_title` *(Type: text)* - Tiêu đề phụ (Mặc định: `Chứng nhận tòa nhà văn phòng Capital Place`).
-  2. `about_cert_logos` *(Type: repeater)* - Danh sách chứng nhận (Mặc định: `CAPITAL PLACE`, `ISO 9001:2015`, `LEED GOLD`).
+## 🏆 4. Section 4: Certifications & Partners (Chứng Nhận Tòa Nhà) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
+- **Mục đích:** Khẳng định uy tín và tiêu chuẩn văn phòng hạng A thông qua các chứng chỉ quốc tế của Capital Place (Ghi rõ chủ thể sở hữu tòa nhà Capital Place).
+- **Trường ACF (`group_lh_about` -> Tab 4. Chứng Nhận Tòa Nhà):**
+  1. `about_cert_title` *(Type: text)* - Tiêu đề phụ (VD: `Chứng nhận tòa nhà văn phòng Capital Place`).
+  2. `about_cert_logos` *(Type: repeater)* - Danh sách các chứng nhận & logo:
+     - `name` *(Type: text)* - Tên chứng nhận / Đơn vị (VD: `LEED GOLD`, `ISO 9001:2015`, `CAPITAL PLACE`).
+     - `logo` *(Type: image)* - Hình ảnh Logo chứng nhận (Tùy chọn tải lên).
 
 ---
 
