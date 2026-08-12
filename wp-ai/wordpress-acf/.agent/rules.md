@@ -37,6 +37,9 @@ Vui lòng nhấp vào các liên kết bên dưới để xem chi tiết từng 
 ### 8. [Nhật Ký Đánh Giá & Tối Ưu Hiệu Năng ACF](file:///d:/xampp/htdocs/wordpress-acf/acf-performance.md)
 * Nhật ký benchmark đo lường hiệu năng từ baseline (145 queries, TTFB 850ms) đến kết quả đạt tiêu chuẩn (14 queries, TTFB 125ms, PageSpeed 99/100).
 
+### 9. [Quản Lý Yêu Cầu ACF Theo Trang (ACF Pages)](file:///d:/xampp/htdocs/wordpress-acf/acf-pages/README.md)
+* Thư mục `acf-pages/` lưu trữ toàn bộ tệp thiết lập yêu cầu và cấu hình ACF cho từng trang (`home.md`, `about.md`, `portfolio-single.md`...).
+
 ---
 
 ## Luồng Làm Việc Tiêu Chuẩn của AI Agent
