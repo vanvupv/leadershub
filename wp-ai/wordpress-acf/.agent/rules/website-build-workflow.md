@@ -60,3 +60,6 @@ Tài liệu này định nghĩa các bước tuần tự và các quy tắc (Rul
      - **Bước 2 (Khai báo biến)**: Đưa toàn bộ hàm lấy dữ liệu `get_field()` / `get_sub_field()` lên **đầu file Template PHP**, gán Safe Fallback rỗng (`?: ''` cho text/url, `?: array()` cho repeater/link/image).
      - **Bước 3 (Render HTML & Escape)**: Render giao diện HTML sạch bọc trong điều kiện `if ( ! empty(...) )` để chỉ hiển thị khi có dữ liệu thực tế nhập từ Admin.
      - **Bước 4 (Nghiệm thu Section)**: Tiến hành kiểm thử giao diện và tương tác của Section hiện tại cùng người dùng trước khi tiến hành viết tiếp Section kế tiếp.
+  4. **Nguyên tắc Bất Khả Xâm Phạm của Section đã DONE (Immutability of DONE Sections)**:
+     - Khi một Section đã được kiểm thử và đánh dấu `[x] DONE` trong file tài liệu cấu trúc (như `wp-ai/wordpress-acf/.agent/acf-page/[Tên trang].md`), AI Agent **tuyệt đối không được tự ý sửa đổi, thay đổi cấu trúc, hoặc can thiệp vào mã nguồn PHP/HTML/ACF của Section đó** trừ khi người dùng có yêu cầu chỉnh sửa trực tiếp.
+     - Khi phát triển các Section tiếp theo, AI Agent chỉ tiến hành viết tiếp mã nguồn mới bên dưới, đảm bảo bảo tồn nguyên vẹn 100% mã nguồn và logic của các Section đã hoàn thành.
