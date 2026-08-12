@@ -62,7 +62,8 @@ Field Group ACF: `group_lh_serviced` (Cấu hình Trang Văn Phòng Cao Cấp - 
 
 ---
 
-## 💼 5. Section 5: Pricing & Consultation CTA (Báo Giá & Đặt Lịch Tham Quan)
+## 💼 5. Section 5: Pricing & Consultation CTA (Báo Giá & Đặt Lịch Tham Quan) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Kêu gọi hành động (CTA) đặt lịch tham quan và nhận báo giá ưu đãi qua Airtable Form.
 - **Trường ACF (`group_lh_serviced` -> Tab 5. Báo Giá & Đặt Lịch):**
   1. `so_cta_title` *(Type: text)* - Tiêu đề CTA (Mặc định: `Sẵn sàng nâng tầm vị thế doanh nghiệp?`).

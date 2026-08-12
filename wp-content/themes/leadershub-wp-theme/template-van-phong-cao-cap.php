@@ -38,6 +38,16 @@ $gallery_caption_2 = lh_field( 'so_gallery_caption_2', 'Phòng họp Boardroom' 
 $gallery_image_3   = lh_field( 'so_gallery_image_3', 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-BBZSX54I9lPFEapCECcAOXd5uW9Cmv1lSBZfxhB0KEr13L2qn4LTtiNjZiGe_UAAscskqvEo_Eh1JDY6HD6-rO_Ctg7QG-MIq_nYEOWQhh7r1c1T07bTd8J-wy9axOWmzUKVbMCZqP3JKVr6Rexyn0Vv476mg3fXA22aZXyoxlVdN2f_iOFoh4I2tc3_N-Ngi5eC7Zz_QhGh1Ukl6zDrBvdPPEFVc4K5WE-M7BT_uTmhm-kc6YYmVRXDAdKWo7nKdnsldf--TJm5' );
 $gallery_caption_3 = lh_field( 'so_gallery_caption_3', 'Khu vực Pantry hiện đại' );
 
+// ACF Variables: Section 5 Pricing & CTA
+$cta_title          = lh_field( 'so_cta_title', 'Sẵn sàng nâng tầm vị thế doanh nghiệp?' );
+$cta_desc           = lh_field( 'so_cta_desc', 'Liên hệ ngay với The Leaders Hub để nhận được báo giá chi tiết và các chương trình ưu đãi đặc biệt cho gói Văn phòng dịch vụ (Serviced Office).' );
+$cta_price_label    = lh_field( 'so_cta_price_label', 'Giá dịch vụ' );
+$cta_price_val      = lh_field( 'so_cta_price_val', 'Liên hệ nhận báo giá' );
+$cta_price_sub      = lh_field( 'so_cta_price_sub', 'Theo diện tích và thời hạn' );
+$cta_capacity_label = lh_field( 'so_cta_capacity_label', 'Sức chứa' );
+$cta_capacity_val   = lh_field( 'so_cta_capacity_val', '1 - 20 nhân sự' );
+$cta_capacity_sub   = lh_field( 'so_cta_capacity_sub', 'Tùy biến linh hoạt' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -236,24 +246,50 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Pricing & CTA -->
+<?php if ( ! empty( $cta_title ) || ! empty( $cta_desc ) || ! empty( $cta_price_val ) || ! empty( $cta_capacity_val ) ) : ?>
 <section class="py-section-padding-desktop bg-deep-navy text-white relative overflow-hidden">
     <div class="max-w-container-max mx-auto px-gutter relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">Sẵn sàng nâng tầm <br/>vị thế doanh nghiệp?</h2>
-                <p class="text-surface-variant font-body-lg text-body-lg mb-12 opacity-80">Liên hệ ngay với The Leaders Hub để nhận được báo giá chi tiết và các chương trình ưu đãi đặc biệt cho gói Văn phòng dịch vụ (Serviced Office).</p>
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="border-l-2 border-prestige-gold pl-6">
-                        <p class="text-prestige-gold font-label-sm text-xs uppercase mb-2 font-bold">Giá dịch vụ</p>
-                        <p class="text-xl font-bold">Liên hệ nhận báo giá</p>
-                        <p class="text-sm text-surface-variant">Theo diện tích và thời hạn</p>
+                <?php if ( ! empty( $cta_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl mb-6 font-bold"><?php echo nl2br( esc_html( $cta_title ) ); ?></h2>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $cta_desc ) ) : ?>
+                    <p class="text-surface-variant font-body-lg text-body-lg mb-12 opacity-80"><?php echo esc_html( $cta_desc ); ?></p>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $cta_price_val ) || ! empty( $cta_capacity_val ) ) : ?>
+                    <div class="grid grid-cols-2 gap-8">
+                        <?php if ( ! empty( $cta_price_val ) ) : ?>
+                            <div class="border-l-2 border-prestige-gold pl-6">
+                                <?php if ( ! empty( $cta_price_label ) ) : ?>
+                                    <p class="text-prestige-gold font-label-sm text-xs uppercase mb-2 font-bold"><?php echo esc_html( $cta_price_label ); ?></p>
+                                <?php endif; ?>
+
+                                <p class="text-xl font-bold"><?php echo esc_html( $cta_price_val ); ?></p>
+
+                                <?php if ( ! empty( $cta_price_sub ) ) : ?>
+                                    <p class="text-sm text-surface-variant"><?php echo esc_html( $cta_price_sub ); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $cta_capacity_val ) ) : ?>
+                            <div class="border-l-2 border-prestige-gold pl-6">
+                                <?php if ( ! empty( $cta_capacity_label ) ) : ?>
+                                    <p class="text-prestige-gold font-label-sm text-xs uppercase mb-2 font-bold"><?php echo esc_html( $cta_capacity_label ); ?></p>
+                                <?php endif; ?>
+
+                                <p class="text-xl font-bold"><?php echo esc_html( $cta_capacity_val ); ?></p>
+
+                                <?php if ( ! empty( $cta_capacity_sub ) ) : ?>
+                                    <p class="text-sm text-surface-variant"><?php echo esc_html( $cta_capacity_sub ); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                    <div class="border-l-2 border-prestige-gold pl-6">
-                        <p class="text-prestige-gold font-label-sm text-xs uppercase mb-2 font-bold">Sức chứa</p>
-                        <p class="text-xl font-bold">1 - 20 nhân sự</p>
-                        <p class="text-sm text-surface-variant">Tùy biến linh hoạt</p>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
             <div class="airtable-embed-container bg-white p-2 text-on-surface shadow-2xl" id="booking-form">
                 <iframe class="w-full" src="<?php echo esc_url( lh_opt( 'lh_form_office', 'https://airtable.com/embed/app0nmwylnsZLQTuu/pag0tggimRE7gA3xw/form' ) ); ?>" frameborder="0" onmousewheel="" width="100%"></iframe>
@@ -261,6 +297,7 @@ function lh_field( $name, $default = '' ) {
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Service Steps -->
 <section class="py-section-padding-desktop bg-surface">
