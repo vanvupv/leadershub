@@ -17,10 +17,15 @@ $hero_video    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video'
 $hero_poster   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
 $hero_btn_1    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_1' ) : array() ) ?: array();
 $hero_btn_2    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_2' ) : array() ) ?: array();
-$services_subtitle = ( function_exists( 'get_field' ) ? get_field( 'home_services_subtitle' ) : '' ) ?: '';
-$services_title    = ( function_exists( 'get_field' ) ? get_field( 'home_services_title' ) : '' ) ?: '';
-$pricing_title     = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_title' ) : '' ) ?: '';
-$pricing_desc      = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_desc' ) : '' ) ?: '';
+$services_subtitle    = ( function_exists( 'get_field' ) ? get_field( 'home_services_subtitle' ) : '' ) ?: '';
+$services_title       = ( function_exists( 'get_field' ) ? get_field( 'home_services_title' ) : '' ) ?: '';
+$pricing_title        = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_title' ) : '' ) ?: '';
+$pricing_desc         = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_desc' ) : '' ) ?: '';
+$reviews_subtitle     = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_subtitle' ) : '' ) ?: '';
+$reviews_title        = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_title' ) : '' ) ?: '';
+$reviews_google_link  = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_google_link' ) : '' ) ?: '';
+$reviews_google_score = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_google_score' ) : '' ) ?: '';
+$reviews_shortcode    = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_shortcode' ) : '' ) ?: '';
 ?>
 
 <!-- Hero Banner Section -->
@@ -398,28 +403,53 @@ $pricing_desc      = ( function_exists( 'get_field' ) ? get_field( 'home_pricing
 </section>
 
 <!-- Google Reviews Section -->
+<?php if ( ! empty( $reviews_title ) || ! empty( $reviews_shortcode ) || ! empty( $reviews_google_link ) || ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) ) : ?>
 <section class="py-section-padding-desktop bg-surface scroll-mt-20" id="reviews">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-12">
-            <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">Đánh giá thực tế</span>
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Khách Hàng Đồng Hành Cùng The Leaders Hub</h2>
-            <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4"></div>
-        </div>
+        <?php if ( ! empty( $reviews_subtitle ) || ! empty( $reviews_title ) ) : ?>
+            <div class="text-center mb-12">
+                <?php if ( ! empty( $reviews_subtitle ) ) : ?>
+                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">
+                        <?php echo esc_html( $reviews_subtitle ); ?>
+                    </span>
+                <?php endif; ?>
+                <?php if ( ! empty( $reviews_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                        <?php echo esc_html( $reviews_title ); ?>
+                    </h2>
+                <?php endif; ?>
+                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4"></div>
+            </div>
+        <?php endif; ?>
 
-        <div class="flex items-center justify-center gap-3 mb-12 mt-2 max-w-xs mx-auto">
-            <a href="https://www.google.com/search?q=The+Leaders+Hub" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-white px-4 py-2 rounded-full border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
-                <img class="h-4" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
-                <span class="text-sm font-bold text-deep-navy">4.9/5 (120+ reviews)</span>
-            </a>
-        </div>
+        <?php if ( ! empty( $reviews_google_link ) || ! empty( $reviews_google_score ) ) : ?>
+            <div class="flex items-center justify-center gap-3 mb-12 mt-2 max-w-md mx-auto">
+                <a href="<?php echo esc_url( $reviews_google_link ?: 'https://www.google.com/search?q=The+Leaders+Hub' ); ?>"
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full border border-surface-container-high shadow-sm hover:shadow-md transition-all group">
+                    <img class="h-4" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
+                    <span class="text-sm font-bold text-deep-navy group-hover:text-prestige-gold transition-colors">
+                        <?php echo esc_html( $reviews_google_score ?: 'Xem tất cả đánh giá trên Google' ); ?>
+                    </span>
+                    <span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:translate-x-1 transition-transform">open_in_new</span>
+                </a>
+            </div>
+        <?php endif; ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) : ?>
+        <?php if ( ! empty( $reviews_shortcode ) ) : ?>
+            <!-- Google Review Plugin Widget Shortcode -->
+            <div class="google-reviews-widget-container">
+                <?php echo do_shortcode( wp_kses_post( $reviews_shortcode ) ); ?>
+            </div>
+        <?php elseif ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <?php while ( have_rows( 'home_reviews_list' ) ) : the_row(); 
-                    $name = get_sub_field( 'name' );
-                    $role = get_sub_field( 'role' );
+                    $name    = get_sub_field( 'name' );
+                    $role    = get_sub_field( 'role' );
                     $comment = get_sub_field( 'comment' );
-                    $avatar = get_sub_field( 'avatar' );
+                    $avatar  = get_sub_field( 'avatar' );
+
+                    if ( empty( $name ) ) continue;
                 ?>
                     <div class="bg-white p-8 rounded-xl border border-surface-container-highest shadow-sm flex flex-col justify-between">
                         <div>
@@ -430,82 +460,30 @@ $pricing_desc      = ( function_exists( 'get_field' ) ? get_field( 'home_pricing
                                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
                                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
                             </div>
-                            <p class="text-on-surface text-sm italic leading-relaxed mb-6">"<?php echo esc_html( $comment ); ?>"</p>
+                            <?php if ( ! empty( $comment ) ) : ?>
+                                <p class="text-on-surface text-sm italic leading-relaxed mb-6">"<?php echo esc_html( $comment ); ?>"</p>
+                            <?php endif; ?>
                         </div>
                         <div class="flex items-center gap-4 border-t border-surface-container-low pt-4">
-                            <div class="w-10 h-10 rounded-full bg-deep-navy text-white flex items-center justify-center font-bold text-sm shrink-0"><?php echo esc_html( $avatar ); ?></div>
+                            <?php if ( ! empty( $avatar ) ) : ?>
+                                <div class="w-10 h-10 rounded-full bg-deep-navy text-white flex items-center justify-center font-bold text-sm shrink-0">
+                                    <?php echo esc_html( $avatar ); ?>
+                                </div>
+                            <?php endif; ?>
                             <div>
                                 <h4 class="font-semibold text-sm text-deep-navy"><?php echo esc_html( $name ); ?></h4>
-                                <p class="text-xs text-on-surface-variant"><?php echo esc_html( $role ); ?></p>
+                                <?php if ( ! empty( $role ) ) : ?>
+                                    <p class="text-xs text-on-surface-variant"><?php echo esc_html( $role ); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 <?php endwhile; ?>
-            <?php else : ?>
-                <!-- Review 1 -->
-                <div class="bg-white p-8 rounded-xl border border-surface-container-highest shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 mb-4">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-on-surface text-sm italic leading-relaxed mb-6">"Dịch vụ văn phòng ảo tại đây giúp công ty tôi tối ưu hóa chi phí cực tốt mà vẫn đảm bảo được hình ảnh doanh nghiệp chuyên nghiệp tại Capital Place."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-surface-container-low pt-4">
-                        <div class="w-10 h-10 rounded-full bg-deep-navy text-white flex items-center justify-center font-bold text-sm shrink-0">HA</div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-deep-navy">Nguyễn Hoàng Anh</h4>
-                            <p class="text-xs text-on-surface-variant">CEO, FinTech Solutions</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Review 2 -->
-                <div class="bg-white p-8 rounded-xl border border-surface-container-highest shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 mb-4">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-on-surface text-sm italic leading-relaxed mb-6">"Không gian văn phòng dịch vụ trọn gói tại The Leaders Hub cực kỳ hiện đại và yên tĩnh. View thành phố rất đẹp."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-surface-container-low pt-4">
-                        <div class="w-10 h-10 rounded-full bg-prestige-gold text-white flex items-center justify-center font-bold text-sm shrink-0">MT</div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-deep-navy">Trần Minh Tâm</h4>
-                            <p class="text-xs text-on-surface-variant">Giám đốc Điều hành, Creative Agency</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Review 3 -->
-                <div class="bg-white p-8 rounded-xl border border-surface-container-highest shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 mb-4">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-on-surface text-sm italic leading-relaxed mb-6">"Chúng tôi thường xuyên sử dụng phòng họp lớn ở đây để làm việc với đối tác nước ngoài. Thiết bị video conference rất mượt mà ổn định."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-surface-container-low pt-4">
-                        <div class="w-10 h-10 rounded-full bg-success-green text-white flex items-center justify-center font-bold text-sm shrink-0">LP</div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-deep-navy">Lò Phương</h4>
-                            <p class="text-xs text-on-surface-variant">Founder, E-commerce Startup</p>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- News Section -->
 <section class="py-section-padding-desktop bg-white scroll-mt-20" id="news">

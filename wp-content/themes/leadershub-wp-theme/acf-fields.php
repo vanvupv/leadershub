@@ -323,8 +323,40 @@ function leadershub_register_field_groups() {
                 'type' => 'tab',
             ),
             array(
+                'key' => 'field_home_reviews_subtitle',
+                'label' => 'Tiêu đề phụ / Subtitle',
+                'name' => 'home_reviews_subtitle',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_home_reviews_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'home_reviews_title',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_home_reviews_google_link',
+                'label' => 'Link trang Google Review thực tế',
+                'name' => 'home_reviews_google_link',
+                'type' => 'text',
+                'instructions' => 'Nhập URL xem đánh giá trực tiếp trên Google Maps (VD: https://maps.google.com/...)',
+            ),
+            array(
+                'key' => 'field_home_reviews_google_score',
+                'label' => 'Điểm & Số lượng đánh giá Google (VD: 4.9/5 (120+ reviews))',
+                'name' => 'home_reviews_google_score',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_home_reviews_shortcode',
+                'label' => 'Shortcode Plugin Google Reviews (Tự động đồng bộ)',
+                'name' => 'home_reviews_shortcode',
+                'type' => 'text',
+                'instructions' => 'Dán Shortcode của Plugin Google Reviews tại đây (VD: [place_saved_reviews_widget] hoặc [trustindex no-registration=google])',
+            ),
+            array(
                 'key' => 'field_home_reviews_list',
-                'label' => 'Danh sách Review',
+                'label' => 'Danh sách Review thủ công (Nếu không dùng Shortcode)',
                 'name' => 'home_reviews_list',
                 'type' => 'repeater',
                 'sub_fields' => array(
@@ -348,7 +380,7 @@ function leadershub_register_field_groups() {
                     ),
                     array(
                         'key' => 'field_rev_avatar',
-                        'label' => 'Avatar chữ cái (VD: HA)',
+                        'label' => 'Avatar / Viết tắt (VD: HA)',
                         'name' => 'avatar',
                         'type' => 'text',
                     ),

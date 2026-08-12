@@ -57,12 +57,13 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## ⭐ 5. Section 5: Customer Reviews (Đánh Giá Thực Tế Từ Khách Hàng) - [ ] TODO
-- **Trạng thái:** ⏳ **TODO**
-- **Mục đích:** Tăng chứng thực xã hội (Social Proof) và lòng tin của khách hàng doanh nghiệp.
-- **Trường ACF:**
-  1. `home_reviews_list` *(Type: repeater)* - Danh sách các bài đánh giá từ CEO & Đối tác:
-     - `name` *(Type: text)* - Họ tên khách hàng / Đối tác.
-     - `role` *(Type: text)* - Chức vụ và Tên công ty (VD: `CEO, FinTech Solutions`).
-     - `comment` *(Type: textarea)* - Nội dung nhận xét chi tiết.
-     - `avatar` *(Type: text/image)* - Ký tự đại diện hoặc Ảnh đại diện.
+## ⭐ 5. Section 5: Customer Reviews (Đánh Giá Thực Tế Từ Khách Hàng - Google Reviews) - [ ] TODO
+- **Trạng thái:** ⏳ **TODO (Đang hoàn thiện)**
+- **Mục đích:** Đồng bộ hiển thị các đánh giá thật 100% từ Google Business Profile của The Leaders Hub, tăng độ tin cậy thực tế và loại bỏ đánh giá giả.
+- **Trường ACF (`group_lh_home` -> Tab Reviews):**
+  1. `home_reviews_subtitle` *(Type: text)* - Tiêu đề phụ / Badge Section (VD: `ĐÁNH GIÁ THỰC TẾ`).
+  2. `home_reviews_title` *(Type: text)* - Tiêu đề chính Section (VD: `Khách Hàng Đồng Hành Cùng The Leaders Hub`).
+  3. `home_reviews_google_link` *(Type: text)* - Link dẫn trực tiếp tới trang Google Reviews / Google Maps của công ty.
+  4. `home_reviews_google_score` *(Type: text)* - Hiển thị điểm số & tổng số đánh giá (VD: `4.9/5 (120+ reviews)`).
+  5. `home_reviews_shortcode` *(Type: text)* - Shortcode tự động hiển thị Widget đánh giá thật từ Plugin Google Reviews (VD: `[place_saved_reviews_widget]`).
+  6. `home_reviews_list` *(Type: repeater)* - Danh sách đánh giá nhập tay (chỉ dùng nếu không dùng Plugin).
