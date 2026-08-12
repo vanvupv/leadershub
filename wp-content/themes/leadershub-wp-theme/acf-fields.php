@@ -1423,6 +1423,92 @@ function leadershub_register_field_groups() {
         ),
     ) );
 
+    // Contact Page Fields (group_lh_contact)
+    acf_add_local_field_group( array(
+        'key' => 'group_lh_contact',
+        'title' => 'Cấu hình Trang Liên Hệ (Contact)',
+        'fields' => array(
+            // TAB 1: CONTACT INFO & FORM
+            array(
+                'key' => 'tab_contact_main',
+                'label' => '1. Thông Tin & Form Liên Hệ',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_contact_badge',
+                'label' => 'Badge nhỏ góc trên',
+                'name' => 'contact_badge',
+                'type' => 'text',
+                'default_value' => 'Kết nối với chúng tôi',
+            ),
+            array(
+                'key' => 'field_contact_title',
+                'label' => 'Tiêu đề Dòng 1',
+                'name' => 'contact_title',
+                'type' => 'text',
+                'default_value' => 'Liên hệ với',
+            ),
+            array(
+                'key' => 'field_contact_gold_title',
+                'label' => 'Tiêu đề chữ vàng Dòng 2',
+                'name' => 'contact_gold_title',
+                'type' => 'text',
+                'default_value' => 'The Leaders Hub',
+            ),
+            array(
+                'key' => 'field_contact_desc',
+                'label' => 'Mô tả hướng dẫn',
+                'name' => 'contact_desc',
+                'type' => 'textarea',
+                'default_value' => 'Hãy gửi yêu cầu của bạn bằng cách sử dụng biểu mẫu hoặc liên hệ trực tiếp với chúng tôi qua thông tin liên hệ dưới đây.',
+            ),
+            array(
+                'key' => 'field_contact_hotline_label',
+                'label' => 'Nhãn Hotline',
+                'name' => 'contact_hotline_label',
+                'type' => 'text',
+                'default_value' => 'Hotline tư vấn',
+            ),
+            array(
+                'key' => 'field_contact_email_label',
+                'label' => 'Nhãn Email',
+                'name' => 'contact_email_label',
+                'type' => 'text',
+                'default_value' => 'Địa chỉ Email',
+            ),
+            array(
+                'key' => 'field_contact_address_label',
+                'label' => 'Nhãn Địa chỉ',
+                'name' => 'contact_address_label',
+                'type' => 'text',
+                'default_value' => 'Trụ sở chính',
+            ),
+            array(
+                'key' => 'field_contact_map_bg',
+                'label' => 'Hình ảnh nền xem trước bản đồ',
+                'name' => 'contact_map_bg',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_contact_map_title',
+                'label' => 'Tên tòa nhà ở nhãn Bản đồ',
+                'name' => 'contact_map_title',
+                'type' => 'text',
+                'default_value' => 'Capital Place, Hà Nội',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'template-lien-he.php',
+                ),
+            ),
+        ),
+    ) );
+
     // About Page Fields (group_lh_about)
     acf_add_local_field_group( array(
         'key' => 'group_lh_about',
