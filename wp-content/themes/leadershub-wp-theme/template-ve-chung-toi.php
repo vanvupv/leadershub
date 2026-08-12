@@ -28,6 +28,12 @@ $cert_title = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' )
 $gallery_title = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_title' ) : '' ) ?: '';
 $gallery_desc  = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_desc' ) : '' ) ?: '';
 
+// ACF Variables: Section 6 CTA & Brochure
+$cta_title         = ( function_exists( 'get_field' ) ? get_field( 'about_cta_title' ) : '' ) ?: '';
+$cta_desc          = ( function_exists( 'get_field' ) ? get_field( 'about_cta_desc' ) : '' ) ?: '';
+$brochure_url      = ( function_exists( 'get_field' ) ? get_field( 'about_brochure_url' ) : '' ) ?: '';
+$cta_working_hours = ( function_exists( 'get_field' ) ? get_field( 'about_cta_working_hours' ) : '' ) ?: 'Hỗ trợ trong giờ làm việc';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -278,27 +284,50 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- CTA Section -->
-<section class="py-section-padding-desktop bg-surface-container-low">
+<?php if ( ! empty( $cta_title ) || ! empty( $cta_desc ) || ! empty( $brochure_url ) ) : ?>
+<section class="py-section-padding-desktop bg-surface-container-low" id="cta">
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="relative rounded-3xl overflow-hidden bg-deep-navy p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12">
             <div class="relative z-10 max-w-xl text-center md:text-left">
-                <h2 class="font-headline-xl text-headline-xl text-white mb-6 font-bold">Bạn đã sẵn sàng nâng tầm thương hiệu?</h2>
-                <p class="font-body-lg text-body-lg text-white/70 mb-8">Liên hệ ngay để nhận chương trình ưu đãi đặc biệt dành cho văn phòng dịch vụ trọn gói.</p>
+                <?php if ( ! empty( $cta_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-white mb-6 font-bold">
+                        <?php echo esc_html( $cta_title ); ?>
+                    </h2>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $cta_desc ) ) : ?>
+                    <p class="font-body-lg text-body-lg text-white/70 mb-8">
+                        <?php echo esc_html( $cta_desc ); ?>
+                    </p>
+                <?php endif; ?>
+
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="<?php echo esc_url( home_url('/lien-he') ); ?>" class="bg-success-green text-white px-8 py-4 rounded-lg font-label-sm text-sm font-bold shadow-lg hover:bg-success-green/90 transition-all text-center">Gửi yêu cầu ngay</a>
-                    <a href="<?php echo esc_url( lh_field( 'about_brochure_url', '#' ) ); ?>" class="bg-transparent border border-white/30 text-white px-8 py-4 rounded-lg font-label-sm text-sm font-semibold hover:bg-white/10 transition-all text-center">Tải brochure (PDF)</a>
+                    <a href="<?php echo esc_url( home_url('/lien-he') ); ?>" class="bg-success-green text-white px-8 py-4 rounded-lg font-label-sm text-sm font-bold shadow-lg hover:bg-success-green/90 transition-all text-center">
+                        Gửi yêu cầu ngay
+                    </a>
+
+                    <?php if ( ! empty( $brochure_url ) && '#' !== trim( $brochure_url ) ) : ?>
+                        <a href="<?php echo esc_url( $brochure_url ); ?>" target="_blank" rel="noopener noreferrer" class="bg-transparent border border-white/30 text-white px-8 py-4 rounded-lg font-label-sm text-sm font-semibold hover:bg-white/10 transition-all text-center">
+                            Tải brochure (PDF)
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
+
             <div class="relative z-10 hidden lg:block">
                 <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20">
-                    <p class="text-white/60 font-label-sm text-xs mb-4 font-semibold">Hotline hỗ trợ</p>
-                    <p class="text-prestige-gold font-headline-md text-xl font-bold"><?php echo esc_html( lh_opt( 'lh_hotline', '+84 3789 19119' ) ); ?></p>
-                    <p class="text-white/80 font-body-md text-sm mt-2">Ms. Tracy</p>
+                    <p class="text-white/60 font-label-sm text-xs mb-4 font-semibold">
+                        <?php echo esc_html( $cta_working_hours ); ?>
+                    </p>
+                    <p class="text-prestige-gold font-headline-md text-xl font-bold">
+                        <?php echo esc_html( function_exists( 'lh_opt' ) ? lh_opt( 'lh_hotline', '+84 3789 19119' ) : '+84 3789 19119' ); ?>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php
 get_footer();

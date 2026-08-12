@@ -978,6 +978,14 @@ function leadershub_register_field_groups() {
                 'label' => 'Đường dẫn File Brochure (PDF)',
                 'name' => 'about_brochure_url',
                 'type' => 'text',
+                'default_value' => 'https://drive.google.com/file/d/17XgepUrAOqAzGUmikI9dgV8C7nMv3lF7/view?usp=sharing',
+            ),
+            array(
+                'key' => 'field_about_cta_working_hours',
+                'label' => 'Thời gian hỗ trợ',
+                'name' => 'about_cta_working_hours',
+                'type' => 'text',
+                'default_value' => 'Hỗ trợ trong giờ làm việc',
             ),
         ),
         'location' => array(

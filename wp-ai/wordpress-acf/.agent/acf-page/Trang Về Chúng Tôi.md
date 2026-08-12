@@ -65,9 +65,11 @@ Tài liệu quy định và cấu trúc 6 Section chính cho trang **Về Chúng
 
 ---
 
-## 🚀 6. Section 6: Call To Action & Brochure (Kêu Gọi Hành Động)
+## 🚀 6. Section 6: Call To Action & Brochure (Kêu Gọi Hành Động) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Thúc đẩy chuyển đổi khách hàng tiềm năng gửi yêu cầu tư vấn hoặc tải Brochure PDF.
-- **Trường ACF (`group_lh_about` -> Tab CTA):**
+- **Trường ACF (`group_lh_about` -> Tab 6. Kêu Gọi Hành Động (CTA)):**
   1. `about_cta_title` *(Type: text)* - Tiêu đề kêu gọi (Mặc định: `Bạn đã sẵn sàng nâng tầm thương hiệu?`).
   2. `about_cta_desc` *(Type: textarea)* - Đoạn văn mô tả ngắn ưu đãi.
-  3. `about_brochure_url` *(Type: file / text)* - Đường dẫn tải tệp Brochure giới thiệu (PDF).
+  3. `about_brochure_url` *(Type: text)* - Đường dẫn tệp Brochure PDF (Mặc định: `https://drive.google.com/file/d/17XgepUrAOqAzGUmikI9dgV8C7nMv3lF7/view?usp=sharing`. Tự động ẩn nút nếu rỗng hoặc `#`).
+  4. `about_cta_working_hours` *(Type: text)* - Khung thời gian hỗ trợ (Mặc định: `Hỗ trợ trong giờ làm việc`).
