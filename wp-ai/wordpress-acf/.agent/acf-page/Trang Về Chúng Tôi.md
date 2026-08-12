@@ -28,12 +28,14 @@ Tài liệu quy định và cấu trúc 6 Section chính cho trang **Về Chúng
 
 ---
 
-## 💎 3. Section 3: Core Values (Giá Trị Cốt Lõi)
+## 💎 3. Section 3: Core Values (Giá Trị Cốt Lõi) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Trình bày 3 trụ cột Sứ mệnh, Tầm nhìn và Giá trị cốt lõi của The Leaders Hub.
-- **Trường ACF (`group_lh_about` -> Tab Values):**
+- **Trường ACF (`group_lh_about` -> Tab 3. Giá Trị Cốt Lõi):**
   1. `about_values_title` *(Type: text)* - Tiêu đề chính Section (Mặc định: `Giá Trị Cốt Lõi`).
-  2. `about_values_list` *(Type: repeater)* - Mảng 3 trụ cột giá trị cốt lõi:
+  2. `about_values_list` *(Type: repeater)* - Mảng các trụ cột giá trị cốt lõi:
      - `icon` *(Type: text)* - Tên biểu tượng Material Symbol (VD: `rocket_launch`, `visibility`, `diamond`).
+     - `image` *(Type: image)* - Tệp Logo / Biểu tượng hình ảnh (Tùy chọn tải lên).
      - `title` *(Type: text)* - Tên trụ cột (VD: `Sứ mệnh`, `Tầm nhìn`, `Giá trị cốt lõi`).
      - `desc` *(Type: textarea)* - Nội dung diễn giải chi tiết.
 

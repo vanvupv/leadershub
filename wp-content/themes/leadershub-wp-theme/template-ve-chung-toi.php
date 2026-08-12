@@ -18,6 +18,9 @@ $story_title   = ( function_exists( 'get_field' ) ? get_field( 'about_story_titl
 $story_content = ( function_exists( 'get_field' ) ? get_field( 'about_story_content' ) : '' ) ?: '';
 $story_image   = ( function_exists( 'get_field' ) ? get_field( 'about_story_image' ) : '' ) ?: '';
 
+// ACF Variables: Section 3 Core Values
+$values_title = ( function_exists( 'get_field' ) ? get_field( 'about_values_title' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -110,41 +113,64 @@ function lh_field( $name, $default = '' ) {
 </section>
 <?php endif; ?>
 
-<!-- Core Values -->
-<section class="bg-surface-container-low py-section-padding-desktop overflow-hidden">
+<!-- Core Values Section -->
+<?php if ( ! empty( $values_title ) || ( function_exists( 'have_rows' ) && have_rows( 'about_values_list' ) ) ) : ?>
+<section class="bg-surface-container-low py-section-padding-desktop overflow-hidden" id="core-values">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-20">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">Giá Trị Cốt Lõi</h2>
-            <div class="w-20 h-1 bg-prestige-gold mx-auto mt-4"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="group bg-white p-10 rounded-xl luxury-shadow hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" style="transform: translateZ(0);">
-                <div class="absolute top-2 right-4 text-[80px] font-bold text-deep-navy opacity-[0.03] select-none group-hover:scale-110 transition-transform">01</div>
-                <div class="w-16 h-16 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-8">
-                    <span class="material-symbols-outlined text-prestige-gold text-4xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
-                </div>
-                <h3 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">Sứ mệnh</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Kiến tạo không gian làm việc tối ưu, giúp doanh nghiệp tập trung vào mục tiêu tăng trưởng và nâng cao giá trị thương hiệu.</p>
+        <?php if ( ! empty( $values_title ) ) : ?>
+            <div class="text-center mb-20">
+                <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">
+                    <?php echo esc_html( $values_title ); ?>
+                </h2>
+                <div class="w-20 h-1 bg-prestige-gold mx-auto mt-4"></div>
             </div>
-            <div class="group bg-white p-10 rounded-xl luxury-shadow hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" style="transform: translateZ(0);">
-                <div class="absolute top-2 right-4 text-[80px] font-bold text-deep-navy opacity-[0.03] select-none group-hover:scale-110 transition-transform">02</div>
-                <div class="w-16 h-16 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-8">
-                    <span class="material-symbols-outlined text-prestige-gold text-4xl" style="font-variation-settings: 'FILL' 1;">visibility</span>
-                </div>
-                <h3 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">Tầm nhìn</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Trở thành biểu tượng của sự chuyên nghiệp và đẳng cấp trong lĩnh vực văn phòng dịch vụ cao cấp tại Đông Nam Á.</p>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_values_list' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <?php 
+                $v_index = 0;
+                while ( have_rows( 'about_values_list' ) ) : the_row();
+                    $v_index++;
+                    $v_icon  = get_sub_field( 'icon' );
+                    $v_image = get_sub_field( 'image' );
+                    $v_title = get_sub_field( 'title' );
+                    $v_desc  = get_sub_field( 'desc' );
+
+                    if ( empty( $v_title ) ) continue;
+                    $index_str = sprintf( '%02d', $v_index );
+                ?>
+                    <div class="group bg-white p-10 rounded-xl luxury-shadow hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" style="transform: translateZ(0);">
+                        <div class="absolute top-2 right-4 text-[80px] font-bold text-deep-navy opacity-[0.03] select-none group-hover:scale-110 transition-transform">
+                            <?php echo esc_html( $index_str ); ?>
+                        </div>
+                        
+                        <div class="w-16 h-16 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-8">
+                            <?php if ( ! empty( $v_image ) ) : ?>
+                                <img class="w-10 h-10 object-contain" src="<?php echo esc_url( is_array( $v_image ) ? $v_image['url'] : $v_image ); ?>" alt="<?php echo esc_attr( $v_title ); ?>" />
+                            <?php elseif ( ! empty( $v_icon ) ) : ?>
+                                <span class="material-symbols-outlined text-prestige-gold text-4xl" style="font-variation-settings: 'FILL' 1;"><?php echo esc_html( $v_icon ); ?></span>
+                            <?php else : ?>
+                                <span class="material-symbols-outlined text-prestige-gold text-4xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <?php endif; ?>
+                        </div>
+
+                        <h3 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">
+                            <?php echo esc_html( $v_title ); ?>
+                        </h3>
+
+                        <?php if ( ! empty( $v_desc ) ) : ?>
+                            <p class="font-body-md text-body-md text-on-surface-variant">
+                                <?php echo esc_html( $v_desc ); ?>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+                <?php endwhile; ?>
             </div>
-            <div class="group bg-white p-10 rounded-xl luxury-shadow hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" style="transform: translateZ(0);">
-                <div class="absolute top-2 right-4 text-[80px] font-bold text-deep-navy opacity-[0.03] select-none group-hover:scale-110 transition-transform">03</div>
-                <div class="w-16 h-16 bg-deep-navy/5 rounded-lg flex items-center justify-center mb-8">
-                    <span class="material-symbols-outlined text-prestige-gold text-4xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
-                </div>
-                <h3 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">Giá trị cốt lõi</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Sự tận tâm, Minh bạch, Đẳng cấp và Đổi mới là những trụ cột vững chắc trong mọi hoạt động của The Leaders Hub.</p>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Certifications & Partners -->
 <section class="bg-deep-navy py-16 text-white overflow-hidden">

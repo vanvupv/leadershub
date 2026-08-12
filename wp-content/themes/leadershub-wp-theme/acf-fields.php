@@ -849,6 +849,13 @@ function leadershub_register_field_groups() {
                         'type' => 'text',
                     ),
                     array(
+                        'key' => 'field_value_image',
+                        'label' => 'Logo / Biểu tượng hình ảnh (Tùy chọn)',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                    array(
                         'key' => 'field_value_title',
                         'label' => 'Tên trụ cột (VD: Sứ mệnh, Tầm nhìn)',
                         'name' => 'title',
