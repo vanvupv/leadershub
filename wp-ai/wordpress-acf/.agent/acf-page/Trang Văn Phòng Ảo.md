@@ -7,7 +7,8 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 
 ## 🎯 Danh Sách Section & Trường ACF Đã Phân Theo Tab
 
-### 🚀 1. Section 1: Hero Banner (Dịch Vụ Văn Phòng Ảo Hạng A)
+### 🚀 1. Section 1: Hero Banner (Dịch Vụ Văn Phòng Ảo Hạng A) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Giới thiệu ngắn gọn giải pháp địa chỉ đăng ký kinh doanh uy tín tại tháp tài chính Capital Place.
 - **Trường ACF (`group_lh_virtual` -> Tab 1. Hero Banner):**
   1. `vo_hero_badge` *(Type: text)* - Badge nhỏ góc trên (Mặc định: `Premium Business Solution`).
@@ -15,6 +16,10 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
   3. `vo_hero_subtitle` *(Type: text)* - Tiêu đề phụ Dòng 2 (Mặc định: `Địa chỉ kinh doanh hạng A`).
   4. `vo_hero_desc` *(Type: textarea)* - Đoạn giới thiệu mô tả giá trị.
   5. `vo_hero_image` *(Type: image)* - File hình ảnh thực tế tòa nhà / văn phòng.
+  6. `vo_hero_btn1_text` *(Type: text)* - Tên nút 1 (Mặc định: `Đăng ký tư vấn ngay`).
+  7. `vo_hero_btn1_url` *(Type: text)* - Đường dẫn nút 1 (Mặc định: `#register`).
+  8. `vo_hero_btn2_text` *(Type: text)* - Tên nút 2 (Mặc định: `Xem bảng giá`).
+  9. `vo_hero_btn2_url` *(Type: text)* - Đường dẫn nút 2 (Mặc định: `#pricing`).
 
 ---
 

@@ -30,8 +30,22 @@ function lh_field( $name, $default = '' ) {
                 <?php echo esc_html( lh_field( 'vo_hero_desc', 'Thiết lập vị thế doanh nghiệp tại những tòa tháp tài chính biểu tượng. Giải pháp tối ưu chi phí, nâng tầm thương hiệu chuyên nghiệp ngay từ điểm khởi đầu.' ) ); ?>
             </p>
             <div class="flex flex-wrap gap-4 pt-4">
-                <a class="bg-deep-navy text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-prestige-gold transition-all duration-300 shadow-lg font-semibold" href="#pricing">Đăng ký tư vấn ngay</a>
-                <a class="border border-deep-navy text-deep-navy px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-deep-navy/5 transition-all font-semibold" href="#pricing">Xem bảng giá</a>
+                <?php 
+                $btn1_text = lh_field( 'vo_hero_btn1_text', 'Đăng ký tư vấn ngay' );
+                $btn1_url  = lh_field( 'vo_hero_btn1_url', '#register' );
+                $btn2_text = lh_field( 'vo_hero_btn2_text', 'Xem bảng giá' );
+                $btn2_url  = lh_field( 'vo_hero_btn2_url', '#pricing' );
+                ?>
+                <?php if ( ! empty( $btn1_text ) ) : ?>
+                    <a class="bg-deep-navy text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-prestige-gold transition-all duration-300 shadow-lg font-semibold" href="<?php echo esc_url( $btn1_url ); ?>">
+                        <?php echo esc_html( $btn1_text ); ?>
+                    </a>
+                <?php endif; ?>
+                <?php if ( ! empty( $btn2_text ) ) : ?>
+                    <a class="border border-deep-navy text-deep-navy px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-deep-navy/5 transition-all font-semibold" href="<?php echo esc_url( $btn2_url ); ?>">
+                        <?php echo esc_html( $btn2_text ); ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="hidden md:block relative group">

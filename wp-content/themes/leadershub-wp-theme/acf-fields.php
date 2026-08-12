@@ -506,6 +506,34 @@ function leadershub_register_field_groups() {
                 'type' => 'image',
                 'return_format' => 'url',
             ),
+            array(
+                'key' => 'field_vo_hero_btn1_text',
+                'label' => 'Tên nút 1 (VD: Đăng ký tư vấn ngay)',
+                'name' => 'vo_hero_btn1_text',
+                'type' => 'text',
+                'default_value' => 'Đăng ký tư vấn ngay',
+            ),
+            array(
+                'key' => 'field_vo_hero_btn1_url',
+                'label' => 'Đường dẫn nút 1 (VD: #register)',
+                'name' => 'vo_hero_btn1_url',
+                'type' => 'text',
+                'default_value' => '#register',
+            ),
+            array(
+                'key' => 'field_vo_hero_btn2_text',
+                'label' => 'Tên nút 2 (VD: Xem bảng giá)',
+                'name' => 'vo_hero_btn2_text',
+                'type' => 'text',
+                'default_value' => 'Xem bảng giá',
+            ),
+            array(
+                'key' => 'field_vo_hero_btn2_url',
+                'label' => 'Đường dẫn nút 2 (VD: #pricing)',
+                'name' => 'vo_hero_btn2_url',
+                'type' => 'text',
+                'default_value' => '#pricing',
+            ),
 
             // TAB 2: PRICING PLANS
             array(
