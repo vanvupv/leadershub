@@ -7,6 +7,11 @@
 
 get_header();
 
+// ACF Variables: Section 2 Pricing Cards
+$pricing_title    = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_title' ) : '' ) ?: '';
+$pricing_desc     = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_desc' ) : '' ) ?: '';
+$pricing_vat_note = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_vat_note' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -58,116 +63,137 @@ function lh_field( $name, $default = '' ) {
 </header>
 
 <!-- Pricing Cards Section -->
+<?php if ( ! empty( $pricing_title ) || ! empty( $pricing_desc ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_plans' ) ) ) : ?>
 <section class="py-section-padding-desktop bg-surface" id="pricing">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-16">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">Các Gói Dịch Vụ Linh Hoạt</h2>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-4xl mx-auto">Chỉ từ 980,000đ/tháng để sở hữu địa chỉ kinh doanh đẳng cấp tại tòa tháp Capital Place.</p>
-            <p class="text-xs text-on-surface-variant/70 mt-2 text-center">(Giá chưa bao gồm VAT nếu áp dụng)</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Economy -->
-            <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-surface-container-highest flex flex-col group">
-                <div class="mb-8">
-                    <h3 class="font-headline-md text-headline-md text-deep-navy font-bold">Gói Economy</h3>
-                    <p class="text-on-surface-variant text-sm mt-2">Dành cho cá nhân khởi nghiệp</p>
-                </div>
-                <div class="mb-8">
-                    <span class="text-on-surface-variant text-sm">Chỉ từ</span>
-                    <div class="flex items-baseline">
-                        <span class="text-3xl font-bold text-deep-navy">980,000</span>
-                        <span class="text-on-surface-variant ml-1 font-label-sm">đ/tháng</span>
-                    </div>
-                </div>
-                <ul class="space-y-4 mb-8 flex-grow">
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Địa chỉ đăng ký kinh doanh hạng A
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Đặt bảng tên công ty tại sảnh
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Tiếp nhận thư từ &amp; bưu phẩm
-                    </li>
-                </ul>
-                <a href="#register" class="w-full text-center py-3 border border-deep-navy rounded-lg font-label-sm text-sm font-semibold group-hover:bg-deep-navy group-hover:text-white transition-all">Chọn Gói Này</a>
-            </div>
+        <?php if ( ! empty( $pricing_title ) || ! empty( $pricing_desc ) ) : ?>
+            <div class="text-center mb-16">
+                <?php if ( ! empty( $pricing_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">
+                        <?php echo esc_html( $pricing_title ); ?>
+                    </h2>
+                <?php endif; ?>
 
-            <!-- Standard (Popular) -->
-            <div class="bg-white p-8 rounded-xl shadow-2xl transition-all border-2 border-prestige-gold flex flex-col relative scale-105 z-10">
-                <div class="absolute top-0 right-8 -translate-y-1/2 bg-prestige-gold text-white px-4 py-1 rounded-full font-label-sm text-[12px] uppercase tracking-wider">Phổ biến nhất</div>
-                <div class="mb-8">
-                    <h3 class="font-headline-md text-headline-md text-deep-navy font-bold">Gói Standard</h3>
-                    <p class="text-on-surface-variant text-sm mt-2">Nâng tầm hiện diện thương hiệu</p>
-                </div>
-                <div class="mb-8">
-                    <span class="text-on-surface-variant text-sm">Chỉ từ</span>
-                    <div class="flex items-baseline">
-                        <span class="text-3xl font-bold text-deep-navy">1,500,000</span>
-                        <span class="text-on-surface-variant ml-1 font-label-sm">đ/tháng</span>
-                    </div>
-                </div>
-                <ul class="space-y-4 mb-8 flex-grow">
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Mọi quyền lợi gói Economy
-                    </li>
-                    <li class="flex items-center gap-3 text-sm font-semibold">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Số điện thoại &amp; Fax riêng
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Lễ tân tiếp khách chuyên nghiệp
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        4h sử dụng phòng họp/tháng
-                    </li>
-                </ul>
-                <a href="#register" class="w-full text-center py-3 bg-deep-navy text-white rounded-lg font-label-sm text-sm font-semibold hover:bg-prestige-gold transition-all">Chọn Gói Này</a>
-            </div>
+                <?php if ( ! empty( $pricing_desc ) ) : ?>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-4xl mx-auto">
+                        <?php echo esc_html( $pricing_desc ); ?>
+                    </p>
+                <?php endif; ?>
 
-            <!-- Premium -->
-            <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-surface-container-highest flex flex-col group">
-                <div class="mb-8">
-                    <h3 class="font-headline-md text-headline-md text-deep-navy font-bold">Gói Premium</h3>
-                    <p class="text-on-surface-variant text-sm mt-2">Giải pháp trọn gói đẳng cấp</p>
-                </div>
-                <div class="mb-8">
-                    <span class="text-on-surface-variant text-sm">Chỉ từ</span>
-                    <div class="flex items-baseline">
-                        <span class="text-3xl font-bold text-deep-navy">2,500,000</span>
-                        <span class="text-on-surface-variant ml-1 font-label-sm">đ/tháng</span>
-                    </div>
-                </div>
-                <ul class="space-y-4 mb-8 flex-grow">
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Mọi quyền lợi gói Standard
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Chỗ ngồi làm việc linh hoạt
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Hỗ trợ tiếp nhận bưu phẩm thư từ
-                    </li>
-                    <li class="flex items-center gap-3 text-sm">
-                        <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                        Phục vụ cafe &amp; trà miễn phí
-                    </li>
-                </ul>
-                <a href="#register" class="w-full text-center py-3 border border-deep-navy rounded-lg font-label-sm text-sm font-semibold group-hover:bg-deep-navy group-hover:text-white transition-all">Chọn Gói Này</a>
+                <?php if ( ! empty( $pricing_vat_note ) ) : ?>
+                    <p class="text-xs text-on-surface-variant/70 mt-2 text-center">
+                        <?php echo esc_html( $pricing_vat_note ); ?>
+                    </p>
+                <?php endif; ?>
             </div>
-        </div>
-        <p class="text-center text-sm text-on-surface-variant/70 mt-8">* Giá chưa bao gồm VAT (nếu áp dụng)</p>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'vo_plans' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <?php while ( have_rows( 'vo_plans' ) ) : the_row();
+                    $plan_name    = get_sub_field( 'name' );
+                    $plan_desc    = get_sub_field( 'desc' );
+                    $plan_price   = get_sub_field( 'price' );
+                    $plan_unit    = get_sub_field( 'unit' ) ?: 'đ/tháng';
+                    $is_popular   = get_sub_field( 'is_popular' );
+                    $pop_label    = get_sub_field( 'popular_label' ) ?: 'Phổ biến nhất';
+                    $raw_features = get_sub_field( 'features' );
+
+                    if ( empty( $plan_name ) ) continue;
+
+                    $features_list = ! empty( $raw_features ) ? array_filter( array_map( 'trim', explode( "\n", $raw_features ) ) ) : array();
+                ?>
+                    <?php if ( $is_popular ) : ?>
+                        <!-- Popular Card -->
+                        <div class="bg-white p-8 rounded-xl shadow-2xl transition-all border-2 border-prestige-gold flex flex-col relative scale-105 z-10">
+                            <?php if ( ! empty( $pop_label ) ) : ?>
+                                <div class="absolute top-0 right-8 -translate-y-1/2 bg-prestige-gold text-white px-4 py-1 rounded-full font-label-sm text-[12px] uppercase tracking-wider font-semibold">
+                                    <?php echo esc_html( $pop_label ); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="mb-8">
+                                <h3 class="font-headline-md text-headline-md text-deep-navy font-bold">
+                                    <?php echo esc_html( $plan_name ); ?>
+                                </h3>
+                                <?php if ( ! empty( $plan_desc ) ) : ?>
+                                    <p class="text-on-surface-variant text-sm mt-2"><?php echo esc_html( $plan_desc ); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <?php if ( ! empty( $plan_price ) ) : ?>
+                                <div class="mb-8">
+                                    <span class="text-on-surface-variant text-sm">Chỉ từ</span>
+                                    <div class="flex items-baseline">
+                                        <span class="text-3xl font-bold text-deep-navy"><?php echo esc_html( $plan_price ); ?></span>
+                                        <span class="text-on-surface-variant ml-1 font-label-sm"><?php echo esc_html( $plan_unit ); ?></span>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( ! empty( $features_list ) ) : ?>
+                                <ul class="space-y-4 mb-8 flex-grow">
+                                    <?php foreach ( $features_list as $feat ) : ?>
+                                        <li class="flex items-center gap-3 text-sm">
+                                            <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
+                                            <?php echo esc_html( $feat ); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+
+                            <a href="#register" class="w-full text-center py-3 bg-deep-navy text-white rounded-lg font-label-sm text-sm font-semibold hover:bg-prestige-gold transition-all">
+                                Chọn Gói Này
+                            </a>
+                        </div>
+                    <?php else : ?>
+                        <!-- Standard Card -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-surface-container-highest flex flex-col group">
+                            <div class="mb-8">
+                                <h3 class="font-headline-md text-headline-md text-deep-navy font-bold">
+                                    <?php echo esc_html( $plan_name ); ?>
+                                </h3>
+                                <?php if ( ! empty( $plan_desc ) ) : ?>
+                                    <p class="text-on-surface-variant text-sm mt-2"><?php echo esc_html( $plan_desc ); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <?php if ( ! empty( $plan_price ) ) : ?>
+                                <div class="mb-8">
+                                    <span class="text-on-surface-variant text-sm">Chỉ từ</span>
+                                    <div class="flex items-baseline">
+                                        <span class="text-3xl font-bold text-deep-navy"><?php echo esc_html( $plan_price ); ?></span>
+                                        <span class="text-on-surface-variant ml-1 font-label-sm"><?php echo esc_html( $plan_unit ); ?></span>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( ! empty( $features_list ) ) : ?>
+                                <ul class="space-y-4 mb-8 flex-grow">
+                                    <?php foreach ( $features_list as $feat ) : ?>
+                                        <li class="flex items-center gap-3 text-sm">
+                                            <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
+                                            <?php echo esc_html( $feat ); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+
+                            <a href="#register" class="w-full text-center py-3 border border-deep-navy rounded-lg font-label-sm text-sm font-semibold group-hover:bg-deep-navy group-hover:text-white transition-all">
+                                Chọn Gói Này
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ( ! empty( $pricing_vat_note ) ) : ?>
+            <p class="text-center text-sm text-on-surface-variant/70 mt-8">* <?php echo esc_html( $pricing_vat_note ); ?></p>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Comparison Table Section -->
 <section class="py-section-padding-desktop bg-surface-container-low">

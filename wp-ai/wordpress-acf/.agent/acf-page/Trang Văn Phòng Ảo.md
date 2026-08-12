@@ -23,7 +23,8 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 
 ---
 
-## 💳 2. Section 2: Service Plans / Pricing Cards (Các Gói Dịch Vụ Linh Hoạt)
+## 💳 2. Section 2: Service Plans / Pricing Cards (Các Gói Dịch Vụ Linh Hoạt) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Hiển thị 3 gói dịch vụ chính (Economy, Standard, Premium) kèm giá bán, tính năng và nhãn "Phổ biến nhất".
 - **Trường ACF (`group_lh_virtual` -> Tab 2. Gói Dịch Vụ & Bảng Giá):**
   1. `vo_pricing_title` *(Type: text)* - Tiêu đề section (Mặc định: `Các Gói Dịch Vụ Linh Hoạt`).
