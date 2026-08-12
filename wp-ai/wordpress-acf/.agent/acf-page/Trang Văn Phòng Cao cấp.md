@@ -47,7 +47,8 @@ Field Group ACF: `group_lh_serviced` (Cấu hình Trang Văn Phòng Cao Cấp - 
 
 ---
 
-## 📸 4. Section 4: Real Gallery (Thư Viện Ảnh Thực Tế)
+## 📸 4. Section 4: Real Gallery (Thư Viện Ảnh Thực Tế) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Trưng bày hình ảnh thực tế sắc nét về không gian Lounge, Phòng họp Boardroom và Khu vực Pantry.
 - **Trường ACF (`group_lh_serviced` -> Tab 4. Thư Viện Ảnh Thực Tế):**
   1. `so_gallery_title` *(Type: text)* - Tiêu đề chính (Mặc định: `Thư viện ảnh thực tế`).
