@@ -460,77 +460,293 @@ function leadershub_register_field_groups() {
         ),
     ) );
 
-    // 3. Virtual Office Template Fields
+    // 3. Virtual Office Template Fields (group_lh_virtual)
     acf_add_local_field_group( array(
         'key' => 'group_lh_virtual',
         'title' => 'Cấu hình Trang Địa Chỉ Doanh Nghiệp (Virtual Office)',
         'fields' => array(
+            // TAB 1: HERO BANNER
+            array(
+                'key' => 'tab_vo_hero',
+                'label' => '1. Hero Banner',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_hero_badge',
+                'label' => 'Badge nhỏ trên cùng',
+                'name' => 'vo_hero_badge',
+                'type' => 'text',
+                'default_value' => 'Premium Business Solution',
+            ),
             array(
                 'key' => 'field_vo_hero_title',
-                'label' => 'Tiêu đề Hero',
+                'label' => 'Tiêu đề chính Hero (Dòng 1)',
                 'name' => 'vo_hero_title',
                 'type' => 'text',
                 'default_value' => 'Gói văn phòng cơ bản',
             ),
             array(
                 'key' => 'field_vo_hero_subtitle',
-                'label' => 'Tiêu đề nhỏ',
+                'label' => 'Tiêu đề phụ Hero (Dòng 2 màu vàng)',
                 'name' => 'vo_hero_subtitle',
                 'type' => 'text',
                 'default_value' => 'Địa chỉ kinh doanh hạng A',
             ),
             array(
                 'key' => 'field_vo_hero_desc',
-                'label' => 'Mô tả Hero',
+                'label' => 'Mô tả ngắn Hero',
                 'name' => 'vo_hero_desc',
                 'type' => 'textarea',
                 'default_value' => 'Thiết lập vị thế doanh nghiệp tại những tòa tháp tài chính biểu tượng. Giải pháp tối ưu chi phí, nâng tầm thương hiệu chuyên nghiệp ngay từ điểm khởi đầu.',
             ),
             array(
                 'key' => 'field_vo_hero_image',
-                'label' => 'Hình ảnh văn phòng',
+                'label' => 'Hình ảnh văn phòng Hero',
                 'name' => 'vo_hero_image',
                 'type' => 'image',
                 'return_format' => 'url',
             ),
+
+            // TAB 2: PRICING PLANS
+            array(
+                'key' => 'tab_vo_pricing',
+                'label' => '2. Gói Dịch Vụ & Bảng Giá',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_pricing_title',
+                'label' => 'Tiêu đề Section Bảng Giá',
+                'name' => 'vo_pricing_title',
+                'type' => 'text',
+                'default_value' => 'Các Gói Dịch Vụ Linh Hoạt',
+            ),
+            array(
+                'key' => 'field_vo_pricing_desc',
+                'label' => 'Mô tả mức giá khởi điểm',
+                'name' => 'vo_pricing_desc',
+                'type' => 'text',
+                'default_value' => 'Chỉ từ 980,000đ/tháng để sở hữu địa chỉ kinh doanh đẳng cấp tại tòa tháp Capital Place.',
+            ),
+            array(
+                'key' => 'field_vo_pricing_vat_note',
+                'label' => 'Ghi chú thuế VAT',
+                'name' => 'vo_pricing_vat_note',
+                'type' => 'text',
+                'default_value' => '(Giá chưa bao gồm VAT nếu áp dụng)',
+            ),
             array(
                 'key' => 'field_vo_plans',
-                'label' => 'Danh sách gói dịch vụ',
+                'label' => 'Danh sách gói dịch vụ (Repeater)',
                 'name' => 'vo_plans',
                 'type' => 'repeater',
                 'sub_fields' => array(
                     array(
                         'key' => 'field_vo_plan_name',
-                        'label' => 'Tên gói',
+                        'label' => 'Tên gói (VD: Gói Economy)',
                         'name' => 'name',
                         'type' => 'text',
                     ),
                     array(
-                        'key' => 'field_vo_plan_price',
-                        'label' => 'Giá khởi điểm (số)',
-                        'name' => 'price',
-                        'type' => 'text',
-                    ),
-                    array(
                         'key' => 'field_vo_plan_desc',
-                        'label' => 'Mô tả ngắn',
+                        'label' => 'Mô tả ngắn đối tượng (VD: Dành cho cá nhân khởi nghiệp)',
                         'name' => 'desc',
                         'type' => 'text',
                     ),
                     array(
+                        'key' => 'field_vo_plan_price',
+                        'label' => 'Mức giá (VD: 980,000)',
+                        'name' => 'price',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_plan_unit',
+                        'label' => 'Đơn vị tính (VD: đ/tháng)',
+                        'name' => 'unit',
+                        'type' => 'text',
+                        'default_value' => 'đ/tháng',
+                    ),
+                    array(
+                        'key' => 'field_vo_plan_is_popular',
+                        'label' => 'Đánh dấu gói nổi bật / Phổ biến nhất',
+                        'name' => 'is_popular',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                    ),
+                    array(
+                        'key' => 'field_vo_plan_popular_label',
+                        'label' => 'Nhãn gói nổi bật (VD: Phổ biến nhất)',
+                        'name' => 'popular_label',
+                        'type' => 'text',
+                        'default_value' => 'Phổ biến nhất',
+                    ),
+                    array(
                         'key' => 'field_vo_plan_features',
-                        'label' => 'Danh sách tính năng (Mỗi dòng 1 tính năng)',
+                        'label' => 'Danh sách tính năng / quyền lợi (Mỗi dòng 1 tính năng)',
                         'name' => 'features',
                         'type' => 'textarea',
                     ),
                 ),
             ),
+
+            // TAB 3: FEATURE COMPARISON
+            array(
+                'key' => 'tab_vo_comp',
+                'label' => '3. Bảng So Sánh Tiện Ích',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_comp_title',
+                'label' => 'Tiêu đề Section So Sánh',
+                'name' => 'vo_comp_title',
+                'type' => 'text',
+                'default_value' => 'So Sánh Tiện Ích',
+            ),
+            array(
+                'key' => 'field_vo_comp_rows',
+                'label' => 'Danh sách các hàng so sánh (Repeater)',
+                'name' => 'vo_comp_rows',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_vo_comp_feature_name',
+                        'label' => 'Tên dịch vụ & tiện ích',
+                        'name' => 'feature_name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_comp_economy',
+                        'label' => 'Gói Economy (Nhập: yes, no, hoặc text như: Tính phí lẻ)',
+                        'name' => 'economy_val',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_comp_standard',
+                        'label' => 'Gói Standard (Nhập: yes, no, hoặc text như: 4 giờ/tháng)',
+                        'name' => 'standard_val',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_comp_premium',
+                        'label' => 'Gói Premium (Nhập: yes, no, hoặc text như: 10 giờ/tháng)',
+                        'name' => 'premium_val',
+                        'type' => 'text',
+                    ),
+                ),
+            ),
+
+            // TAB 4: REGISTRATION PROCESS
+            array(
+                'key' => 'tab_vo_process',
+                'label' => '4. Quy Trình 3 Bước',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_process_title',
+                'label' => 'Tiêu đề Quy Trình',
+                'name' => 'vo_process_title',
+                'type' => 'text',
+                'default_value' => 'Quy Trình 3 Bước Đơn Giản',
+            ),
+            array(
+                'key' => 'field_vo_process_steps',
+                'label' => 'Các bước thực hiện (Repeater)',
+                'name' => 'vo_process_steps',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_vo_step_num',
+                        'label' => 'Số thứ tự (VD: 01, 02, 03)',
+                        'name' => 'number',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_step_icon',
+                        'label' => 'Material Symbol Icon (VD: support_agent, history_edu, business_center)',
+                        'name' => 'icon',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_step_title',
+                        'label' => 'Tên bước (VD: Tư vấn giải pháp)',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_step_desc',
+                        'label' => 'Mô tả bước',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                    ),
+                ),
+            ),
+
+            // TAB 5: ENVIRONMENT SHOWCASE
+            array(
+                'key' => 'tab_vo_showcase',
+                'label' => '5. Hạ Tầng & Vì Sao Chọn',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_showcase_badge',
+                'label' => 'Badge nhỏ',
+                'name' => 'vo_showcase_badge',
+                'type' => 'text',
+                'default_value' => 'VÌ SAO CHỌN THE LEADERS HUB',
+            ),
+            array(
+                'key' => 'field_vo_showcase_title',
+                'label' => 'Tiêu đề chính Section Showcase',
+                'name' => 'vo_showcase_title',
+                'type' => 'text',
+                'default_value' => 'Hạ tầng chuẩn mực / Dịch vụ tận tâm',
+            ),
+            array(
+                'key' => 'field_vo_showcase_content',
+                'label' => 'Nội dung chi tiết (Chấp nhận HTML)',
+                'name' => 'vo_showcase_content',
+                'type' => 'wysiwyg',
+            ),
             array(
                 'key' => 'field_vo_showcase_image',
-                'label' => 'Hình ảnh lễ tân / Showcase',
+                'label' => 'Hình ảnh lễ tân / không gian thực tế',
                 'name' => 'vo_showcase_image',
                 'type' => 'image',
                 'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_vo_showcase_badge_text',
+                'label' => 'Nhãn trên thẻ hình ảnh',
+                'name' => 'vo_showcase_badge_text',
+                'type' => 'text',
+                'default_value' => 'Tiêu chuẩn 5 sao',
+            ),
+            array(
+                'key' => 'field_vo_showcase_card_desc',
+                'label' => 'Mô tả thẻ nổi bật trên hình ảnh',
+                'name' => 'vo_showcase_card_desc',
+                'type' => 'textarea',
+                'default_value' => 'Môi trường làm việc chuyên nghiệp được thiết kế theo tiêu chuẩn quốc tế.',
+            ),
+
+            // TAB 6: CONSULTATION FORM
+            array(
+                'key' => 'tab_vo_cta',
+                'label' => '6. Form Tư Vấn & Đăng Ký',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_cta_title',
+                'label' => 'Tiêu đề Form Tư Vấn',
+                'name' => 'vo_cta_title',
+                'type' => 'text',
+                'default_value' => 'Sẵn sàng để vươn xa?',
+            ),
+            array(
+                'key' => 'field_vo_cta_desc',
+                'label' => 'Mô tả Form Tư Vấn',
+                'name' => 'vo_cta_desc',
+                'type' => 'textarea',
+                'default_value' => 'Hãy gửi yêu cầu của bạn, đội ngũ tư vấn viên của The Leaders Hub sẽ liên hệ tư vấn trong thời gian sớm nhất trong giờ làm việc.',
             ),
         ),
         'location' => array(
