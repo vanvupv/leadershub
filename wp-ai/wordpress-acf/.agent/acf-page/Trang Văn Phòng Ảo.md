@@ -54,7 +54,8 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 
 ---
 
-## 🔄 4. Section 4: Registration Process (Quy Trình 3 Bước Đơn Giản)
+## 🔄 4. Section 4: Registration Process (Quy Trình 3 Bước Đơn Giản) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Tối giản quy trình ký kết và đưa dịch vụ vào vận hành nhanh chóng trong 3 bước.
 - **Trường ACF (`group_lh_virtual` -> Tab 4. Quy Trình 3 Bước):**
   1. `vo_process_title` *(Type: text)* - Tiêu đề quy trình (Mặc định: `Quy Trình 3 Bước Đơn Giản`).

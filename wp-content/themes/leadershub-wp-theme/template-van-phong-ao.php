@@ -15,6 +15,9 @@ $pricing_vat_note = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_va
 // ACF Variables: Section 3 Feature Comparison
 $comp_title = ( function_exists( 'get_field' ) ? get_field( 'vo_comp_title' ) : '' ) ?: '';
 
+// ACF Variables: Section 4 Registration Process
+$process_title = ( function_exists( 'get_field' ) ? get_field( 'vo_process_title' ) : '' ) ?: '';
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -258,43 +261,58 @@ function lh_field( $name, $default = '' ) {
 <?php endif; ?>
 
 <!-- Registration Process Section -->
-<section class="py-section-padding-desktop bg-surface overflow-hidden relative">
+<?php if ( ! empty( $process_title ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_process_steps' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-surface overflow-hidden relative" id="process">
     <div class="max-w-container-max mx-auto px-gutter relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Quy Trình 3 Bước Đơn Giản</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            <div class="hidden md:block absolute top-24 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-prestige-gold/30"></div>
-            <!-- Step 1 -->
-            <div class="relative text-center group">
-                <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors">01</div>
-                <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-prestige-gold">support_agent</span>
-                </div>
-                <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">Tư vấn giải pháp</h4>
-                <p class="text-on-surface-variant font-body-md text-sm">Đội ngũ chuyên viên lắng nghe nhu cầu và đề xuất gói dịch vụ phù hợp nhất với mô hình kinh doanh của bạn.</p>
+        <?php if ( ! empty( $process_title ) ) : ?>
+            <div class="text-center mb-16">
+                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                    <?php echo esc_html( $process_title ); ?>
+                </h2>
             </div>
-            <!-- Step 2 -->
-            <div class="relative text-center group">
-                <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors">02</div>
-                <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-prestige-gold">history_edu</span>
-                </div>
-                <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">Ký kết hợp đồng</h4>
-                <p class="text-on-surface-variant font-body-md text-sm">Thủ tục nhanh gọn, chuyên nghiệp. Hợp đồng pháp lý minh bạch, bảo vệ quyền lợi tối đa cho doanh nghiệp.</p>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'vo_process_steps' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <div class="hidden md:block absolute top-24 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-prestige-gold/30"></div>
+                <?php 
+                $step_idx = 1;
+                while ( have_rows( 'vo_process_steps' ) ) : the_row();
+                    $step_num   = get_sub_field( 'number' ) ?: sprintf( '%02d', $step_idx );
+                    $step_icon  = get_sub_field( 'icon' ) ?: 'support_agent';
+                    $step_title = get_sub_field( 'title' );
+                    $step_desc  = get_sub_field( 'desc' );
+
+                    if ( empty( $step_title ) ) {
+                        $step_idx++;
+                        continue;
+                    }
+                ?>
+                    <div class="relative text-center group">
+                        <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors font-bold">
+                            <?php echo esc_html( $step_num ); ?>
+                        </div>
+                        <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
+                            <span class="material-symbols-outlined text-3xl text-prestige-gold"><?php echo esc_html( $step_icon ); ?></span>
+                        </div>
+                        <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">
+                            <?php echo esc_html( $step_title ); ?>
+                        </h4>
+                        <?php if ( ! empty( $step_desc ) ) : ?>
+                            <p class="text-on-surface-variant font-body-md text-sm">
+                                <?php echo esc_html( $step_desc ); ?>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+                <?php 
+                    $step_idx++;
+                endwhile; 
+                ?>
             </div>
-            <!-- Step 3 -->
-            <div class="relative text-center group">
-                <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors">03</div>
-                <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-prestige-gold">business_center</span>
-                </div>
-                <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-bold">Sẵn sàng sử dụng</h4>
-                <p class="text-on-surface-variant font-body-md text-sm">Nhận địa chỉ đăng ký ngay lập tức. Bắt đầu vận hành doanh nghiệp với đầy đủ hạ tầng chuyên nghiệp.</p>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Environment Showcase -->
 <section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden">
