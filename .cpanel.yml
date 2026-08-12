@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/bydhado1/leadershub.demoweb360.top/
+    - /bin/cp -R * $DEPLOYPATH
