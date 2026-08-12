@@ -14,24 +14,10 @@ $hero_title  = ( function_exists( 'get_field' ) ? get_field( 'home_hero_title' )
 $hero_desc   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_desc' ) : '' ) ?: '';
 $hero_video  = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video' ) : '' ) ?: '';
 $hero_poster = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
-
-// Nếu chưa nhập trong ACF Admin, dùng dữ liệu mặc định ban đầu làm fallback an toàn
-if ( empty( $hero_title ) ) {
-    $hero_title = 'VĂN PHÒNG DỊCH VỤ <br /><span class="text-prestige-gold">THE LEADERS HUB - NƠI THÀNH CÔNG HỘI TỤ</span>';
-}
-if ( empty( $hero_desc ) ) {
-    $hero_desc = 'Giải pháp văn phòng trọn gói - Tiện lợi - Linh hoạt - Chuyên nghiệp cho các lãnh đạo và doanh nghiệp hàng đầu.';
-}
-if ( empty( $hero_video ) ) {
-    $hero_video = 'https://assets.mixkit.co/videos/preview/mixkit-modern-office-space-with-people-working-34322-large.mp4';
-}
-if ( empty( $hero_poster ) ) {
-    $hero_poster = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80';
-}
 ?>
 
 <!-- Hero Banner Section -->
-<?php if ( ! empty( $hero_title ) || ! empty( $hero_video ) ) : ?>
+<?php if ( ! empty( $hero_title ) || ! empty( $hero_video ) || ! empty( $hero_desc ) ) : ?>
 <header class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-deep-navy">
     <?php if ( ! empty( $hero_video ) ) : ?>
         <video autoplay muted loop playsinline
