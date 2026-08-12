@@ -1158,6 +1158,271 @@ function leadershub_register_field_groups() {
         ),
     ) );
 
+    // Meeting Room Page Fields (group_lh_meeting)
+    acf_add_local_field_group( array(
+        'key' => 'group_lh_meeting',
+        'title' => 'Cấu hình Trang Phòng Họp (Meeting Room)',
+        'fields' => array(
+            // TAB 1: HERO BANNER
+            array(
+                'key' => 'tab_mr_hero',
+                'label' => '1. Hero Banner',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_mr_hero_badge',
+                'label' => 'Badge nhỏ góc trên',
+                'name' => 'mr_hero_badge',
+                'type' => 'text',
+                'default_value' => 'KHÔNG GIAN HẠNG A',
+            ),
+            array(
+                'key' => 'field_mr_hero_title',
+                'label' => 'Tiêu đề chính Dòng 1',
+                'name' => 'mr_hero_title',
+                'type' => 'text',
+                'default_value' => 'Phòng họp',
+            ),
+            array(
+                'key' => 'field_mr_hero_gold_title',
+                'label' => 'Tiêu đề chữ vàng Dòng 2',
+                'name' => 'mr_hero_gold_title',
+                'type' => 'text',
+                'default_value' => 'chuyên nghiệp',
+            ),
+            array(
+                'key' => 'field_mr_hero_desc',
+                'label' => 'Mô tả Hero',
+                'name' => 'mr_hero_desc',
+                'type' => 'textarea',
+                'default_value' => 'Nâng tầm thương hiệu và khẳng định vị thế dẫn đầu với hệ thống phòng họp sang trọng, tích hợp công nghệ hiện đại bậc nhất ngay tại trung tâm Thủ đô.',
+            ),
+            array(
+                'key' => 'field_mr_hero_image',
+                'label' => 'Hình ảnh Hero',
+                'name' => 'mr_hero_image',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_mr_hero_btn1_text',
+                'label' => 'Tên nút 1',
+                'name' => 'mr_hero_btn1_text',
+                'type' => 'text',
+                'default_value' => 'ĐẶT PHÒNG NGAY',
+            ),
+            array(
+                'key' => 'field_mr_hero_btn1_url',
+                'label' => 'Đường dẫn nút 1',
+                'name' => 'mr_hero_btn1_url',
+                'type' => 'text',
+                'default_value' => '#booking',
+            ),
+            array(
+                'key' => 'field_mr_hero_btn2_text',
+                'label' => 'Tên nút 2',
+                'name' => 'mr_hero_btn2_text',
+                'type' => 'text',
+                'default_value' => 'XEM CÁC LOẠI PHÒNG',
+            ),
+            array(
+                'key' => 'field_mr_hero_btn2_url',
+                'label' => 'Đường dẫn nút 2',
+                'name' => 'mr_hero_btn2_url',
+                'type' => 'text',
+                'default_value' => '#rooms',
+            ),
+            array(
+                'key' => 'field_mr_hero_card_badge',
+                'label' => 'Tiêu đề thẻ nổi Floating Card',
+                'name' => 'mr_hero_card_badge',
+                'type' => 'text',
+                'default_value' => 'Dịch vụ 5 sao',
+            ),
+            array(
+                'key' => 'field_mr_hero_card_desc',
+                'label' => 'Nội dung thẻ nổi Floating Card',
+                'name' => 'mr_hero_card_desc',
+                'type' => 'textarea',
+                'default_value' => 'Phục vụ trà, cà phê và hỗ trợ kỹ thuật tận nơi suốt buổi họp.',
+            ),
+
+            // TAB 2: ROOM TYPES GRID
+            array(
+                'key' => 'tab_mr_rooms',
+                'label' => '2. Danh Sách Phòng Họp',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_mr_rooms_title',
+                'label' => 'Tiêu đề phần Loại phòng',
+                'name' => 'mr_rooms_title',
+                'type' => 'text',
+                'default_value' => 'Lựa chọn không gian phù hợp',
+            ),
+            array(
+                'key' => 'field_mr_rooms_list',
+                'label' => 'Danh sách loại phòng họp (Repeater)',
+                'name' => 'mr_rooms_list',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_mr_room_image',
+                        'label' => 'Hình ảnh phòng',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_area',
+                        'label' => 'Diện tích',
+                        'name' => 'area',
+                        'type' => 'text',
+                        'default_value' => '30 m²',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_title',
+                        'label' => 'Tên phòng & sức chứa',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_capacity',
+                        'label' => 'Mô tả sức chứa tiêu chuẩn',
+                        'name' => 'capacity',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_features',
+                        'label' => 'Danh sách tính năng nổi bật (Chấp nhận HTML)',
+                        'name' => 'features',
+                        'type' => 'wysiwyg',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_price_text',
+                        'label' => 'Ghi chú giá',
+                        'name' => 'price_text',
+                        'type' => 'text',
+                        'default_value' => 'Liên hệ nhận báo giá',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_btn_text',
+                        'label' => 'Tên nút đặt phòng',
+                        'name' => 'btn_text',
+                        'type' => 'text',
+                        'default_value' => 'Đặt phòng',
+                    ),
+                    array(
+                        'key' => 'field_mr_room_btn_url',
+                        'label' => 'Đường dẫn nút đặt phòng',
+                        'name' => 'btn_url',
+                        'type' => 'text',
+                        'default_value' => '#booking',
+                    ),
+                ),
+            ),
+
+            // TAB 3: AMENITIES & SPECS
+            array(
+                'key' => 'tab_mr_amenities',
+                'label' => '3. Tiện Ích & Thiết Bị',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_mr_amenities_title',
+                'label' => 'Tiêu đề Tiện ích & Thiết bị',
+                'name' => 'mr_amenities_title',
+                'type' => 'text',
+                'default_value' => 'Tiện ích & Trang thiết bị đi kèm',
+            ),
+            array(
+                'key' => 'field_mr_amenities_desc',
+                'label' => 'Mô tả Tiện ích & Thiết bị',
+                'name' => 'mr_amenities_desc',
+                'type' => 'textarea',
+                'default_value' => 'Tất cả các dịch vụ tiện ích dưới đây được thiết kế và cung cấp theo tiêu chuẩn cao cấp nhất, đảm bảo tính chuyên nghiệp tối đa cho buổi họp của bạn.',
+            ),
+            array(
+                'key' => 'field_mr_amenities_image_1',
+                'label' => 'Hình ảnh minh họa 1',
+                'name' => 'mr_amenities_image_1',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_mr_amenities_image_2',
+                'label' => 'Hình ảnh minh họa 2',
+                'name' => 'mr_amenities_image_2',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_mr_amenities_list',
+                'label' => 'Danh sách Tiện ích (Repeater)',
+                'name' => 'mr_amenities_list',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_mr_amenity_icon',
+                        'label' => 'Material Icon',
+                        'name' => 'icon',
+                        'type' => 'text',
+                        'default_value' => 'tv',
+                    ),
+                    array(
+                        'key' => 'field_mr_amenity_title',
+                        'label' => 'Tên tiện ích',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_mr_amenity_desc',
+                        'label' => 'Mô tả tiện ích',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                    ),
+                ),
+            ),
+
+            // TAB 4: BOOKING FORM
+            array(
+                'key' => 'tab_mr_booking',
+                'label' => '4. Đặt Phòng Họp',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_mr_booking_title',
+                'label' => 'Tiêu đề Đặt phòng',
+                'name' => 'mr_booking_title',
+                'type' => 'text',
+                'default_value' => 'Đặt phòng họp ngay',
+            ),
+            array(
+                'key' => 'field_mr_booking_desc',
+                'label' => 'Mô tả Đặt phòng',
+                'name' => 'mr_booking_desc',
+                'type' => 'textarea',
+                'default_value' => 'Đội ngũ sẽ liên hệ trong thời gian sớm nhất trong giờ làm việc để hỗ trợ và hoàn tất thủ tục đặt phòng họp cho quý khách.',
+            ),
+            array(
+                'key' => 'field_mr_booking_hotline_label',
+                'label' => 'Nhãn Hotline tư vấn',
+                'name' => 'mr_booking_hotline_label',
+                'type' => 'text',
+                'default_value' => 'Hotline tư vấn',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'template-phong-hop.php',
+                ),
+            ),
+        ),
+    ) );
+
     // About Page Fields (group_lh_about)
     acf_add_local_field_group( array(
         'key' => 'group_lh_about',
