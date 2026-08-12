@@ -31,6 +31,9 @@ $gallery_desc  = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_de
 // ACF Variables: Section 6 CTA & Brochure
 $cta_title         = ( function_exists( 'get_field' ) ? get_field( 'about_cta_title' ) : '' ) ?: '';
 $cta_desc          = ( function_exists( 'get_field' ) ? get_field( 'about_cta_desc' ) : '' ) ?: '';
+$cta_btn_text      = ( function_exists( 'get_field' ) ? get_field( 'about_cta_btn_text' ) : '' ) ?: '';
+$cta_btn_url       = ( function_exists( 'get_field' ) ? get_field( 'about_cta_btn_url' ) : '' ) ?: '';
+$brochure_text     = ( function_exists( 'get_field' ) ? get_field( 'about_brochure_text' ) : '' ) ?: '';
 $brochure_url      = ( function_exists( 'get_field' ) ? get_field( 'about_brochure_url' ) : '' ) ?: '';
 $cta_working_hours = ( function_exists( 'get_field' ) ? get_field( 'about_cta_working_hours' ) : '' ) ?: 'Hỗ trợ trong giờ làm việc';
 
@@ -302,13 +305,15 @@ function lh_field( $name, $default = '' ) {
                 <?php endif; ?>
 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="<?php echo esc_url( home_url('/lien-he') ); ?>" class="bg-success-green text-white px-8 py-4 rounded-lg font-label-sm text-sm font-bold shadow-lg hover:bg-success-green/90 transition-all text-center">
-                        Gửi yêu cầu ngay
-                    </a>
+                    <?php if ( ! empty( $cta_btn_text ) ) : ?>
+                        <a href="<?php echo esc_url( ! empty( $cta_btn_url ) ? ( 0 === strpos( $cta_btn_url, 'http' ) ? $cta_btn_url : home_url( $cta_btn_url ) ) : home_url('/lien-he') ); ?>" class="bg-success-green text-white px-8 py-4 rounded-lg font-label-sm text-sm font-bold shadow-lg hover:bg-success-green/90 transition-all text-center">
+                            <?php echo esc_html( $cta_btn_text ); ?>
+                        </a>
+                    <?php endif; ?>
 
                     <?php if ( ! empty( $brochure_url ) && '#' !== trim( $brochure_url ) ) : ?>
                         <a href="<?php echo esc_url( $brochure_url ); ?>" target="_blank" rel="noopener noreferrer" class="bg-transparent border border-white/30 text-white px-8 py-4 rounded-lg font-label-sm text-sm font-semibold hover:bg-white/10 transition-all text-center">
-                            Tải brochure (PDF)
+                            <?php echo esc_html( ! empty( $brochure_text ) ? $brochure_text : 'Tải brochure (PDF)' ); ?>
                         </a>
                     <?php endif; ?>
                 </div>

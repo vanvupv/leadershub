@@ -974,6 +974,27 @@ function leadershub_register_field_groups() {
                 'default_value' => 'Liên hệ ngay để nhận chương trình ưu đãi đặc biệt dành cho văn phòng dịch vụ trọn gói.',
             ),
             array(
+                'key' => 'field_about_cta_btn_text',
+                'label' => 'Tên nút kêu gọi (VD: Gửi yêu cầu ngay)',
+                'name' => 'about_cta_btn_text',
+                'type' => 'text',
+                'default_value' => 'Gửi yêu cầu ngay',
+            ),
+            array(
+                'key' => 'field_about_cta_btn_url',
+                'label' => 'Đường dẫn nút kêu gọi (VD: /lien-he)',
+                'name' => 'about_cta_btn_url',
+                'type' => 'text',
+                'default_value' => '/lien-he',
+            ),
+            array(
+                'key' => 'field_about_brochure_text',
+                'label' => 'Tên nút Brochure (VD: Tải brochure (PDF))',
+                'name' => 'about_brochure_text',
+                'type' => 'text',
+                'default_value' => 'Tải brochure (PDF)',
+            ),
+            array(
                 'key' => 'field_about_brochure_url',
                 'label' => 'Đường dẫn File Brochure (PDF)',
                 'name' => 'about_brochure_url',
