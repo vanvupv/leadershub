@@ -735,4 +735,122 @@ function leadershub_register_field_groups() {
             ),
         ),
     ) );
+
+    // About Page Fields (group_lh_about)
+    acf_add_local_field_group( array(
+        'key' => 'group_lh_about',
+        'title' => 'Cấu hình Trang Về Chúng Tôi (About Us)',
+        'fields' => array(
+            // TAB: HERO
+            array(
+                'key' => 'tab_about_hero',
+                'label' => 'Hero Banner',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_hero_image',
+                'label' => 'Hình ảnh nền Hero',
+                'name' => 'about_hero_image',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_about_hero_title',
+                'label' => 'Tiêu đề chính Hero',
+                'name' => 'about_hero_title',
+                'type' => 'text',
+                'default_value' => 'Về Chúng Tôi',
+            ),
+            array(
+                'key' => 'field_about_hero_desc',
+                'label' => 'Mô tả ngắn Hero',
+                'name' => 'about_hero_desc',
+                'type' => 'textarea',
+                'default_value' => 'Hành trình kiến tạo không gian làm việc chuyên nghiệp bậc nhất dành cho các nhà lãnh đạo và doanh nghiệp tinh hoa.',
+            ),
+
+            // TAB: STORY
+            array(
+                'key' => 'tab_about_story',
+                'label' => 'Câu Chuyện Thương Hiệu',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_story_badge',
+                'label' => 'Badge / Tiêu đề phụ',
+                'name' => 'about_story_badge',
+                'type' => 'text',
+                'default_value' => 'Câu chuyện thương hiệu',
+            ),
+            array(
+                'key' => 'field_about_story_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'about_story_title',
+                'type' => 'text',
+                'default_value' => 'Không gian làm việc chuyên nghiệp tại Capital Place',
+            ),
+            array(
+                'key' => 'field_about_story_content',
+                'label' => 'Nội dung chi tiết (Chấp nhận HTML)',
+                'name' => 'about_story_content',
+                'type' => 'wysiwyg',
+            ),
+            array(
+                'key' => 'field_about_story_image',
+                'label' => 'Hình ảnh minh họa',
+                'name' => 'about_story_image',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_about_stats',
+                'label' => 'Chỉ số thống kê ấn tượng',
+                'name' => 'about_stats',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_about_stat_number',
+                        'label' => 'Con số (VD: 500+)',
+                        'name' => 'number',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_about_stat_label',
+                        'label' => 'Mô tả nhãn (VD: Doanh nghiệp tin tưởng)',
+                        'name' => 'label',
+                        'type' => 'text',
+                    ),
+                ),
+            ),
+
+            // TAB: GALLERY & CTA
+            array(
+                'key' => 'tab_about_gallery_cta',
+                'label' => 'Hình Ảnh & CTA',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_about_gallery_image',
+                'label' => 'Hình ảnh thực tế không gian',
+                'name' => 'about_gallery_image',
+                'type' => 'image',
+                'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_about_brochure_url',
+                'label' => 'Đường dẫn File Brochure (PDF)',
+                'name' => 'about_brochure_url',
+                'type' => 'text',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'template-ve-chung-toi.php',
+                ),
+            ),
+        ),
+    ) );
 }
