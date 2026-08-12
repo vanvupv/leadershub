@@ -827,16 +827,29 @@ function leadershub_register_field_groups() {
         'key' => 'group_lh_serviced',
         'title' => 'Cấu hình Trang Văn Phòng Cao Cấp (Serviced Office)',
         'fields' => array(
+            // TAB 1: HERO BANNER
+            array(
+                'key' => 'tab_so_hero',
+                'label' => '1. Hero Banner',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_so_hero_badge',
+                'label' => 'Badge nhỏ Hero',
+                'name' => 'so_hero_badge',
+                'type' => 'text',
+                'default_value' => 'DỊCH VỤ ĐẲNG CẤP',
+            ),
             array(
                 'key' => 'field_so_hero_title',
-                'label' => 'Tiêu đề chính',
+                'label' => 'Tiêu đề chính Dòng 1',
                 'name' => 'so_hero_title',
                 'type' => 'text',
                 'default_value' => 'Văn phòng dịch vụ',
             ),
             array(
                 'key' => 'field_so_hero_gold_title',
-                'label' => 'Tiêu đề vàng',
+                'label' => 'Tiêu đề vàng Dòng 2',
                 'name' => 'so_hero_gold_title',
                 'type' => 'text',
                 'default_value' => '(Serviced Office)',
@@ -856,6 +869,41 @@ function leadershub_register_field_groups() {
                 'return_format' => 'url',
             ),
             array(
+                'key' => 'field_so_hero_btn1_text',
+                'label' => 'Tên nút 1',
+                'name' => 'so_hero_btn1_text',
+                'type' => 'text',
+                'default_value' => 'ĐẶT LỊCH THAM QUAN',
+            ),
+            array(
+                'key' => 'field_so_hero_btn1_url',
+                'label' => 'Đường dẫn nút 1',
+                'name' => 'so_hero_btn1_url',
+                'type' => 'text',
+                'default_value' => '#booking-form',
+            ),
+            array(
+                'key' => 'field_so_hero_btn2_text',
+                'label' => 'Tên nút 2',
+                'name' => 'so_hero_btn2_text',
+                'type' => 'text',
+                'default_value' => 'NHẬN BÁO GIÁ NGAY',
+            ),
+            array(
+                'key' => 'field_so_hero_btn2_url',
+                'label' => 'Đường dẫn nút 2',
+                'name' => 'so_hero_btn2_url',
+                'type' => 'text',
+                'default_value' => '#booking-form',
+            ),
+
+            // TAB 2: INTRODUCTION
+            array(
+                'key' => 'tab_so_intro',
+                'label' => '2. Giới Thiệu Không Gian',
+                'type' => 'tab',
+            ),
+            array(
                 'key' => 'field_so_intro_title',
                 'label' => 'Tiêu đề phần Giới thiệu',
                 'name' => 'so_intro_title',
@@ -866,7 +914,8 @@ function leadershub_register_field_groups() {
                 'key' => 'field_so_intro_content',
                 'label' => 'Nội dung giới thiệu (Chấp nhận HTML)',
                 'name' => 'so_intro_content',
-                'type' => 'textarea',
+                'type' => 'wysiwyg',
+                'default_value' => '<p>Tại The Leaders Hub, chúng tôi kiến tạo một hệ sinh thái làm việc chuyên nghiệp và đẳng cấp, nơi các nhà lãnh đạo và doanh nghiệp có thể tập trung hoàn toàn vào giá trị cốt lõi.</p><ul class="space-y-4"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-prestige-gold mt-1">check_circle</span><span>Văn phòng riêng đầy đủ nội thất và dịch vụ vận hành (Serviced Office).</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-prestige-gold mt-1">check_circle</span><span>Thời gian thuê linh hoạt từ ngắn hạn đến dài hạn tùy nhu cầu.</span></li></ul>',
             ),
             array(
                 'key' => 'field_so_intro_image_1',
@@ -882,12 +931,88 @@ function leadershub_register_field_groups() {
                 'type' => 'image',
                 'return_format' => 'url',
             ),
+
+            // TAB 3: UTILITIES GRID
+            array(
+                'key' => 'tab_so_utils',
+                'label' => '3. Tiện Ích Đặc Quyền',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_so_utils_badge',
+                'label' => 'Badge nhỏ góc trên',
+                'name' => 'so_utils_badge',
+                'type' => 'text',
+                'default_value' => 'TIỆN ÍCH ĐẶC QUYỀN',
+            ),
+            array(
+                'key' => 'field_so_utils_title',
+                'label' => 'Tiêu đề Tiện ích',
+                'name' => 'so_utils_title',
+                'type' => 'text',
+                'default_value' => 'Hơn cả một văn phòng',
+            ),
+            array(
+                'key' => 'field_so_utils_list',
+                'label' => 'Danh sách Tiện ích (Repeater)',
+                'name' => 'so_utils_list',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_so_util_icon',
+                        'label' => 'Material Icon',
+                        'name' => 'icon',
+                        'type' => 'text',
+                        'default_value' => 'local_cafe',
+                    ),
+                    array(
+                        'key' => 'field_so_util_title',
+                        'label' => 'Tên tiện ích',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_so_util_desc',
+                        'label' => 'Mô tả tiện ích',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                    ),
+                ),
+            ),
+
+            // TAB 4: REAL GALLERY
+            array(
+                'key' => 'tab_so_gallery',
+                'label' => '4. Thư Viện Ảnh Thực Tế',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_so_gallery_title',
+                'label' => 'Tiêu đề Gallery',
+                'name' => 'so_gallery_title',
+                'type' => 'text',
+                'default_value' => 'Thư viện ảnh thực tế',
+            ),
+            array(
+                'key' => 'field_so_gallery_desc',
+                'label' => 'Mô tả Gallery',
+                'name' => 'so_gallery_desc',
+                'type' => 'text',
+                'default_value' => 'Tham quan không gian làm việc hiện đại tại Capital Place.',
+            ),
             array(
                 'key' => 'field_so_gallery_image_1',
-                'label' => 'Hình ảnh thực tế 1 (Lớn)',
+                'label' => 'Hình ảnh thực tế 1 (Lớn bên trái)',
                 'name' => 'so_gallery_image_1',
                 'type' => 'image',
                 'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_so_gallery_caption_1',
+                'label' => 'Chú thích ảnh 1',
+                'name' => 'so_gallery_caption_1',
+                'type' => 'text',
+                'default_value' => 'Khu vực Lounge sang trọng',
             ),
             array(
                 'key' => 'field_so_gallery_image_2',
@@ -897,11 +1022,129 @@ function leadershub_register_field_groups() {
                 'return_format' => 'url',
             ),
             array(
+                'key' => 'field_so_gallery_caption_2',
+                'label' => 'Chú thích ảnh 2',
+                'name' => 'so_gallery_caption_2',
+                'type' => 'text',
+                'default_value' => 'Phòng họp Boardroom',
+            ),
+            array(
                 'key' => 'field_so_gallery_image_3',
                 'label' => 'Hình ảnh thực tế 3 (Phải - Dưới)',
                 'name' => 'so_gallery_image_3',
                 'type' => 'image',
                 'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_so_gallery_caption_3',
+                'label' => 'Chú thích ảnh 3',
+                'name' => 'so_gallery_caption_3',
+                'type' => 'text',
+                'default_value' => 'Khu vực Pantry hiện đại',
+            ),
+
+            // TAB 5: PRICING & CTA
+            array(
+                'key' => 'tab_so_cta',
+                'label' => '5. Báo Giá & Đặt Lịch',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_so_cta_title',
+                'label' => 'Tiêu đề CTA',
+                'name' => 'so_cta_title',
+                'type' => 'text',
+                'default_value' => 'Sẵn sàng nâng tầm vị thế doanh nghiệp?',
+            ),
+            array(
+                'key' => 'field_so_cta_desc',
+                'label' => 'Mô tả CTA',
+                'name' => 'so_cta_desc',
+                'type' => 'textarea',
+                'default_value' => 'Liên hệ ngay với The Leaders Hub để nhận được báo giá chi tiết và các chương trình ưu đãi đặc biệt cho gói Văn phòng dịch vụ (Serviced Office).',
+            ),
+            array(
+                'key' => 'field_so_cta_price_label',
+                'label' => 'Nhãn thông số 1',
+                'name' => 'so_cta_price_label',
+                'type' => 'text',
+                'default_value' => 'Giá dịch vụ',
+            ),
+            array(
+                'key' => 'field_so_cta_price_val',
+                'label' => 'Giá trị thông số 1',
+                'name' => 'so_cta_price_val',
+                'type' => 'text',
+                'default_value' => 'Liên hệ nhận báo giá',
+            ),
+            array(
+                'key' => 'field_so_cta_price_sub',
+                'label' => 'Phụ đề thông số 1',
+                'name' => 'so_cta_price_sub',
+                'type' => 'text',
+                'default_value' => 'Theo diện tích và thời hạn',
+            ),
+            array(
+                'key' => 'field_so_cta_capacity_label',
+                'label' => 'Nhãn thông số 2',
+                'name' => 'so_cta_capacity_label',
+                'type' => 'text',
+                'default_value' => 'Sức chứa',
+            ),
+            array(
+                'key' => 'field_so_cta_capacity_val',
+                'label' => 'Giá trị thông số 2',
+                'name' => 'so_cta_capacity_val',
+                'type' => 'text',
+                'default_value' => '1 - 20 nhân sự',
+            ),
+            array(
+                'key' => 'field_so_cta_capacity_sub',
+                'label' => 'Phụ đề thông số 2',
+                'name' => 'so_cta_capacity_sub',
+                'type' => 'text',
+                'default_value' => 'Tùy biến linh hoạt',
+            ),
+
+            // TAB 6: SERVICE STEPS
+            array(
+                'key' => 'tab_so_process',
+                'label' => '6. Quy Trình 3 Bước',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_so_process_title',
+                'label' => 'Tiêu đề Quy trình',
+                'name' => 'so_process_title',
+                'type' => 'text',
+                'default_value' => 'Quy trình đăng ký dịch vụ',
+            ),
+            array(
+                'key' => 'field_so_process_steps',
+                'label' => 'Danh sách 3 bước (Repeater)',
+                'name' => 'so_process_steps',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_so_step_num',
+                        'label' => 'Số thứ tự',
+                        'name' => 'number',
+                        'type' => 'text',
+                        'default_value' => '01',
+                    ),
+                    array(
+                        'key' => 'field_so_step_title',
+                        'label' => 'Tên bước',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_so_step_desc',
+                        'label' => 'Mô tả bước',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                    ),
+                ),
             ),
         ),
         'location' => array(
