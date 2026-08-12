@@ -30,6 +30,9 @@ $showcase_card_desc  = lh_field( 'vo_showcase_card_desc', 'Môi trường làm v
 $cta_title = lh_field( 'vo_cta_title', 'Sẵn sàng để vươn xa?' );
 $cta_desc  = lh_field( 'vo_cta_desc', 'Hãy gửi yêu cầu của bạn, đội ngũ tư vấn viên của The Leaders Hub sẽ liên hệ tư vấn trong thời gian sớm nhất trong giờ làm việc.' );
 
+// ACF Variables: Section 7 FAQ
+$faq_title = lh_field( 'vo_faq_title', 'Câu hỏi thường gặp' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -405,6 +408,47 @@ function lh_field( $name, $default = '' ) {
                 </div>
             </div>
         </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<!-- FAQ Section -->
+<?php if ( ! empty( $faq_title ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_faq_list' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-white" id="faq">
+    <div class="max-w-container-max mx-auto px-gutter max-w-3xl">
+        <?php if ( ! empty( $faq_title ) ) : ?>
+            <h2 class="font-headline-xl text-headline-xl text-deep-navy text-center mb-12 font-bold">
+                <?php echo esc_html( $faq_title ); ?>
+            </h2>
+        <?php endif; ?>
+
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'vo_faq_list' ) ) : ?>
+            <div class="space-y-4">
+                <?php 
+                $faq_index = 0;
+                while ( have_rows( 'vo_faq_list' ) ) : the_row();
+                    $q = get_sub_field( 'question' );
+                    $a = get_sub_field( 'answer' );
+                    if ( empty( $q ) ) continue;
+                    $is_open = ( $faq_index === 0 ) ? 'open' : '';
+                ?>
+                    <details class="group bg-white rounded-lg shadow-sm border border-surface-container-highest" <?php echo $is_open; ?>>
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-headline-md text-lg text-deep-navy font-semibold"><?php echo esc_html( $q ); ?></span>
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <?php if ( ! empty( $a ) ) : ?>
+                            <div class="px-6 pb-6 text-on-surface-variant font-body-md border-t border-surface-container-highest pt-4">
+                                <?php echo nl2br( esc_html( $a ) ); ?>
+                            </div>
+                        <?php endif; ?>
+                    </details>
+                <?php 
+                    $faq_index++;
+                endwhile; 
+                ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 <?php endif; ?>

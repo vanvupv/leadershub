@@ -776,6 +776,40 @@ function leadershub_register_field_groups() {
                 'type' => 'textarea',
                 'default_value' => 'Hãy gửi yêu cầu của bạn, đội ngũ tư vấn viên của The Leaders Hub sẽ liên hệ tư vấn trong thời gian sớm nhất trong giờ làm việc.',
             ),
+
+            // TAB 7: FAQS
+            array(
+                'key' => 'tab_vo_faq',
+                'label' => '7. Câu Hỏi Thường Gặp (FAQ)',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_vo_faq_title',
+                'label' => 'Tiêu đề Section FAQ',
+                'name' => 'vo_faq_title',
+                'type' => 'text',
+                'default_value' => 'Câu hỏi thường gặp',
+            ),
+            array(
+                'key' => 'field_vo_faq_list',
+                'label' => 'Danh sách FAQ (Repeater)',
+                'name' => 'vo_faq_list',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_vo_faq_q',
+                        'label' => 'Câu hỏi',
+                        'name' => 'question',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_vo_faq_a',
+                        'label' => 'Câu trả lời',
+                        'name' => 'answer',
+                        'type' => 'textarea',
+                    ),
+                ),
+            ),
         ),
         'location' => array(
             array(

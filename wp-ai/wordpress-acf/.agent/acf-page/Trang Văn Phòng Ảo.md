@@ -86,3 +86,14 @@ Field Group ACF: `group_lh_virtual` (Cấu hình Trang Địa Chỉ Doanh Nghi�
 - **Trường ACF (`group_lh_virtual` -> Tab 6. Form Tư Vấn & Đăng Ký):**
   1. `vo_cta_title` *(Type: text)* - Tiêu đề form (Mặc định: `Sẵn sàng để vươn xa?`).
   2. `vo_cta_desc` *(Type: textarea)* - Lời nhắn phản hồi tư vấn.
+
+---
+
+## ❓ 7. Section 7: FAQ (Câu Hỏi Thường Gặp) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
+- **Mục đích:** Giải đáp thắc mắc phổ biến về tính pháp lý, thủ tục đăng ký hóa đơn điện tử khi thuê văn phòng ảo.
+- **Trường ACF (`group_lh_virtual` -> Tab 7. Câu Hỏi Thường Gặp - FAQ):**
+  1. `vo_faq_title` *(Type: text)* - Tiêu đề section (Mặc định: `Câu hỏi thường gặp`).
+  2. `vo_faq_list` *(Type: repeater)* - Danh sách các câu hỏi giải đáp:
+     - `question` *(Type: text)* - Câu hỏi thắc mắc.
+     - `answer` *(Type: textarea)* - Câu trả lời giải đáp chi tiết.
