@@ -133,25 +133,28 @@ function leadershub_register_field_groups() {
                 'type' => 'tab',
             ),
             array(
+                'key' => 'field_home_hero_subtitle',
+                'label' => 'Tiêu đề phụ (Subtitle / Badge)',
+                'name' => 'home_hero_subtitle',
+                'type' => 'text',
+            ),
+            array(
                 'key' => 'field_home_hero_title',
                 'label' => 'Tiêu đề chính',
                 'name' => 'home_hero_title',
                 'type' => 'text',
-                'default_value' => 'VĂN PHÒNG DỊCH VỤ THE LEADERS HUB - NƠI THÀNH CÔNG HỘI TỤ',
             ),
             array(
                 'key' => 'field_home_hero_desc',
                 'label' => 'Mô tả ngắn',
                 'name' => 'home_hero_desc',
                 'type' => 'textarea',
-                'default_value' => 'Giải pháp văn phòng trọn gói - Tiện lợi - Linh hoạt - Chuyên nghiệp cho các lãnh đạo và doanh nghiệp hàng đầu.',
             ),
             array(
                 'key' => 'field_home_hero_video',
                 'label' => 'URL Video nền',
                 'name' => 'home_hero_video',
                 'type' => 'text',
-                'default_value' => 'https://assets.mixkit.co/videos/preview/mixkit-modern-office-space-with-people-working-34322-large.mp4',
             ),
             array(
                 'key' => 'field_home_hero_poster',
@@ -159,6 +162,20 @@ function leadershub_register_field_groups() {
                 'name' => 'home_hero_poster',
                 'type' => 'image',
                 'return_format' => 'url',
+            ),
+            array(
+                'key' => 'field_home_hero_btn_1',
+                'label' => 'Nút bấm 1 (Link)',
+                'name' => 'home_hero_btn_1',
+                'type' => 'link',
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_home_hero_btn_2',
+                'label' => 'Nút bấm 2 (Link)',
+                'name' => 'home_hero_btn_2',
+                'type' => 'link',
+                'return_format' => 'array',
             ),
 
             // TAB: SERVICES

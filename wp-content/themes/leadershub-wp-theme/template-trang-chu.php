@@ -10,10 +10,13 @@ get_header();
 // ==========================================
 // 1. KHAI BÁO BIẾN & SAFE FALLBACKS ĐẦU TEMPLATE (.agent Rules)
 // ==========================================
-$hero_title  = ( function_exists( 'get_field' ) ? get_field( 'home_hero_title' ) : '' ) ?: '';
-$hero_desc   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_desc' ) : '' ) ?: '';
-$hero_video  = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video' ) : '' ) ?: '';
-$hero_poster = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
+$hero_subtitle = ( function_exists( 'get_field' ) ? get_field( 'home_hero_subtitle' ) : '' ) ?: '';
+$hero_title    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_title' ) : '' ) ?: '';
+$hero_desc     = ( function_exists( 'get_field' ) ? get_field( 'home_hero_desc' ) : '' ) ?: '';
+$hero_video    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video' ) : '' ) ?: '';
+$hero_poster   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
+$hero_btn_1    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_1' ) : array() ) ?: array();
+$hero_btn_2    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_2' ) : array() ) ?: array();
 ?>
 
 <!-- Hero Banner Section -->
@@ -30,9 +33,11 @@ $hero_poster = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' 
 
     <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 gap-12 items-center">
         <div class="space-y-6 max-w-2xl">
-            <span class="inline-block px-4 py-1 rounded-full bg-prestige-gold/20 text-prestige-gold font-label-sm text-xs tracking-widest uppercase font-bold border border-prestige-gold/30">
-                Premium Business Solution
-            </span>
+            <?php if ( ! empty( $hero_subtitle ) ) : ?>
+                <span class="inline-block px-4 py-1 rounded-full bg-prestige-gold/20 text-prestige-gold font-label-sm text-xs tracking-widest uppercase font-bold border border-prestige-gold/30">
+                    <?php echo esc_html( $hero_subtitle ); ?>
+                </span>
+            <?php endif; ?>
             
             <?php if ( ! empty( $hero_title ) ) : ?>
                 <h1 class="font-display-lg text-4xl md:text-6xl font-bold leading-tight">
@@ -46,10 +51,25 @@ $hero_poster = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' 
                 </p>
             <?php endif; ?>
 
-            <div class="flex flex-wrap gap-4 pt-4">
-                <a href="#register" class="bg-success-green hover:bg-success-green/90 text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:scale-105 transition-transform duration-200 shadow-md uppercase tracking-wider font-semibold">Đăng ký tư vấn</a>
-                <a href="#services" class="border border-white/50 text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-white/10 transition-all font-semibold">Khám phá dịch vụ</a>
-            </div>
+            <?php if ( ! empty( $hero_btn_1['url'] ) || ! empty( $hero_btn_2['url'] ) ) : ?>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <?php if ( ! empty( $hero_btn_1['url'] ) ) : ?>
+                        <a href="<?php echo esc_url( $hero_btn_1['url'] ); ?>"
+                           target="<?php echo esc_attr( ! empty( $hero_btn_1['target'] ) ? $hero_btn_1['target'] : '_self' ); ?>"
+                           class="bg-success-green hover:bg-success-green/90 text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:scale-105 transition-transform duration-200 shadow-md uppercase tracking-wider font-semibold">
+                            <?php echo esc_html( ! empty( $hero_btn_1['title'] ) ? $hero_btn_1['title'] : 'Đăng ký tư vấn' ); ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $hero_btn_2['url'] ) ) : ?>
+                        <a href="<?php echo esc_url( $hero_btn_2['url'] ); ?>"
+                           target="<?php echo esc_attr( ! empty( $hero_btn_2['target'] ) ? $hero_btn_2['target'] : '_self' ); ?>"
+                           class="border border-white/50 text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-white/10 transition-all font-semibold">
+                            <?php echo esc_html( ! empty( $hero_btn_2['title'] ) ? $hero_btn_2['title'] : 'Khám phá dịch vụ' ); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </header>

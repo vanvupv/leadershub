@@ -7,10 +7,13 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 ## 📌 1. Section 1: Hero Banner (Banner Chính Video / Ảnh Dự Phòng)
 - **Mục đích:** Hiển thị ấn tượng đầu tiên khi khách truy cập với video nền tự động phát và thông điệp thương hiệu.
 - **Trường ACF (`group_lh_home` -> Tab Hero):**
-  1. `home_hero_title` *(Type: text)* - Tiêu đề chính Hero Banner.
-  2. `home_hero_desc` *(Type: textarea)* - Đoạn văn mô tả ngắn giới thiệu giải pháp.
-  3. `home_hero_video` *(Type: text/url)* - Đường dẫn URL tệp Video nền (`.mp4`).
-  4. `home_hero_poster` *(Type: image)* - Hình ảnh dự phòng (Poster) hiển thị khi video đang nạp hoặc trên thiết bị di động.
+  1. `home_hero_subtitle` *(Type: text)* - Tiêu đề phụ / Badge thông báo (VD: `Premium Business Solution`).
+  2. `home_hero_title` *(Type: text)* - Tiêu đề chính Hero Banner.
+  3. `home_hero_desc` *(Type: textarea)* - Đoạn văn mô tả ngắn giới thiệu giải pháp.
+  4. `home_hero_video` *(Type: text/url)* - Đường dẫn URL tệp Video nền (`.mp4`).
+  5. `home_hero_poster` *(Type: image)* - Hình ảnh dự phòng (Poster) hiển thị khi video đang nạp hoặc trên thiết bị di động.
+  6. `home_hero_btn_1` *(Type: link)* - Nút bấm hành động chính (Return: Array: URL, Title, Target).
+  7. `home_hero_btn_2` *(Type: link)* - Nút bấm hành động phụ (Return: Array: URL, Title, Target).
 
 ---
 
