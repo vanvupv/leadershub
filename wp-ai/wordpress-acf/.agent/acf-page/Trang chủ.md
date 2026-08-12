@@ -4,7 +4,8 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## 📌 1. Section 1: Hero Banner (Banner Chính Video / Ảnh Dự Phòng)
+## 📌 1. Section 1: Hero Banner (Banner Chính Video / Ảnh Dự Phòng) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Hiển thị ấn tượng đầu tiên khi khách truy cập với video nền tự động phát và thông điệp thương hiệu.
 - **Trường ACF (`group_lh_home` -> Tab Hero):**
   1. `home_hero_subtitle` *(Type: text)* - Tiêu đề phụ / Badge thông báo (VD: `Premium Business Solution`).
@@ -17,7 +18,8 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## 🏢 2. Section 2: Services (Danh Mục Dịch Vụ & Giải Pháp Văn Phòng)
+## 🏢 2. Section 2: Services (Danh Mục Dịch Vụ & Giải Pháp Văn Phòng) - [ ] TODO
+- **Trạng thái:** ⏳ **TODO (Đang tiến hành)**
 - **Mục đích:** Giới thiệu các loại hình văn phòng chuẩn quốc tế tại The Leaders Hub.
 - **Trường ACF:**
   1. `home_services_list` *(Type: repeater)* - Mảng danh sách các gói dịch vụ (Văn phòng ảo, Văn phòng cao cấp, Phòng họp, Flexible Workspace):
@@ -28,7 +30,8 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## 💰 3. Section 3: Pricing Plans (Bảng Giá Dịch Vụ Văn Phòng Ảo)
+## 💰 3. Section 3: Pricing Plans (Bảng Giá Dịch Vụ Văn Phòng Ảo) - [ ] TODO
+- **Trạng thái:** ⏳ **TODO**
 - **Mục đích:** Trình bày rõ ràng bảng giá các gói văn phòng ảo giúp khách hàng dễ chọn lựa và so sánh.
 - **Trường ACF:**
   1. `home_pricing_plans` *(Type: repeater)* - Danh sách các gói cước dịch vụ (Economy, Standard, Premium):
@@ -39,7 +42,8 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## 🖼️ 4. Section 4: Environment Showcase (Thư Viện Ảnh Không Gian Thực Tế)
+## 🖼️ 4. Section 4: Environment Showcase (Thư Viện Ảnh Không Gian Thực Tế) - [ ] TODO
+- **Trạng thái:** ⏳ **TODO**
 - **Mục đích:** Trực quan hóa hình ảnh thực tế 5 sao tại tòa tháp Capital Place (Khu lễ tân, Business Lounge, Pantry,...).
 - **Trường ACF:**
   1. `home_gallery_images` *(Type: repeater)* - Thư viện ảnh thực tế không gian làm việc:
@@ -49,7 +53,8 @@ Tài liệu quy định và cấu trúc 5 Section chính cho trang chủ **The L
 
 ---
 
-## ⭐ 5. Section 5: Customer Reviews (Đánh Giá Thực Tế Từ Khách Hàng)
+## ⭐ 5. Section 5: Customer Reviews (Đánh Giá Thực Tế Từ Khách Hàng) - [ ] TODO
+- **Trạng thái:** ⏳ **TODO**
 - **Mục đích:** Tăng chứng thực xã hội (Social Proof) và lòng tin của khách hàng doanh nghiệp.
 - **Trường ACF:**
   1. `home_reviews_list` *(Type: repeater)* - Danh sách các bài đánh giá từ CEO & Đối tác:
