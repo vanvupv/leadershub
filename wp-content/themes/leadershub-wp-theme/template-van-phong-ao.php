@@ -33,6 +33,13 @@ $cta_desc  = lh_field( 'vo_cta_desc', 'Hãy gửi yêu cầu của bạn, đội
 // ACF Variables: Section 7 FAQ
 $faq_title = lh_field( 'vo_faq_title', 'Câu hỏi thường gặp' );
 
+function lh_field( $name, $default = '' ) {
+    if ( function_exists( 'get_field' ) ) {
+        $val = get_field( $name );
+        return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+    }
+    return $default;
+}
 ?>
 
 <!-- Hero Banner -->
