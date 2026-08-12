@@ -486,6 +486,17 @@ $reviews_shortcode    = ( function_exists( 'get_field' ) ? get_field( 'home_revi
 <?php endif; ?>
 
 <!-- News Section -->
+<?php
+$news_args = array(
+    'post_type'           => 'post',
+    'posts_per_page'      => 3,
+    'post_status'         => 'publish',
+    'ignore_sticky_posts' => true,
+);
+$news_query = new WP_Query( $news_args );
+
+if ( $news_query->have_posts() ) :
+?>
 <section class="py-section-padding-desktop bg-white scroll-mt-20" id="news">
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="flex justify-between items-end mb-12">
@@ -493,54 +504,37 @@ $reviews_shortcode    = ( function_exists( 'get_field' ) ? get_field( 'home_revi
                 <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Tin tức mới nhất</h2>
                 <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
             </div>
-            <a href="<?php echo esc_url( home_url('/tin-tuc') ); ?>" class="text-sm font-semibold text-deep-navy hover:text-prestige-gold transition-colors flex items-center gap-1 border-b border-deep-navy/20 pb-1">
+            <a href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/tin-tuc' ) ); ?>" class="text-sm font-semibold text-deep-navy hover:text-prestige-gold transition-colors flex items-center gap-1 border-b border-deep-navy/20 pb-1">
                 Xem tất cả <span class="material-symbols-outlined text-xs">arrow_forward</span>
             </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl overflow-hidden border border-surface-container-high hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="h-52 overflow-hidden relative">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Tương lai của mô hình văn phòng Hybrid 2024" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" />
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-bold text-prestige-gold uppercase tracking-wider block mb-2">Sự kiện</span>
-                        <h3 class="font-headline-md text-lg text-deep-navy font-bold mb-3 line-clamp-2 group-hover:text-prestige-gold transition-colors">Tương lai của mô hình văn phòng Hybrid 2024</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3">Xu hình làm việc linh hoạt đang thay đổi cách các doanh nghiệp vận hành và lựa chọn không gian làm việc tối ưu.</p>
+            <?php while ( $news_query->have_posts() ) : $news_query->the_post();
+                $cats     = get_the_category();
+                $cat_name = ! empty( $cats[0] ) ? $cats[0]->name : 'Tin tức';
+            ?>
+                <a href="<?php the_permalink(); ?>" class="bg-white rounded-2xl overflow-hidden border border-surface-container-high hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="h-52 overflow-hidden relative">
+                        <?php if ( has_post_thumbnail() ) : ?>
+                            <?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105', 'alt' => get_the_title() ) ); ?>
+                        <?php else : ?>
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="<?php the_title_attribute(); ?>" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" />
+                        <?php endif; ?>
                     </div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl overflow-hidden border border-surface-container-high hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="h-52 overflow-hidden relative">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="5 điều cần lưu ý khi thuê văn phòng ảo" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80" />
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-bold text-prestige-gold uppercase tracking-wider block mb-2">Cẩm nang</span>
-                        <h3 class="font-headline-md text-lg text-deep-navy font-bold mb-3 line-clamp-2 group-hover:text-prestige-gold transition-colors">5 điều cần lưu ý khi thuê văn phòng ảo</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3">Lựa chọn đúng địa chỉ kinh doanh giúp doanh nghiệp của bạn tạo dựng uy tín và tối ưu hóa chi phí vận hành ban đầu.</p>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-prestige-gold uppercase tracking-wider block mb-2"><?php echo esc_html( $cat_name ); ?></span>
+                            <h3 class="font-headline-md text-lg text-deep-navy font-bold mb-3 line-clamp-2 group-hover:text-prestige-gold transition-colors"><?php the_title(); ?></h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 25 ) ); ?></p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl overflow-hidden border border-surface-container-high hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="h-52 overflow-hidden relative">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Thủ tục thành lập doanh nghiệp năm 2024" src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=600&q=80" />
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-bold text-prestige-gold uppercase tracking-wider block mb-2">Pháp lý</span>
-                        <h3 class="font-headline-md text-lg text-deep-navy font-bold mb-3 line-clamp-2 group-hover:text-prestige-gold transition-colors">Thủ tục thành lập doanh nghiệp năm 2024</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed line-clamp-3">Cập nhật những quy định mới nhất về đăng ký kinh doanh và các loại giấy phép cần thiết cho startup và doanh nghiệp mới.</p>
-                    </div>
-                </div>
-            </div>
+                </a>
+            <?php endwhile; wp_reset_postdata(); ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- CTA Banner Section -->
 <section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden relative">
