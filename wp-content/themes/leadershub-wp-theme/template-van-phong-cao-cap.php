@@ -18,6 +18,12 @@ $hero_btn1_url   = lh_field( 'so_hero_btn1_url', '#booking-form' );
 $hero_btn2_text  = lh_field( 'so_hero_btn2_text', 'NHẬN BÁO GIÁ NGAY' );
 $hero_btn2_url   = lh_field( 'so_hero_btn2_url', '#booking-form' );
 
+// ACF Variables: Section 2 Introduction
+$intro_title   = lh_field( 'so_intro_title', 'Không gian riêng tư / Nâng tầm doanh nghiệp' );
+$intro_content = lh_field( 'so_intro_content', '<p>Tại The Leaders Hub, chúng tôi kiến tạo một hệ sinh thái làm việc chuyên nghiệp và đẳng cấp, nơi các nhà lãnh đạo và doanh nghiệp có thể tập trung hoàn toàn vào giá trị cốt lõi.</p><ul class="space-y-4"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-prestige-gold mt-1">check_circle</span><span>Văn phòng riêng đầy đủ nội thất và dịch vụ vận hành (Serviced Office).</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-prestige-gold mt-1">check_circle</span><span>Thời gian thuê linh hoạt từ ngắn hạn đến dài hạn tùy nhu cầu.</span></li></ul>' );
+$intro_image_1 = lh_field( 'so_intro_image_1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBe4Fcc5_yJMz0qbFJf7UJa9STWVjghx53tHceGjryBKP7_ha1hwuaCymDNsXCqlcdXX58986mHmZfz8zGoyb3yjixB0RXbrbP5AL6fzlI0LxZPRXto7dglTbu9xaS4zNpEdpcaSkCxac-LqY25dV6aHPBCx7l6ynSfiPCHP9kOQ5TkLD3k_ANjNQhokxqn9lZY_3bMMwE7KCGGVmBt6xHz53ylZx2irb1kpJptF2eKP36ytj0GjCCgJzIoadfCE5gtCTXHk8MdNwIg' );
+$intro_image_2 = lh_field( 'so_intro_image_2', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqrzM479luW7iWxlHGuRUfXV4Q1stJI1RoV5CfhFQ9GHJ0XD3shD7CQ3swtckwWPbKVXEwuyrae9uIHD7WQUNu5IdO5GwJiS4KYi2zDd5QCsJaVVN5YZ53unWXPGNzZ3HWXpfiw4j4pomiHDwDK1DOCMbTWrqFfg8j28tDED-QHGc7jilOjIJ3Y1dyxWYFr8OQs9zJvF52kMEaagZdrUGsKipmzZDEDMLinTAuj657W6tIu9WXKavBhRBovYMj8Xt7q-XCpgU1bLFk' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -79,40 +85,40 @@ function lh_field( $name, $default = '' ) {
 </section>
 
 <!-- Introduction -->
+<?php if ( ! empty( $intro_title ) || ! empty( $intro_content ) || ! empty( $intro_image_1 ) || ! empty( $intro_image_2 ) ) : ?>
 <section class="py-section-padding-desktop bg-white">
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-8 font-bold"><?php echo esc_html( lh_field( 'so_intro_title', 'Không gian riêng tư / Nâng tầm doanh nghiệp' ) ); ?></h2>
-                <div class="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed">
-                    <?php if ( lh_field( 'so_intro_content' ) ) : ?>
-                        <?php echo wp_kses_post( lh_field( 'so_intro_content' ) ); ?>
-                    <?php else : ?>
-                        <p>Tại The Leaders Hub, chúng tôi kiến tạo một hệ sinh thái làm việc chuyên nghiệp và đẳng cấp, nơi các nhà lãnh đạo và doanh nghiệp có thể tập trung hoàn toàn vào giá trị cốt lõi.</p>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-prestige-gold mt-1">check_circle</span>
-                                <span>Văn phòng riêng đầy đủ nội thất và dịch vụ vận hành (Serviced Office).</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-prestige-gold mt-1">check_circle</span>
-                                <span>Thời gian thuê linh hoạt từ ngắn hạn đến dài hạn tùy nhu cầu.</span>
-                            </li>
-                        </ul>
+                <?php if ( ! empty( $intro_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-8 font-bold"><?php echo esc_html( $intro_title ); ?></h2>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $intro_content ) ) : ?>
+                    <div class="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                        <?php echo wp_kses_post( $intro_content ); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php if ( ! empty( $intro_image_1 ) || ! empty( $intro_image_2 ) ) : ?>
+                <div class="relative grid grid-cols-2 gap-4">
+                    <?php if ( ! empty( $intro_image_1 ) ) : ?>
+                        <div class="pt-12">
+                            <img alt="<?php echo esc_attr( $intro_title ); ?>" class="w-full h-[400px] object-cover rounded-xl shadow-xl" src="<?php echo esc_url( $intro_image_1 ); ?>" />
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $intro_image_2 ) ) : ?>
+                        <div>
+                            <img alt="<?php echo esc_attr( $intro_title ); ?>" class="w-full h-[400px] object-cover rounded-xl shadow-xl" src="<?php echo esc_url( $intro_image_2 ); ?>" />
+                        </div>
                     <?php endif; ?>
                 </div>
-            </div>
-            <div class="relative grid grid-cols-2 gap-4">
-                <div class="pt-12">
-                    <img class="w-full h-[400px] object-cover rounded-xl shadow-xl" src="<?php echo esc_url( lh_field( 'so_intro_image_1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBe4Fcc5_yJMz0qbFJf7UJa9STWVjghx53tHceGjryBKP7_ha1hwuaCymDNsXCqlcdXX58986mHmZfz8zGoyb3yjixB0RXbrbP5AL6fzlI0LxZPRXto7dglTbu9xaS4zNpEdpcaSkCxac-LqY25dV6aHPBCx7l6ynSfiPCHP9kOQ5TkLD3k_ANjNQhokxqn9lZY_3bMMwE7KCGGVmBt6xHz53ylZx2irb1kpJptF2eKP36ytj0GjCCgJzIoadfCE5gtCTXHk8MdNwIg' ) ); ?>" />
-                </div>
-                <div>
-                    <img class="w-full h-[400px] object-cover rounded-xl shadow-xl" src="<?php echo esc_url( lh_field( 'so_intro_image_2', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqrzM479luW7iWxlHGuRUfXV4Q1stJI1RoV5CfhFQ9GHJ0XD3shD7CQ3swtckwWPbKVXEwuyrae9uIHD7WQUNu5IdO5GwJiS4KYi2zDd5QCsJaVVN5YZ53unWXPGNzZ3HWXpfiw4j4pomiHDwDK1DOCMbTWrqFfg8j28tDED-QHGc7jilOjIJ3Y1dyxWYFr8OQs9zJvF52kMEaagZdrUGsKipmzZDEDMLinTAuj657W6tIu9WXKavBhRBovYMj8Xt7q-XCpgU1bLFk' ) ); ?>" />
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Utilities Grid -->
 <section class="py-section-padding-desktop bg-surface">
