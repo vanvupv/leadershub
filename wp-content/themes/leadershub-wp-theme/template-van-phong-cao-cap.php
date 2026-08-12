@@ -7,6 +7,17 @@
 
 get_header();
 
+// ACF Variables: Section 1 Hero Banner
+$hero_badge      = lh_field( 'so_hero_badge', 'DỊCH VỤ ĐẲNG CẤP' );
+$hero_title      = lh_field( 'so_hero_title', 'Văn phòng dịch vụ' );
+$hero_gold_title = lh_field( 'so_hero_gold_title', '(Serviced Office)' );
+$hero_desc       = lh_field( 'so_hero_desc', 'Giải pháp văn phòng riêng đầy đủ nội thất và dịch vụ vận hành chuyên nghiệp tiêu chuẩn 5 sao tại Capital Place.' );
+$hero_image      = lh_field( 'so_hero_image', 'https://lh3.googleusercontent.com/aida/AP1WRLs__mEPJqOiaNAI8-KgSJwLDwGOzYLG8yGx4sItV0u-QVeuSUYuc0A4f15ZmcSU3909z917fGcFLHB7BSgdcqJC-TFirnSeYV1iXpx458hLhXF9cmOWHI7g5co1vlpQ7KYblP-FA3X4Jks4pvNUlYVBO7U0gusm4fNP1yyTs4ywjh145wvogEckRXMDQbcZ5TfiGtyQhRPloF4RWRqBaJQyR45m0YPs_kfFTPqseuZjABqJD8w8sTwCdFg' );
+$hero_btn1_text  = lh_field( 'so_hero_btn1_text', 'ĐẶT LỊCH THAM QUAN' );
+$hero_btn1_url   = lh_field( 'so_hero_btn1_url', '#booking-form' );
+$hero_btn2_text  = lh_field( 'so_hero_btn2_text', 'NHẬN BÁO GIÁ NGAY' );
+$hero_btn2_url   = lh_field( 'so_hero_btn2_url', '#booking-form' );
+
 function lh_field( $name, $default = '' ) {
     if ( function_exists( 'get_field' ) ) {
         $val = get_field( $name );
@@ -19,23 +30,50 @@ function lh_field( $name, $default = '' ) {
 <!-- Hero Banner -->
 <section class="relative h-[80vh] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img alt="Premium Office Interior" class="w-full h-full object-cover" src="<?php echo esc_url( lh_field( 'so_hero_image', 'https://lh3.googleusercontent.com/aida/AP1WRLs__mEPJqOiaNAI8-KgSJwLDwGOzYLG8yGx4sItV0u-QVeuSUYuc0A4f15ZmcSU3909z917fGcFLHB7BSgdcqJC-TFirnSeYV1iXpx458hLhXF9cmOWHI7g5co1vlpQ7KYblP-FA3X4Jks4pvNUlYVBO7U0gusm4fNP1yyTs4ywjh145wvogEckRXMDQbcZ5TfiGtyQhRPloF4RWRqBaJQyR45m0YPs_kfFTPqseuZjABqJD8w8sTwCdFg' ) ); ?>" />
+        <?php if ( ! empty( $hero_image ) ) : ?>
+            <img alt="<?php echo esc_attr( $hero_title ); ?>" class="w-full h-full object-cover" src="<?php echo esc_url( $hero_image ); ?>" />
+        <?php endif; ?>
         <div class="absolute inset-0 bg-gradient-to-r from-deep-navy/80 to-transparent"></div>
     </div>
     <div class="max-w-container-max mx-auto px-gutter w-full relative z-10">
         <div class="max-w-2xl text-white">
-            <span class="inline-block px-4 py-1 bg-prestige-gold/20 text-prestige-gold rounded-full font-label-sm text-xs mb-6 border border-prestige-gold/30 font-bold uppercase tracking-wider">DỊCH VỤ ĐẲNG CẤP</span>
-            <h1 class="font-display-lg text-4xl md:text-5xl mb-6 leading-tight font-bold">
-                <?php echo esc_html( lh_field( 'so_hero_title', 'Văn phòng dịch vụ' ) ); ?> <br/>
-                <span class="text-prestige-gold"><?php echo esc_html( lh_field( 'so_hero_gold_title', '(Serviced Office)' ) ); ?></span>
-            </h1>
-            <p class="font-body-lg text-body-lg text-surface-variant mb-10 opacity-90">
-                <?php echo esc_html( lh_field( 'so_hero_desc', 'Giải pháp văn phòng riêng đầy đủ nội thất và dịch vụ vận hành chuyên nghiệp tiêu chuẩn 5 sao tại Capital Place.' ) ); ?>
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a class="bg-success-green hover:bg-success-green/90 text-white px-8 py-4 rounded-lg font-label-sm text-sm shadow-lg transition-all font-bold" href="#booking-form">ĐẶT LỊCH THAM QUAN</a>
-                <a class="border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-label-sm text-sm backdrop-blur-sm transition-all font-bold text-center" href="#booking-form">NHẬN BÁO GIÁ NGAY</a>
-            </div>
+            <?php if ( ! empty( $hero_badge ) ) : ?>
+                <span class="inline-block px-4 py-1 bg-prestige-gold/20 text-prestige-gold rounded-full font-label-sm text-xs mb-6 border border-prestige-gold/30 font-bold uppercase tracking-wider"><?php echo esc_html( $hero_badge ); ?></span>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $hero_title ) || ! empty( $hero_gold_title ) ) : ?>
+                <h1 class="font-display-lg text-4xl md:text-5xl mb-6 leading-tight font-bold">
+                    <?php if ( ! empty( $hero_title ) ) : ?>
+                        <?php echo esc_html( $hero_title ); ?>
+                    <?php endif; ?>
+                    <?php if ( ! empty( $hero_gold_title ) ) : ?>
+                        <br/>
+                        <span class="text-prestige-gold"><?php echo esc_html( $hero_gold_title ); ?></span>
+                    <?php endif; ?>
+                </h1>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $hero_desc ) ) : ?>
+                <p class="font-body-lg text-body-lg text-surface-variant mb-10 opacity-90">
+                    <?php echo esc_html( $hero_desc ); ?>
+                </p>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $hero_btn1_text ) || ! empty( $hero_btn2_text ) ) : ?>
+                <div class="flex flex-wrap gap-4">
+                    <?php if ( ! empty( $hero_btn1_text ) ) : ?>
+                        <a class="bg-success-green hover:bg-success-green/90 text-white px-8 py-4 rounded-lg font-label-sm text-sm shadow-lg transition-all font-bold" href="<?php echo esc_url( $hero_btn1_url ); ?>">
+                            <?php echo esc_html( $hero_btn1_text ); ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $hero_btn2_text ) ) : ?>
+                        <a class="border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-label-sm text-sm backdrop-blur-sm transition-all font-bold text-center" href="<?php echo esc_url( $hero_btn2_url ); ?>">
+                            <?php echo esc_html( $hero_btn2_text ); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

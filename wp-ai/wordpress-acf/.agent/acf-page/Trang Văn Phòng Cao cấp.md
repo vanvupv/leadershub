@@ -7,7 +7,8 @@ Field Group ACF: `group_lh_serviced` (Cấu hình Trang Văn Phòng Cao Cấp - 
 
 ## 🎯 Danh Sách Section & Trường ACF Đã Phân Theo Tab
 
-### 🚀 1. Section 1: Hero Banner (Dịch Vụ Văn Phòng Cao Cấp Hạng A)
+### 🚀 1. Section 1: Hero Banner (Dịch Vụ Văn Phòng Cao Cấp Hạng A) - [x] DONE
+- **Trạng thái:** ✅ **DONE**
 - **Mục đích:** Khẳng định đẳng cấp dịch vụ văn phòng trọn gói tiêu chuẩn 5 sao tại tháp tài chính Capital Place.
 - **Trường ACF (`group_lh_serviced` -> Tab 1. Hero Banner):**
   1. `so_hero_badge` *(Type: text)* - Badge nhỏ góc trên (Mặc định: `DỊCH VỤ ĐẲNG CẤP`).
