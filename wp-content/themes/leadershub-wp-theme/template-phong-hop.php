@@ -116,7 +116,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 <?php endif; ?>
 
 <!-- Room Types Grid -->
-<?php if ( ! empty( $rooms_title ) || ( function_exists( 'have_rows' ) && have_rows( 'mr_rooms_list' ) ) ) : ?>
+<?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_rooms_list' ) ) : ?>
 <section class="py-section-padding-desktop bg-surface-container-low" id="rooms">
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $rooms_title ) ) : ?>
@@ -127,108 +127,56 @@ if ( ! function_exists( 'lh_field' ) ) {
         <?php endif; ?>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_rooms_list' ) ) : ?>
-                <?php while ( have_rows( 'mr_rooms_list' ) ) : the_row();
-                    $r_image      = get_sub_field( 'image' );
-                    $r_area       = get_sub_field( 'area' );
-                    $r_title      = get_sub_field( 'title' );
-                    $r_capacity   = get_sub_field( 'capacity' );
-                    $r_features   = get_sub_field( 'features' );
-                    $r_price_text = get_sub_field( 'price_text' ) ?: 'Liên hệ nhận báo giá';
-                    $r_btn_text   = get_sub_field( 'btn_text' ) ?: 'Đặt phòng';
-                    $r_btn_url    = get_sub_field( 'btn_url' ) ?: '#booking';
-                ?>
-                    <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
-                        <?php if ( ! empty( $r_image ) ) : ?>
-                            <div class="h-72 relative overflow-hidden">
-                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?php echo esc_url( $r_image ); ?>" alt="<?php echo esc_attr( $r_title ); ?>" />
-                                <?php if ( ! empty( $r_area ) ) : ?>
-                                    <div class="absolute top-4 left-4 bg-deep-navy/80 backdrop-blur-sm text-white px-3 py-1 rounded-full font-label-sm text-xs font-bold">
-                                        Diện tích <?php echo esc_html( $r_area ); ?>
-                                    </div>
-                                <?php endif; ?>
+            <?php while ( have_rows( 'mr_rooms_list' ) ) : the_row();
+                $r_image      = get_sub_field( 'image' );
+                $r_area       = get_sub_field( 'area' );
+                $r_title      = get_sub_field( 'title' );
+                $r_capacity   = get_sub_field( 'capacity' );
+                $r_features   = get_sub_field( 'features' );
+                $r_price_text = get_sub_field( 'price_text' ) ?: 'Liên hệ nhận báo giá';
+                $r_btn_text   = get_sub_field( 'btn_text' ) ?: 'Đặt phòng';
+                $r_btn_url    = get_sub_field( 'btn_url' ) ?: '#booking';
+            ?>
+                <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
+                    <?php if ( ! empty( $r_image ) ) : ?>
+                        <div class="h-72 relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?php echo esc_url( $r_image ); ?>" alt="<?php echo esc_attr( $r_title ); ?>" />
+                            <?php if ( ! empty( $r_area ) ) : ?>
+                                <div class="absolute top-4 left-4 bg-deep-navy/80 backdrop-blur-sm text-white px-3 py-1 rounded-full font-label-sm text-xs font-bold">
+                                    Diện tích <?php echo esc_html( $r_area ); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="p-8">
+                        <?php if ( ! empty( $r_title ) ) : ?>
+                            <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold"><?php echo esc_html( $r_title ); ?></h3>
+                        <?php endif; ?>
+                        <?php if ( ! empty( $r_capacity ) ) : ?>
+                            <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold"><?php echo esc_html( $r_capacity ); ?></p>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $r_features ) ) : ?>
+                            <div class="space-y-3 mb-8 text-slate-500 font-body-md text-sm">
+                                <?php echo wp_kses_post( $r_features ); ?>
                             </div>
                         <?php endif; ?>
 
-                        <div class="p-8">
-                            <?php if ( ! empty( $r_title ) ) : ?>
-                                <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold"><?php echo esc_html( $r_title ); ?></h3>
-                            <?php endif; ?>
-                            <?php if ( ! empty( $r_capacity ) ) : ?>
-                                <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold"><?php echo esc_html( $r_capacity ); ?></p>
-                            <?php endif; ?>
-
-                            <?php if ( ! empty( $r_features ) ) : ?>
-                                <div class="space-y-3 mb-8 text-slate-500 font-body-md text-sm">
-                                    <?php echo wp_kses_post( $r_features ); ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <div class="flex justify-between items-center pt-4 border-t border-surface-container">
-                                <span class="font-headline-md text-base text-deep-navy font-bold"><?php echo esc_html( $r_price_text ); ?></span>
-                                <a href="<?php echo esc_url( $r_btn_url ); ?>" class="bg-success-green hover:bg-deep-navy text-white px-6 py-2 rounded-lg font-label-sm text-sm font-semibold transition-colors duration-200"><?php echo esc_html( $r_btn_text ); ?></a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-            <?php else : ?>
-                <!-- Fallback mẫu 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-72 relative overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Phòng họp Executive" />
-                        <div class="absolute top-4 left-4 bg-deep-navy/80 backdrop-blur-sm text-white px-3 py-1 rounded-full font-label-sm text-xs font-bold">
-                            Diện tích 25m²
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold">Phòng họp Executive (Bàn tròn)</h3>
-                        <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold">Sức chứa: 6 - 10 người</p>
-                        <div class="space-y-3 mb-8 text-slate-500 font-body-md text-sm">
-                            <ul class="space-y-2">
-                                <li>• Màn hình LED 65 inch sắc nét &amp; kết nối không dây</li>
-                                <li>• Wi-Fi tốc độ cao &amp; Hệ thống âm thanh hội nghị</li>
-                                <li>• Trà, cà phê &amp; nước uống phục vụ tận nơi</li>
-                            </ul>
-                        </div>
                         <div class="flex justify-between items-center pt-4 border-t border-surface-container">
-                            <span class="font-headline-md text-base text-deep-navy font-bold">Từ 250.000đ / giờ</span>
-                            <a href="#booking" class="bg-success-green hover:bg-deep-navy text-white px-6 py-2 rounded-lg font-label-sm text-sm font-semibold transition-colors duration-200">Đặt phòng</a>
+                            <span class="font-headline-md text-base text-deep-navy font-bold"><?php echo esc_html( $r_price_text ); ?></span>
+                            <a href="<?php echo esc_url( $r_btn_url ); ?>" class="bg-success-green hover:bg-deep-navy text-white px-6 py-2 rounded-lg font-label-sm text-sm font-semibold transition-colors duration-200"><?php echo esc_html( $r_btn_text ); ?></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Fallback mẫu 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-72 relative overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80" alt="Phòng họp Boardroom" />
-                        <div class="absolute top-4 left-4 bg-deep-navy/80 backdrop-blur-sm text-white px-3 py-1 rounded-full font-label-sm text-xs font-bold">
-                            Diện tích 45m²
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold">Phòng họp Hội nghị (Boardroom)</h3>
-                        <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold">Sức chứa: 12 - 20 người</p>
-                        <div class="space-y-3 mb-8 text-slate-500 font-body-md text-sm">
-                            <ul class="space-y-2">
-                                <li>• Máy chiếu &amp; Bảng ghi chú tương tác thông minh</li>
-                                <li>• Hệ thống Video Conference họp trực tuyến chuyên nghiệp</li>
-                                <li>• Lễ tân chào đón đối tác &amp; hỗ trợ kỹ thuật suốt buổi họp</li>
-                            </ul>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t border-surface-container">
-                            <span class="font-headline-md text-base text-deep-navy font-bold">Từ 450.000đ / giờ</span>
-                            <a href="#booking" class="bg-success-green hover:bg-deep-navy text-white px-6 py-2 rounded-lg font-label-sm text-sm font-semibold transition-colors duration-200">Đặt phòng</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
+            <?php endwhile; ?>
         </div>
     </div>
 </section>
 <?php endif; ?>
 
 <!-- Comparison Table Section -->
-<?php if ( ! empty( $comp_title ) || ( function_exists( 'have_rows' ) && have_rows( 'mr_comp_rows' ) ) ) : ?>
+<?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_comp_rows' ) ) : ?>
 <section class="py-section-padding-desktop bg-surface-container-low" id="comparison">
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $comp_title ) ) : ?>
@@ -251,66 +199,32 @@ if ( ! function_exists( 'lh_field' ) ) {
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-surface-container-highest">
-                    <?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_comp_rows' ) ) : ?>
-                        <?php while ( have_rows( 'mr_comp_rows' ) ) : the_row();
-                            $feat_name    = get_sub_field( 'feature_name' );
-                            $eco_val      = get_sub_field( 'economy_val' );
-                            $std_val      = get_sub_field( 'standard_val' );
-                            $pre_val      = get_sub_field( 'premium_val' );
+                    <?php while ( have_rows( 'mr_comp_rows' ) ) : the_row();
+                        $feat_name    = get_sub_field( 'feature_name' );
+                        $eco_val      = get_sub_field( 'economy_val' );
+                        $std_val      = get_sub_field( 'standard_val' );
+                        $pre_val      = get_sub_field( 'premium_val' );
 
-                            if ( empty( $feat_name ) ) continue;
+                        if ( empty( $feat_name ) ) continue;
 
-                            $render_val = function( $val ) {
-                                $v = strtolower( trim( $val ) );
-                                if ( in_array( $v, array( 'yes', 'check', '1', 'true' ), true ) ) {
-                                    return '<span class="material-symbols-outlined text-success-green font-bold">check</span>';
-                                }
-                                if ( in_array( $v, array( 'no', 'close', '0', 'false' ), true ) ) {
-                                    return '<span class="material-symbols-outlined text-on-surface-variant/30">close</span>';
-                                }
-                                return esc_html( $val );
-                            };
-                        ?>
-                            <tr>
-                                <td class="p-6 font-body-md text-sm font-medium"><?php echo esc_html( $feat_name ); ?></td>
-                                <td class="p-6 text-center text-sm"><?php echo $render_val( $eco_val ); ?></td>
-                                <td class="p-6 text-center text-sm"><?php echo $render_val( $std_val ); ?></td>
-                                <td class="p-6 text-center text-sm"><?php echo $render_val( $pre_val ); ?></td>
-                            </tr>
-                        <?php endwhile; ?>
-                    <?php else : ?>
-                        <!-- Fallback Rows -->
+                        $render_val = function( $val ) {
+                            $v = strtolower( trim( $val ) );
+                            if ( in_array( $v, array( 'yes', 'check', '1', 'true' ), true ) ) {
+                                return '<span class="material-symbols-outlined text-success-green font-bold">check</span>';
+                            }
+                            if ( in_array( $v, array( 'no', 'close', '0', 'false' ), true ) ) {
+                                return '<span class="material-symbols-outlined text-on-surface-variant/30">close</span>';
+                            }
+                            return esc_html( $val );
+                        };
+                    ?>
                         <tr>
-                            <td class="p-6 font-body-md text-sm font-medium">Sức chứa tiêu chuẩn</td>
-                            <td class="p-6 text-center text-sm font-semibold">6 - 10 người</td>
-                            <td class="p-6 text-center text-sm font-semibold">12 - 20 người</td>
-                            <td class="p-6 text-center text-sm font-semibold">30 - 50 người</td>
+                            <td class="p-6 font-body-md text-sm font-medium"><?php echo esc_html( $feat_name ); ?></td>
+                            <td class="p-6 text-center text-sm"><?php echo $render_val( $eco_val ); ?></td>
+                            <td class="p-6 text-center text-sm"><?php echo $render_val( $std_val ); ?></td>
+                            <td class="p-6 text-center text-sm"><?php echo $render_val( $pre_val ); ?></td>
                         </tr>
-                        <tr>
-                            <td class="p-6 font-body-md text-sm font-medium">Màn hình LED / Máy chiếu 4K</td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-body-md text-sm font-medium">Hệ thống Video Conference trực tuyến</td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-on-surface-variant/30">close</span></td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-body-md text-sm font-medium">Trà, Cà phê &amp; Nước uống VIP</td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-body-md text-sm font-medium">Hỗ trợ kỹ thuật &amp; Lễ tân riêng</td>
-                            <td class="p-6 text-center text-sm">Hỗ trợ chung</td>
-                            <td class="p-6 text-center text-sm font-semibold text-success-green">Lễ tân riêng</td>
-                            <td class="p-6 text-center text-sm font-semibold text-success-green">Đội ngũ riêng</td>
-                        </tr>
-                    <?php endif; ?>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>
