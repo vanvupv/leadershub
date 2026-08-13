@@ -123,19 +123,17 @@ if ( ! function_exists( 'lh_field' ) ) {
             </div>
         <?php endif; ?>
 
-        <?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_rooms_list' ) ) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_rooms_list' ) ) : ?>
                 <?php while ( have_rows( 'mr_rooms_list' ) ) : the_row();
-                    $r_image      = get_sub_field( 'image' );
+                    $r_image      = get_sub_field( 'image' ) ?: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
                     $r_area       = get_sub_field( 'area' );
-                    $r_title      = get_sub_field( 'title' );
+                    $r_title      = get_sub_field( 'title' ) ?: 'Phòng họp tiêu chuẩn 5 sao';
                     $r_capacity   = get_sub_field( 'capacity' );
                     $r_features   = get_sub_field( 'features' );
                     $r_price_text = get_sub_field( 'price_text' ) ?: 'Liên hệ nhận báo giá';
                     $r_btn_text   = get_sub_field( 'btn_text' ) ?: 'Đặt phòng';
                     $r_btn_url    = get_sub_field( 'btn_url' ) ?: '#booking';
-
-                    if ( empty( $r_title ) ) continue;
                 ?>
                     <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
                         <?php if ( ! empty( $r_image ) ) : ?>
@@ -168,8 +166,58 @@ if ( ! function_exists( 'lh_field' ) ) {
                         </div>
                     </div>
                 <?php endwhile; ?>
-            </div>
-        <?php endif; ?>
+            <?php else : ?>
+                <!-- Fallback mẫu 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-72 relative overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Phòng họp Executive" />
+                        <div class="absolute top-4 left-4 bg-deep-navy/80 backdrop-blur-sm text-white px-3 py-1 rounded-full font-label-sm text-xs font-bold">
+                            Diện tích 25m²
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold">Phòng họp Executive (Bàn tròn)</h3>
+                        <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold">Sức chứa: 6 - 10 người</p>
+                        <div class="space-y-3 mb-8 text-slate-500 font-body-md text-sm">
+                            <ul class="space-y-2">
+                                <li>• Màn hình LED 65 inch sắc nét &amp; kết nối không dây</li>
+                                <li>• Wi-Fi tốc độ cao &amp; Hệ thống âm thanh hội nghị</li>
+                                <li>• Trà, cà phê &amp; nước uống phục vụ tận nơi</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-surface-container">
+                            <span class="font-headline-md text-base text-deep-navy font-bold">Từ 250.000đ / giờ</span>
+                            <a href="#booking" class="bg-success-green hover:bg-deep-navy text-white px-6 py-2 rounded-lg font-label-sm text-sm font-semibold transition-colors duration-200">Đặt phòng</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fallback mẫu 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden ambient-shadow group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-72 relative overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80" alt="Phòng họp Boardroom" />
+                        <div class="absolute top-4 left-4 bg-deep-navy/80 backdrop-blur-sm text-white px-3 py-1 rounded-full font-label-sm text-xs font-bold">
+                            Diện tích 45m²
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold">Phòng họp Hội nghị (Boardroom)</h3>
+                        <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold">Sức chứa: 12 - 20 người</p>
+                        <div class="space-y-3 mb-8 text-slate-500 font-body-md text-sm">
+                            <ul class="space-y-2">
+                                <li>• Máy chiếu &amp; Bảng ghi chú tương tác thông minh</li>
+                                <li>• Hệ thống Video Conference họp trực tuyến chuyên nghiệp</li>
+                                <li>• Lễ tân chào đón đối tác &amp; hỗ trợ kỹ thuật suốt buổi họp</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-surface-container">
+                            <span class="font-headline-md text-base text-deep-navy font-bold">Từ 450.000đ / giờ</span>
+                            <a href="#booking" class="bg-success-green hover:bg-deep-navy text-white px-6 py-2 rounded-lg font-label-sm text-sm font-semibold transition-colors duration-200">Đặt phòng</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </section>
 <?php endif; ?>
