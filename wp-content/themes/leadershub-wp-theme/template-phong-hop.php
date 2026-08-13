@@ -129,9 +129,9 @@ if ( ! function_exists( 'lh_field' ) ) {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_rooms_list' ) ) : ?>
                 <?php while ( have_rows( 'mr_rooms_list' ) ) : the_row();
-                    $r_image      = get_sub_field( 'image' ) ?: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
+                    $r_image      = get_sub_field( 'image' );
                     $r_area       = get_sub_field( 'area' );
-                    $r_title      = get_sub_field( 'title' ) ?: 'Phòng họp tiêu chuẩn 5 sao';
+                    $r_title      = get_sub_field( 'title' );
                     $r_capacity   = get_sub_field( 'capacity' );
                     $r_features   = get_sub_field( 'features' );
                     $r_price_text = get_sub_field( 'price_text' ) ?: 'Liên hệ nhận báo giá';
@@ -151,7 +151,9 @@ if ( ! function_exists( 'lh_field' ) ) {
                         <?php endif; ?>
 
                         <div class="p-8">
-                            <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold"><?php echo esc_html( $r_title ); ?></h3>
+                            <?php if ( ! empty( $r_title ) ) : ?>
+                                <h3 class="font-headline-md text-headline-md text-deep-navy mb-2 font-bold"><?php echo esc_html( $r_title ); ?></h3>
+                            <?php endif; ?>
                             <?php if ( ! empty( $r_capacity ) ) : ?>
                                 <p class="font-label-sm text-sm text-prestige-gold mb-4 font-semibold"><?php echo esc_html( $r_capacity ); ?></p>
                             <?php endif; ?>
