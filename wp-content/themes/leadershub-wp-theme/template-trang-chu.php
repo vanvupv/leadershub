@@ -21,11 +21,9 @@ $services_subtitle    = ( function_exists( 'get_field' ) ? get_field( 'home_serv
 $services_title       = ( function_exists( 'get_field' ) ? get_field( 'home_services_title' ) : '' ) ?: '';
 $pricing_title        = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_title' ) : '' ) ?: '';
 $pricing_desc         = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_desc' ) : '' ) ?: '';
-$reviews_subtitle     = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_subtitle' ) : '' ) ?: '';
-$reviews_title        = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_title' ) : '' ) ?: '';
-$reviews_google_link  = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_google_link' ) : '' ) ?: '';
-$reviews_google_score = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_google_score' ) : '' ) ?: '';
-$reviews_shortcode    = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_shortcode' ) : '' ) ?: '';
+$reviews_subtitle  = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_subtitle' ) : '' ) ?: 'ĐÁNH GIÁ THỰC TẾ';
+$reviews_title     = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_title' ) : '' ) ?: 'Khách Hàng Nói Gì Về The Leaders Hub';
+$reviews_shortcode = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_shortcode' ) : '' ) ?: '[trustindex no-registration=google]';
 $news_title           = ( function_exists( 'get_field' ) ? get_field( 'home_news_title' ) : '' ) ?: 'Tin tức mới nhất';
 $news_btn_text        = ( function_exists( 'get_field' ) ? get_field( 'home_news_btn_text' ) : '' ) ?: 'Xem tất cả';
 $gallery_subtitle     = ( function_exists( 'get_field' ) ? get_field( 'home_gallery_subtitle' ) : '' ) ?: 'THƯ VIỆN HÌNH ẢNH';
@@ -270,7 +268,7 @@ $gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gall
 
 
 <!-- Google Reviews Section -->
-<?php if ( ! empty( $reviews_title ) || ! empty( $reviews_shortcode ) || ! empty( $reviews_google_link ) || ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) ) : ?>
+<?php if ( ! empty( $reviews_shortcode ) ) : ?>
 <section class="py-section-padding-desktop bg-surface scroll-mt-20" id="reviews">
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $reviews_subtitle ) || ! empty( $reviews_title ) ) : ?>
@@ -289,65 +287,10 @@ $gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gall
             </div>
         <?php endif; ?>
 
-        <?php if ( ! empty( $reviews_google_link ) || ! empty( $reviews_google_score ) ) : ?>
-            <div class="flex items-center justify-center gap-3 mb-12 mt-2 max-w-md mx-auto">
-                <a href="<?php echo esc_url( $reviews_google_link ?: 'https://www.google.com/search?q=The+Leaders+Hub' ); ?>"
-                   target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full border border-surface-container-high shadow-sm hover:shadow-md transition-all group">
-                    <img class="h-4" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
-                    <span class="text-sm font-bold text-deep-navy group-hover:text-prestige-gold transition-colors">
-                        <?php echo esc_html( $reviews_google_score ?: 'Xem tất cả đánh giá trên Google' ); ?>
-                    </span>
-                    <span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:translate-x-1 transition-transform">open_in_new</span>
-                </a>
-            </div>
-        <?php endif; ?>
-
-        <?php if ( ! empty( $reviews_shortcode ) ) : ?>
-            <!-- Google Review Plugin Widget Shortcode -->
-            <div class="google-reviews-widget-container max-w-5xl mx-auto">
-                <?php echo do_shortcode( $reviews_shortcode ); ?>
-            </div>
-        <?php elseif ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <?php while ( have_rows( 'home_reviews_list' ) ) : the_row(); 
-                    $name    = get_sub_field( 'name' );
-                    $role    = get_sub_field( 'role' );
-                    $comment = get_sub_field( 'comment' );
-                    $avatar  = get_sub_field( 'avatar' );
-
-                    if ( empty( $name ) ) continue;
-                ?>
-                    <div class="bg-white p-8 rounded-xl border border-surface-container-highest shadow-sm flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-amber-400 mb-4">
-                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                            </div>
-                            <?php if ( ! empty( $comment ) ) : ?>
-                                <p class="text-on-surface text-sm italic leading-relaxed mb-6">"<?php echo esc_html( $comment ); ?>"</p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="flex items-center gap-4 border-t border-surface-container-low pt-4">
-                            <?php if ( ! empty( $avatar ) ) : ?>
-                                <div class="w-10 h-10 rounded-full bg-deep-navy text-white flex items-center justify-center font-bold text-sm shrink-0">
-                                    <?php echo esc_html( $avatar ); ?>
-                                </div>
-                            <?php endif; ?>
-                            <div>
-                                <h4 class="font-semibold text-sm text-deep-navy"><?php echo esc_html( $name ); ?></h4>
-                                <?php if ( ! empty( $role ) ) : ?>
-                                    <p class="text-xs text-on-surface-variant"><?php echo esc_html( $role ); ?></p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-            </div>
-        <?php endif; ?>
+        <!-- Google Review Plugin Widget Shortcode -->
+        <div class="google-reviews-widget-container max-w-5xl mx-auto">
+            <?php echo do_shortcode( $reviews_shortcode ); ?>
+        </div>
     </div>
 </section>
 <?php endif; ?>
