@@ -300,6 +300,56 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
         <!-- Google Review Plugin Widget Shortcode -->
         <div class="google-reviews-widget-container max-w-5xl mx-auto">
             <?php echo do_shortcode( $reviews_shortcode ); ?>
+            <script>
+            (function() {
+                function renderTrustindexWidget() {
+                    var container = document.querySelector('.google-reviews-widget-container');
+                    if (!container) return;
+
+                    var loaderDiv = container.querySelector('div[data-src]');
+                    var template = container.querySelector('template#trustindex-google-widget-html') || container.querySelector('template');
+
+                    if (loaderDiv && loaderDiv.getAttribute('data-src')) {
+                        var src = loaderDiv.getAttribute('data-src');
+                        if (!document.querySelector('script[src="' + src + '"]')) {
+                            var s = document.createElement('script');
+                            s.src = src;
+                            s.async = true;
+                            document.body.appendChild(s);
+                        }
+                    }
+
+                    function unpackTemplate() {
+                        if (template && loaderDiv && (!loaderDiv.children || loaderDiv.children.length === 0)) {
+                            var content = template.content ? template.content.cloneNode(true) : null;
+                            if (content) {
+                                loaderDiv.appendChild(content);
+                            } else if (template.innerHTML) {
+                                loaderDiv.innerHTML = template.innerHTML;
+                            }
+
+                            var cssUrl = loaderDiv.getAttribute('data-css-url');
+                            if (cssUrl && !document.querySelector('link[href*="trustindex"]')) {
+                                var link = document.createElement('link');
+                                link.rel = 'stylesheet';
+                                link.href = cssUrl;
+                                document.head.appendChild(link);
+                            }
+                        }
+                    }
+
+                    unpackTemplate();
+                    setTimeout(unpackTemplate, 300);
+                    setTimeout(unpackTemplate, 800);
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', renderTrustindexWidget);
+                } else {
+                    renderTrustindexWidget();
+                }
+            })();
+            </script>
         </div>
     </div>
 </section>
