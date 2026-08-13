@@ -12,9 +12,6 @@ $pricing_title    = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_ti
 $pricing_desc     = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_desc' ) : '' ) ?: '';
 $pricing_vat_note = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_vat_note' ) : '' ) ?: '';
 
-// ACF Variables: Section 3 Feature Comparison
-$comp_title = ( function_exists( 'get_field' ) ? get_field( 'vo_comp_title' ) : '' ) ?: '';
-
 // ACF Variables: Section 4 Registration Process
 $process_title = ( function_exists( 'get_field' ) ? get_field( 'vo_process_title' ) : '' ) ?: '';
 
@@ -218,64 +215,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 </section>
 <?php endif; ?>
 
-<!-- Comparison Table Section -->
-<?php if ( ! empty( $comp_title ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_comp_rows' ) ) ) : ?>
-<section class="py-section-padding-desktop bg-surface-container-low" id="comparison">
-    <div class="max-w-container-max mx-auto px-gutter">
-        <?php if ( ! empty( $comp_title ) ) : ?>
-            <div class="mb-12">
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
-                    <?php echo esc_html( $comp_title ); ?>
-                </h2>
-                <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
-            </div>
-        <?php endif; ?>
 
-        <?php if ( function_exists( 'have_rows' ) && have_rows( 'vo_comp_rows' ) ) : ?>
-            <div class="overflow-x-auto rounded-xl shadow-lg bg-white">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-deep-navy text-white">
-                            <th class="p-6 font-label-sm text-sm font-semibold">Dịch vụ &amp; Tiện ích</th>
-                            <th class="p-6 font-label-sm text-sm text-center font-semibold">Economy</th>
-                            <th class="p-6 font-label-sm text-sm text-center font-semibold">Standard</th>
-                            <th class="p-6 font-label-sm text-sm text-center font-semibold">Premium</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-surface-container-highest">
-                        <?php while ( have_rows( 'vo_comp_rows' ) ) : the_row();
-                            $feat_name    = get_sub_field( 'feature_name' );
-                            $eco_val      = get_sub_field( 'economy_val' );
-                            $std_val      = get_sub_field( 'standard_val' );
-                            $pre_val      = get_sub_field( 'premium_val' );
-
-                            if ( empty( $feat_name ) ) continue;
-
-                            $render_val = function( $val ) {
-                                $v = strtolower( trim( $val ) );
-                                if ( in_array( $v, array( 'yes', 'check', '1', 'true' ), true ) ) {
-                                    return '<span class="material-symbols-outlined text-success-green">check</span>';
-                                }
-                                if ( in_array( $v, array( 'no', 'close', '0', 'false' ), true ) ) {
-                                    return '<span class="material-symbols-outlined text-on-surface-variant/30">close</span>';
-                                }
-                                return esc_html( $val );
-                            };
-                        ?>
-                            <tr>
-                                <td class="p-6 font-body-md text-sm"><?php echo esc_html( $feat_name ); ?></td>
-                                <td class="p-6 text-center text-sm"><?php echo $render_val( $eco_val ); ?></td>
-                                <td class="p-6 text-center text-sm"><?php echo $render_val( $std_val ); ?></td>
-                                <td class="p-6 text-center text-sm"><?php echo $render_val( $pre_val ); ?></td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
-            </div>
-        <?php endif; ?>
-    </div>
-</section>
-<?php endif; ?>
 
 <!-- Registration Process Section -->
 <?php if ( ! empty( $process_title ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_process_steps' ) ) ) : ?>

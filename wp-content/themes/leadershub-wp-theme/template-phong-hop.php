@@ -34,6 +34,9 @@ $booking_title         = lh_field( 'mr_booking_title', 'Đặt phòng họp ngay
 $booking_desc          = lh_field( 'mr_booking_desc', 'Đội ngũ sẽ liên hệ trong thời gian sớm nhất trong giờ làm việc để hỗ trợ và hoàn tất thủ tục đặt phòng họp cho quý khách.' );
 $booking_hotline_label = lh_field( 'mr_booking_hotline_label', 'Hotline tư vấn' );
 
+// ACF Variables: Section 5 Feature Comparison Table
+$comp_title            = lh_field( 'mr_comp_title', 'So Sánh Tiện Ích Các Loại Phòng' );
+
 if ( ! function_exists( 'lh_field' ) ) {
     function lh_field( $name, $default = '' ) {
         if ( function_exists( 'get_field' ) ) {
@@ -217,6 +220,97 @@ if ( ! function_exists( 'lh_field' ) ) {
                     </div>
                 </div>
             <?php endif; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<!-- Comparison Table Section -->
+<?php if ( ! empty( $comp_title ) || ( function_exists( 'have_rows' ) && have_rows( 'mr_comp_rows' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-surface-container-low" id="comparison">
+    <div class="max-w-container-max mx-auto px-gutter">
+        <?php if ( ! empty( $comp_title ) ) : ?>
+            <div class="mb-12 text-center">
+                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                    <?php echo esc_html( $comp_title ); ?>
+                </h2>
+                <div class="w-20 h-1 bg-prestige-gold mx-auto mt-4"></div>
+            </div>
+        <?php endif; ?>
+
+        <div class="overflow-x-auto rounded-xl shadow-lg bg-white max-w-5xl mx-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-deep-navy text-white">
+                        <th class="p-6 font-label-sm text-sm font-semibold">Dịch vụ &amp; Tiện ích</th>
+                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Phòng Executive</th>
+                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Phòng Boardroom</th>
+                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Phòng Event Suite</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-surface-container-highest">
+                    <?php if ( function_exists( 'have_rows' ) && have_rows( 'mr_comp_rows' ) ) : ?>
+                        <?php while ( have_rows( 'mr_comp_rows' ) ) : the_row();
+                            $feat_name    = get_sub_field( 'feature_name' );
+                            $eco_val      = get_sub_field( 'economy_val' );
+                            $std_val      = get_sub_field( 'standard_val' );
+                            $pre_val      = get_sub_field( 'premium_val' );
+
+                            if ( empty( $feat_name ) ) continue;
+
+                            $render_val = function( $val ) {
+                                $v = strtolower( trim( $val ) );
+                                if ( in_array( $v, array( 'yes', 'check', '1', 'true' ), true ) ) {
+                                    return '<span class="material-symbols-outlined text-success-green font-bold">check</span>';
+                                }
+                                if ( in_array( $v, array( 'no', 'close', '0', 'false' ), true ) ) {
+                                    return '<span class="material-symbols-outlined text-on-surface-variant/30">close</span>';
+                                }
+                                return esc_html( $val );
+                            };
+                        ?>
+                            <tr>
+                                <td class="p-6 font-body-md text-sm font-medium"><?php echo esc_html( $feat_name ); ?></td>
+                                <td class="p-6 text-center text-sm"><?php echo $render_val( $eco_val ); ?></td>
+                                <td class="p-6 text-center text-sm"><?php echo $render_val( $std_val ); ?></td>
+                                <td class="p-6 text-center text-sm"><?php echo $render_val( $pre_val ); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    <?php else : ?>
+                        <!-- Fallback Rows -->
+                        <tr>
+                            <td class="p-6 font-body-md text-sm font-medium">Sức chứa tiêu chuẩn</td>
+                            <td class="p-6 text-center text-sm font-semibold">6 - 10 người</td>
+                            <td class="p-6 text-center text-sm font-semibold">12 - 20 người</td>
+                            <td class="p-6 text-center text-sm font-semibold">30 - 50 người</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-body-md text-sm font-medium">Màn hình LED / Máy chiếu 4K</td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-body-md text-sm font-medium">Hệ thống Video Conference trực tuyến</td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-on-surface-variant/30">close</span></td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-body-md text-sm font-medium">Trà, Cà phê &amp; Nước uống VIP</td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                            <td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-success-green font-bold">check</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-body-md text-sm font-medium">Hỗ trợ kỹ thuật &amp; Lễ tân riêng</td>
+                            <td class="p-6 text-center text-sm">Hỗ trợ chung</td>
+                            <td class="p-6 text-center text-sm font-semibold text-success-green">Lễ tân riêng</td>
+                            <td class="p-6 text-center text-sm font-semibold text-success-green">Đội ngũ riêng</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>

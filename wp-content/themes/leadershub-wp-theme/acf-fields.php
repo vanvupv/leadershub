@@ -574,51 +574,7 @@ function leadershub_register_field_groups() {
                 ),
             ),
 
-            // TAB 3: FEATURE COMPARISON
-            array(
-                'key' => 'tab_vo_comp',
-                'label' => '3. Bảng So Sánh Tiện Ích',
-                'type' => 'tab',
-            ),
-            array(
-                'key' => 'field_vo_comp_title',
-                'label' => 'Tiêu đề Section So Sánh',
-                'name' => 'vo_comp_title',
-                'type' => 'text',
-                'default_value' => 'So Sánh Tiện Ích',
-            ),
-            array(
-                'key' => 'field_vo_comp_rows',
-                'label' => 'Danh sách các hàng so sánh (Repeater)',
-                'name' => 'vo_comp_rows',
-                'type' => 'repeater',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_vo_comp_feature_name',
-                        'label' => 'Tên dịch vụ & tiện ích',
-                        'name' => 'feature_name',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_vo_comp_economy',
-                        'label' => 'Gói Economy (Nhập: yes, no, hoặc text như: Tính phí lẻ)',
-                        'name' => 'economy_val',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_vo_comp_standard',
-                        'label' => 'Gói Standard (Nhập: yes, no, hoặc text như: 4 giờ/tháng)',
-                        'name' => 'standard_val',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_vo_comp_premium',
-                        'label' => 'Gói Premium (Nhập: yes, no, hoặc text như: 10 giờ/tháng)',
-                        'name' => 'premium_val',
-                        'type' => 'text',
-                    ),
-                ),
-            ),
+
 
             // TAB 4: REGISTRATION PROCESS
             array(
@@ -1368,6 +1324,52 @@ function leadershub_register_field_groups() {
                 'name' => 'mr_booking_hotline_label',
                 'type' => 'text',
                 'default_value' => 'Hotline tư vấn',
+            ),
+
+            // TAB 5: FEATURE COMPARISON
+            array(
+                'key' => 'tab_mr_comp',
+                'label' => '5. Bảng So Sánh Tiện Ích',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_mr_comp_title',
+                'label' => 'Tiêu đề Section So Sánh',
+                'name' => 'mr_comp_title',
+                'type' => 'text',
+                'default_value' => 'So Sánh Tiện Ích Các Loại Phòng',
+            ),
+            array(
+                'key' => 'field_mr_comp_rows',
+                'label' => 'Danh sách các hàng so sánh (Repeater)',
+                'name' => 'mr_comp_rows',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_mr_comp_feature_name',
+                        'label' => 'Tên dịch vụ & tiện ích',
+                        'name' => 'feature_name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_mr_comp_economy',
+                        'label' => 'Cột 1 (Nhập: yes, no, hoặc text như: 6 - 10 người)',
+                        'name' => 'economy_val',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_mr_comp_standard',
+                        'label' => 'Cột 2 (Nhập: yes, no, hoặc text như: 12 - 20 người)',
+                        'name' => 'standard_val',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_mr_comp_premium',
+                        'label' => 'Cột 3 (Nhập: yes, no, hoặc text như: 30 - 50 người)',
+                        'name' => 'premium_val',
+                        'type' => 'text',
+                    ),
+                ),
             ),
         ),
         'location' => array(
