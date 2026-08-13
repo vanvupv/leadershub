@@ -214,98 +214,6 @@ $gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gall
 </section>
 <?php endif; ?>
 
-<!-- Comparison Table Section -->
-<section class="py-section-padding-desktop bg-surface-container-low">
-    <div class="max-w-container-max mx-auto px-gutter">
-        <div class="mb-12">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">So Sánh Tiện Ích Các Gói</h2>
-            <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
-        </div>
-        <div class="overflow-x-auto rounded-xl shadow-lg bg-white">
-            <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="bg-deep-navy text-white">
-                        <th class="p-6 font-label-sm text-sm font-semibold">Dịch vụ &amp; Tiện ích</th>
-                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Economy</th>
-                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Standard</th>
-                        <th class="p-6 font-label-sm text-sm text-center font-semibold">Premium</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-surface-container-highest">
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Địa chỉ đăng ký GPKD Hạng A</td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Lễ tân chuyên nghiệp &amp; Tiếp khách</td>
-                        <td class="p-6 text-center text-on-surface-variant/30"><span class="material-symbols-outlined">close</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Sử dụng phòng họp hiện đại</td>
-                        <td class="p-6 text-center text-on-surface-variant/50 text-sm">Tính phí lẻ</td>
-                        <td class="p-6 text-center font-semibold text-sm">4 giờ/tháng</td>
-                        <td class="p-6 text-center font-semibold text-sm">10 giờ/tháng</td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Hỗ trợ pháp lý &amp; Đăng ký doanh nghiệp</td>
-                        <td class="p-6 text-center text-on-surface-variant/50 text-sm">Tư vấn miễn phí</td>
-                        <td class="p-6 text-center text-on-surface-variant/50 text-sm">Tư vấn miễn phí</td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                    <tr>
-                        <td class="p-6 font-body-md text-sm">Cafe, trà &amp; nước uống tại pantry</td>
-                        <td class="p-6 text-center text-on-surface-variant/30"><span class="material-symbols-outlined">close</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                        <td class="p-6 text-center text-success-green"><span class="material-symbols-outlined">check</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- Registration Process Section -->
-<section class="py-section-padding-desktop bg-surface overflow-hidden relative">
-    <div class="max-w-container-max mx-auto px-gutter relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">Quy Trình 3 Bước Đơn Giản</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            <div class="hidden md:block absolute top-24 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-prestige-gold/30"></div>
-            <!-- Step 1 -->
-            <div class="relative text-center group">
-                <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors">01</div>
-                <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-prestige-gold">support_agent</span>
-                </div>
-                <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-semibold">Tư vấn giải pháp</h4>
-                <p class="text-on-surface-variant font-body-md text-sm">Đội ngũ chuyên viên tư vấn chi tiết giải pháp phù hợp với quy mô và đặc thù ngành nghề của bạn.</p>
-            </div>
-            <!-- Step 2 -->
-            <div class="relative text-center group">
-                <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors">02</div>
-                <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-prestige-gold">history_edu</span>
-                </div>
-                <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-semibold">Ký kết hợp đồng</h4>
-                <p class="text-on-surface-variant font-body-md text-sm">Hoàn tất thủ tục hồ sơ chỉ trong 30 phút. Cam kết điều khoản pháp lý minh bạch và nhất quán.</p>
-            </div>
-            <!-- Step 3 -->
-            <div class="relative text-center group">
-                <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors">03</div>
-                <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-prestige-gold">business_center</span>
-                </div>
-                <h4 class="font-headline-md text-headline-md text-deep-navy mb-4 font-semibold">Sẵn sàng vận hành</h4>
-                <p class="text-on-surface-variant font-body-md text-sm">Nhận bàn giao địa chỉ, số điện thoại, sẵn sàng tiếp đón đối tác và triển khai đăng ký doanh nghiệp.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Environment Showcase Section -->
 <?php if ( ! empty( $gallery_title ) || ( function_exists( 'have_rows' ) && have_rows( 'home_gallery_images' ) ) ) : ?>
@@ -360,44 +268,6 @@ $gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gall
 </section>
 <?php endif; ?>
 
-<!-- Professional Environment Showcase -->
-<section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden">
-    <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-            <img alt="Lễ tân chuyên nghiệp The Leaders Hub" class="w-full h-auto rounded-2xl shadow-2xl" src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80" />
-            <div class="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl hidden md:block max-w-[240px]">
-                <div class="flex items-center gap-4 mb-2">
-                    <span class="material-symbols-outlined text-prestige-gold" style="font-variation-settings: 'FILL' 1;">stars</span>
-                    <span class="font-label-sm text-deep-navy font-bold text-xs">Tiêu chuẩn 5 sao</span>
-                </div>
-                <p class="text-xs text-on-surface-variant">Môi trường làm việc chuyên nghiệp được thiết kế theo tiêu chuẩn quốc tế.</p>
-            </div>
-        </div>
-        <div class="space-y-8">
-            <h2 class="font-headline-xl text-headline-xl font-bold text-white">Không gian làm việc <br /><span class="text-prestige-gold font-bold">Đẳng cấp & Hiện đại</span></h2>
-            <div class="space-y-6">
-                <div class="flex gap-4">
-                    <div class="w-12 h-12 shrink-0 bg-white/10 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-prestige-gold">location_on</span>
-                    </div>
-                    <div>
-                        <h5 class="font-headline-md text-lg mb-1 font-semibold text-white">Vị trí đắc địa trung tâm</h5>
-                        <p class="text-white/70 text-sm">Tòa nhà Capital Place, Liễu Giai - Trung tâm tài chính hành chính ngoại giao cao cấp.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="w-12 h-12 shrink-0 bg-white/10 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-prestige-gold">person_celebrate</span>
-                    </div>
-                    <div>
-                        <h5 class="font-headline-md text-lg mb-1 font-semibold text-white">Lễ tân tiếp khách chuẩn 5 sao</h5>
-                        <p class="text-white/70 text-sm">Chào đón đối tác và khách hàng của bạn với quy trình lễ tân bài bản nhất.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Google Reviews Section -->
 <?php if ( ! empty( $reviews_title ) || ! empty( $reviews_shortcode ) || ! empty( $reviews_google_link ) || ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) ) : ?>
@@ -548,32 +418,7 @@ if ( $news_query->have_posts() ) :
     </div>
 </section>
 
-<!-- FAQ Section -->
-<section class="py-section-padding-desktop bg-white" id="faq">
-    <div class="max-w-container-max mx-auto px-gutter max-w-3xl">
-        <h2 class="font-headline-xl text-headline-xl text-deep-navy text-center mb-12 font-bold">Câu hỏi thường gặp</h2>
-        <div class="space-y-4">
-            <details class="group bg-white rounded-lg shadow-sm border border-surface-container-highest" open="">
-                <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                    <span class="font-headline-md text-lg text-deep-navy font-semibold">Sử dụng văn phòng ảo có hợp pháp không?</span>
-                    <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
-                </summary>
-                <div class="px-6 pb-6 text-on-surface-variant font-body-md border-t border-surface-container-highest pt-4">
-                    Hoàn toàn hợp pháp. Theo Luật Doanh nghiệp Việt Nam, văn phòng ảo là mô hình kinh doanh hợp lệ được pháp luật công nhận, cho phép doanh nghiệp đăng ký trụ sở chính và thực hiện các giao dịch kinh doanh.
-                </div>
-            </details>
-            <details class="group bg-white rounded-lg shadow-sm border border-surface-container-highest">
-                <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                    <span class="font-headline-md text-lg text-deep-navy font-semibold">Tôi có thể sử dụng địa chỉ này để đăng ký hóa đơn điện tử không?</span>
-                    <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
-                </summary>
-                <div class="px-6 pb-6 text-on-surface-variant font-body-md border-t border-surface-container-highest pt-4">
-                    Có, bạn hoàn toàn có thể sử dụng địa chỉ văn phòng ảo tại The Leaders Hub để làm thủ tục đăng ký thuế và phát hành hóa đơn điện tử cho doanh nghiệp của mình.
-                </div>
-            </details>
-        </div>
-    </div>
-</section>
+
 
 <!-- Consultation Form Section -->
 <section class="py-section-padding-desktop bg-surface-container overflow-hidden scroll-mt-20" id="register">
