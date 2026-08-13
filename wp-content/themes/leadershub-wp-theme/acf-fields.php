@@ -9,20 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Add Options Page for Theme Settings
-if ( function_exists( 'acf_add_options_page' ) ) {
-    acf_add_options_page( array(
-        'page_title'    => 'Cấu hình Website Leaders Hub',
-        'menu_title'    => 'Leaders Hub Options',
-        'menu_slug'     => 'leadershub-options',
-        'capability'    => 'edit_posts',
-        'redirect'      => false
-    ) );
-}
-
 add_action( 'acf/init', 'leadershub_register_field_groups' );
 
 function leadershub_register_field_groups() {
+    // Add Options Page for Theme Settings
+    if ( function_exists( 'acf_add_options_page' ) ) {
+        acf_add_options_page( array(
+            'page_title'    => 'Cấu hình Website Leaders Hub',
+            'menu_title'    => 'Leaders Hub Options',
+            'menu_slug'     => 'leadershub-options',
+            'capability'    => 'edit_posts',
+            'redirect'      => false
+        ) );
+    }
+
     if ( ! function_exists( 'acf_add_local_field_group' ) ) {
         return;
     }
