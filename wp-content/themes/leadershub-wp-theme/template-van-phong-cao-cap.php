@@ -51,12 +51,14 @@ $cta_capacity_sub   = lh_field( 'so_cta_capacity_sub', 'Tùy biến linh hoạt'
 // ACF Variables: Section 6 Service Steps
 $process_title = lh_field( 'so_process_title', 'Quy trình đăng ký dịch vụ' );
 
-function lh_field( $name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $val = get_field( $name );
-        return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+if ( ! function_exists( 'lh_field' ) ) {
+    function lh_field( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
     }
-    return $default;
 }
 ?>
 

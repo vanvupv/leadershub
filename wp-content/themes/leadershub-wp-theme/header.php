@@ -53,12 +53,14 @@
 
 <?php
 // Helper to get ACF options or fallback.
-function lh_opt( $name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $val = get_field( $name, 'option' );
-        return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+if ( ! function_exists( 'lh_opt' ) ) {
+    function lh_opt( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name, 'option' );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
     }
-    return $default;
 }
 
 $hotline = lh_opt( 'lh_hotline', '+84 3789 19119' );

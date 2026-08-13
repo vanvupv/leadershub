@@ -18,6 +18,15 @@ $contact_address_label = lh_field( 'contact_address_label', 'Trụ sở chính' 
 $contact_map_bg        = lh_field( 'contact_map_bg', 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5AQWvOaUndJeICTK6aWY61WATQwdfTV4BPJ2a9XRMX0uO3khen4I9NqRiRLnj3Bf8gRprA7d7ssA-qRvCqDbT48_joZG3I7YuGIzb34Lx_LpwWwW6iz_NCyDhPxhCn12EyuSDjoJWCgj-NQ7lA4WgM_Zokh7ZackMMFEPa0ojmucd17f4Up1meDucWoJ9FCXrOnvEGHiOoqSAiKbaDOj5_5M0xuRVfzXXf7Q7ezXpR_a8ITcFiUQ7uW56M8QK5pLN2GXZ_mE4vMGx' );
 $contact_map_title     = lh_field( 'contact_map_title', 'Capital Place, Hà Nội' );
 
+if ( ! function_exists( 'lh_field' ) ) {
+    function lh_field( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
+    }
+}
 ?>
 
 <!-- Main Content -->

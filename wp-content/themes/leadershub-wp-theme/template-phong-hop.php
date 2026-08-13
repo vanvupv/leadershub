@@ -34,12 +34,14 @@ $booking_title         = lh_field( 'mr_booking_title', 'Đặt phòng họp ngay
 $booking_desc          = lh_field( 'mr_booking_desc', 'Đội ngũ sẽ liên hệ trong thời gian sớm nhất trong giờ làm việc để hỗ trợ và hoàn tất thủ tục đặt phòng họp cho quý khách.' );
 $booking_hotline_label = lh_field( 'mr_booking_hotline_label', 'Hotline tư vấn' );
 
-function lh_field( $name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $val = get_field( $name );
-        return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+if ( ! function_exists( 'lh_field' ) ) {
+    function lh_field( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
     }
-    return $default;
 }
 ?>
 
