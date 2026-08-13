@@ -7,27 +7,37 @@
 
 get_header();
 
+if ( ! function_exists( 'lh_field' ) ) {
+    function lh_field( $name, $default = '' ) {
+        if ( function_exists( 'get_field' ) ) {
+            $val = get_field( $name );
+            return ( $val !== null && $val !== '' && $val !== false ) ? $val : $default;
+        }
+        return $default;
+    }
+}
+
 // ==========================================
 // 1. KHAI BÁO BIẾN & SAFE FALLBACKS ĐẦU TEMPLATE (.agent Rules)
 // ==========================================
-$hero_subtitle = ( function_exists( 'get_field' ) ? get_field( 'home_hero_subtitle' ) : '' ) ?: '';
-$hero_title    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_title' ) : '' ) ?: '';
-$hero_desc     = ( function_exists( 'get_field' ) ? get_field( 'home_hero_desc' ) : '' ) ?: '';
-$hero_video    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_video' ) : '' ) ?: '';
-$hero_poster   = ( function_exists( 'get_field' ) ? get_field( 'home_hero_poster' ) : '' ) ?: '';
-$hero_btn_1    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_1' ) : array() ) ?: array();
-$hero_btn_2    = ( function_exists( 'get_field' ) ? get_field( 'home_hero_btn_2' ) : array() ) ?: array();
-$services_subtitle    = ( function_exists( 'get_field' ) ? get_field( 'home_services_subtitle' ) : '' ) ?: '';
-$services_title       = ( function_exists( 'get_field' ) ? get_field( 'home_services_title' ) : '' ) ?: '';
-$pricing_title        = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_title' ) : '' ) ?: '';
-$pricing_desc         = ( function_exists( 'get_field' ) ? get_field( 'home_pricing_desc' ) : '' ) ?: '';
-$reviews_subtitle  = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_subtitle' ) : '' ) ?: 'ĐÁNH GIÁ THỰC TẾ';
-$reviews_title     = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_title' ) : '' ) ?: 'Khách Hàng Nói Gì Về The Leaders Hub';
-$reviews_shortcode = ( function_exists( 'get_field' ) ? get_field( 'home_reviews_shortcode' ) : '' ) ?: '[trustindex no-registration=google]';
-$news_title           = ( function_exists( 'get_field' ) ? get_field( 'home_news_title' ) : '' ) ?: 'Tin tức mới nhất';
-$news_btn_text        = ( function_exists( 'get_field' ) ? get_field( 'home_news_btn_text' ) : '' ) ?: 'Xem tất cả';
-$gallery_subtitle     = ( function_exists( 'get_field' ) ? get_field( 'home_gallery_subtitle' ) : '' ) ?: 'THƯ VIỆN HÌNH ẢNH';
-$gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gallery_title' ) : '' ) ?: 'Không Gian Thực Tế Tại The Leaders Hub';
+$hero_subtitle        = lh_field( 'home_hero_subtitle', '' );
+$hero_title           = lh_field( 'home_hero_title', '' );
+$hero_desc            = lh_field( 'home_hero_desc', '' );
+$hero_video           = lh_field( 'home_hero_video', '' );
+$hero_poster          = lh_field( 'home_hero_poster', '' );
+$hero_btn_1           = lh_field( 'home_hero_btn_1', array() );
+$hero_btn_2           = lh_field( 'home_hero_btn_2', array() );
+$services_subtitle   = lh_field( 'home_services_subtitle', '' );
+$services_title      = lh_field( 'home_services_title', '' );
+$pricing_title       = lh_field( 'home_pricing_title', '' );
+$pricing_desc        = lh_field( 'home_pricing_desc', '' );
+$reviews_subtitle     = lh_field( 'home_reviews_subtitle', 'ĐÁNH GIÁ THỰC TẾ' );
+$reviews_title        = lh_field( 'home_reviews_title', 'Khách Hàng Nói Gì Về The Leaders Hub' );
+$reviews_shortcode    = lh_field( 'home_reviews_shortcode', '[trustindex no-registration=google]' );
+$news_title          = lh_field( 'home_news_title', 'Tin tức mới nhất' );
+$news_btn_text       = lh_field( 'home_news_btn_text', 'Xem tất cả' );
+$gallery_subtitle    = lh_field( 'home_gallery_subtitle', 'THƯ VIỆN HÌNH ẢNH' );
+$gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế Tại The Leaders Hub' );
 ?>
 
 <!-- Hero Banner Section -->

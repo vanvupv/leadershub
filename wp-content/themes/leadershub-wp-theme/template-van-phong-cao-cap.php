@@ -296,8 +296,35 @@ if ( ! function_exists( 'lh_field' ) ) {
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="airtable-embed-container bg-white p-2 text-on-surface shadow-2xl" id="booking-form">
-                <iframe class="w-full" src="<?php echo esc_url( lh_opt( 'lh_form_office', 'https://airtable.com/embed/app0nmwylnsZLQTuu/pag0tggimRE7gA3xw/form' ) ); ?>" frameborder="0" onmousewheel="" width="100%"></iframe>
+            <div class="bg-white rounded-2xl p-8 md:p-12 text-on-surface shadow-2xl" id="booking-form">
+                <h3 class="font-headline-md text-headline-md text-deep-navy mb-8 font-bold">Đặt lịch xem văn phòng</h3>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block font-label-sm text-[10px] uppercase text-on-surface-variant font-semibold">Họ và tên *</label>
+                            <input class="w-full border-b border-outline focus:border-deep-navy focus:ring-0 transition-colors py-2 outline-none text-body-md" placeholder="Nguyễn Văn A" type="text" required />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-label-sm text-[10px] uppercase text-on-surface-variant font-semibold">Số điện thoại *</label>
+                            <input class="w-full border-b border-outline focus:border-deep-navy focus:ring-0 transition-colors py-2 outline-none text-body-md" placeholder="0901 234 567" type="tel" required />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block font-label-sm text-[10px] uppercase text-on-surface-variant font-semibold">Email doanh nghiệp</label>
+                        <input class="w-full border-b border-outline focus:border-deep-navy focus:ring-0 transition-colors py-2 outline-none text-body-md" placeholder="ceo@yourcompany.com" type="email" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block font-label-sm text-[10px] uppercase text-on-surface-variant font-semibold">Số lượng chỗ ngồi dự kiến</label>
+                        <select class="w-full border-b border-outline focus:border-deep-navy focus:ring-0 transition-colors py-2 outline-none text-body-md bg-transparent">
+                            <option>Dưới 5 người</option>
+                            <option>5 - 10 người</option>
+                            <option>10 - 20 người</option>
+                            <option>Trên 20 người</option>
+                        </select>
+                    </div>
+                    <button class="w-full bg-success-green hover:bg-success-green/90 text-white font-bold py-4 rounded-lg transition-all shadow-lg uppercase tracking-wider text-sm" type="submit">GỬI YÊU CẦU TƯ VẤN</button>
+                    <p class="text-center text-xs text-on-surface-variant opacity-60">Chúng tôi sẽ liên hệ lại trong vòng 30 phút làm việc.</p>
+                </form>
             </div>
         </div>
     </div>
