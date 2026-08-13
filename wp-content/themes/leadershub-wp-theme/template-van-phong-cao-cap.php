@@ -365,5 +365,82 @@ if ( ! function_exists( 'lh_field' ) ) {
 </section>
 <?php endif; ?>
 
+<!-- Consultation Form Section -->
+<section class="py-section-padding-desktop bg-surface-container overflow-hidden scroll-mt-20" id="register">
+    <div class="max-w-container-max mx-auto px-gutter">
+        <div class="glass-card rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+            
+            <div class="w-full md:w-1/2 p-12 bg-deep-navy text-white relative flex flex-col justify-between">
+                <div class="relative z-10">
+                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">Đăng ký ngay</span>
+                    <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">Bắt Đầu Nâng Tầm Doanh Nghiệp</h2>
+                    <p class="text-surface-variant font-body-lg mb-8">Hãy điền thông tin biểu mẫu bên cạnh. Đội ngũ tư vấn viên của chúng tôi sẽ chủ động liên hệ lại sau ít phút để giải đáp mọi nhu cầu.</p>
+                </div>
+                <div class="space-y-4 relative z-10 border-t border-white/10 pt-6">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-prestige-gold">call</span>
+                        <a href="<?php echo esc_url( lh_opt('lh_hotline_url', 'tel:+84378919119') ); ?>" class="hover:text-prestige-gold transition-colors">Hotline: <?php echo esc_html( lh_opt('lh_hotline', '+84 3789 19119') ); ?></a>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-prestige-gold">mail</span>
+                        <a href="mailto:<?php echo esc_attr( lh_opt('lh_email', 'contact@theleadershub.vn') ); ?>" class="hover:text-prestige-gold transition-colors">Email: <?php echo esc_html( lh_opt('lh_email', 'contact@theleadershub.vn') ); ?></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form Block (Interactive Tab Layout) -->
+            <div class="w-full md:w-1/2 p-12 bg-white flex flex-col justify-between">
+                <div>
+                    <!-- Form Tabs Selection -->
+                    <div class="flex border-b border-surface-container-high mb-6">
+                        <button onclick="switchFormTab('general-office')" id="tab-general-office" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-deep-navy text-deep-navy transition-all focus:outline-none">
+                            Văn Phòng & Chỗ Ngồi
+                        </button>
+                        <button onclick="switchFormTab('meeting-room-tab')" id="tab-meeting-room-tab" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-on-surface-variant hover:text-deep-navy transition-all focus:outline-none">
+                            Đặt Phòng Họp Riêng
+                        </button>
+                    </div>
+
+                    <!-- Tab 1: Virtual Office & Serviced Office Form (Airtable Integration) -->
+                    <div id="form-general-office" class="airtable-embed-container w-full border border-surface-container-high bg-white p-2">
+                        <iframe class="w-full" src="<?php echo esc_url( lh_opt( 'lh_form_office', 'https://airtable.com/embed/app0nmwylnsZLQTuu/pag0tggimRE7gA3xw/form' ) ); ?>" frameborder="0" onmousewheel="" width="100%"></iframe>
+                    </div>
+
+                    <!-- Tab 2: Dedicated Meeting Room Form (Airtable Integration) -->
+                    <div id="form-meeting-room-tab" class="airtable-embed-container w-full border border-surface-container-high bg-white p-2 hidden">
+                        <iframe class="w-full" src="<?php echo esc_url( lh_opt( 'lh_form_meeting', 'https://airtable.com/embed/appVuZe9KkkvAwc2Y/pagJ4pWOKeV6FNhuB/form' ) ); ?>" frameborder="0" onmousewheel="" width="100%"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function switchFormTab(tabName) {
+        const tabOffice = document.getElementById('tab-general-office');
+        const tabMeeting = document.getElementById('tab-meeting-room-tab');
+        const formOffice = document.getElementById('form-general-office');
+        const formMeeting = document.getElementById('form-meeting-room-tab');
+
+        if (tabName === 'general-office') {
+            tabOffice.classList.add('border-deep-navy', 'text-deep-navy');
+            tabOffice.classList.remove('border-transparent', 'text-on-surface-variant');
+            tabMeeting.classList.add('border-transparent', 'text-on-surface-variant');
+            tabMeeting.classList.remove('border-deep-navy', 'text-deep-navy');
+            formOffice.classList.remove('hidden');
+            formMeeting.classList.add('hidden');
+        } else {
+            tabMeeting.classList.add('border-deep-navy', 'text-deep-navy');
+            tabMeeting.classList.remove('border-transparent', 'text-on-surface-variant');
+            tabOffice.classList.add('border-transparent', 'text-on-surface-variant');
+            tabOffice.classList.remove('border-deep-navy', 'text-deep-navy');
+            formMeeting.classList.remove('hidden');
+            formOffice.classList.add('hidden');
+        }
+    }
+</script>
+
 <?php
 get_footer();
