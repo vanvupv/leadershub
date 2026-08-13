@@ -39,6 +39,10 @@ function leadershub_theme_scripts() {
     wp_enqueue_style( 'google-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', array(), null );
     wp_enqueue_style( 'google-material-icons', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap', array(), null );
     
+    // Swiper CSS & JS
+    wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
+    wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );
+
     // Tailwind Play CDN (Used for development, custom theme options)
     wp_enqueue_script( 'tailwind-cdn', 'https://cdn.tailwindcss.com?plugins=forms,container-queries', array(), null, false );
     
@@ -102,8 +106,8 @@ function leadershub_strip_assets() {
         add_action( 'wp_enqueue_scripts', function() {
             // Keep only essential plugin CSS/JS (like contact forms if enqueued)
             global $wp_styles, $wp_scripts;
-            $keep_styles = array( 'google-fonts-inter', 'google-material-icons', 'admin-bar' );
-            $keep_scripts = array( 'tailwind-cdn', 'admin-bar', 'jquery-core', 'jquery-migrate' );
+            $keep_styles = array( 'google-fonts-inter', 'google-material-icons', 'swiper-css', 'admin-bar' );
+            $keep_scripts = array( 'tailwind-cdn', 'swiper-js', 'admin-bar', 'jquery-core', 'jquery-migrate' );
             
             // Resolve form plugin dependencies recursively (wpcf7, wp-i18n, wp-hooks etc)
             $form_styles = array( 'contact-form-7', 'wpcf7-recaptcha' );

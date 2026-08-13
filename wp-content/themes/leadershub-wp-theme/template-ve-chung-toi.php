@@ -201,25 +201,57 @@ if ( ! function_exists( 'lh_field' ) ) {
         <?php endif; ?>
 
         <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) : ?>
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-70 hover:opacity-100 transition-opacity">
-                <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
-                    $c_name = get_sub_field( 'name' );
-                    $c_logo = get_sub_field( 'logo' );
+            <div class="swiper partner-swiper overflow-hidden py-4">
+                <div class="swiper-wrapper items-center">
+                    <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
+                        $c_name = get_sub_field( 'name' );
+                        $c_logo = get_sub_field( 'logo' );
 
-                    if ( empty( $c_name ) && empty( $c_logo ) ) continue;
-                ?>
-                    <div class="h-10 md:h-14 w-auto flex items-center justify-center grayscale hover:grayscale-0 transition-all font-bold text-lg md:text-xl">
-                        <?php if ( ! empty( $c_logo ) ) : ?>
-                            <img class="max-h-full max-w-[180px] object-contain" 
-                                 src="<?php echo esc_url( is_array( $c_logo ) ? $c_logo['url'] : $c_logo ); ?>" 
-                                 alt="<?php echo esc_attr( $c_name ?: 'Certification Logo' ); ?>" 
-                                 loading="lazy" />
-                        <?php else : ?>
-                            <span class="tracking-wider uppercase"><?php echo esc_html( $c_name ); ?></span>
-                        <?php endif; ?>
-                    </div>
-                <?php endwhile; ?>
+                        if ( empty( $c_name ) && empty( $c_logo ) ) continue;
+                    ?>
+                        <div class="swiper-slide flex items-center justify-center">
+                            <div class="h-12 md:h-16 w-auto flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 font-bold text-lg md:text-xl">
+                                <?php if ( ! empty( $c_logo ) ) : ?>
+                                    <img class="max-h-full max-w-[180px] object-contain" 
+                                         src="<?php echo esc_url( is_array( $c_logo ) ? $c_logo['url'] : $c_logo ); ?>" 
+                                         alt="<?php echo esc_attr( $c_name ?: 'Certification Logo' ); ?>" 
+                                         loading="lazy" />
+                                <?php else : ?>
+                                    <span class="tracking-wider uppercase text-white/80"><?php echo esc_html( $c_name ); ?></span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
             </div>
+
+            <script>
+            (function() {
+                function initPartnerSwiper() {
+                    if (typeof Swiper !== 'undefined' && document.querySelector('.partner-swiper')) {
+                        new Swiper('.partner-swiper', {
+                            slidesPerView: 2,
+                            spaceBetween: 30,
+                            loop: true,
+                            autoplay: {
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            },
+                            breakpoints: {
+                                480: { slidesPerView: 3, spaceBetween: 30 },
+                                768: { slidesPerView: 4, spaceBetween: 40 },
+                                1024: { slidesPerView: 5, spaceBetween: 50 }
+                            }
+                        });
+                    }
+                }
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initPartnerSwiper);
+                } else {
+                    initPartnerSwiper();
+                }
+            })();
+            </script>
         <?php endif; ?>
     </div>
 </section>
