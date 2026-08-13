@@ -435,8 +435,8 @@ $gallery_title        = ( function_exists( 'get_field' ) ? get_field( 'home_gall
 
         <?php if ( ! empty( $reviews_shortcode ) ) : ?>
             <!-- Google Review Plugin Widget Shortcode -->
-            <div class="google-reviews-widget-container">
-                <?php echo do_shortcode( wp_kses_post( $reviews_shortcode ) ); ?>
+            <div class="google-reviews-widget-container max-w-5xl mx-auto">
+                <?php echo do_shortcode( $reviews_shortcode ); ?>
             </div>
         <?php elseif ( function_exists( 'have_rows' ) && have_rows( 'home_reviews_list' ) ) : ?>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
