@@ -218,10 +218,10 @@ if ( ! function_exists( 'lh_field' ) ) {
                         $logo_url = is_array( $c_logo ) ? $c_logo['url'] : $c_logo;
                     ?>
                         <div class="swiper-slide h-auto">
-                            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-prestige-gold/50 transition-all duration-300 flex flex-col h-full group hover:-translate-y-1 shadow-xl">
+                            <div class="flex flex-col h-full group transition-all duration-300">
                                 <?php if ( ! empty( $logo_url ) ) : ?>
-                                    <div class="h-48 w-full overflow-hidden rounded-xl bg-white/10 mb-5 flex items-center justify-center relative">
-                                        <img class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" 
+                                    <div class="h-56 w-full overflow-hidden rounded-2xl mb-4 relative shadow-lg">
+                                        <img class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" 
                                              src="<?php echo esc_url( $logo_url ); ?>" 
                                              alt="<?php echo esc_attr( $c_name ?: 'Certification' ); ?>" 
                                              loading="lazy" />
@@ -230,12 +230,12 @@ if ( ! function_exists( 'lh_field' ) ) {
                                 <div class="flex-grow flex flex-col justify-between">
                                     <div>
                                         <?php if ( ! empty( $c_name ) ) : ?>
-                                            <h3 class="font-headline-md text-lg text-white font-bold group-hover:text-prestige-gold transition-colors">
+                                            <h3 class="font-headline-md text-base md:text-lg text-white font-bold group-hover:text-prestige-gold transition-colors">
                                                 <?php echo esc_html( $c_name ); ?>
                                             </h3>
                                         <?php endif; ?>
                                         <?php if ( ! empty( $c_desc ) ) : ?>
-                                            <p class="text-surface-variant/80 text-sm leading-relaxed mt-2">
+                                            <p class="text-surface-variant/80 text-sm leading-relaxed mt-1">
                                                 <?php echo esc_html( $c_desc ); ?>
                                             </p>
                                         <?php endif; ?>
