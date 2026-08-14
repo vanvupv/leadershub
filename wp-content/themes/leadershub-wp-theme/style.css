@@ -8,3 +8,21 @@ Author URI: https://devvn.com
 Text Domain: leadershub
 Tags: custom-background, custom-menu, featured-images, translation-ready
 */
+
+/* Google Reviews Widget Font Inter Override */
+.google-reviews-widget-container,
+.google-reviews-widget-container *,
+.ti-widget,
+.ti-widget * {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+.ti-widget .ti-name {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+}
+
+.ti-widget .ti-review-content {
+    font-family: 'Inter', sans-serif !important;
+    line-height: 1.6 !important;
+}
