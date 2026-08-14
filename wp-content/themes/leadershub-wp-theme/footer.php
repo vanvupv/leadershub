@@ -148,26 +148,6 @@ $linkedin = lh_opt( 'lh_linkedin', '#' );
     }
 </script>
 
-<?php
-// Filtered wp_footer output to clean up resources while keeping core plugins scripts
-ob_start();
-wp_footer();
-$wp_footer_output = ob_get_clean();
-$wp_footer_output = preg_replace( '/<link[^>]*rel=[\'"]stylesheet[\'"][^>]*>/i', '', $wp_footer_output );
-$keep_js = array( 'rocket', 'lazyload', 'contact-form-7', 'wpcf7', 'swv', 'wp-i18n', 'wp-hooks', 'wp-polyfill', 'wp-includes' );
-$wp_footer_output = preg_replace_callback(
-    '/<script\b[^>]*>.*?<\/script>/si',
-    function( $m ) use ( $keep_js ) {
-        foreach ( $keep_js as $k ) {
-            if ( stripos( $m[0], $k ) !== false ) {
-                return $m[0];
-            }
-        }
-        return '';
-    },
-    $wp_footer_output
-);
-echo $wp_footer_output;
-?>
+<?php wp_footer(); ?>
 </body>
 </html>
