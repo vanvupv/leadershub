@@ -91,7 +91,11 @@ function leadershub_theme_scripts() {
                         'headline-md': ['1.5rem', { lineHeight: '2rem' }],
                         'body-lg': ['1.125rem', { lineHeight: '1.75rem' }],
                         'body-md': ['1rem', { lineHeight: '1.5rem' }],
-                        'label-sm': ['0.875rem', { lineHeight: '1.25rem' }]
+                        'label-sm': ['0.875rem', { lineHeight: '1.25rem' }],
+                        '6xl': ['3.75rem', { lineHeight: '1.2' }],
+                        '5xl': ['3rem', { lineHeight: '1.2' }],
+                        '4xl': ['2.25rem', { lineHeight: '1.25' }],
+                        '3xl': ['1.875rem', { lineHeight: '1.25' }]
                     }
                 }
             }
