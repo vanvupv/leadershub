@@ -35,6 +35,9 @@ add_action( 'after_setup_theme', 'leadershub_theme_setup' );
 
 // Enqueue styles and scripts
 function leadershub_theme_scripts() {
+    // Main Theme Stylesheet
+    wp_enqueue_style( 'leadershub-style', get_stylesheet_uri(), array(), '1.0.0' );
+
     // Fonts
     wp_enqueue_style( 'google-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', array(), null );
     wp_enqueue_style( 'google-material-icons', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap', array(), null );
@@ -114,7 +117,7 @@ function leadershub_strip_assets() {
         add_action( 'wp_enqueue_scripts', function() {
             // Keep only essential plugin CSS/JS (like contact forms if enqueued)
             global $wp_styles, $wp_scripts;
-            $keep_styles = array( 'google-fonts-inter', 'google-material-icons', 'swiper-css', 'admin-bar' );
+            $keep_styles = array( 'leadershub-style', 'google-fonts-inter', 'google-material-icons', 'swiper-css', 'admin-bar' );
             $keep_scripts = array( 'tailwind-cdn', 'swiper-js', 'admin-bar', 'jquery-core', 'jquery-migrate' );
             
             // Resolve form plugin dependencies recursively (wpcf7, wp-i18n, wp-hooks etc)
