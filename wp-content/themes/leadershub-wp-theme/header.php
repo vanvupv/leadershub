@@ -74,8 +74,7 @@ $logo = lh_opt( 'lh_logo', '' );
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2">
             <?php if ( $logo ) : ?>
                 <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-12 w-auto">
-            <?php endif; ?>
-            <span class="font-headline-md text-headline-md font-bold text-deep-navy dark:text-prestige-gold">The Leaders Hub</span>
+            <?php endif; ?> 
         </a>
         <div class="hidden md:flex items-center space-x-8">
             <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/' ) ); ?>">Trang chủ</a>

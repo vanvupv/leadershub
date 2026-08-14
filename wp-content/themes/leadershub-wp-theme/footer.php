@@ -16,7 +16,7 @@ $facebook = lh_opt( 'lh_facebook', 'https://m.me/theleadershub' );
 $zalo = lh_opt( 'lh_zalo', 'https://zalo.me/84378919119' );
 $linkedin = lh_opt( 'lh_linkedin', '#' );
 ?>
-
+                                                                                         
 <!-- Footer -->
 <footer class="bg-deep-navy text-surface-container-lowest pt-section-padding-desktop pb-unit border-t border-white/5">
     <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-gutter">
