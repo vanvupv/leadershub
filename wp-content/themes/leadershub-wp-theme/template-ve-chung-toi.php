@@ -98,22 +98,35 @@ if ( ! function_exists( 'lh_field' ) ) {
                 </div>
             <?php endif; ?>
             
-            <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_stats' ) ) : ?>
+            <?php 
+            if ( function_exists( 'have_rows' ) && have_rows( 'about_stats' ) ) :
+                $valid_stats = array();
+                while ( have_rows( 'about_stats' ) ) : the_row();
+                    $num   = get_sub_field( 'number' );
+                    $label = get_sub_field( 'label' );
+                    if ( ! empty( $num ) || ! empty( $label ) ) {
+                        $valid_stats[] = array( 'number' => $num, 'label' => $label );
+                    }
+                endwhile;
+
+                if ( ! empty( $valid_stats ) ) :
+            ?>
                 <div class="mt-12 grid grid-cols-2 gap-8 border-t border-surface-container-highest pt-8">
-                    <?php while ( have_rows( 'about_stats' ) ) : the_row();
-                        $stat_num   = get_sub_field( 'number' );
-                        $stat_label = get_sub_field( 'label' );
-                        if ( empty( $stat_num ) ) continue;
-                    ?>
+                    <?php foreach ( $valid_stats as $st ) : ?>
                         <div>
-                            <div class="text-headline-md font-bold text-deep-navy text-2xl"><?php echo esc_html( $stat_num ); ?></div>
-                            <?php if ( ! empty( $stat_label ) ) : ?>
-                                <div class="text-label-sm text-on-surface-variant text-sm"><?php echo esc_html( $stat_label ); ?></div>
+                            <?php if ( ! empty( $st['number'] ) ) : ?>
+                                <div class="text-headline-md font-bold text-deep-navy text-2xl"><?php echo esc_html( $st['number'] ); ?></div>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $st['label'] ) ) : ?>
+                                <div class="text-label-sm text-on-surface-variant text-sm"><?php echo esc_html( $st['label'] ); ?></div>
                             <?php endif; ?>
                         </div>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </div>
-            <?php endif; ?>
+            <?php 
+                endif;
+            endif; 
+            ?>
         </div>
         
         <?php if ( ! empty( $story_image ) ) : ?>
