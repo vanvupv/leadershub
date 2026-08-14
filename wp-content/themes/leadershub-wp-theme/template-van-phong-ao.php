@@ -271,6 +271,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 </section>
 <?php endif; ?>
 
+
 <!-- Environment Showcase -->
 <?php if ( ! empty( $showcase_title ) || ! empty( $showcase_content ) || ! empty( $showcase_image ) ) : ?>
 <section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden" id="showcase">

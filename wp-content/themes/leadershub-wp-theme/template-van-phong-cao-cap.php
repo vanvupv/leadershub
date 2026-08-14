@@ -124,7 +124,7 @@ if ( ! function_exists( 'lh_field' ) ) {
                 <?php endif; ?>
 
                 <?php if ( ! empty( $intro_content ) ) : ?>
-                    <div class="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                    <div class="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed content-body">
                         <?php echo wp_kses_post( $intro_content ); ?>
                     </div>
                 <?php endif; ?>

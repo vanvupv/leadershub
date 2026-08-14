@@ -26,3 +26,57 @@ Tags: custom-background, custom-menu, featured-images, translation-ready
     font-family: 'Inter', sans-serif !important;
     line-height: 1.6 !important;
 }
+
+/* Content & WYSIWYG List (UL/LI) Styling */
+ul.space-y-4,
+.content-body ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+ul.space-y-4 > li,
+.content-body ul > li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    margin-bottom: 0.875rem !important;
+    line-height: 1.6 !important;
+}
+
+ul.space-y-4 > li:last-child,
+.content-body ul > li:last-child {
+    margin-bottom: 0 !important;
+}
+
+ul.space-y-4 > li .material-symbols-outlined,
+.content-body ul > li .material-symbols-outlined {
+    color: #D4AF37 !important;
+    font-size: 1.35rem !important;
+    margin-top: 0.125rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* Default unstyled ul inside content */
+.content-body ul:not([class]) {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+}
+
+.content-body ul:not([class]) > li {
+    position: relative !important;
+    padding-left: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.6 !important;
+}
+
+.content-body ul:not([class]) > li::before {
+    content: "check_circle";
+    font-family: 'Material Symbols Outlined' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 2px !important;
+    color: #D4AF37 !important;
+    font-size: 1.25rem !important;
+}
