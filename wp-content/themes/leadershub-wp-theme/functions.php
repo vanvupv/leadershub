@@ -81,6 +81,14 @@ function leadershub_theme_scripts() {
                         'body-lg': ['Inter', 'sans-serif'],
                         'body-md': ['Inter', 'sans-serif'],
                         'label-sm': ['Inter', 'sans-serif']
+                    },
+                    fontSize: {
+                        'display-lg': ['2.75rem', { lineHeight: '3.25rem' }],
+                        'headline-xl': ['2.25rem', { lineHeight: '2.75rem' }],
+                        'headline-md': ['1.5rem', { lineHeight: '2rem' }],
+                        'body-lg': ['1.125rem', { lineHeight: '1.75rem' }],
+                        'body-md': ['1rem', { lineHeight: '1.5rem' }],
+                        'label-sm': ['0.875rem', { lineHeight: '1.25rem' }]
                     }
                 }
             }

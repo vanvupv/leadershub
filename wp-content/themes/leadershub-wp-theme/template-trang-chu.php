@@ -103,12 +103,12 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
         <?php if ( ! empty( $services_subtitle ) || ! empty( $services_title ) ) : ?>
             <div class="text-center mb-16">
                 <?php if ( ! empty( $services_subtitle ) ) : ?>
-                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold text-center">
+                    <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-3 font-bold text-center">
                         <?php echo esc_html( $services_subtitle ); ?>
                     </span>
                 <?php endif; ?>
                 <?php if ( ! empty( $services_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold text-center">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold text-center">
                         <?php echo esc_html( $services_title ); ?>
                     </h2>
                 <?php endif; ?>
@@ -160,7 +160,7 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
         <?php if ( ! empty( $pricing_title ) || ! empty( $pricing_desc ) ) : ?>
             <div class="text-center mb-16">
                 <?php if ( ! empty( $pricing_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-4 font-bold">
                         <?php echo esc_html( $pricing_title ); ?>
                     </h2>
                 <?php endif; ?>
@@ -230,12 +230,12 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
         <?php if ( ! empty( $gallery_subtitle ) || ! empty( $gallery_title ) ) : ?>
             <div class="text-center mb-16">
                 <?php if ( ! empty( $gallery_subtitle ) ) : ?>
-                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold text-center">
+                    <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-3 font-bold text-center">
                         <?php echo esc_html( $gallery_subtitle ); ?>
                     </span>
                 <?php endif; ?>
                 <?php if ( ! empty( $gallery_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold text-center">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold text-center">
                         <?php echo esc_html( $gallery_title ); ?>
                     </h2>
                 <?php endif; ?>
@@ -284,12 +284,12 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
         <?php if ( ! empty( $reviews_subtitle ) || ! empty( $reviews_title ) ) : ?>
             <div class="text-center mb-12">
                 <?php if ( ! empty( $reviews_subtitle ) ) : ?>
-                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">
+                    <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-3 font-bold">
                         <?php echo esc_html( $reviews_subtitle ); ?>
                     </span>
                 <?php endif; ?>
                 <?php if ( ! empty( $reviews_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold">
                         <?php echo esc_html( $reviews_title ); ?>
                     </h2>
                 <?php endif; ?>
@@ -371,7 +371,7 @@ if ( $news_query->have_posts() ) :
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="flex justify-between items-end mb-12">
             <div>
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold"><?php echo esc_html( $news_title ); ?></h2>
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold"><?php echo esc_html( $news_title ); ?></h2>
                 <div class="w-20 h-1 bg-prestige-gold mt-4"></div>
             </div>
             <a href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/tin-tuc' ) ); ?>" class="text-sm font-semibold text-deep-navy hover:text-prestige-gold transition-colors flex items-center gap-1 border-b border-deep-navy/20 pb-1">
@@ -430,8 +430,8 @@ if ( $news_query->have_posts() ) :
             
             <div class="w-full md:w-1/2 p-12 bg-deep-navy text-white relative flex flex-col justify-between">
                 <div class="relative z-10">
-                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">Đăng ký ngay</span>
-                    <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">Bắt Đầu Nâng Tầm Doanh Nghiệp</h2>
+                    <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-3 font-bold">Đăng ký ngay</span>
+                    <h2 class="font-display-lg text-3xl md:text-4xl mb-6 font-bold">Bắt Đầu Nâng Tầm Doanh Nghiệp</h2>
                     <p class="text-surface-variant font-body-lg mb-8">Hãy điền thông tin biểu mẫu bên cạnh. Đội ngũ tư vấn viên của chúng tôi sẽ chủ động liên hệ lại sau ít phút để giải đáp mọi nhu cầu.</p>
                 </div>
                 <div class="space-y-4 relative z-10 border-t border-white/10 pt-6">

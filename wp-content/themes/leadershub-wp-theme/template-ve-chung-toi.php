@@ -81,13 +81,13 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="order-2 md:order-1">
             <?php if ( ! empty( $story_badge ) ) : ?>
-                <span class="text-prestige-gold font-label-sm text-label-sm uppercase tracking-[0.2em] mb-4 block font-bold">
+                <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-[0.2em] mb-4 block font-bold">
                     <?php echo esc_html( $story_badge ); ?>
                 </span>
             <?php endif; ?>
 
             <?php if ( ! empty( $story_title ) ) : ?>
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-8 font-bold">
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-8 font-bold">
                     <?php echo esc_html( $story_title ); ?>
                 </h2>
             <?php endif; ?>
@@ -137,7 +137,7 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $values_title ) ) : ?>
             <div class="text-center mb-20">
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-4 font-bold">
                     <?php echo esc_html( $values_title ); ?>
                 </h2>
                 <div class="w-20 h-1 bg-prestige-gold mx-auto mt-4"></div>
@@ -264,7 +264,7 @@ if ( ! function_exists( 'lh_field' ) ) {
         <?php if ( ! empty( $gallery_title ) || ! empty( $gallery_desc ) ) : ?>
             <div class="text-center mb-16">
                 <?php if ( ! empty( $gallery_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold">
                         <?php echo esc_html( $gallery_title ); ?>
                     </h2>
                 <?php endif; ?>
@@ -327,7 +327,7 @@ if ( ! function_exists( 'lh_field' ) ) {
         <div class="relative rounded-3xl overflow-hidden bg-deep-navy p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12">
             <div class="relative z-10 max-w-xl text-center md:text-left">
                 <?php if ( ! empty( $cta_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-white mb-6 font-bold">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-white mb-6 font-bold">
                         <?php echo esc_html( $cta_title ); ?>
                     </h2>
                 <?php endif; ?>

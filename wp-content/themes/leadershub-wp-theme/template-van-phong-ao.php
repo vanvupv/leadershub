@@ -46,7 +46,7 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent z-10"></div>
     <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
-            <span class="inline-block px-4 py-1 rounded-full bg-prestige-gold/10 text-prestige-gold font-label-sm text-xs tracking-widest uppercase font-semibold">Premium Business Solution</span>
+            <span class="inline-block px-4 py-1.5 rounded-full bg-prestige-gold/10 text-prestige-gold font-label-sm text-sm md:text-base tracking-widest uppercase font-bold">Premium Business Solution</span>
             <h1 class="font-display-lg text-4xl md:text-5xl text-deep-navy leading-tight font-bold">
                 <?php echo esc_html( lh_field( 'vo_hero_title', 'Gói văn phòng cơ bản' ) ); ?> <br />
                 <span class="text-prestige-gold"><?php echo esc_html( lh_field( 'vo_hero_subtitle', 'Địa chỉ kinh doanh hạng A' ) ); ?></span>
@@ -89,7 +89,7 @@ if ( ! function_exists( 'lh_field' ) ) {
         <?php if ( ! empty( $pricing_title ) || ! empty( $pricing_desc ) ) : ?>
             <div class="text-center mb-16">
                 <?php if ( ! empty( $pricing_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold">
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-4 font-bold">
                         <?php echo esc_html( $pricing_title ); ?>
                     </h2>
                 <?php endif; ?>
@@ -223,7 +223,7 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter relative z-10">
         <?php if ( ! empty( $process_title ) ) : ?>
             <div class="text-center mb-16">
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold">
                     <?php echo esc_html( $process_title ); ?>
                 </h2>
             </div>
@@ -297,11 +297,11 @@ if ( ! function_exists( 'lh_field' ) ) {
         </div>
         <div>
             <?php if ( ! empty( $showcase_badge ) ) : ?>
-                <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-4 font-bold"><?php echo esc_html( $showcase_badge ); ?></span>
+                <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-4 font-bold"><?php echo esc_html( $showcase_badge ); ?></span>
             <?php endif; ?>
 
             <?php if ( ! empty( $showcase_title ) ) : ?>
-                <h2 class="font-headline-xl text-headline-xl text-white mb-8 font-bold"><?php echo esc_html( $showcase_title ); ?></h2>
+                <h2 class="font-display-lg text-3xl md:text-4xl text-white mb-8 font-bold"><?php echo esc_html( $showcase_title ); ?></h2>
             <?php endif; ?>
 
             <?php if ( ! empty( $showcase_content ) ) : ?>
@@ -322,7 +322,7 @@ if ( ! function_exists( 'lh_field' ) ) {
             <div class="w-full md:w-1/2 p-12 bg-deep-navy text-white relative flex flex-col justify-between">
                 <div class="relative z-10">
                     <?php if ( ! empty( $cta_title ) ) : ?>
-                        <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">
+                        <h2 class="font-display-lg text-3xl md:text-4xl mb-6 font-bold">
                             <?php echo esc_html( $cta_title ); ?>
                         </h2>
                     <?php endif; ?>
@@ -359,7 +359,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 <section class="py-section-padding-desktop bg-white" id="faq">
     <div class="max-w-container-max mx-auto px-gutter max-w-3xl">
         <?php if ( ! empty( $faq_title ) ) : ?>
-            <h2 class="font-headline-xl text-headline-xl text-deep-navy text-center mb-12 font-bold">
+            <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy text-center mb-12 font-bold">
                 <?php echo esc_html( $faq_title ); ?>
             </h2>
         <?php endif; ?>

@@ -120,7 +120,7 @@ if ( ! function_exists( 'lh_field' ) ) {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
                 <?php if ( ! empty( $intro_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-8 font-bold"><?php echo esc_html( $intro_title ); ?></h2>
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-8 font-bold"><?php echo esc_html( $intro_title ); ?></h2>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $intro_content ) ) : ?>
@@ -156,11 +156,11 @@ if ( ! function_exists( 'lh_field' ) ) {
         <?php if ( ! empty( $utils_badge ) || ! empty( $utils_title ) ) : ?>
             <div class="text-center mb-16">
                 <?php if ( ! empty( $utils_badge ) ) : ?>
-                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest font-semibold"><?php echo esc_html( $utils_badge ); ?></span>
+                    <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block font-bold mb-3"><?php echo esc_html( $utils_badge ); ?></span>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $utils_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mt-4 font-bold"><?php echo esc_html( $utils_title ); ?></h2>
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold"><?php echo esc_html( $utils_title ); ?></h2>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
@@ -198,7 +198,7 @@ if ( ! function_exists( 'lh_field' ) ) {
             <div class="flex justify-between items-end mb-12">
                 <div>
                     <?php if ( ! empty( $gallery_title ) ) : ?>
-                        <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold"><?php echo esc_html( $gallery_title ); ?></h2>
+                        <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold"><?php echo esc_html( $gallery_title ); ?></h2>
                     <?php endif; ?>
 
                     <?php if ( ! empty( $gallery_desc ) ) : ?>
@@ -208,39 +208,35 @@ if ( ! function_exists( 'lh_field' ) ) {
             </div>
         <?php endif; ?>
 
-        <div class="grid grid-cols-12 gap-4 h-[600px]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <?php if ( ! empty( $gallery_image_1 ) ) : ?>
-                <div class="col-span-12 md:col-span-8 overflow-hidden rounded-2xl group relative">
-                    <img alt="<?php echo esc_attr( $gallery_caption_1 ?: $gallery_title ); ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_1 ); ?>" />
+                <div class="rounded-2xl overflow-hidden h-80 shadow-md group relative">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_1 ); ?>" alt="<?php echo esc_attr( $gallery_title ); ?>" />
                     <?php if ( ! empty( $gallery_caption_1 ) ) : ?>
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                             <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_1 ); ?></span>
                         </div>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
 
-            <?php if ( ! empty( $gallery_image_2 ) || ! empty( $gallery_image_3 ) ) : ?>
-                <div class="col-span-12 md:col-span-4 flex flex-col gap-4">
-                    <?php if ( ! empty( $gallery_image_2 ) ) : ?>
-                        <div class="h-1/2 overflow-hidden rounded-2xl group relative">
-                            <img alt="<?php echo esc_attr( $gallery_caption_2 ?: $gallery_title ); ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_2 ); ?>" />
-                            <?php if ( ! empty( $gallery_caption_2 ) ) : ?>
-                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                                    <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_2 ); ?></span>
-                                </div>
-                            <?php endif; ?>
+            <?php if ( ! empty( $gallery_image_2 ) ) : ?>
+                <div class="rounded-2xl overflow-hidden h-80 shadow-md group relative">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_2 ); ?>" alt="<?php echo esc_attr( $gallery_title ); ?>" />
+                    <?php if ( ! empty( $gallery_caption_2 ) ) : ?>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_2 ); ?></span>
                         </div>
                     <?php endif; ?>
+                </div>
+            <?php endif; ?>
 
-                    <?php if ( ! empty( $gallery_image_3 ) ) : ?>
-                        <div class="h-1/2 overflow-hidden rounded-2xl group relative">
-                            <img alt="<?php echo esc_attr( $gallery_caption_3 ?: $gallery_title ); ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_3 ); ?>" />
-                            <?php if ( ! empty( $gallery_caption_3 ) ) : ?>
-                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                                    <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_3 ); ?></span>
-                                </div>
-                            <?php endif; ?>
+            <?php if ( ! empty( $gallery_image_3 ) ) : ?>
+                <div class="rounded-2xl overflow-hidden h-80 shadow-md group relative">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_3 ); ?>" alt="<?php echo esc_attr( $gallery_title ); ?>" />
+                    <?php if ( ! empty( $gallery_caption_3 ) ) : ?>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_3 ); ?></span>
                         </div>
                     <?php endif; ?>
                 </div>

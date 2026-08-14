@@ -54,8 +54,10 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="z-10">
             <?php if ( ! empty( $hero_badge ) ) : ?>
-                <span class="inline-block px-4 py-1 bg-prestige-gold/10 text-prestige-gold font-label-sm text-xs rounded-full mb-6 font-bold uppercase tracking-widest"><?php echo esc_html( $hero_badge ); ?></span>
-            <?php endif; ?>
+            <div class="inline-block">
+                <span class="inline-block px-4 py-1.5 bg-prestige-gold/10 text-prestige-gold font-label-sm text-sm md:text-base rounded-full mb-6 font-bold uppercase tracking-widest"><?php echo esc_html( $hero_badge ); ?></span>
+            </div>
+        <?php endif; ?>
 
             <?php if ( ! empty( $hero_title ) ) : ?>
                 <h1 class="font-display-lg text-display-lg text-deep-navy mb-8 leading-tight font-bold">
@@ -121,7 +123,7 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $rooms_title ) ) : ?>
             <div class="text-center mb-16">
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-4 font-bold"><?php echo esc_html( $rooms_title ); ?></h2>
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-4 font-bold"><?php echo esc_html( $rooms_title ); ?></h2>
                 <div class="w-20 h-1 bg-prestige-gold mx-auto mt-4"></div>
             </div>
         <?php endif; ?>
@@ -181,7 +183,7 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $comp_title ) ) : ?>
             <div class="mb-12 text-center">
-                <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold">
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold">
                     <?php echo esc_html( $comp_title ); ?>
                 </h2>
                 <div class="w-20 h-1 bg-prestige-gold mx-auto mt-4"></div>
@@ -259,7 +261,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 
             <div>
                 <?php if ( ! empty( $amenities_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-6 font-bold"><?php echo esc_html( $amenities_title ); ?></h2>
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-6 font-bold"><?php echo esc_html( $amenities_title ); ?></h2>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $amenities_desc ) ) : ?>
@@ -302,7 +304,7 @@ if ( ! function_exists( 'lh_field' ) ) {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
                 <?php if ( ! empty( $booking_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl text-deep-navy mb-6 font-bold"><?php echo esc_html( $booking_title ); ?></h2>
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-6 font-bold"><?php echo esc_html( $booking_title ); ?></h2>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $booking_desc ) ) : ?>
