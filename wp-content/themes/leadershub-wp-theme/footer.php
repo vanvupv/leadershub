@@ -24,9 +24,9 @@ $linkedin = lh_opt( 'lh_linkedin', '#' );
             <div class="font-headline-md text-headline-md text-prestige-gold font-bold mb-6">The Leaders Hub</div>
             <p class="text-surface-container-highest/60 text-sm mb-6 leading-relaxed">Đối tác tin cậy cung cấp giải pháp không gian làm việc và địa chỉ kinh doanh chuyên nghiệp chuẩn quốc tế tại Hà Nội.</p>
             <div class="flex gap-4">
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-prestige-gold hover:text-deep-navy transition-all" href="<?php echo esc_url( $map_url ); ?>" target="_blank" rel="noopener noreferrer" title="Bản đồ"><span class="material-symbols-outlined text-sm">location_on</span></a>
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-prestige-gold hover:text-deep-navy transition-all" href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook"><span class="material-symbols-outlined text-sm">public</span></a>
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-prestige-gold hover:text-deep-navy transition-all" href="mailto:<?php echo esc_attr( $email ); ?>" title="Email"><span class="material-symbols-outlined text-sm">mail</span></a>
+                <a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-deep-navy hover:bg-prestige-gold hover:text-deep-navy transition-all" href="<?php echo esc_url( $map_url ); ?>" target="_blank" rel="noopener noreferrer" title="Bản đồ"><span class="material-symbols-outlined text-sm">location_on</span></a>
+                <a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-deep-navy hover:bg-prestige-gold hover:text-deep-navy transition-all" href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook"><span class="material-symbols-outlined text-sm">public</span></a>
+                <a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-deep-navy hover:bg-prestige-gold hover:text-deep-navy transition-all" href="mailto:<?php echo esc_attr( $email ); ?>" title="Email"><span class="material-symbols-outlined text-sm">mail</span></a>
             </div>
         </div>
         <div>
@@ -54,7 +54,7 @@ $linkedin = lh_opt( 'lh_linkedin', '#' );
             <p class="text-surface-container-highest/80 text-sm leading-relaxed mt-2">Email: <a href="mailto:<?php echo esc_attr( $email ); ?>" class="hover:text-prestige-gold"><?php echo esc_html( $email ); ?></a></p>
         </div>
     </div>
-    <div class="max-w-container-max mx-auto px-gutter mt-20 pt-8 border-t border-white/10 text-center text-sm opacity-60">
+    <div class="max-w-container-max mx-auto px-gutter mt-20 pt-8 border-t border-white/10 text-center text-sm text-white/90">
         <p>&copy; <?php echo date( 'Y' ); ?> The Leaders Hub. All rights reserved.</p>
     </div>
 </footer>
