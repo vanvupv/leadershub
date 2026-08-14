@@ -253,7 +253,7 @@ if ( ! function_exists( 'lh_field' ) ) {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
                 <?php if ( ! empty( $cta_title ) ) : ?>
-                    <h2 class="font-headline-xl text-headline-xl mb-6 font-bold"><?php echo nl2br( esc_html( $cta_title ) ); ?></h2>
+                    <h2 class="font-display-lg text-3xl md:text-4xl mb-6 font-bold"><?php echo nl2br( esc_html( $cta_title ) ); ?></h2>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $cta_desc ) ) : ?>
@@ -333,7 +333,7 @@ if ( ! function_exists( 'lh_field' ) ) {
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $process_title ) ) : ?>
             <div class="text-center mb-12">
-                <h3 class="font-headline-xl text-headline-xl text-deep-navy font-bold"><?php echo esc_html( $process_title ); ?></h3>
+                <h3 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold"><?php echo esc_html( $process_title ); ?></h3>
             </div>
         <?php endif; ?>
 
@@ -368,8 +368,8 @@ if ( ! function_exists( 'lh_field' ) ) {
             
             <div class="w-full md:w-1/2 p-12 bg-deep-navy text-white relative flex flex-col justify-between">
                 <div class="relative z-10">
-                    <span class="text-prestige-gold font-label-sm text-xs uppercase tracking-widest block mb-2 font-bold">Đăng ký ngay</span>
-                    <h2 class="font-headline-xl text-headline-xl mb-6 font-bold">Bắt Đầu Nâng Tầm Doanh Nghiệp</h2>
+                    <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-3 font-bold">Đăng ký ngay</span>
+                    <h2 class="font-display-lg text-3xl md:text-4xl mb-6 font-bold">Bắt Đầu Nâng Tầm Doanh Nghiệp</h2>
                     <p class="text-surface-variant font-body-lg mb-8">Hãy điền thông tin biểu mẫu bên cạnh. Đội ngũ tư vấn viên của chúng tôi sẽ chủ động liên hệ lại sau ít phút để giải đáp mọi nhu cầu.</p>
                 </div>
                 <div class="space-y-4 relative z-10 border-t border-white/10 pt-6">
