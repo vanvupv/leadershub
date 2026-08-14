@@ -30,7 +30,7 @@ $linkedin = lh_opt( 'lh_linkedin', '#' );
             </div>
         </div>
         <div>
-            <h6 class="font-label-sm text-white mb-6 uppercase tracking-widest text-xs font-semibold">Dịch vụ</h6>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-base md:text-lg">Dịch vụ</h4>
             <ul class="space-y-4 text-sm">
                 <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>">Dịch vụ địa chỉ doanh nghiệp</a></li>
                 <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>">Văn phòng cao cấp (Serviced Office)</a></li>
@@ -39,7 +39,7 @@ $linkedin = lh_opt( 'lh_linkedin', '#' );
             </ul>
         </div>
         <div>
-            <h6 class="font-label-sm text-white mb-6 uppercase tracking-widest text-xs font-semibold">Hỗ trợ</h6>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-base md:text-lg">Hỗ trợ</h4>
             <ul class="space-y-4 text-sm">
                 <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/#faq' ) ); ?>">Câu hỏi thường gặp</a></li>
                 <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/chinh-sach-bao-mat' ) ); ?>">Chính sách bảo mật</a></li>
@@ -48,7 +48,7 @@ $linkedin = lh_opt( 'lh_linkedin', '#' );
             </ul>
         </div>
         <div>
-            <h6 class="font-label-sm text-white mb-6 uppercase tracking-widest text-xs font-semibold">Văn phòng</h6>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-base md:text-lg">Văn phòng</h4>
             <p class="text-surface-container-highest/80 text-sm leading-relaxed mb-4"><?php echo esc_html( $address ); ?></p>
             <p class="text-surface-container-highest/80 text-sm leading-relaxed">Hotline: <a href="<?php echo esc_url( $hotline_url ); ?>" class="hover:text-prestige-gold font-bold"><?php echo esc_html( $hotline ); ?></a></p>
             <p class="text-surface-container-highest/80 text-sm leading-relaxed mt-2">Email: <a href="mailto:<?php echo esc_attr( $email ); ?>" class="hover:text-prestige-gold"><?php echo esc_html( $email ); ?></a></p>
