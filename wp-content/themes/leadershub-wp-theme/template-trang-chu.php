@@ -50,7 +50,7 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
             <source src="<?php echo esc_url( $hero_video ); ?>" type="video/mp4">
         </video>
     <?php endif; ?>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30 z-10"></div>
+    <div class="absolute inset-0 z-10"></div>
 
     <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 gap-12 items-center">
         <div class="space-y-6 max-w-2xl">
@@ -116,38 +116,74 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
         <?php endif; ?>
 
         <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <?php while ( have_rows( 'home_services_list' ) ) : the_row();
-                    $s_title = get_sub_field( 'title' );
-                    $s_desc  = get_sub_field( 'desc' );
-                    $s_link  = get_sub_field( 'link' );
-                    $s_img   = get_sub_field( 'image' );
+            <div class="swiper services-swiper overflow-hidden pb-12">
+                <div class="swiper-wrapper">
+                    <?php while ( have_rows( 'home_services_list' ) ) : the_row();
+                        $s_title = get_sub_field( 'title' );
+                        $s_desc  = get_sub_field( 'desc' );
+                        $s_link  = get_sub_field( 'link' );
+                        $s_img   = get_sub_field( 'image' );
 
-                    if ( empty( $s_title ) ) continue;
-                ?>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                        <?php if ( ! empty( $s_img ) ) : ?>
-                            <div class="h-48 overflow-hidden relative">
-                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="<?php echo esc_attr( $s_title ); ?>" src="<?php echo esc_url( $s_img ); ?>" />
-                            </div>
-                        <?php endif; ?>
-                        <div class="p-8 flex-grow flex flex-col justify-between">
-                            <div class="space-y-4">
-                                <span class="material-symbols-outlined text-prestige-gold text-3xl">domain</span>
-                                <h3 class="font-headline-md text-xl text-deep-navy font-bold"><?php echo esc_html( $s_title ); ?></h3>
-                                <?php if ( ! empty( $s_desc ) ) : ?>
-                                    <p class="text-on-surface-variant text-sm leading-relaxed"><?php echo esc_html( $s_desc ); ?></p>
+                        if ( empty( $s_title ) ) continue;
+                    ?>
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-surface-container-high hover:shadow-2xl transition-all duration-300 flex flex-col h-full group">
+                                <?php if ( ! empty( $s_img ) ) : ?>
+                                    <div class="h-48 overflow-hidden relative flex-shrink-0">
+                                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="<?php echo esc_attr( $s_title ); ?>" src="<?php echo esc_url( $s_img ); ?>" loading="lazy" />
+                                    </div>
                                 <?php endif; ?>
+                                <div class="p-8 flex-grow flex flex-col justify-between">
+                                    <div class="space-y-4">
+                                        <span class="material-symbols-outlined text-prestige-gold text-3xl">domain</span>
+                                        <h3 class="font-headline-md text-xl text-deep-navy font-bold"><?php echo esc_html( $s_title ); ?></h3>
+                                        <?php if ( ! empty( $s_desc ) ) : ?>
+                                            <p class="text-on-surface-variant text-sm leading-relaxed"><?php echo esc_html( $s_desc ); ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <?php if ( ! empty( $s_link ) ) : ?>
+                                        <a href="<?php echo esc_url( $s_link ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
+                                            Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                            <?php if ( ! empty( $s_link ) ) : ?>
-                                <a href="<?php echo esc_url( $s_link ); ?>" class="inline-flex items-center text-success-green font-semibold text-sm hover:translate-x-1 transition-transform mt-6">
-                                    Tìm hiểu thêm <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-                                </a>
-                            <?php endif; ?>
                         </div>
-                    </div>
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
+
+            <script>
+            (function() {
+                function initServicesSwiper() {
+                    if (typeof Swiper !== 'undefined' && document.querySelector('.services-swiper')) {
+                        new Swiper('.services-swiper', {
+                            slidesPerView: 1,
+                            spaceBetween: 24,
+                            loop: true,
+                            autoplay: {
+                                delay: 3500,
+                                disableOnInteraction: false,
+                            },
+                            pagination: {
+                                el: '.services-swiper .swiper-pagination',
+                                clickable: true,
+                            },
+                            breakpoints: {
+                                640: { slidesPerView: 2, spaceBetween: 24 },
+                                1024: { slidesPerView: 4, spaceBetween: 32 }
+                            }
+                        });
+                    }
+                }
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initServicesSwiper);
+                } else {
+                    initServicesSwiper();
+                }
+            })();
+            </script>
         <?php endif; ?>
     </div>
 </section>
