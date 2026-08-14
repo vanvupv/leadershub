@@ -231,7 +231,7 @@ if ( ! function_exists( 'lh_field' ) ) {
                         $logo_url = is_array( $c_logo ) ? $c_logo['url'] : $c_logo;
                     ?>
                         <div class="swiper-slide h-auto">
-                            <div class="flex flex-col h-full group transition-all duration-300">
+                            <div class="flex flex-col h-full group transition-all duration-300 text-center">
                                 <?php if ( ! empty( $logo_url ) ) : ?>
                                     <div class="h-56 w-full overflow-hidden rounded-2xl mb-4 relative shadow-lg">
                                         <img class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" 
@@ -240,15 +240,15 @@ if ( ! function_exists( 'lh_field' ) ) {
                                              loading="lazy" />
                                     </div>
                                 <?php endif; ?>
-                                <div class="flex-grow flex flex-col justify-between">
+                                <div class="flex-grow flex flex-col justify-between text-center">
                                     <div>
                                         <?php if ( ! empty( $c_name ) ) : ?>
-                                            <h3 class="font-headline-md text-base md:text-lg text-white font-bold group-hover:text-prestige-gold transition-colors">
+                                            <h3 class="font-headline-md text-base md:text-lg text-white font-bold group-hover:text-prestige-gold transition-colors text-center">
                                                 <?php echo esc_html( $c_name ); ?>
                                             </h3>
                                         <?php endif; ?>
                                         <?php if ( ! empty( $c_desc ) ) : ?>
-                                            <p class="text-surface-variant/80 text-sm leading-relaxed mt-1">
+                                            <p class="text-surface-variant/80 text-sm leading-relaxed mt-1 text-center">
                                                 <?php echo esc_html( $c_desc ); ?>
                                             </p>
                                         <?php endif; ?>
