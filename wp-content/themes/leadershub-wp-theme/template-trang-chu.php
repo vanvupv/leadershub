@@ -42,15 +42,15 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
 
 <!-- Hero Banner Section -->
 <?php if ( ! empty( $hero_title ) || ! empty( $hero_video ) || ! empty( $hero_desc ) ) : ?>
-<header class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-deep-navy">
+<header class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-slate-950">
     <?php if ( ! empty( $hero_video ) ) : ?>
         <video autoplay muted loop playsinline
             <?php if ( ! empty( $hero_poster ) ) : ?>poster="<?php echo esc_url( $hero_poster ); ?>"<?php endif; ?>
-            class="absolute inset-0 w-full h-full object-cover z-0 opacity-40">
+            class="absolute inset-0 w-full h-full object-cover z-0 opacity-70">
             <source src="<?php echo esc_url( $hero_video ); ?>" type="video/mp4">
         </video>
     <?php endif; ?>
-    <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-deep-navy/85 to-transparent z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30 z-10"></div>
 
     <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 gap-12 items-center">
         <div class="space-y-6 max-w-2xl">
