@@ -156,6 +156,7 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
 
             <script>
             (function() {
+                var retries = 0;
                 function initServicesSwiper() {
                     if (typeof Swiper !== 'undefined' && document.querySelector('.services-swiper')) {
                         new Swiper('.services-swiper', {
@@ -175,6 +176,9 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
                                 1024: { slidesPerView: 4, spaceBetween: 32 }
                             }
                         });
+                    } else if (retries < 50) {
+                        retries++;
+                        setTimeout(initServicesSwiper, 100);
                     }
                 }
                 if (document.readyState === 'loading') {

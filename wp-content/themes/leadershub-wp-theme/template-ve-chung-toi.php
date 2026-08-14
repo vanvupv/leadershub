@@ -227,6 +227,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 
             <script>
             (function() {
+                var retries = 0;
                 function initPartnerSwiper() {
                     if (typeof Swiper !== 'undefined' && document.querySelector('.partner-swiper')) {
                         new Swiper('.partner-swiper', {
@@ -243,6 +244,9 @@ if ( ! function_exists( 'lh_field' ) ) {
                                 1024: { slidesPerView: 5, spaceBetween: 50 }
                             }
                         });
+                    } else if (retries < 50) {
+                        retries++;
+                        setTimeout(initPartnerSwiper, 100);
                     }
                 }
                 if (document.readyState === 'loading') {
