@@ -189,40 +189,63 @@ if ( ! function_exists( 'lh_field' ) ) {
     </div>
 </section>
 <?php endif; ?>
-
+ 
 <!-- Certifications & Partners Section -->
 <?php if ( ! empty( $cert_title ) || ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) ) : ?>
-<section class="bg-deep-navy py-16 text-white overflow-hidden" id="certifications">
+<section class="bg-deep-navy py-section-padding-desktop text-white overflow-hidden scroll-mt-20" id="certifications">
     <div class="max-w-container-max mx-auto px-gutter">
         <?php if ( ! empty( $cert_title ) ) : ?>
-            <h3 class="text-center font-label-sm text-xs uppercase tracking-widest text-white/50 mb-8 font-semibold">
-                <?php echo esc_html( $cert_title ); ?>
-            </h3>
+            <div class="text-center mb-12">
+                <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-2 font-bold text-center">
+                    Chứng nhận & Tiêu chuẩn
+                </span>
+                <h2 class="font-display-lg text-3xl md:text-4xl text-white font-bold text-center">
+                    <?php echo esc_html( $cert_title ); ?>
+                </h2>
+                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4"></div>
+            </div>
         <?php endif; ?>
 
         <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) : ?>
-            <div class="swiper partner-swiper overflow-hidden py-4">
-                <div class="swiper-wrapper items-center">
+            <div class="swiper partner-swiper overflow-hidden pb-12">
+                <div class="swiper-wrapper">
                     <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
                         $c_name = get_sub_field( 'name' );
                         $c_logo = get_sub_field( 'logo' );
+                        $c_desc = get_sub_field( 'desc' );
 
                         if ( empty( $c_name ) && empty( $c_logo ) ) continue;
+                        $logo_url = is_array( $c_logo ) ? $c_logo['url'] : $c_logo;
                     ?>
-                        <div class="swiper-slide flex items-center justify-center">
-                            <div class="h-12 md:h-16 w-auto flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 font-bold text-lg md:text-xl">
-                                <?php if ( ! empty( $c_logo ) ) : ?>
-                                    <img class="max-h-full max-w-[180px] object-contain" 
-                                         src="<?php echo esc_url( is_array( $c_logo ) ? $c_logo['url'] : $c_logo ); ?>" 
-                                         alt="<?php echo esc_attr( $c_name ?: 'Certification Logo' ); ?>" 
-                                         loading="lazy" />
-                                <?php else : ?>
-                                    <span class="tracking-wider uppercase text-white/80"><?php echo esc_html( $c_name ); ?></span>
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-prestige-gold/50 transition-all duration-300 flex flex-col h-full group hover:-translate-y-1 shadow-xl">
+                                <?php if ( ! empty( $logo_url ) ) : ?>
+                                    <div class="h-48 w-full overflow-hidden rounded-xl bg-white/10 mb-5 flex items-center justify-center relative">
+                                        <img class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" 
+                                             src="<?php echo esc_url( $logo_url ); ?>" 
+                                             alt="<?php echo esc_attr( $c_name ?: 'Certification' ); ?>" 
+                                             loading="lazy" />
+                                    </div>
                                 <?php endif; ?>
+                                <div class="flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <?php if ( ! empty( $c_name ) ) : ?>
+                                            <h3 class="font-headline-md text-lg text-white font-bold group-hover:text-prestige-gold transition-colors">
+                                                <?php echo esc_html( $c_name ); ?>
+                                            </h3>
+                                        <?php endif; ?>
+                                        <?php if ( ! empty( $c_desc ) ) : ?>
+                                            <p class="text-surface-variant/80 text-sm leading-relaxed mt-2">
+                                                <?php echo esc_html( $c_desc ); ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <?php endwhile; ?>
                 </div>
+                <div class="swiper-pagination"></div>
             </div>
 
             <script>
@@ -231,17 +254,21 @@ if ( ! function_exists( 'lh_field' ) ) {
                 function initPartnerSwiper() {
                     if (typeof Swiper !== 'undefined' && document.querySelector('.partner-swiper')) {
                         new Swiper('.partner-swiper', {
-                            slidesPerView: 2,
-                            spaceBetween: 30,
+                            slidesPerView: 1,
+                            spaceBetween: 24,
                             loop: true,
                             autoplay: {
-                                delay: 2500,
+                                delay: 3500,
                                 disableOnInteraction: false,
                             },
+                            pagination: {
+                                el: '.partner-swiper .swiper-pagination',
+                                clickable: true,
+                            },
                             breakpoints: {
-                                480: { slidesPerView: 3, spaceBetween: 30 },
-                                768: { slidesPerView: 4, spaceBetween: 40 },
-                                1024: { slidesPerView: 5, spaceBetween: 50 }
+                                640: { slidesPerView: 2, spaceBetween: 24 },
+                                1024: { slidesPerView: 3, spaceBetween: 32 },
+                                1280: { slidesPerView: 4, spaceBetween: 32 }
                             }
                         });
                     } else if (retries < 50) {

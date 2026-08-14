@@ -1635,6 +1635,12 @@ function leadershub_register_field_groups() {
                         'type' => 'image',
                         'return_format' => 'url',
                     ),
+                    array(
+                        'key' => 'field_cert_desc',
+                        'label' => 'Mô tả ngắn chứng nhận',
+                        'name' => 'desc',
+                        'type' => 'text',
+                    ),
                 ),
             ),
 
