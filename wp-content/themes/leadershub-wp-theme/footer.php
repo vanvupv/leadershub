@@ -15,13 +15,22 @@ $map_url = lh_opt( 'lh_map_url', 'https://maps.app.goo.gl/yQk3nU7pYk2cK1dXA' );
 $facebook = lh_opt( 'lh_facebook', 'https://m.me/theleadershub' );
 $zalo = lh_opt( 'lh_zalo', 'https://zalo.me/84378919119' );
 $linkedin = lh_opt( 'lh_linkedin', '#' );
+$logo     = lh_opt( 'lh_logo', '' );
 ?>
                                                                                          
 <!-- Footer -->
 <footer class="bg-deep-navy text-surface-container-lowest pt-section-padding-desktop pb-unit border-t border-white/5">
     <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-gutter">
         <div class="col-span-1 md:col-span-1">
-            <div class="font-headline-md text-headline-md text-prestige-gold font-bold mb-6">The Leaders Hub</div>
+            <div class="mb-6">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-flex items-center gap-2">
+                    <?php if ( $logo ) : ?>
+                        <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-12 w-auto">
+                    <?php else : ?>
+                        <span class="font-headline-md text-headline-md text-prestige-gold font-bold">The Leaders Hub</span>
+                    <?php endif; ?>
+                </a>
+            </div>
             <p class="text-surface-container-highest/60 text-sm mb-6 leading-relaxed">Đối tác tin cậy cung cấp giải pháp không gian làm việc và địa chỉ kinh doanh chuyên nghiệp chuẩn quốc tế tại Hà Nội.</p>
             <div class="flex gap-4">
                 <a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-deep-navy hover:bg-prestige-gold hover:text-deep-navy transition-all" href="<?php echo esc_url( $map_url ); ?>" target="_blank" rel="noopener noreferrer" title="Bản đồ"><span class="material-symbols-outlined text-sm">location_on</span></a>
