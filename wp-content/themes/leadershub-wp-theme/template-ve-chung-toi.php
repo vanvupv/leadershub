@@ -50,7 +50,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 
 <!-- Hero Banner Section -->
 <?php if ( ! empty( $hero_title ) || ! empty( $hero_image ) || ! empty( $hero_desc ) ) : ?>
-<section class="relative h-[60vh] min-h-[500px] flex items-center justify-center pt-20" id="hero">
+<section class="relative h-[60vh] min-h-[500px] flex items-center justify-center mt-20 pt-10" id="hero">
     <div class="absolute inset-0 z-0 overflow-hidden">
         <div class="absolute inset-0 bg-deep-navy/40 z-10"></div>
         <?php if ( ! empty( $hero_image ) ) : ?>
