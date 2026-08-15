@@ -269,7 +269,7 @@ if ( ! function_exists( 'lh_field' ) ) {
                     <div class="swiper-slide">
                         <?php if ( $chunk_count === 1 ) : ?>
                             <!-- 1 Image: Full width responsive container -->
-                            <div class="w-full overflow-hidden rounded-2xl group relative h-[380px] md:h-[500px]">
+                            <div class="w-full overflow-hidden rounded-2xl group relative h-[400px] md:h-[600px]">
                                 <img class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[0]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : $gallery_title ); ?>" />
                                 <?php 
                                 $caption_0 = ! empty( $chunk[0]['caption'] ) ? $chunk[0]['caption'] : ( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : '' );
@@ -282,8 +282,8 @@ if ( ! function_exists( 'lh_field' ) ) {
                             </div>
                         <?php elseif ( $chunk_count === 2 ) : ?>
                             <!-- 2 Images: 50/50 Split grid -->
-                            <div class="grid grid-cols-12 gap-4 h-[380px] md:h-[500px]">
-                                <div class="col-span-12 md:col-span-6 overflow-hidden rounded-2xl group relative h-full">
+                            <div class="grid grid-cols-12 gap-4 h-auto md:h-[600px]">
+                                <div class="col-span-12 md:col-span-6 overflow-hidden rounded-2xl group relative h-[400px] md:h-[600px]">
                                     <img class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[0]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : $gallery_title ); ?>" />
                                     <?php 
                                     $caption_0 = ! empty( $chunk[0]['caption'] ) ? $chunk[0]['caption'] : ( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : '' );
@@ -294,7 +294,7 @@ if ( ! function_exists( 'lh_field' ) ) {
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 overflow-hidden rounded-2xl group relative h-full">
+                                <div class="col-span-12 md:col-span-6 overflow-hidden rounded-2xl group relative h-[400px] md:h-[600px]">
                                     <img class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[1]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[1]['title'] ) ? $chunk[1]['title'] : $gallery_title ); ?>" />
                                     <?php 
                                     $caption_1 = ! empty( $chunk[1]['caption'] ) ? $chunk[1]['caption'] : ( ! empty( $chunk[1]['title'] ) ? $chunk[1]['title'] : '' );
@@ -307,9 +307,9 @@ if ( ! function_exists( 'lh_field' ) ) {
                                 </div>
                             </div>
                         <?php else : ?>
-                            <!-- 3 Images: 8-col / 4-col Asymmetric Layout -->
-                            <div class="grid grid-cols-12 gap-4 h-[480px] md:h-[520px]">
-                                <div class="col-span-12 md:col-span-8 overflow-hidden rounded-2xl group relative h-[280px] md:h-full">
+                            <!-- 3 Images: 8-col / 4-col Asymmetric Layout (Main 600px, Right 2 equal 292px blocks) -->
+                            <div class="grid grid-cols-12 gap-4 h-auto md:h-[600px]">
+                                <div class="col-span-12 md:col-span-8 overflow-hidden rounded-2xl group relative h-[400px] md:h-[600px]">
                                     <img class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[0]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : $gallery_title ); ?>" />
                                     <?php 
                                     $caption_0 = ! empty( $chunk[0]['caption'] ) ? $chunk[0]['caption'] : ( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : '' );
@@ -321,8 +321,8 @@ if ( ! function_exists( 'lh_field' ) ) {
                                     <?php endif; ?>
                                 </div>
 
-                                <div class="col-span-12 md:col-span-4 flex flex-col gap-4 h-[360px] md:h-full">
-                                    <div class="h-1/2 overflow-hidden rounded-2xl group relative">
+                                <div class="col-span-12 md:col-span-4 flex flex-col gap-4 h-auto md:h-[600px]">
+                                    <div class="h-[250px] md:h-[calc(50%-8px)] overflow-hidden rounded-2xl group relative">
                                         <img class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[1]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[1]['title'] ) ? $chunk[1]['title'] : $gallery_title ); ?>" />
                                         <?php 
                                         $caption_1 = ! empty( $chunk[1]['caption'] ) ? $chunk[1]['caption'] : ( ! empty( $chunk[1]['title'] ) ? $chunk[1]['title'] : '' );
@@ -334,7 +334,7 @@ if ( ! function_exists( 'lh_field' ) ) {
                                         <?php endif; ?>
                                     </div>
 
-                                    <div class="h-1/2 overflow-hidden rounded-2xl group relative">
+                                    <div class="h-[250px] md:h-[calc(50%-8px)] overflow-hidden rounded-2xl group relative">
                                         <img class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[2]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[2]['title'] ) ? $chunk[2]['title'] : $gallery_title ); ?>" />
                                         <?php 
                                         $caption_2 = ! empty( $chunk[2]['caption'] ) ? $chunk[2]['caption'] : ( ! empty( $chunk[2]['title'] ) ? $chunk[2]['title'] : '' );
