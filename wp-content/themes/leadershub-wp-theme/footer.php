@@ -41,10 +41,11 @@ $logo     = lh_opt( 'lh_logo', '' );
         <div>
             <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-base md:text-lg">Dịch vụ</h4>
             <ul class="space-y-4 text-sm">
-                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>">Dịch vụ địa chỉ doanh nghiệp</a></li>
-                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>">Văn phòng cao cấp (Serviced Office)</a></li>
-                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>">Phòng họp chuyên nghiệp</a></li>
-                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/#flexible-workspace' ) ); ?>">Flexible Workspace</a></li>
+                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>">Văn phòng dịch vụ</a></li>
+                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>">Văn phòng xây dựng theo yêu cầu</a></li>
+                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>">Gói thành Viên Linh Hoạt</a></li>
+                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>">Văn phòng Ảo</a></li>
+                <li><a class="text-surface-container-highest/80 hover:text-prestige-gold hover:translate-x-1 transition-all inline-block" href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>">Phòng họp</a></li>
             </ul>
         </div>
         <div>
