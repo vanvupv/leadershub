@@ -50,7 +50,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 
 <!-- Hero Banner Section -->
 <?php if ( ! empty( $hero_title ) || ! empty( $hero_image ) || ! empty( $hero_desc ) ) : ?>
-<header class="relative h-[60vh] min-h-[500px] flex items-center justify-center pt-20">
+<section class="relative h-[60vh] min-h-[500px] flex items-center justify-center pt-20" id="hero">
     <div class="absolute inset-0 z-0 overflow-hidden">
         <div class="absolute inset-0 bg-deep-navy/40 z-10"></div>
         <?php if ( ! empty( $hero_image ) ) : ?>
@@ -72,7 +72,7 @@ if ( ! function_exists( 'lh_field' ) ) {
             </p>
         <?php endif; ?>
     </div>
-</header>
+</section>
 <?php endif; ?>
 
 <!-- Brand Story Section -->

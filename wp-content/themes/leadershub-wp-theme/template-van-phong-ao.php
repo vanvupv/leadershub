@@ -42,7 +42,7 @@ if ( ! function_exists( 'lh_field' ) ) {
 ?>
 
 <!-- Hero Banner -->
-<header class="relative min-h-[80vh] flex items-center pt-20 overflow-hidden bg-surface">
+<section class="relative min-h-[80vh] flex items-center pt-20 overflow-hidden bg-surface" id="hero">
     <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent z-10"></div>
     <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
@@ -80,7 +80,7 @@ if ( ! function_exists( 'lh_field' ) ) {
             </div>
         </div>
     </div>
-</header>
+</section>
 
 <!-- Pricing Cards Section -->
 <?php if ( ! empty( $pricing_title ) || ! empty( $pricing_desc ) || ( function_exists( 'have_rows' ) && have_rows( 'vo_plans' ) ) ) : ?>

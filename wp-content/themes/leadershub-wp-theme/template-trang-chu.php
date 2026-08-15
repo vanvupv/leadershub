@@ -42,7 +42,7 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
 
 <!-- Hero Banner Section -->
 <?php if ( ! empty( $hero_title ) || ! empty( $hero_video ) || ! empty( $hero_desc ) ) : ?>
-<header class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-slate-950">
+<section class="relative min-h-[85vh] flex items-center pt-24 pb-12 overflow-hidden text-white bg-slate-950" id="hero">
     <?php if ( ! empty( $hero_video ) ) : ?>
         <video autoplay muted loop playsinline
             <?php if ( ! empty( $hero_poster ) ) : ?>poster="<?php echo esc_url( $hero_poster ); ?>"<?php endif; ?>
@@ -93,7 +93,7 @@ $gallery_title       = lh_field( 'home_gallery_title', 'Không Gian Thực Tế 
             <?php endif; ?>
         </div>
     </div>
-</header>
+</section>
 <?php endif; ?>
 
 <!-- Services Section (Danh mục dịch vụ) -->

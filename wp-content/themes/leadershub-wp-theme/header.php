@@ -68,34 +68,36 @@ $hotline_url = lh_opt( 'lh_hotline_url', 'tel:+84378919119' );
 $logo = lh_opt( 'lh_logo', '' );
 ?>
 
-<!-- Top Navigation Bar -->
-<nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-deep-navy/90 backdrop-blur-md shadow-sm h-20 flex items-center">
-    <div class="max-w-container-max mx-auto px-gutter w-full flex justify-between items-center">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2">
-            <?php if ( $logo ) : ?>
-                <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-12 w-auto">
-            <?php endif; ?> 
-        </a>
-        <div class="hidden md:flex items-center space-x-8">
-            <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/' ) ); ?>">Trang chủ</a>
-            <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/ve-chung-toi' ) ); ?>">Về chúng tôi</a>
-            <div class="relative group py-2">
-                <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors flex items-center gap-1 cursor-pointer">
-                    Dịch vụ <span class="material-symbols-outlined text-xs">expand_more</span>
-                </a>
-                <div class="absolute top-full left-0 pt-2 w-56 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
-                    <div class="bg-white rounded-lg shadow-xl border border-surface-container-high py-2">
-                        <a href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>" class="block px-4 py-2 text-sm text-deep-navy hover:bg-surface-container-low hover:text-prestige-gold">Dịch vụ địa chỉ doanh nghiệp</a>
-                        <a href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>" class="block px-4 py-2 text-sm text-deep-navy hover:bg-surface-container-low hover:text-prestige-gold">Văn phòng dịch vụ cao cấp</a>
-                        <a href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>" class="block px-4 py-2 text-sm text-deep-navy hover:bg-surface-container-low hover:text-prestige-gold">Phòng họp chuyên nghiệp</a>
+<!-- Site Header Navigation -->
+<header class="site-header">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-deep-navy/90 backdrop-blur-md shadow-sm h-20 flex items-center">
+        <div class="max-w-container-max mx-auto px-gutter w-full flex justify-between items-center">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2">
+                <?php if ( $logo ) : ?>
+                    <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-12 w-auto">
+                <?php endif; ?> 
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/' ) ); ?>">Trang chủ</a>
+                <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/ve-chung-toi' ) ); ?>">Về chúng tôi</a>
+                <div class="relative group py-2">
+                    <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors flex items-center gap-1 cursor-pointer">
+                        Dịch vụ <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </a>
+                    <div class="absolute top-full left-0 pt-2 w-56 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
+                        <div class="bg-white rounded-lg shadow-xl border border-surface-container-high py-2">
+                            <a href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>" class="block px-4 py-2 text-sm text-deep-navy hover:bg-surface-container-low hover:text-prestige-gold">Dịch vụ địa chỉ doanh nghiệp</a>
+                            <a href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>" class="block px-4 py-2 text-sm text-deep-navy hover:bg-surface-container-low hover:text-prestige-gold">Văn phòng dịch vụ cao cấp</a>
+                            <a href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>" class="block px-4 py-2 text-sm text-deep-navy hover:bg-surface-container-low hover:text-prestige-gold">Phòng họp chuyên nghiệp</a>
+                        </div>
                     </div>
                 </div>
+                <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/tin-tuc' ) ); ?>">Tin tức</a>
+                <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/lien-he' ) ); ?>">Liên hệ</a>
             </div>
-            <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/tin-tuc' ) ); ?>">Tin tức</a>
-            <a class="font-label-sm text-label-sm text-deep-navy hover:text-prestige-gold transition-colors" href="<?php echo esc_url( home_url( '/lien-he' ) ); ?>">Liên hệ</a>
+            <a href="<?php echo esc_url( home_url( '/#register' ) ); ?>" class="bg-success-green text-white px-6 py-2.5 rounded-lg font-label-sm text-label-sm hover:scale-105 transition-transform duration-200 shadow-sm inline-block">
+                Nhận báo giá
+            </a>
         </div>
-        <a href="<?php echo esc_url( home_url( '/#register' ) ); ?>" class="bg-success-green text-white px-6 py-2.5 rounded-lg font-label-sm text-label-sm hover:scale-105 transition-transform duration-200 shadow-sm inline-block">
-            Nhận báo giá
-        </a>
-    </div>
-</nav>
+    </nav>
+</header>
