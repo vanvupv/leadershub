@@ -29,14 +29,61 @@ $utils_badge = lh_field( 'so_utils_badge', 'TIỆN ÍCH ĐẶC QUYỀN' );
 $utils_title = lh_field( 'so_utils_title', 'Hơn cả một văn phòng' );
 
 // ACF Variables: Section 4 Real Gallery
-$gallery_title     = lh_field( 'so_gallery_title', 'Thư viện ảnh thực tế' );
-$gallery_desc      = lh_field( 'so_gallery_desc', 'Tham quan không gian làm việc hiện đại tại Capital Place.' );
-$gallery_image_1   = lh_field( 'so_gallery_image_1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuB9ztHBGSbUx1G9GkhGuYM0Tm2PB1BJc9iESy4N0dyW_MfIrfQ9xKlQayh7SkuyABkcAo12w1qQG6Svnw7OeLwx_k-1CCBVOhJUR9vJLUeQLyBm1Y9_ASF-ipjj0NC5cKpgyHBvzcVZPB_WcmKKlSb_IPHFt6qJEtkMHnVoZIHLg6NeMsj4egLfpXxhuPJxn7yarkpd8uPKciWbedhXTB3Ny8jMpX-r-HGvrthwvt_doB4zyC9qd4g6AiZoGxOZzg3Gw1BoTYRCz-1E' );
-$gallery_caption_1 = lh_field( 'so_gallery_caption_1', 'Khu vực Lounge sang trọng' );
-$gallery_image_2   = lh_field( 'so_gallery_image_2', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRAKHtVMpE1Q1Fiba2woIZDpk2pL-_AAHTnynqsQHDzGCfwrsoGjEW6FuQxYuNucq6onv1tOfetpDVKLTHXOAjtICR4JoOWK8VNTMZj04uRxeSu8t57quLGwsgXlMx_MV82A9GCMs9DoU2KeTxLGPDIwqDYwzz7b9Y7GI8vicna9oxF8uGUl0wuBSguIZVyeubJih97KX4aSbeCrIyqvC7uTzFeTsHrW3m-pb7KIurdmmM46BJzRViCXZlN2NKLGNJU-vryThhPEw3' );
-$gallery_caption_2 = lh_field( 'so_gallery_caption_2', 'Phòng họp Boardroom' );
-$gallery_image_3   = lh_field( 'so_gallery_image_3', 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-BBZSX54I9lPFEapCECcAOXd5uW9Cmv1lSBZfxhB0KEr13L2qn4LTtiNjZiGe_UAAscskqvEo_Eh1JDY6HD6-rO_Ctg7QG-MIq_nYEOWQhh7r1c1T07bTd8J-wy9axOWmzUKVbMCZqP3JKVr6Rexyn0Vv476mg3fXA22aZXyoxlVdN2f_iOFoh4I2tc3_N-Ngi5eC7Zz_QhGh1Ukl6zDrBvdPPEFVc4K5WE-M7BT_uTmhm-kc6YYmVRXDAdKWo7nKdnsldf--TJm5' );
-$gallery_caption_3 = lh_field( 'so_gallery_caption_3', 'Khu vực Pantry hiện đại' );
+$gallery_title  = lh_field( 'so_gallery_title', 'Thư viện ảnh thực tế' );
+$gallery_desc   = lh_field( 'so_gallery_desc', 'Tham quan không gian làm việc hiện đại tại Capital Place.' );
+$gallery_raw    = lh_field( 'so_gallery' );
+$gallery_images = array();
+
+if ( ! empty( $gallery_raw ) && is_array( $gallery_raw ) ) {
+    foreach ( $gallery_raw as $item ) {
+        if ( is_array( $item ) && ! empty( $item['url'] ) ) {
+            $gallery_images[] = array(
+                'url'     => $item['url'],
+                'title'   => ! empty( $item['title'] ) ? $item['title'] : ( ! empty( $item['alt'] ) ? $item['alt'] : '' ),
+                'caption' => ! empty( $item['caption'] ) ? $item['caption'] : ( ! empty( $item['title'] ) ? $item['title'] : '' ),
+            );
+        } elseif ( is_numeric( $item ) ) {
+            $url  = wp_get_attachment_url( $item );
+            $post = get_post( $item );
+            if ( $url ) {
+                $gallery_images[] = array(
+                    'url'     => $url,
+                    'title'   => $post ? $post->post_title : '',
+                    'caption' => $post ? $post->post_excerpt : '',
+                );
+            }
+        } elseif ( is_string( $item ) ) {
+            $gallery_images[] = array(
+                'url'     => $item,
+                'title'   => '',
+                'caption' => '',
+            );
+        }
+    }
+}
+
+// Fallback if ACF gallery is empty
+if ( empty( $gallery_images ) ) {
+    $gallery_images = array(
+        array(
+            'url'     => 'https://lh3.googleusercontent.com/aida-public/AB6AXuB9ztHBGSbUx1G9GkhGuYM0Tm2PB1BJc9iESy4N0dyW_MfIrfQ9xKlQayh7SkuyABkcAo12w1qQG6Svnw7OeLwx_k-1CCBVOhJUR9vJLUeQLyBm1Y9_ASF-ipjj0NC5cKpgyHBvzcVZPB_WcmKKlSb_IPHFt6qJEtkMHnVoZIHLg6NeMsj4egLfpXxhuPJxn7yarkpd8uPKciWbedhXTB3Ny8jMpX-r-HGvrthwvt_doB4zyC9qd4g6AiZoGxOZzg3Gw1BoTYRCz-1E',
+            'title'   => 'Khu vực Lounge sang trọng',
+            'caption' => 'Khu vực Lounge sang trọng',
+        ),
+        array(
+            'url'     => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRAKHtVMpE1Q1Fiba2woIZDpk2pL-_AAHTnynqsQHDzGCfwrsoGjEW6FuQxYuNucq6onv1tOfetpDVKLTHXOAjtICR4JoOWK8VNTMZj04uRxeSu8t57quLGwsgXlMx_MV82A9GCMs9DoU2KeTxLGPDIwqDYwzz7b9Y7GI8vicna9oxF8uGUl0wuBSguIZVyeubJih97KX4aSbeCrIyqvC7uTzFeTsHrW3m-pb7KIurdmmM46BJzRViCXZlN2NKLGNJU-vryThhPEw3',
+            'title'   => 'Phòng họp Boardroom',
+            'caption' => 'Phòng họp Boardroom',
+        ),
+        array(
+            'url'     => 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-BBZSX54I9lPFEapCECcAOXd5uW9Cmv1lSBZfxhB0KEr13L2qn4LTtiNjZiGe_UAAscskqvEo_Eh1JDY6HD6-rO_Ctg7QG-MIq_nYEOWQhh7r1c1T07bTd8J-wy9axOWmzUKVbMCZqP3JKVr6Rexyn0Vv476mg3fXA22aZXyoxlVdN2f_iOFoh4I2tc3_N-Ngi5eC7Zz_QhGh1Ukl6zDrBvdPPEFVc4K5WE-M7BT_uTmhm-kc6YYmVRXDAdKWo7nKdnsldf--TJm5',
+            'title'   => 'Khu vực Pantry hiện đại',
+            'caption' => 'Khu vực Pantry hiện đại',
+        ),
+    );
+}
+
+$gallery_chunks = array_chunk( $gallery_images, 3 );
 
 // ACF Variables: Section 5 Pricing & CTA
 $cta_title          = lh_field( 'so_cta_title', 'Sẵn sàng nâng tầm vị thế doanh nghiệp?' );
@@ -191,59 +238,101 @@ if ( ! function_exists( 'lh_field' ) ) {
 <?php endif; ?>
 
 <!-- Gallery -->
-<?php if ( ! empty( $gallery_title ) || ! empty( $gallery_image_1 ) || ! empty( $gallery_image_2 ) || ! empty( $gallery_image_3 ) ) : ?>
+<?php if ( ! empty( $gallery_title ) || ! empty( $gallery_chunks ) ) : ?>
 <section class="py-section-padding-desktop bg-white">
     <div class="max-w-container-max mx-auto px-gutter">
-        <?php if ( ! empty( $gallery_title ) || ! empty( $gallery_desc ) ) : ?>
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <?php if ( ! empty( $gallery_title ) ) : ?>
-                        <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold"><?php echo esc_html( $gallery_title ); ?></h2>
-                    <?php endif; ?>
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <?php if ( ! empty( $gallery_title ) ) : ?>
+                    <h2 class="font-headline-xl text-headline-xl text-deep-navy font-bold"><?php echo esc_html( $gallery_title ); ?></h2>
+                <?php endif; ?>
 
-                    <?php if ( ! empty( $gallery_desc ) ) : ?>
-                        <p class="text-on-surface-variant mt-2"><?php echo esc_html( $gallery_desc ); ?></p>
-                    <?php endif; ?>
-                </div>
+                <?php if ( ! empty( $gallery_desc ) ) : ?>
+                    <p class="text-on-surface-variant mt-2"><?php echo esc_html( $gallery_desc ); ?></p>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
+            <div class="hidden md:flex gap-2">
+                <button id="so-gallery-prev" class="p-3 border rounded-full hover:bg-deep-navy hover:text-white transition-all flex items-center justify-center cursor-pointer">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <button id="so-gallery-next" class="p-3 border rounded-full hover:bg-deep-navy hover:text-white transition-all flex items-center justify-center cursor-pointer">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <?php if ( ! empty( $gallery_image_1 ) ) : ?>
-                <div class="rounded-2xl overflow-hidden h-80 shadow-md group relative">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_1 ); ?>" alt="<?php echo esc_attr( $gallery_title ); ?>" />
-                    <?php if ( ! empty( $gallery_caption_1 ) ) : ?>
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_1 ); ?></span>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
+        <div class="swiper so-gallery-swiper overflow-hidden">
+            <div class="swiper-wrapper">
+                <?php foreach ( $gallery_chunks as $chunk ) : ?>
+                    <div class="swiper-slide">
+                        <div class="grid grid-cols-12 gap-4 h-[600px]">
+                            <?php if ( isset( $chunk[0] ) ) : ?>
+                                <div class="col-span-12 md:col-span-8 overflow-hidden rounded-2xl group relative h-full">
+                                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[0]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : $gallery_title ); ?>" />
+                                    <?php 
+                                    $caption_0 = ! empty( $chunk[0]['caption'] ) ? $chunk[0]['caption'] : ( ! empty( $chunk[0]['title'] ) ? $chunk[0]['title'] : '' );
+                                    if ( ! empty( $caption_0 ) ) : 
+                                    ?>
+                                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                                            <span class="text-white font-bold"><?php echo esc_html( $caption_0 ); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
 
-            <?php if ( ! empty( $gallery_image_2 ) ) : ?>
-                <div class="rounded-2xl overflow-hidden h-80 shadow-md group relative">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_2 ); ?>" alt="<?php echo esc_attr( $gallery_title ); ?>" />
-                    <?php if ( ! empty( $gallery_caption_2 ) ) : ?>
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_2 ); ?></span>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
+                            <?php if ( isset( $chunk[1] ) || isset( $chunk[2] ) ) : ?>
+                                <div class="col-span-12 md:col-span-4 flex flex-col gap-4 h-full">
+                                    <?php if ( isset( $chunk[1] ) ) : ?>
+                                        <div class="h-1/2 overflow-hidden rounded-2xl group relative">
+                                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[1]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[1]['title'] ) ? $chunk[1]['title'] : $gallery_title ); ?>" />
+                                            <?php 
+                                            $caption_1 = ! empty( $chunk[1]['caption'] ) ? $chunk[1]['caption'] : ( ! empty( $chunk[1]['title'] ) ? $chunk[1]['title'] : '' );
+                                            if ( ! empty( $caption_1 ) ) : 
+                                            ?>
+                                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                                                    <span class="text-white font-bold"><?php echo esc_html( $caption_1 ); ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
 
-            <?php if ( ! empty( $gallery_image_3 ) ) : ?>
-                <div class="rounded-2xl overflow-hidden h-80 shadow-md group relative">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $gallery_image_3 ); ?>" alt="<?php echo esc_attr( $gallery_title ); ?>" />
-                    <?php if ( ! empty( $gallery_caption_3 ) ) : ?>
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <span class="text-white font-bold"><?php echo esc_html( $gallery_caption_3 ); ?></span>
+                                    <?php if ( isset( $chunk[2] ) ) : ?>
+                                        <div class="h-1/2 overflow-hidden rounded-2xl group relative">
+                                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $chunk[2]['url'] ); ?>" alt="<?php echo esc_attr( ! empty( $chunk[2]['title'] ) ? $chunk[2]['title'] : $gallery_title ); ?>" />
+                                            <?php 
+                                            $caption_2 = ! empty( $chunk[2]['caption'] ) ? $chunk[2]['caption'] : ( ! empty( $chunk[2]['title'] ) ? $chunk[2]['title'] : '' );
+                                            if ( ! empty( $caption_2 ) ) : 
+                                            ?>
+                                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                                                    <span class="text-white font-bold"><?php echo esc_html( $caption_2 ); ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.so-gallery-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            navigation: {
+                nextEl: '#so-gallery-next',
+                prevEl: '#so-gallery-prev',
+            },
+        });
+    }
+});
+</script>
 <?php endif; ?>
 
 <!-- Pricing & CTA -->
