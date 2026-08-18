@@ -209,46 +209,46 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
     </section>
 <?php endif; ?>
 
-<!-- Services Section -- 2 (Danh mục dịch vụ - 4 Cột Tràn Viền Tông Sáng Tự Nhiên) -->
+<!-- Services Section -- 2 (Danh mục dịch vụ - 5 Cột Tràn Viền Tông Sáng Tự Nhiên) -->
 <section class="w-full bg-slate-900 overflow-hidden" id="services-showcase">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full min-h-[480px] lg:h-[560px]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full min-h-[480px] lg:h-[560px]">
 
         <!-- Item 01 -->
-        <a href="#services"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
+        <a href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-7 lg:p-8 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000"
-                alt="Văn phòng dịch vụ" loading="lazy" />
+                alt="Văn phòng trọn gói" loading="lazy" />
             <!-- Soft / Lighter Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
 
             <!-- Top Content -->
             <div class="relative z-10">
-                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">01</span>
-                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
-                    VĂN PHÒNG <br class="hidden sm:inline">DỊCH VỤ
+                <span class="text-2xl font-bold text-white mb-2 block font-display-lg drop-shadow">01</span>
+                <h3 class="text-lg lg:text-xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                    VĂN PHÒNG <br class="hidden sm:inline">TRỌN GÓI
                 </h3>
                 <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
 
                 <!-- Slide Down Description on Hover -->
                 <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
-                        Không gian làm việc riêng tư trọn gói tiện ích cao cấp, đầy đủ nội thất hiện đại, lễ tân chuyên nghiệp và sảnh đón tiếp sang trọng.
+                    <p class="text-xs lg:text-sm text-white/95 leading-relaxed pt-3 drop-shadow-sm">
+                        Không gian làm việc riêng tư trọn gói tiện ích cao cấp, đầy đủ nội thất hiện đại, lễ tân chuyên nghiệp và sảnh tiếp đón sang trọng.
                     </p>
                 </div>
             </div>
 
             <!-- Bottom Action Link -->
-            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+            <div class="relative z-10 pt-6 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs lg:text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
                 <span>Tìm hiểu thêm</span>
                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
         <!-- Item 02 -->
-        <a href="#services"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 lg:border-r border-white/20 min-h-[380px] lg:min-h-full">
+        <a href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-7 lg:p-8 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1000"
@@ -258,30 +258,63 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
             <!-- Top Content -->
             <div class="relative z-10">
-                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">02</span>
-                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                <span class="text-2xl font-bold text-white mb-2 block font-display-lg drop-shadow">02</span>
+                <h3 class="text-lg lg:text-xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
                     VĂN PHÒNG <br class="hidden sm:inline">ẢO UY TÍN
                 </h3>
                 <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
 
                 <!-- Slide Down Description on Hover -->
                 <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
-                        Đăng ký địa chỉ kinh doanh đắc địa ngay trung tâm, hỗ trợ nhận thư từ, tiếp đón khách hàng và tối ưu hóa tối đa chi phí hoạt động.
+                    <p class="text-xs lg:text-sm text-white/95 leading-relaxed pt-3 drop-shadow-sm">
+                        Địa chỉ kinh doanh đắc địa tại trung tâm, hỗ trợ nhận thư từ, tiếp đón khách hàng và tối ưu hóa tối đa chi phí vận hành.
                     </p>
                 </div>
             </div>
 
             <!-- Bottom Action Link -->
-            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+            <div class="relative z-10 pt-6 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs lg:text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
                 <span>Tìm hiểu thêm</span>
                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
         <!-- Item 03 -->
-        <a href="#services"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
+        <a href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-7 lg:p-8 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
+            <!-- Background Image -->
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000"
+                alt="Văn phòng theo yêu cầu" loading="lazy" />
+            <!-- Soft / Lighter Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
+
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl font-bold text-white mb-2 block font-display-lg drop-shadow">03</span>
+                <h3 class="text-lg lg:text-xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                    VĂN PHÒNG <br class="hidden sm:inline">THEO YÊU CẦU
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-xs lg:text-sm text-white/95 leading-relaxed pt-3 drop-shadow-sm">
+                        Thiết kế và xây dựng không gian làm việc theo đúng diện tích, phong cách và nhận diện thương hiệu riêng của doanh nghiệp.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <div class="relative z-10 pt-6 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs lg:text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+        </a>
+
+        <!-- Item 04 -->
+        <a href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-7 lg:p-8 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1000"
@@ -291,30 +324,30 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
             <!-- Top Content -->
             <div class="relative z-10">
-                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">03</span>
-                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                <span class="text-2xl font-bold text-white mb-2 block font-display-lg drop-shadow">04</span>
+                <h3 class="text-lg lg:text-xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
                     PHÒNG HỌP <br class="hidden sm:inline">HIỆN ĐẠI
                 </h3>
                 <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
 
                 <!-- Slide Down Description on Hover -->
                 <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
-                        Hệ thống phòng họp chuyên nghiệp trang bị đầy đủ màn hình TV thông minh, thiết bị hội nghị trực tuyến, wifi tốc độ cao và trà nước phục vụ.
+                    <p class="text-xs lg:text-sm text-white/95 leading-relaxed pt-3 drop-shadow-sm">
+                        Hệ thống phòng họp chuyên nghiệp trang bị đầy đủ màn hình TV thông minh, thiết bị hội nghị trực tuyến, wifi tốc độ cao và phục vụ chu đáo.
                     </p>
                 </div>
             </div>
 
             <!-- Bottom Action Link -->
-            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+            <div class="relative z-10 pt-6 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs lg:text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
                 <span>Tìm hiểu thêm</span>
                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
-        <!-- Item 04 -->
-        <a href="#services"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 min-h-[380px] lg:min-h-full">
+        <!-- Item 05 -->
+        <a href="<?php echo esc_url( home_url( '/#register' ) ); ?>"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-7 lg:p-8 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=1000"
@@ -324,22 +357,22 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
             <!-- Top Content -->
             <div class="relative z-10">
-                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">04</span>
-                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                <span class="text-2xl font-bold text-white mb-2 block font-display-lg drop-shadow">05</span>
+                <h3 class="text-lg lg:text-xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
                     CHỖ NGỒI <br class="hidden sm:inline">LINH HOẠT
                 </h3>
                 <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
 
                 <!-- Slide Down Description on Hover -->
                 <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
+                    <p class="text-xs lg:text-sm text-white/95 leading-relaxed pt-3 drop-shadow-sm">
                         Chỗ ngồi làm việc tự do trong không gian mở năng động, tiện nghi, kết nối cộng đồng doanh nhân và chuyên gia sáng tạo.
                     </p>
                 </div>
             </div>
 
             <!-- Bottom Action Link -->
-            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+            <div class="relative z-10 pt-6 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs lg:text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
                 <span>Tìm hiểu thêm</span>
                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
