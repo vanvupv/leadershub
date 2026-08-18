@@ -211,121 +211,160 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
 <!-- Services Section -- 2 (Danh mục dịch vụ - Accordion Columns) -->
 <section class="w-full bg-slate-950 overflow-hidden" id="services-showcase">
-    <div class="flex flex-col lg:flex-row w-full min-h-[500px] lg:h-[580px]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full min-h-[480px] lg:h-[560px]">
 
         <!-- Item 01 -->
-        <a href="#services" class="group relative flex-1 transition-all duration-500 ease-in-out lg:hover:flex-[1.6] overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/15 min-h-[380px] lg:min-h-full">
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 sm:border-r border-white/15 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
-            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                 src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1000" 
-                 alt="Hệ thống quang điện" 
-                 loading="lazy" />
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1000"
+                alt="Hệ thống quang điện" loading="lazy" />
             <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/50 group-hover:via-black/75 transition-colors duration-500"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/60 group-hover:via-black/85 transition-colors duration-500">
+            </div>
 
-            <!-- Content -->
-            <div class="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                    <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">01</span>
-                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
-                        HỆ THỐNG <br class="hidden sm:inline">QUANG ĐIỆN
-                    </h3>
-                    <div class="w-12 h-1 bg-success-green group-hover:w-20 transition-all duration-300 mb-6"></div>
-                    <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-sm">
-                        Growatt cung cấp đa dạng các giải pháp quang điện thông minh cho dân dụng C&amp;I và các nhà máy năng lượng mặt trời quy mô tiện ích. Công suất biến tần quang điện chuỗi thông minh của Growatt dao động từ 0,75kW đến 253kW.
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">01</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
+                    HỆ THỐNG <br class="hidden sm:inline">QUANG ĐIỆN
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div
+                    class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/80 leading-relaxed pt-4">
+                        Growatt cung cấp đa dạng các giải pháp quang điện thông minh cho dân dụng C&amp;I và các nhà máy
+                        năng lượng mặt trời quy mô tiện ích. Công suất biến tần quang điện chuỗi thông minh của Growatt
+                        dao động từ 0,75kW đến 253kW.
                     </p>
                 </div>
-                <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm opacity-90 group-hover:translate-x-1 transition-all duration-300">
-                    <span>Tìm hiểu thêm</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </div>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <div
+                class="relative z-10 pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
         <!-- Item 02 -->
-        <a href="#services" class="group relative flex-1 transition-all duration-500 ease-in-out lg:hover:flex-[1.6] overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/15 min-h-[380px] lg:min-h-full">
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 lg:border-r border-white/15 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
-            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                 src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000" 
-                 alt="Lưu trữ năng lượng" 
-                 loading="lazy" />
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000"
+                alt="Lưu trữ năng lượng" loading="lazy" />
             <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/50 group-hover:via-black/75 transition-colors duration-500"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/60 group-hover:via-black/85 transition-colors duration-500">
+            </div>
 
-            <!-- Content -->
-            <div class="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                    <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">02</span>
-                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
-                        LƯU TRỮ <br class="hidden sm:inline">NĂNG LƯỢNG
-                    </h3>
-                    <div class="w-12 h-1 bg-success-green group-hover:w-20 transition-all duration-300 mb-6"></div>
-                    <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-sm">
-                        Giải pháp trọn gói ‘Năng lượng mặt trời + Lưu trữ’ của Growatt có thể được sử dụng trong nhiều kịch bản khác nhau bao gồm lắp đặt mới và trang bị thêm, bao gồm các ứng dụng ESS dân dụng, lưới điện siêu nhỏ, nhà máy điện di động.
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">02</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
+                    LƯU TRỮ <br class="hidden sm:inline">NĂNG LƯỢNG
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div
+                    class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/80 leading-relaxed pt-4">
+                        Giải pháp trọn gói ‘Năng lượng mặt trời + Lưu trữ’ của Growatt có thể được sử dụng trong nhiều
+                        kịch bản khác nhau bao gồm lắp đặt mới và trang bị thêm, bao gồm các ứng dụng ESS dân dụng, lưới
+                        điện siêu nhỏ, nhà máy điện di động.
                     </p>
                 </div>
-                <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm opacity-90 group-hover:translate-x-1 transition-all duration-300">
-                    <span>Tìm hiểu thêm</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </div>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <div
+                class="relative z-10 pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
         <!-- Item 03 -->
-        <a href="#services" class="group relative flex-1 transition-all duration-500 ease-in-out lg:hover:flex-[1.6] overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/15 min-h-[380px] lg:min-h-full">
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 sm:border-r border-white/15 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
-            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                 src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1000" 
-                 alt="Bộ sạc xe điện" 
-                 loading="lazy" />
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1000"
+                alt="Bộ sạc xe điện" loading="lazy" />
             <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/50 group-hover:via-black/75 transition-colors duration-500"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/60 group-hover:via-black/85 transition-colors duration-500">
+            </div>
 
-            <!-- Content -->
-            <div class="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                    <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">03</span>
-                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
-                        BỘ SẠC <br class="hidden sm:inline">XE ĐIỆN
-                    </h3>
-                    <div class="w-12 h-1 bg-success-green group-hover:w-20 transition-all duration-300 mb-6"></div>
-                    <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-sm">
-                        Bộ sạc xe điện thông minh của Growatt có thể được sử dụng trong nhiều kịch bản khác nhau bao gồm cả dân dụng và thương mại. Công suất của nó dao động từ 3-22kW sạc AC và 20/40kW DC.
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">03</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
+                    BỘ SẠC <br class="hidden sm:inline">XE ĐIỆN
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div
+                    class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/80 leading-relaxed pt-4">
+                        Bộ sạc xe điện thông minh của Growatt có thể được sử dụng trong nhiều kịch bản khác nhau bao gồm
+                        cả dân dụng và thương mại. Công suất của nó dao động từ 3-22kW sạc AC và 20/40kW DC.
                     </p>
                 </div>
-                <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm opacity-90 group-hover:translate-x-1 transition-all duration-300">
-                    <span>Tìm hiểu thêm</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </div>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <div
+                class="relative z-10 pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
         <!-- Item 04 -->
-        <a href="#services" class="group relative flex-1 transition-all duration-500 ease-in-out lg:hover:flex-[1.6] overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 min-h-[380px] lg:min-h-full">
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 min-h-[380px] lg:min-h-full">
             <!-- Background Image -->
-            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                 src="https://images.unsplash.com/photo-1558441719-8b489c63f7d1?auto=format&fit=crop&w=1000" 
-                 alt="Quản lý năng lượng thông minh" 
-                 loading="lazy" />
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1558441719-8b489c63f7d1?auto=format&fit=crop&w=1000"
+                alt="Quản lý năng lượng thông minh" loading="lazy" />
             <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/50 group-hover:via-black/75 transition-colors duration-500"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/60 group-hover:via-black/85 transition-colors duration-500">
+            </div>
 
-            <!-- Content -->
-            <div class="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                    <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">04</span>
-                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
-                        QUẢN LÝ NĂNG LƯỢNG <br class="hidden sm:inline">THÔNG MINH
-                    </h3>
-                    <div class="w-12 h-1 bg-success-green group-hover:w-20 transition-all duration-300 mb-6"></div>
-                    <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-sm">
-                        Giải pháp năng lượng thông minh Growatt được xây dựng trên cơ sở dữ liệu lớn, trí tuệ nhân tạo và IoT. Bằng cách dùng giám sát đa điểm và nền tảng đám mây, giúp thực hiện quản lý và phân phối thông minh.
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg">04</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white">
+                    QUẢN LÝ NĂNG LƯỢNG <br class="hidden sm:inline">THÔNG MINH
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div
+                    class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/80 leading-relaxed pt-4">
+                        Giải pháp năng lượng thông minh Growatt được xây dựng trên cơ sở dữ liệu lớn, trí tuệ nhân tạo
+                        và IoT. Bằng cách dùng giám sát đa điểm và nền tảng đám mây, giúp thực hiện quản lý và phân phối
+                        thông minh.
                     </p>
                 </div>
-                <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm opacity-90 group-hover:translate-x-1 transition-all duration-300">
-                    <span>Tìm hiểu thêm</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </div>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <div
+                class="relative z-10 pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
         </a>
 
