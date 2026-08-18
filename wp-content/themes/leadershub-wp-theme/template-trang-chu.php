@@ -209,13 +209,13 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
     </section>
 <?php endif; ?>
 
-<!-- Services Section -- 2 (Danh mục dịch vụ - 5 Cột Tràn Viền Tông Sáng Tự Nhiên) -->
+<!-- Services Section -- 2 (Danh mục dịch vụ - 5 Cột Tràn Viền Tỉ Lệ Bằng Nhau Tuyệt Đối) -->
 <section class="w-full bg-slate-900 overflow-hidden" id="services-showcase">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full min-h-[380px] lg:h-[430px]">
+    <div class="flex flex-col lg:flex-row w-full min-h-[380px] lg:h-[430px]">
 
         <!-- Item 01 -->
         <a href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 lg:p-6 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[300px] lg:min-h-full">
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 min-h-[300px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000"
@@ -248,7 +248,7 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
         <!-- Item 02 -->
         <a href="<?php echo esc_url( home_url( '/van-phong-ao' ) ); ?>"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 lg:p-6 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[300px] lg:min-h-full">
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 min-h-[300px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1000"
@@ -281,7 +281,7 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
         <!-- Item 03 -->
         <a href="<?php echo esc_url( home_url( '/van-phong-cao-cap' ) ); ?>"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 lg:p-6 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[300px] lg:min-h-full">
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 min-h-[300px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000"
@@ -314,7 +314,7 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
         <!-- Item 04 -->
         <a href="<?php echo esc_url( home_url( '/phong-hop' ) ); ?>"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 lg:p-6 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[300px] lg:min-h-full">
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 min-h-[300px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1000"
@@ -347,7 +347,7 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
         <!-- Item 05 -->
         <a href="<?php echo esc_url( home_url( '/#register' ) ); ?>"
-            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 lg:p-6 min-h-[300px] lg:min-h-full">
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 min-h-[300px] lg:min-h-full">
             <!-- Background Image -->
             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=1000"
