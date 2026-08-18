@@ -28,8 +28,9 @@ $hero_video = lh_field('home_hero_video', '');
 $hero_poster = lh_field('home_hero_poster', '');
 $hero_btn_1 = lh_field('home_hero_btn_1', array());
 $hero_btn_2 = lh_field('home_hero_btn_2', array());
-$services_subtitle = lh_field('home_services_subtitle', '');
-$services_title = lh_field('home_services_title', '');
+$services_subtitle = lh_field('home_services_subtitle', 'DANH MỤC DỊCH VỤ');
+$services_title = lh_field('home_services_title', 'Giải Pháp Không Gian Làm Việc Toàn Diện');
+$services_desc = lh_field('home_services_desc', 'Leadershub cung cấp các gói dịch vụ linh hoạt, tối ưu chi phí vận hành và nâng tầm hình ảnh chuyên nghiệp cho doanh nghiệp.');
 $pricing_title = lh_field('home_pricing_title', '');
 $pricing_desc = lh_field('home_pricing_desc', '');
 $reviews_subtitle = lh_field('home_reviews_subtitle', 'ĐÁNH GIÁ THỰC TẾ');
@@ -103,7 +104,28 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
 <!-- Services Section (Danh mục dịch vụ - 5 Cột Tràn Viền Tích Hợp ACF) -->
 <?php if ( ! empty( $services_title ) || ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) ) : ?>
-<section class="w-full bg-slate-900 overflow-hidden scroll-mt-20" id="services">
+<section class="pt-16 md:pt-20 pb-0 bg-surface scroll-mt-20" id="services">
+    <?php if ( ! empty( $services_subtitle ) || ! empty( $services_title ) || ! empty( $services_desc ) ) : ?>
+        <div class="max-w-container-max mx-auto px-gutter mb-12 text-center">
+            <?php if ( ! empty( $services_subtitle ) ) : ?>
+                <span class="text-prestige-gold font-label-sm text-sm uppercase tracking-widest block mb-2 font-bold">
+                    <?php echo esc_html( $services_subtitle ); ?>
+                </span>
+            <?php endif; ?>
+            <?php if ( ! empty( $services_title ) ) : ?>
+                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold mb-3">
+                    <?php echo esc_html( $services_title ); ?>
+                </h2>
+            <?php endif; ?>
+            <?php if ( ! empty( $services_desc ) ) : ?>
+                <p class="max-w-2xl mx-auto text-on-surface-variant text-sm md:text-base leading-relaxed">
+                    <?php echo esc_html( $services_desc ); ?>
+                </p>
+            <?php endif; ?>
+            <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4 rounded-full"></div>
+        </div>
+    <?php endif; ?>
+
     <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) : ?>
         <div class="flex flex-col lg:flex-row w-full min-h-[380px] lg:h-[430px]">
             <?php 
