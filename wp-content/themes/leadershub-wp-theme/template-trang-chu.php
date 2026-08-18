@@ -209,181 +209,142 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
     </section>
 <?php endif; ?>
 
-<!-- Services Section -- 2 (Danh mục dịch vụ - Thiết kế sáng & đồng bộ thương hiệu) -->
-<section class="py-section-padding-desktop bg-surface-container-low" id="services-showcase">
-    <div class="max-w-container-max mx-auto px-gutter">
-        
-        <!-- Section Header -->
-        <div class="text-center mb-14">
-            <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-3 font-bold text-center">
-                GIẢI PHÁP CỦA CHÚNG TÔI
-            </span>
-            <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold text-center">
-                Không Gian Làm Việc Chuẩn Quốc Tế
-            </h2>
-            <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4"></div>
-        </div>
+<!-- Services Section -- 2 (Danh mục dịch vụ - 4 Cột Tràn Viền Tông Sáng Tự Nhiên) -->
+<section class="w-full bg-slate-900 overflow-hidden" id="services-showcase">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full min-h-[480px] lg:h-[560px]">
 
-        <!-- 4 Services Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <!-- Item 01 -->
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
+            <!-- Background Image -->
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000"
+                alt="Văn phòng dịch vụ" loading="lazy" />
+            <!-- Soft / Lighter Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
 
-            <!-- Card 01 -->
-            <a href="#services"
-                class="group relative rounded-2xl overflow-hidden bg-white border border-surface-container-high shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between cursor-pointer min-h-[460px]">
-                
-                <!-- Image Header -->
-                <div class="h-48 overflow-hidden relative flex-shrink-0 bg-slate-100">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800"
-                        alt="Văn phòng dịch vụ trọn gói" loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-deep-navy font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                        01
-                    </span>
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">01</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                    VĂN PHÒNG <br class="hidden sm:inline">DỊCH VỤ
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
+                        Không gian làm việc riêng tư trọn gói tiện ích cao cấp, đầy đủ nội thất hiện đại, lễ tân chuyên nghiệp và sảnh đón tiếp sang trọng.
+                    </p>
                 </div>
+            </div>
 
-                <!-- Card Body -->
-                <div class="p-6 md:p-8 flex flex-col justify-between flex-grow bg-white">
-                    <div>
-                        <h3 class="text-lg md:text-xl font-bold text-deep-navy uppercase leading-tight mb-3 group-hover:text-prestige-gold transition-colors duration-300">
-                            VĂN PHÒNG <br class="hidden sm:inline">DỊCH VỤ
-                        </h3>
-                        <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+            <!-- Bottom Action Link -->
+            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+        </a>
 
-                        <!-- Slide Down Description on Hover -->
-                        <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                            <p class="text-on-surface-variant text-sm leading-relaxed pt-3">
-                                Không gian làm việc riêng tư trọn gói tiện ích cao cấp, đầy đủ nội thất hiện đại, lễ tân chuyên nghiệp và sảnh đón tiếp sang trọng.
-                            </p>
-                        </div>
-                    </div>
+        <!-- Item 02 -->
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 lg:border-r border-white/20 min-h-[380px] lg:min-h-full">
+            <!-- Background Image -->
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1000"
+                alt="Văn phòng ảo" loading="lazy" />
+            <!-- Soft / Lighter Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
 
-                    <!-- Bottom Link -->
-                    <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
-                        <span>Tìm hiểu thêm</span>
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </div>
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">02</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                    VĂN PHÒNG <br class="hidden sm:inline">ẢO UY TÍN
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
+                        Đăng ký địa chỉ kinh doanh đắc địa ngay trung tâm, hỗ trợ nhận thư từ, tiếp đón khách hàng và tối ưu hóa tối đa chi phí hoạt động.
+                    </p>
                 </div>
-            </a>
+            </div>
 
-            <!-- Card 02 -->
-            <a href="#services"
-                class="group relative rounded-2xl overflow-hidden bg-white border border-surface-container-high shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between cursor-pointer min-h-[460px]">
-                
-                <!-- Image Header -->
-                <div class="h-48 overflow-hidden relative flex-shrink-0 bg-slate-100">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800"
-                        alt="Văn phòng ảo" loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-deep-navy font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                        02
-                    </span>
+            <!-- Bottom Action Link -->
+            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+        </a>
+
+        <!-- Item 03 -->
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 border-b sm:border-b-0 border-r-0 sm:border-r border-white/20 min-h-[380px] lg:min-h-full">
+            <!-- Background Image -->
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1000"
+                alt="Phòng họp hiện đại" loading="lazy" />
+            <!-- Soft / Lighter Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
+
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">03</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                    PHÒNG HỌP <br class="hidden sm:inline">HIỆN ĐẠI
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
+                        Hệ thống phòng họp chuyên nghiệp trang bị đầy đủ màn hình TV thông minh, thiết bị hội nghị trực tuyến, wifi tốc độ cao và trà nước phục vụ.
+                    </p>
                 </div>
+            </div>
 
-                <!-- Card Body -->
-                <div class="p-6 md:p-8 flex flex-col justify-between flex-grow bg-white">
-                    <div>
-                        <h3 class="text-lg md:text-xl font-bold text-deep-navy uppercase leading-tight mb-3 group-hover:text-prestige-gold transition-colors duration-300">
-                            VĂN PHÒNG <br class="hidden sm:inline">ẢO UY TÍN
-                        </h3>
-                        <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+            <!-- Bottom Action Link -->
+            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+        </a>
 
-                        <!-- Slide Down Description on Hover -->
-                        <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                            <p class="text-on-surface-variant text-sm leading-relaxed pt-3">
-                                Đăng ký địa chỉ kinh doanh đắc địa ngay trung tâm, hỗ trợ nhận thư từ, tiếp đón khách hàng và tối ưu hóa tối đa chi phí hoạt động.
-                            </p>
-                        </div>
-                    </div>
+        <!-- Item 04 -->
+        <a href="#services"
+            class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-8 md:p-10 min-h-[380px] lg:min-h-full">
+            <!-- Background Image -->
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=1000"
+                alt="Chỗ ngồi linh hoạt" loading="lazy" />
+            <!-- Soft / Lighter Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
 
-                    <!-- Bottom Link -->
-                    <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
-                        <span>Tìm hiểu thêm</span>
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </div>
+            <!-- Top Content -->
+            <div class="relative z-10">
+                <span class="text-2xl md:text-3xl font-bold text-white mb-2 block font-display-lg drop-shadow">04</span>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight mb-4 text-white drop-shadow">
+                    CHỖ NGỒI <br class="hidden sm:inline">LINH HOẠT
+                </h3>
+                <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
+
+                <!-- Slide Down Description on Hover -->
+                <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <p class="text-sm md:text-base text-white/95 leading-relaxed pt-4 drop-shadow-sm">
+                        Chỗ ngồi làm việc tự do trong không gian mở năng động, tiện nghi, kết nối cộng đồng doanh nhân và chuyên gia sáng tạo.
+                    </p>
                 </div>
-            </a>
+            </div>
 
-            <!-- Card 03 -->
-            <a href="#services"
-                class="group relative rounded-2xl overflow-hidden bg-white border border-surface-container-high shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between cursor-pointer min-h-[460px]">
-                
-                <!-- Image Header -->
-                <div class="h-48 overflow-hidden relative flex-shrink-0 bg-slate-100">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800"
-                        alt="Phòng họp cao cấp" loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-deep-navy font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                        03
-                    </span>
-                </div>
+            <!-- Bottom Action Link -->
+            <div class="relative z-10 pt-6 flex items-center gap-2 text-white group-hover:text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                <span>Tìm hiểu thêm</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+        </a>
 
-                <!-- Card Body -->
-                <div class="p-6 md:p-8 flex flex-col justify-between flex-grow bg-white">
-                    <div>
-                        <h3 class="text-lg md:text-xl font-bold text-deep-navy uppercase leading-tight mb-3 group-hover:text-prestige-gold transition-colors duration-300">
-                            PHÒNG HỌP <br class="hidden sm:inline">HIỆN ĐẠI
-                        </h3>
-                        <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
-
-                        <!-- Slide Down Description on Hover -->
-                        <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                            <p class="text-on-surface-variant text-sm leading-relaxed pt-3">
-                                Hệ thống phòng họp chuyên nghiệp trang bị đầy đủ màn hình TV thông minh, thiết bị hội nghị trực tuyến, wifi tốc độ cao và trà nước phục vụ.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Link -->
-                    <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
-                        <span>Tìm hiểu thêm</span>
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Card 04 -->
-            <a href="#services"
-                class="group relative rounded-2xl overflow-hidden bg-white border border-surface-container-high shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between cursor-pointer min-h-[460px]">
-                
-                <!-- Image Header -->
-                <div class="h-48 overflow-hidden relative flex-shrink-0 bg-slate-100">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=800"
-                        alt="Chỗ ngồi làm việc linh hoạt" loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-deep-navy font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                        04
-                    </span>
-                </div>
-
-                <!-- Card Body -->
-                <div class="p-6 md:p-8 flex flex-col justify-between flex-grow bg-white">
-                    <div>
-                        <h3 class="text-lg md:text-xl font-bold text-deep-navy uppercase leading-tight mb-3 group-hover:text-prestige-gold transition-colors duration-300">
-                            CHỖ NGỒI <br class="hidden sm:inline">LINH HOẠT
-                        </h3>
-                        <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-16 transition-all duration-300"></div>
-
-                        <!-- Slide Down Description on Hover -->
-                        <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                            <p class="text-on-surface-variant text-sm leading-relaxed pt-3">
-                                Chỗ ngồi làm việc tự do trong không gian mở năng động, tiện nghi, kết nối cộng đồng doanh nhân và chuyên gia sáng tạo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Link -->
-                    <div class="pt-6 flex items-center gap-2 text-success-green font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
-                        <span>Tìm hiểu thêm</span>
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </div>
-                </div>
-            </a>
-
-        </div>
     </div>
 </section>
 
