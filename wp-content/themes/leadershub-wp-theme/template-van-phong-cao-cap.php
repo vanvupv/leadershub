@@ -464,7 +464,10 @@ document.addEventListener('DOMContentLoaded', function () {
         <?php endif; ?>
 
         <?php if ( function_exists( 'have_rows' ) && have_rows( 'so_process_steps' ) ) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
+                <!-- Horizontal Connecting Dashed Line -->
+                <div class="hidden md:block absolute top-10 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-prestige-gold/40 z-0"></div>
+
                 <?php 
                 $step_idx = 1;
                 while ( have_rows( 'so_process_steps' ) ) : the_row();
@@ -477,11 +480,20 @@ document.addEventListener('DOMContentLoaded', function () {
                         continue;
                     }
                 ?>
-                    <div class="relative pt-16 group text-center">
-                        <span class="absolute top-0 left-1/2 -translate-x-1/2 text-7xl md:text-8xl font-black text-deep-navy/10 group-hover:text-prestige-gold/20 transition-colors select-none font-display-lg"><?php echo esc_html( $s_num ); ?></span>
+                    <div class="relative text-center group flex flex-col items-center z-10">
+                        <!-- Step Number Badge (Positioned cleanly above title) -->
+                        <div class="w-20 h-20 rounded-full bg-white shadow-lg border-2 border-prestige-gold/50 group-hover:border-prestige-gold flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 relative z-10 bg-gradient-to-b from-white to-surface-container">
+                            <span class="font-display-lg text-2xl md:text-3xl font-black text-deep-navy group-hover:text-prestige-gold transition-colors">
+                                <?php echo esc_html( $s_num ); ?>
+                            </span>
+                        </div>
+
+                        <!-- Step Title -->
                         <h4 class="font-headline-md text-xl md:text-2xl text-deep-navy mb-3 font-bold group-hover:text-prestige-gold transition-colors">
                             <?php echo esc_html( $s_title ); ?>
                         </h4>
+
+                        <!-- Step Description -->
                         <?php if ( ! empty( $s_desc ) ) : ?>
                             <p class="text-on-surface-variant font-body-md text-sm md:text-base leading-relaxed max-w-sm mx-auto">
                                 <?php echo esc_html( $s_desc ); ?>
