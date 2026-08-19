@@ -478,7 +478,7 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
                 <div class="swiper-wrapper items-stretch">
                     <?php foreach ($display_logos as $logo_item): ?>
                         <div class="swiper-slide h-auto">
-                            <div class="group relative h-56 md:h-64 lg:h-72 w-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-surface-container border border-surface-container-highest flex items-center justify-center">
+                            <div class="group relative aspect-square w-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-surface-container border border-surface-container-highest flex items-center justify-center">
                                 <img src="<?php echo esc_url($logo_item['url']); ?>" 
                                     alt="<?php echo esc_attr($logo_item['alt']); ?>"
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -512,8 +512,8 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
                 var container = document.getElementById('partners-swiper-container');
                 if (typeof Swiper !== 'undefined' && container) {
                     new Swiper('#partners-swiper-container', {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
+                        slidesPerView: 2,
+                        spaceBetween: 16,
                         loop: true,
                         watchOverflow: true,
                         observer: true,
@@ -528,10 +528,10 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
                             prevEl: '#partners-prev-btn',
                         },
                         breakpoints: {
-                            540: { slidesPerView: 2, spaceBetween: 20 },
-                            768: { slidesPerView: 3, spaceBetween: 24 },
-                            1024: { slidesPerView: 3, spaceBetween: 28 },
-                            1280: { slidesPerView: 4, spaceBetween: 30 }
+                            640: { slidesPerView: 3, spaceBetween: 20 },
+                            768: { slidesPerView: 4, spaceBetween: 20 },
+                            1024: { slidesPerView: 4, spaceBetween: 24 },
+                            1280: { slidesPerView: 5, spaceBetween: 24 }
                         }
                     });
                 } else if (retries < 50) {
