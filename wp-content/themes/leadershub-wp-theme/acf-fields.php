@@ -370,6 +370,69 @@ function leadershub_register_field_groups() {
                 'type' => 'link',
                 'return_format' => 'array',
             ),
+
+            // TAB: PARTNERS & AWARDS (Đối tác & Danh hiệu)
+            array(
+                'key' => 'tab_home_partners',
+                'label' => 'Đối Tác & Danh Hiệu',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_home_partners_subtitle',
+                'label' => 'Tiêu đề phụ / Subtitle',
+                'name' => 'home_partners_subtitle',
+                'type' => 'text',
+                'default_value' => 'ĐỐI TÁC DOANH NGHIỆP',
+            ),
+            array(
+                'key' => 'field_home_partners_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'home_partners_title',
+                'type' => 'text',
+                'default_value' => 'DANH HIỆU & GIẢI THƯỞNG',
+            ),
+            array(
+                'key' => 'field_home_partners_gallery',
+                'label' => 'Thư viện Logo Đối tác (Gallery)',
+                'name' => 'home_partners_gallery',
+                'type' => 'gallery',
+                'return_format' => 'array',
+                'instructions' => 'Chọn nhiều logo/hình ảnh đối tác hoặc danh hiệu từ thư viện media.',
+            ),
+            array(
+                'key' => 'field_home_partners_list',
+                'label' => 'Hoặc Danh sách Chi tiết (Kèm chữ & mô tả bên dưới)',
+                'name' => 'home_partners_list',
+                'type' => 'repeater',
+                'layout' => 'row',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_partner_logo',
+                        'label' => 'Logo / Hình ảnh',
+                        'name' => 'logo',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                    array(
+                        'key' => 'field_partner_name',
+                        'label' => 'Tên đối tác / Danh hiệu (Dòng 1)',
+                        'name' => 'name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_partner_desc',
+                        'label' => 'Mô tả ngắn (Dòng 2)',
+                        'name' => 'desc',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_partner_link',
+                        'label' => 'Link liên kết (Tùy chọn)',
+                        'name' => 'link',
+                        'type' => 'text',
+                    ),
+                ),
+            ),
         ),
         'location' => array(
             array(
