@@ -150,29 +150,28 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
                     <!-- Item <?php echo esc_attr($s_num); ?> -->
                     <a href="<?php echo esc_url($link_url); ?>"
                         class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 last:border-r-0 min-h-[300px] lg:min-h-full">
-                        <!-- Background Image -->
+                        <!-- Background Image (Ban đầu sáng rõ 100% không overlay) -->
                         <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($s_title); ?>" loading="lazy" />
-                        <!-- Soft / Lighter Gradient Overlay -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500">
-                        </div>
+                        
+                        <!-- Lớp phủ nền màu đen khi Hover (Ban đầu bỏ hết overlay) -->
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-[1]"></div>
 
                         <!-- Top Content -->
                         <div class="relative z-10">
                             <span
-                                class="text-xl lg:text-2xl font-bold text-white mb-1 block font-display-lg drop-shadow"><?php echo esc_html($s_num); ?></span>
+                                class="text-2xl lg:text-3xl font-bold text-white mb-1.5 block font-display-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"><?php echo esc_html($s_num); ?></span>
                             <h3
-                                class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white drop-shadow">
+                                class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                                 <?php echo nl2br(esc_html($s_title)); ?>
                             </h3>
-                            <div class="w-8 h-1 bg-success-green mb-1.5 group-hover:w-14 transition-all duration-300"></div>
+                            <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-full transition-all duration-500 shadow"></div>
 
                             <!-- Slide Down Description on Hover -->
                             <?php if (!empty($s_desc)): ?>
                                 <div
                                     class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                                    <p class="text-xs text-white/95 leading-relaxed pt-2 drop-shadow-sm">
+                                    <p class="text-xs text-white leading-relaxed pt-2 drop-shadow-sm">
                                         <?php echo esc_html($s_desc); ?>
                                     </p>
                                 </div>
@@ -181,7 +180,7 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
                         <!-- Bottom Action Link -->
                         <div
-                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                             <span>Tìm hiểu thêm</span>
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </div>
