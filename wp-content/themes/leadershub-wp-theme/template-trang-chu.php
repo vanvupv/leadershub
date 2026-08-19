@@ -472,16 +472,16 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
         </div>
 
         <!-- Slider Wrapper with relative positioning for buttons -->
-        <div class="relative px-10 md:px-14">
+        <div class="relative px-6 md:px-12">
             <!-- Swiper Carousel -->
             <div class="swiper overflow-hidden py-4" id="partners-swiper-container">
-                <div class="swiper-wrapper items-center">
+                <div class="swiper-wrapper items-stretch">
                     <?php foreach ($display_logos as $logo_item): ?>
                         <div class="swiper-slide h-auto">
-                            <div class="flex items-center justify-center p-3 h-20 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                            <div class="group relative h-56 md:h-64 lg:h-72 w-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-surface-container border border-surface-container-highest flex items-center justify-center">
                                 <img src="<?php echo esc_url($logo_item['url']); ?>" 
                                     alt="<?php echo esc_attr($logo_item['alt']); ?>"
-                                    class="max-h-12 md:max-h-16 max-w-[140px] md:max-w-[160px] object-contain hover:scale-105 transition-transform duration-300" 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                                     loading="lazy" />
                             </div>
                         </div>
@@ -491,16 +491,16 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
 
             <!-- Left Prev Navigation Button -->
             <button type="button" id="partners-prev-btn" 
-                class="w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold transition-all duration-200 absolute top-1/2 -translate-y-1/2 left-0 md:left-2 z-30 cursor-pointer pointer-events-auto" 
+                class="w-11 h-11 rounded-full bg-white shadow-lg hover:shadow-xl border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold transition-all duration-200 absolute top-1/2 -translate-y-1/2 left-0 md:-left-2 z-30 cursor-pointer pointer-events-auto" 
                 aria-label="Previous partner slide">
-                <span class="material-symbols-outlined text-xl">chevron_left</span>
+                <span class="material-symbols-outlined text-2xl">chevron_left</span>
             </button>
 
             <!-- Right Next Navigation Button -->
             <button type="button" id="partners-next-btn" 
-                class="w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold transition-all duration-200 absolute top-1/2 -translate-y-1/2 right-0 md:right-2 z-30 cursor-pointer pointer-events-auto" 
+                class="w-11 h-11 rounded-full bg-white shadow-lg hover:shadow-xl border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold transition-all duration-200 absolute top-1/2 -translate-y-1/2 right-0 md:-right-2 z-30 cursor-pointer pointer-events-auto" 
                 aria-label="Next partner slide">
-                <span class="material-symbols-outlined text-xl">chevron_right</span>
+                <span class="material-symbols-outlined text-2xl">chevron_right</span>
             </button>
         </div>
     </div>
@@ -512,14 +512,14 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
                 var container = document.getElementById('partners-swiper-container');
                 if (typeof Swiper !== 'undefined' && container) {
                     new Swiper('#partners-swiper-container', {
-                        slidesPerView: 2,
-                        spaceBetween: 24,
+                        slidesPerView: 1,
+                        spaceBetween: 20,
                         loop: true,
                         watchOverflow: true,
                         observer: true,
                         observeParents: true,
                         autoplay: {
-                            delay: 2500,
+                            delay: 3000,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         },
@@ -528,10 +528,10 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
                             prevEl: '#partners-prev-btn',
                         },
                         breakpoints: {
-                            480: { slidesPerView: 3, spaceBetween: 24 },
-                            768: { slidesPerView: 4, spaceBetween: 30 },
-                            1024: { slidesPerView: 5, spaceBetween: 36 },
-                            1280: { slidesPerView: 6, spaceBetween: 40 }
+                            540: { slidesPerView: 2, spaceBetween: 20 },
+                            768: { slidesPerView: 3, spaceBetween: 24 },
+                            1024: { slidesPerView: 3, spaceBetween: 28 },
+                            1280: { slidesPerView: 4, spaceBetween: 30 }
                         }
                     });
                 } else if (retries < 50) {
