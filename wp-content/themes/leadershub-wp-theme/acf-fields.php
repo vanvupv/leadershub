@@ -1563,7 +1563,7 @@ function leadershub_register_field_groups() {
                 ),
             ),
 
-            // TAB 4: CERTIFICATIONS (2 Hình ảnh chứng chỉ)
+            // TAB 4: CERTIFICATIONS (2 Hình ảnh & Tiêu đề chứng chỉ)
             array(
                 'key' => 'tab_about_cert',
                 'label' => '4. Chứng Nhận Tòa Nhà',
@@ -1585,12 +1585,26 @@ function leadershub_register_field_groups() {
                 'instructions' => 'Tải lên hình ảnh chứng chỉ thứ nhất.',
             ),
             array(
+                'key' => 'field_about_cert_name_1',
+                'label' => 'Tiêu đề chứng nhận 1',
+                'name' => 'about_cert_name_1',
+                'type' => 'text',
+                'instructions' => 'Nhập tiêu đề hiển thị dưới hình ảnh 1.',
+            ),
+            array(
                 'key' => 'field_about_cert_img_2',
                 'label' => 'Hình ảnh chứng nhận 2',
                 'name' => 'about_cert_img_2',
                 'type' => 'image',
                 'return_format' => 'url',
                 'instructions' => 'Tải lên hình ảnh chứng chỉ thứ hai.',
+            ),
+            array(
+                'key' => 'field_about_cert_name_2',
+                'label' => 'Tiêu đề chứng nhận 2',
+                'name' => 'about_cert_name_2',
+                'type' => 'text',
+                'instructions' => 'Nhập tiêu đề hiển thị dưới hình ảnh 2.',
             ),
 
             // TAB 5: REAL OFFICE GALLERY

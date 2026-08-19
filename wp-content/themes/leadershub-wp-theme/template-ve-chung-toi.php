@@ -22,9 +22,11 @@ $story_image   = ( function_exists( 'get_field' ) ? get_field( 'about_story_imag
 $values_title = ( function_exists( 'get_field' ) ? get_field( 'about_values_title' ) : '' ) ?: '';
 
 // ACF Variables: Section 4 Certifications (2 Chứng chỉ)
-$cert_title = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' ) : '' ) ?: 'Chứng nhận tòa nhà văn phòng Capital Place';
-$cert_img_1 = ( function_exists( 'get_field' ) ? get_field( 'about_cert_img_1' ) : '' ) ?: '';
-$cert_img_2 = ( function_exists( 'get_field' ) ? get_field( 'about_cert_img_2' ) : '' ) ?: '';
+$cert_title  = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' ) : '' ) ?: 'Chứng nhận tòa nhà văn phòng Capital Place';
+$cert_img_1  = ( function_exists( 'get_field' ) ? get_field( 'about_cert_img_1' ) : '' ) ?: '';
+$cert_name_1 = ( function_exists( 'get_field' ) ? get_field( 'about_cert_name_1' ) : '' ) ?: '';
+$cert_img_2  = ( function_exists( 'get_field' ) ? get_field( 'about_cert_img_2' ) : '' ) ?: '';
+$cert_name_2 = ( function_exists( 'get_field' ) ? get_field( 'about_cert_name_2' ) : '' ) ?: '';
 
 // ACF Variables: Section 5 Real Office Gallery
 $gallery_title = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_title' ) : '' ) ?: '';
@@ -205,31 +207,41 @@ if ( ! function_exists( 'lh_field' ) ) {
 </section>
 <?php endif; ?>
  
-<!-- Certifications & Standards Section (Giao diện 2 Hình Ảnh Chứng Chỉ) -->
+<!-- Certifications & Standards Section (Giao diện 2 Hình Ảnh Chứng Chỉ Kèm Tiêu Đề) -->
 <?php 
-// Collect 2 certificate images from ACF
-$cert_images = array();
+// Collect 2 certificate items (image + title)
+$cert_items = array();
 if ( ! empty( $cert_img_1 ) ) {
-    $cert_images[] = is_array( $cert_img_1 ) ? ( $cert_img_1['url'] ?? '' ) : $cert_img_1;
+    $cert_items[] = array(
+        'img'  => is_array( $cert_img_1 ) ? ( $cert_img_1['url'] ?? '' ) : $cert_img_1,
+        'name' => $cert_name_1,
+    );
 }
 if ( ! empty( $cert_img_2 ) ) {
-    $cert_images[] = is_array( $cert_img_2 ) ? ( $cert_img_2['url'] ?? '' ) : $cert_img_2;
+    $cert_items[] = array(
+        'img'  => is_array( $cert_img_2 ) ? ( $cert_img_2['url'] ?? '' ) : $cert_img_2,
+        'name' => $cert_name_2,
+    );
 }
 
 // Fallback to legacy repeater if new fields are not filled yet
-if ( empty( $cert_images ) && function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) {
+if ( empty( $cert_items ) && function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) {
     while ( have_rows( 'about_cert_logos' ) ) {
         the_row();
         $logo = get_sub_field( 'logo' );
+        $name = get_sub_field( 'name' );
         $logo_url = is_array( $logo ) ? ( $logo['url'] ?? '' ) : $logo;
         if ( ! empty( $logo_url ) ) {
-            $cert_images[] = $logo_url;
+            $cert_items[] = array(
+                'img'  => $logo_url,
+                'name' => $name,
+            );
         }
-        if ( count( $cert_images ) >= 2 ) break;
+        if ( count( $cert_items ) >= 2 ) break;
     }
 }
 
-if ( ! empty( $cert_title ) || ! empty( $cert_images ) ) : ?>
+if ( ! empty( $cert_title ) || ! empty( $cert_items ) ) : ?>
 <section class="bg-deep-navy py-16 md:py-24 text-white overflow-hidden scroll-mt-20 relative" id="certifications">
     <div class="max-w-container-max mx-auto px-gutter relative z-10">
         <?php if ( ! empty( $cert_title ) ) : ?>
@@ -244,16 +256,26 @@ if ( ! empty( $cert_title ) || ! empty( $cert_images ) ) : ?>
             </div>
         <?php endif; ?>
 
-        <?php if ( ! empty( $cert_images ) ) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-center">
-                <?php foreach ( $cert_images as $idx => $c_img_url ) : 
-                    if ( empty( $c_img_url ) ) continue;
+        <?php if ( ! empty( $cert_items ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-start">
+                <?php foreach ( $cert_items as $idx => $c_item ) : 
+                    if ( empty( $c_item['img'] ) ) continue;
                 ?>
-                    <div class="group relative rounded-2xl md:rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-prestige-gold/50 transition-all duration-500 shadow-xl flex items-center justify-center p-3 md:p-4">
-                        <img class="w-full h-auto max-h-[460px] md:max-h-[540px] object-contain rounded-xl md:rounded-2xl group-hover:scale-[1.02] transition-transform duration-500" 
-                             src="<?php echo esc_url( $c_img_url ); ?>" 
-                             alt="Chứng nhận tiêu chuẩn <?php echo esc_attr( $idx + 1 ); ?>" 
-                             loading="lazy" />
+                    <div class="group flex flex-col items-center text-center">
+                        <!-- Image without box border -->
+                        <div class="w-full rounded-2xl md:rounded-3xl overflow-hidden flex items-center justify-center">
+                            <img class="w-full h-auto max-h-[460px] md:max-h-[540px] object-contain rounded-2xl md:rounded-3xl group-hover:scale-[1.02] transition-transform duration-500" 
+                                 src="<?php echo esc_url( $c_item['img'] ); ?>" 
+                                 alt="<?php echo esc_attr( $c_item['name'] ?: ( 'Chứng nhận tiêu chuẩn ' . ( $idx + 1 ) ) ); ?>" 
+                                 loading="lazy" />
+                        </div>
+                        
+                        <!-- Title under Image -->
+                        <?php if ( ! empty( $c_item['name'] ) ) : ?>
+                            <h3 class="font-headline-md text-lg md:text-2xl text-white font-bold group-hover:text-prestige-gold transition-colors text-center mt-4 md:mt-5">
+                                <?php echo esc_html( $c_item['name'] ); ?>
+                            </h3>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
