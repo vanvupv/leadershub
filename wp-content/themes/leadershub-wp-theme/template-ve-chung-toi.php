@@ -385,9 +385,10 @@ if ( ! empty( $cert_title ) || ! empty( $cert_items ) ) : ?>
                     <p class="text-white/60 font-label-sm text-xs mb-4 font-semibold">
                         <?php echo esc_html( $cta_working_hours ); ?>
                     </p>
-                    <p class="text-prestige-gold font-headline-md text-xl font-bold">
+                    <a href="<?php echo esc_url( function_exists( 'lh_opt' ) ? lh_opt( 'lh_hotline_url', 'tel:+84378919119' ) : 'tel:+84378919119' ); ?>" 
+                       class="text-prestige-gold font-headline-md text-xl font-bold hover:underline hover:opacity-90 transition-all inline-block">
                         <?php echo esc_html( function_exists( 'lh_opt' ) ? lh_opt( 'lh_hotline', '+84 3789 19119' ) : '+84 3789 19119' ); ?>
-                    </p>
+                    </a>
                 </div>
             </div>
         </div>
