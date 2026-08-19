@@ -397,7 +397,7 @@ if (count($display_logos) > 0 && count($display_logos) < 8) {
                 <div class="swiper-wrapper items-stretch">
                     <?php foreach ($display_logos as $logo_item): ?>
                         <div class="swiper-slide h-auto">
-                            <div class="group relative aspect-square w-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-surface-container border border-surface-container-highest flex items-center justify-center">
+                            <div class="group relative aspect-square w-full rounded-2xl overflow-hidden transition-all duration-300 bg-surface-container border border-surface-container-highest flex items-center justify-center">
                                 <img src="<?php echo esc_url($logo_item['url']); ?>" 
                                     alt="<?php echo esc_attr($logo_item['alt']); ?>"
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
