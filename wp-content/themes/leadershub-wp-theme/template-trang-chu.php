@@ -156,9 +156,9 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
                         <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($s_title); ?>" loading="lazy" />
 
-                        <!-- Lớp phủ nền: Ban đầu phủ nhẹ êm dịu (để chữ trắng nổi rõ), Hover vào phủ đen đậm -->
+                        <!-- Lớp phủ nền: Ban đầu phủ nhẹ sáng hơn, Hover vào phủ đen đậm -->
                         <div
-                            class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 group-hover:from-black/85 group-hover:via-black/80 group-hover:to-black/85 transition-all duration-500 pointer-events-none z-[1]">
+                            class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/40 group-hover:from-black/85 group-hover:via-black/80 group-hover:to-black/85 transition-all duration-500 pointer-events-none z-[1]">
                         </div>
 
                         <!-- Top Content -->
@@ -181,9 +181,9 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
                             <?php endif; ?>
                         </div>
 
-                        <!-- Bottom Action Link -->
+                        <!-- Bottom Action Link (Giữ màu trắng khi hover) -->
                         <div
-                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300">
+                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white font-semibold text-xs group-hover:translate-x-1 transition-all duration-300">
                             <span>Tìm hiểu thêm</span>
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </div>
