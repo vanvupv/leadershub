@@ -637,9 +637,14 @@ function leadershub_register_field_groups() {
             ),
             array(
                 'key' => 'field_vo_showcase_content',
-                'label' => 'Nội dung chi tiết (Chấp nhận HTML)',
+                'label' => 'Nội dung chi tiết / Đoạn văn (Trình soạn thảo văn bản)',
                 'name' => 'vo_showcase_content',
                 'type' => 'wysiwyg',
+                'instructions' => 'Nhập các đoạn văn bản, danh sách hoặc định dạng nội dung giới thiệu.',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => 1,
+                'default_value' => '<p>Chúng tôi hiểu rằng một địa chỉ giao dịch uy tín và chuyên nghiệp đóng vai trò quan trọng đối với sự thành công ban đầu của một thương hiệu. Do đó, Leaders Hub không chỉ cung cấp địa chỉ, mà còn cung cấp một đội ngũ hỗ trợ nhiệt tình đứng sau mọi giao dịch và tiếp đón khách hàng của bạn.</p>',
             ),
             array(
                 'key' => 'field_vo_showcase_image',
