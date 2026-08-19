@@ -261,10 +261,10 @@ if ( ! empty( $cert_title ) || ! empty( $cert_items ) ) : ?>
                 <?php foreach ( $cert_items as $idx => $c_item ) : 
                     if ( empty( $c_item['img'] ) ) continue;
                 ?>
-                    <div class="group flex flex-col items-center text-center">
-                        <!-- Image without box border -->
-                        <div class="w-full rounded-2xl md:rounded-3xl overflow-hidden flex items-center justify-center">
-                            <img class="w-full h-auto max-h-[460px] md:max-h-[540px] object-contain rounded-2xl md:rounded-3xl group-hover:scale-[1.02] transition-transform duration-500" 
+                    <div class="group flex flex-col items-center text-center w-full">
+                        <!-- Image Container with exact equal aspect ratio (3:4) -->
+                        <div class="w-full aspect-[3/4] max-w-[460px] mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-black/20 flex items-center justify-center">
+                            <img class="w-full h-full object-cover rounded-2xl md:rounded-3xl group-hover:scale-105 transition-transform duration-700" 
                                  src="<?php echo esc_url( $c_item['img'] ); ?>" 
                                  alt="<?php echo esc_attr( $c_item['name'] ?: ( 'Chứng nhận tiêu chuẩn ' . ( $idx + 1 ) ) ); ?>" 
                                  loading="lazy" />
