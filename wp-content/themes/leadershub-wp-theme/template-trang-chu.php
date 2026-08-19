@@ -414,125 +414,93 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
     </section>
 <?php endif; ?>
 
-<!-- Partners & Awards Section (Đối tác & Danh hiệu Giải thưởng - Dạng Gallery Slide) -->
+<!-- Partners Section (Đối tác doanh nghiệp - Danh sách hình ảnh dạng Slide Gallery) -->
 <?php
 $partners_subtitle = lh_field('home_partners_subtitle', 'ĐỐI TÁC DOANH NGHIỆP');
-$partners_title = lh_field('home_partners_title', 'DANH HIỆU & GIẢI THƯỞNG');
-$has_partners_repeater = function_exists('have_rows') && have_rows('home_partners_list');
+$partners_title = lh_field('home_partners_title', 'ĐỐI TÁC CHIẾN LƯỢC CỦA THE LEADERS HUB');
 $partners_gallery = lh_field('home_partners_gallery', array());
+
+// Sample placeholder logos if gallery is empty
+$default_partner_logos = array(
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/320px-Google_2015_logo.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/320px-Microsoft_logo_%282012%29.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282020%29.svg/320px-Intel_logo_%282020%29.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/FPT_Logo.svg/320px-FPT_Logo.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/320px-Amazon_logo.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/320px-Logo_NIKE.svg.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/320px-IBM_logo.svg.png',
+);
+
+$display_logos = array();
+if (!empty($partners_gallery) && is_array($partners_gallery)) {
+    foreach ($partners_gallery as $p_img) {
+        $img_url = is_array($p_img) ? (!empty($p_img['url']) ? $p_img['url'] : '') : $p_img;
+        $img_alt = is_array($p_img) ? (!empty($p_img['alt']) ? $p_img['alt'] : 'Logo đối tác') : 'Logo đối tác';
+        if (!empty($img_url)) {
+            $display_logos[] = array('url' => $img_url, 'alt' => $img_alt);
+        }
+    }
+}
+
+if (empty($display_logos)) {
+    foreach ($default_partner_logos as $d_logo) {
+        $display_logos[] = array('url' => $d_logo, 'alt' => 'Đối tác The Leaders Hub');
+    }
+}
+
+// Ensure enough slides for seamless infinite loop (min 8 items)
+if (count($display_logos) > 0 && count($display_logos) < 8) {
+    $display_logos = array_merge($display_logos, $display_logos);
+}
 ?>
 
-<section class="py-16 md:py-20 bg-white scroll-mt-20 border-t border-surface-container" id="partners">
+<section class="py-14 md:py-18 bg-white scroll-mt-20 border-t border-surface-container" id="partners">
     <div class="max-w-container-max mx-auto px-gutter">
-        <div class="text-center mb-12">
+        <div class="text-center mb-10">
             <?php if (!empty($partners_subtitle)): ?>
-                <span class="font-bold text-prestige-gold font-label-sm text-sm uppercase tracking-widest block mb-2">
+                <span class="font-bold text-prestige-gold font-label-sm text-xs md:text-sm uppercase tracking-widest block mb-2">
                     <?php echo esc_html($partners_subtitle); ?>
                 </span>
             <?php endif; ?>
             <?php if (!empty($partners_title)): ?>
-                <h2 class="font-display-lg text-2xl md:text-4xl text-deep-navy font-bold uppercase tracking-wide">
+                <h2 class="font-display-lg text-2xl md:text-3xl lg:text-4xl text-deep-navy font-bold uppercase tracking-wide">
                     <?php echo esc_html($partners_title); ?>
                 </h2>
             <?php endif; ?>
-            <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4 rounded-full"></div>
+            <div class="w-16 h-1 bg-prestige-gold mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <div class="relative px-6 md:px-12">
-            <!-- Swiper Container -->
-            <div class="swiper partners-swiper overflow-hidden py-4">
+        <!-- Slider Wrapper with relative positioning for buttons -->
+        <div class="relative px-10 md:px-14">
+            <!-- Swiper Carousel -->
+            <div class="swiper overflow-hidden py-4" id="partners-swiper-container">
                 <div class="swiper-wrapper items-center">
-                    <?php if ($has_partners_repeater): ?>
-                        <?php while (have_rows('home_partners_list')): the_row();
-                            $p_logo = get_sub_field('logo');
-                            $p_name = get_sub_field('name');
-                            $p_desc = get_sub_field('desc');
-                            $p_link = get_sub_field('link');
-                            if (empty($p_logo)) continue;
-                        ?>
-                            <div class="swiper-slide h-auto">
-                                <div class="flex flex-col items-center justify-center p-3 text-center group">
-                                    <?php if (!empty($p_link)): ?>
-                                        <a href="<?php echo esc_url($p_link); ?>" target="_blank" class="block">
-                                    <?php endif; ?>
-                                        <div class="h-20 md:h-24 flex items-center justify-center mb-3">
-                                            <img src="<?php echo esc_url($p_logo); ?>" alt="<?php echo esc_attr($p_name ?: 'Logo Đối Tác'); ?>"
-                                                class="max-h-full max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-                                        </div>
-                                        <?php if (!empty($p_name)): ?>
-                                            <p class="font-bold text-xs md:text-sm text-deep-navy group-hover:text-prestige-gold transition-colors line-clamp-1">
-                                                <?php echo esc_html($p_name); ?>
-                                            </p>
-                                        <?php endif; ?>
-                                        <?php if (!empty($p_desc)): ?>
-                                            <p class="text-[11px] md:text-xs text-on-surface-variant mt-0.5 line-clamp-2">
-                                                <?php echo esc_html($p_desc); ?>
-                                            </p>
-                                        <?php endif; ?>
-                                    <?php if (!empty($p_link)): ?>
-                                        </a>
-                                    <?php endif; ?>
-                                </div>
+                    <?php foreach ($display_logos as $logo_item): ?>
+                        <div class="swiper-slide h-auto">
+                            <div class="flex items-center justify-center p-3 h-20 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                                <img src="<?php echo esc_url($logo_item['url']); ?>" 
+                                    alt="<?php echo esc_attr($logo_item['alt']); ?>"
+                                    class="max-h-12 md:max-h-16 max-w-[140px] md:max-w-[160px] object-contain hover:scale-105 transition-transform duration-300" 
+                                    loading="lazy" />
                             </div>
-                        <?php endwhile; ?>
-                    <?php elseif (!empty($partners_gallery) && is_array($partners_gallery)): ?>
-                        <?php foreach ($partners_gallery as $p_img): 
-                            $img_url = is_array($p_img) ? (!empty($p_img['url']) ? $p_img['url'] : '') : $p_img;
-                            $img_alt = is_array($p_img) ? (!empty($p_img['alt']) ? $p_img['alt'] : (!empty($p_img['title']) ? $p_img['title'] : '')) : '';
-                            $img_caption = is_array($p_img) ? (!empty($p_img['caption']) ? $p_img['caption'] : '') : '';
-                            if (empty($img_url)) continue;
-                        ?>
-                            <div class="swiper-slide h-auto">
-                                <div class="flex flex-col items-center justify-center p-3 text-center group">
-                                    <div class="h-20 md:h-24 flex items-center justify-center mb-2">
-                                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>"
-                                            class="max-h-full max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all duration-300 group-hover:scale-105" loading="lazy" />
-                                    </div>
-                                    <?php if (!empty($img_alt)): ?>
-                                        <p class="font-semibold text-xs text-deep-navy line-clamp-1"><?php echo esc_html($img_alt); ?></p>
-                                    <?php endif; ?>
-                                    <?php if (!empty($img_caption)): ?>
-                                        <p class="text-[11px] text-on-surface-variant mt-0.5 line-clamp-1"><?php echo esc_html($img_caption); ?></p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <!-- Sample Awards & Partners fallback -->
-                        <?php 
-                        $sample_partners = array(
-                            array('name' => 'TÜV Rheinland', 'desc' => 'Chứng nhận chuẩn Quốc tế', 'icon' => 'verified'),
-                            array('name' => 'Top 10 Không Gian', 'desc' => 'Văn phòng tiêu biểu 2024', 'icon' => 'workspace_premium'),
-                            array('name' => 'Doanh Nghiệp Tiêu Biểu', 'desc' => 'Hiệp hội Doanh nghiệp TP.HCM', 'icon' => 'military_tech'),
-                            array('name' => 'Đối Tác Chiến Lược', 'desc' => 'Hơn 500+ Doanh nghiệp tin dùng', 'icon' => 'handshake'),
-                            array('name' => 'Dịch Vụ Xuất Sắc', 'desc' => 'Đánh giá 5 sao Google Reviews', 'icon' => 'stars'),
-                        );
-                        foreach ($sample_partners as $sp):
-                        ?>
-                            <div class="swiper-slide h-auto">
-                                <div class="flex flex-col items-center justify-center p-3 text-center group">
-                                    <div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center mb-3 group-hover:bg-prestige-gold/10 transition-colors">
-                                        <span class="material-symbols-outlined text-prestige-gold text-3xl"><?php echo esc_html($sp['icon']); ?></span>
-                                    </div>
-                                    <p class="font-bold text-xs md:text-sm text-deep-navy group-hover:text-prestige-gold transition-colors line-clamp-1">
-                                        <?php echo esc_html($sp['name']); ?>
-                                    </p>
-                                    <p class="text-[11px] md:text-xs text-on-surface-variant mt-0.5 line-clamp-2">
-                                        <?php echo esc_html($sp['desc']); ?>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
-            <!-- Navigation Arrows -->
-            <button class="partners-prev w-9 h-9 md:w-10 md:h-10 rounded-full bg-white shadow-md border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold hover:shadow-lg transition-all absolute top-1/2 -translate-y-1/2 left-0 md:-left-2 z-20 cursor-pointer" aria-label="Previous slide">
-                <span class="material-symbols-outlined text-lg">chevron_left</span>
+            <!-- Left Prev Navigation Button -->
+            <button type="button" id="partners-prev-btn" 
+                class="w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold transition-all duration-200 absolute top-1/2 -translate-y-1/2 left-0 md:left-2 z-30 cursor-pointer pointer-events-auto" 
+                aria-label="Previous partner slide">
+                <span class="material-symbols-outlined text-xl">chevron_left</span>
             </button>
-            <button class="partners-next w-9 h-9 md:w-10 md:h-10 rounded-full bg-white shadow-md border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold hover:shadow-lg transition-all absolute top-1/2 -translate-y-1/2 right-0 md:-right-2 z-20 cursor-pointer" aria-label="Next slide">
-                <span class="material-symbols-outlined text-lg">chevron_right</span>
+
+            <!-- Right Next Navigation Button -->
+            <button type="button" id="partners-next-btn" 
+                class="w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg border border-surface-container flex items-center justify-center text-deep-navy hover:text-prestige-gold transition-all duration-200 absolute top-1/2 -translate-y-1/2 right-0 md:right-2 z-30 cursor-pointer pointer-events-auto" 
+                aria-label="Next partner slide">
+                <span class="material-symbols-outlined text-xl">chevron_right</span>
             </button>
         </div>
     </div>
@@ -541,23 +509,29 @@ $partners_gallery = lh_field('home_partners_gallery', array());
         (function () {
             var retries = 0;
             function initPartnersSwiper() {
-                if (typeof Swiper !== 'undefined' && document.querySelector('.partners-swiper')) {
-                    new Swiper('.partners-swiper', {
+                var container = document.getElementById('partners-swiper-container');
+                if (typeof Swiper !== 'undefined' && container) {
+                    new Swiper('#partners-swiper-container', {
                         slidesPerView: 2,
-                        spaceBetween: 20,
+                        spaceBetween: 24,
                         loop: true,
+                        watchOverflow: true,
+                        observer: true,
+                        observeParents: true,
                         autoplay: {
-                            delay: 3000,
+                            delay: 2500,
                             disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
                         },
                         navigation: {
-                            nextEl: '.partners-next',
-                            prevEl: '.partners-prev',
+                            nextEl: '#partners-next-btn',
+                            prevEl: '#partners-prev-btn',
                         },
                         breakpoints: {
-                            640: { slidesPerView: 3, spaceBetween: 24 },
-                            768: { slidesPerView: 4, spaceBetween: 28 },
-                            1024: { slidesPerView: 5, spaceBetween: 32 }
+                            480: { slidesPerView: 3, spaceBetween: 24 },
+                            768: { slidesPerView: 4, spaceBetween: 30 },
+                            1024: { slidesPerView: 5, spaceBetween: 36 },
+                            1280: { slidesPerView: 6, spaceBetween: 40 }
                         }
                     });
                 } else if (retries < 50) {
