@@ -238,57 +238,6 @@ function leadershub_register_field_groups() {
                 ),
             ),
 
-            // TAB: PRICING
-            array(
-                'key' => 'tab_home_pricing',
-                'label' => 'Bảng giá ảo',
-                'type' => 'tab',
-            ),
-            array(
-                'key' => 'field_home_pricing_title',
-                'label' => 'Tiêu đề chính',
-                'name' => 'home_pricing_title',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_home_pricing_desc',
-                'label' => 'Mô tả ngắn',
-                'name' => 'home_pricing_desc',
-                'type' => 'textarea',
-            ),
-            array(
-                'key' => 'field_home_pricing_plans',
-                'label' => 'Danh sách gói văn phòng ảo',
-                'name' => 'home_pricing_plans',
-                'type' => 'repeater',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_home_plan_name',
-                        'label' => 'Tên gói',
-                        'name' => 'name',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_home_plan_desc',
-                        'label' => 'Mô tả ngắn',
-                        'name' => 'desc',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_home_plan_price',
-                        'label' => 'Giá cước',
-                        'name' => 'price',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_home_plan_features',
-                        'label' => 'Tính năng (Mỗi dòng 1 tính năng)',
-                        'name' => 'features',
-                        'type' => 'textarea',
-                    ),
-                ),
-            ),
-
             // TAB: GALLERY
             array(
                 'key' => 'tab_home_gallery',
@@ -366,33 +315,6 @@ function leadershub_register_field_groups() {
                 'instructions' => 'Shortcode hiển thị đánh giá tự động từ Plugin Trustindex Google Reviews.',
             ),
 
-            // TAB: FAQ
-            array(
-                'key' => 'tab_home_faq',
-                'label' => 'Câu Hỏi (FAQ)',
-                'type' => 'tab',
-            ),
-            array(
-                'key' => 'field_home_faq_repeater',
-                'label' => 'Danh sách FAQ',
-                'name' => 'home_faq_list',
-                'type' => 'repeater',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_faq_q',
-                        'label' => 'Câu hỏi',
-                        'name' => 'question',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_faq_a',
-                        'label' => 'Câu trả lời',
-                        'name' => 'answer',
-                        'type' => 'textarea',
-                    ),
-                ),
-            ),
-
             // TAB: NEWS
             array(
                 'key' => 'tab_home_news',
@@ -412,6 +334,41 @@ function leadershub_register_field_groups() {
                 'name' => 'home_news_btn_text',
                 'type' => 'text',
                 'default_value' => 'Xem tất cả',
+            ),
+
+            // TAB: CTA BANNER
+            array(
+                'key' => 'tab_home_cta',
+                'label' => 'CTA Banner',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_home_cta_title',
+                'label' => 'Tiêu đề chính',
+                'name' => 'home_cta_title',
+                'type' => 'text',
+                'default_value' => 'Sẵn sàng nâng tầm doanh nghiệp?',
+            ),
+            array(
+                'key' => 'field_home_cta_desc',
+                'label' => 'Mô tả ngắn',
+                'name' => 'home_cta_desc',
+                'type' => 'textarea',
+                'default_value' => 'Liên hệ với The Leaders Hub ngay hôm nay để nhận được báo giá và trải nghiệm không gian làm việc đẳng cấp nhất.',
+            ),
+            array(
+                'key' => 'field_home_cta_btn_1',
+                'label' => 'Nút bấm 1 (Link)',
+                'name' => 'home_cta_btn_1',
+                'type' => 'link',
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_home_cta_btn_2',
+                'label' => 'Nút bấm 2 (Link)',
+                'name' => 'home_cta_btn_2',
+                'type' => 'link',
+                'return_format' => 'array',
             ),
         ),
         'location' => array(

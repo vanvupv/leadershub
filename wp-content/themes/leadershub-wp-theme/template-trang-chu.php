@@ -31,8 +31,10 @@ $hero_btn_2 = lh_field('home_hero_btn_2', array());
 $services_subtitle = lh_field('home_services_subtitle', 'DANH MỤC DỊCH VỤ');
 $services_title = lh_field('home_services_title', 'Giải Pháp Không Gian Làm Việc Toàn Diện');
 $services_desc = lh_field('home_services_desc', 'Leadershub cung cấp các gói dịch vụ linh hoạt, tối ưu chi phí vận hành và nâng tầm hình ảnh chuyên nghiệp cho doanh nghiệp.');
-$pricing_title = lh_field('home_pricing_title', '');
-$pricing_desc = lh_field('home_pricing_desc', '');
+$cta_title = lh_field('home_cta_title', 'Sẵn sàng nâng tầm doanh nghiệp?');
+$cta_desc = lh_field('home_cta_desc', 'Liên hệ với The Leaders Hub ngay hôm nay để nhận được báo giá và trải nghiệm không gian làm việc đẳng cấp nhất.');
+$cta_btn_1 = lh_field('home_cta_btn_1', array());
+$cta_btn_2 = lh_field('home_cta_btn_2', array());
 $reviews_subtitle = lh_field('home_reviews_subtitle', 'ĐÁNH GIÁ THỰC TẾ');
 $reviews_title = lh_field('home_reviews_title', 'Khách Hàng Nói Gì Về The Leaders Hub');
 $reviews_shortcode = lh_field('home_reviews_shortcode', '[trustindex no-registration=google]');
@@ -478,26 +480,48 @@ if ($news_query->have_posts()):
 <?php endif; ?>
 
 <!-- CTA Banner Section -->
-<section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden relative">
-    <div
-        class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 border-[40px] border-prestige-gold rounded-full pointer-events-none translate-x-1/2 opacity-25">
-    </div>
-    <div class="max-w-container-max mx-auto px-gutter relative z-10 text-center">
-        <h2 class="font-display-lg text-3xl md:text-5xl font-bold mb-6 text-white">Sẵn sàng nâng tầm doanh nghiệp?</h2>
-        <p class="text-surface-variant/80 max-w-2xl mx-auto mb-10 font-body-lg text-base md:text-lg">
-            Liên hệ với The Leaders Hub ngay hôm nay để nhận được báo giá và trải nghiệm không gian làm việc đẳng cấp
-            nhất.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="#register"
-                class="bg-success-green hover:bg-success-green/90 text-white font-bold px-8 py-4 rounded-lg transition-all shadow-lg text-sm uppercase tracking-wider text-center">Đăng
-                ký tư vấn ngay</a>
-            <a href="<?php echo esc_url(lh_opt('lh_hotline_url', 'tel:+84378919119')); ?>"
-                class="border border-white/20 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-lg transition-all text-sm text-center">Hotline:
-                <?php echo esc_html(lh_opt('lh_hotline', '+84 3789 19119')); ?></a>
+<?php if (!empty($cta_title) || !empty($cta_desc)): ?>
+    <?php
+    $cta_btn_1_url = !empty($cta_btn_1['url']) ? $cta_btn_1['url'] : '#register';
+    $cta_btn_1_title = !empty($cta_btn_1['title']) ? $cta_btn_1['title'] : 'Đăng ký tư vấn ngay';
+    $cta_btn_1_target = !empty($cta_btn_1['target']) ? $cta_btn_1['target'] : '_self';
+
+    $cta_btn_2_url = !empty($cta_btn_2['url']) ? $cta_btn_2['url'] : lh_opt('lh_hotline_url', 'tel:+84378919119');
+    $cta_btn_2_title = !empty($cta_btn_2['title']) ? $cta_btn_2['title'] : ('Hotline: ' . lh_opt('lh_hotline', '+84 3789 19119'));
+    $cta_btn_2_target = !empty($cta_btn_2['target']) ? $cta_btn_2['target'] : '_self';
+    ?>
+    <section class="py-section-padding-desktop bg-deep-navy text-white overflow-hidden relative">
+        <div
+            class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 border-[40px] border-prestige-gold rounded-full pointer-events-none translate-x-1/2 opacity-25">
         </div>
-    </div>
-</section>
+        <div class="max-w-container-max mx-auto px-gutter relative z-10 text-center">
+            <?php if (!empty($cta_title)): ?>
+                <h2 class="font-display-lg text-3xl md:text-5xl font-bold mb-6 text-white">
+                    <?php echo wp_kses_post($cta_title); ?>
+                </h2>
+            <?php endif; ?>
+            <?php if (!empty($cta_desc)): ?>
+                <p class="text-surface-variant/80 max-w-2xl mx-auto mb-10 font-body-lg text-base md:text-lg">
+                    <?php echo esc_html($cta_desc); ?>
+                </p>
+            <?php endif; ?>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <?php if (!empty($cta_btn_1_title)): ?>
+                    <a href="<?php echo esc_url($cta_btn_1_url); ?>" target="<?php echo esc_attr($cta_btn_1_target); ?>"
+                        class="bg-success-green hover:bg-success-green/90 text-white font-bold px-8 py-4 rounded-lg transition-all shadow-lg text-sm uppercase tracking-wider text-center">
+                        <?php echo esc_html($cta_btn_1_title); ?>
+                    </a>
+                <?php endif; ?>
+                <?php if (!empty($cta_btn_2_title)): ?>
+                    <a href="<?php echo esc_url($cta_btn_2_url); ?>" target="<?php echo esc_attr($cta_btn_2_target); ?>"
+                        class="border border-white/20 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-lg transition-all text-sm text-center">
+                        <?php echo esc_html($cta_btn_2_title); ?>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
 
 
 
