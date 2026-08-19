@@ -103,86 +103,93 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 <?php endif; ?>
 
 <!-- Services Section (Danh mục dịch vụ - 5 Cột Tràn Viền Tích Hợp ACF) -->
-<?php if ( ! empty( $services_title ) || ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) ) : ?>
-<section class="pt-16 md:pt-20 pb-0 bg-surface scroll-mt-20" id="services">
-    <?php if ( ! empty( $services_subtitle ) || ! empty( $services_title ) || ! empty( $services_desc ) ) : ?>
-        <div class="max-w-container-max mx-auto px-gutter mb-12 text-center">
-            <?php if ( ! empty( $services_subtitle ) ) : ?>
-                <span class="text-prestige-gold font-label-sm text-sm uppercase tracking-widest block mb-2 font-bold">
-                    <?php echo esc_html( $services_subtitle ); ?>
-                </span>
-            <?php endif; ?>
-            <?php if ( ! empty( $services_title ) ) : ?>
-                <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold mb-3">
-                    <?php echo esc_html( $services_title ); ?>
-                </h2>
-            <?php endif; ?>
-            <?php if ( ! empty( $services_desc ) ) : ?>
-                <p class="max-w-2xl mx-auto text-on-surface-variant text-sm md:text-base leading-relaxed">
-                    <?php echo esc_html( $services_desc ); ?>
-                </p>
-            <?php endif; ?>
-            <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4 rounded-full"></div>
-        </div>
-    <?php endif; ?>
+<?php if (!empty($services_title) || (function_exists('have_rows') && have_rows('home_services_list'))): ?>
+    <section class="pt-16 md:pt-20 pb-0 bg-surface scroll-mt-20" id="services">
+        <?php if (!empty($services_subtitle) || !empty($services_title) || !empty($services_desc)): ?>
+            <div class="max-w-container-max mx-auto px-gutter mb-12 text-center">
+                <?php if (!empty($services_subtitle)): ?>
+                    <span class="text-prestige-gold font-label-sm text-sm uppercase tracking-widest block mb-2 font-bold">
+                        <?php echo esc_html($services_subtitle); ?>
+                    </span>
+                <?php endif; ?>
+                <?php if (!empty($services_title)): ?>
+                    <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold mb-3">
+                        <?php echo esc_html($services_title); ?>
+                    </h2>
+                <?php endif; ?>
+                <?php if (!empty($services_desc)): ?>
+                    <p class="max-w-2xl mx-auto text-on-surface-variant text-sm md:text-base leading-relaxed">
+                        <?php echo esc_html($services_desc); ?>
+                    </p>
+                <?php endif; ?>
+                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+        <?php endif; ?>
 
-    <?php if ( function_exists( 'have_rows' ) && have_rows( 'home_services_list' ) ) : ?>
-        <div class="flex flex-col lg:flex-row w-full min-h-[380px] lg:h-[430px]">
-            <?php 
-            $i = 0; 
-            while ( have_rows( 'home_services_list' ) ) : the_row(); 
-                $i++;
-                $s_num   = sprintf( '%02d', $i );
-                $s_title = get_sub_field( 'title' );
-                $s_desc  = get_sub_field( 'desc' );
-                $s_link  = get_sub_field( 'link' );
-                $s_img   = get_sub_field( 'image' );
-                $img_url = is_array( $s_img ) ? ( ! empty( $s_img['url'] ) ? $s_img['url'] : '' ) : $s_img;
-                if ( empty( $img_url ) ) {
-                    $img_url = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000';
-                }
-                $link_url = ! empty( $s_link ) ? $s_link : '#register';
+        <?php if (function_exists('have_rows') && have_rows('home_services_list')): ?>
+            <div class="flex flex-col lg:flex-row w-full min-h-[380px] lg:h-[430px]">
+                <?php
+                $i = 0;
+                while (have_rows('home_services_list')):
+                    the_row();
+                    $i++;
+                    $s_num = sprintf('%02d', $i);
+                    $s_title = get_sub_field('title');
+                    $s_desc = get_sub_field('desc');
+                    $s_link = get_sub_field('link');
+                    $s_img = get_sub_field('image');
+                    $img_url = is_array($s_img) ? (!empty($s_img['url']) ? $s_img['url'] : '') : $s_img;
+                    if (empty($img_url)) {
+                        $img_url = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000';
+                    }
+                    $link_url = !empty($s_link) ? $s_link : '#register';
 
-                if ( empty( $s_title ) ) continue;
-            ?>
-                <!-- Item <?php echo esc_attr( $s_num ); ?> -->
-                <a href="<?php echo esc_url( $link_url ); ?>"
-                    class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 last:border-r-0 min-h-[300px] lg:min-h-full">
-                    <!-- Background Image -->
-                    <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        src="<?php echo esc_url( $img_url ); ?>"
-                        alt="<?php echo esc_attr( $s_title ); ?>" loading="lazy" />
-                    <!-- Soft / Lighter Gradient Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500"></div>
+                    if (empty($s_title))
+                        continue;
+                    ?>
+                    <!-- Item <?php echo esc_attr($s_num); ?> -->
+                    <a href="<?php echo esc_url($link_url); ?>"
+                        class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 last:border-r-0 min-h-[300px] lg:min-h-full">
+                        <!-- Background Image -->
+                        <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($s_title); ?>" loading="lazy" />
+                        <!-- Soft / Lighter Gradient Overlay -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/40 to-black/10 group-hover:from-deep-navy/90 group-hover:via-deep-navy/55 transition-colors duration-500">
+                        </div>
 
-                    <!-- Top Content -->
-                    <div class="relative z-10">
-                        <span class="text-xl lg:text-2xl font-bold text-white mb-1 block font-display-lg drop-shadow"><?php echo esc_html( $s_num ); ?></span>
-                        <h3 class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white drop-shadow">
-                            <?php echo nl2br( esc_html( $s_title ) ); ?>
-                        </h3>
-                        <div class="w-8 h-1 bg-success-green mb-1.5 group-hover:w-14 transition-all duration-300"></div>
+                        <!-- Top Content -->
+                        <div class="relative z-10">
+                            <span
+                                class="text-xl lg:text-2xl font-bold text-white mb-1 block font-display-lg drop-shadow"><?php echo esc_html($s_num); ?></span>
+                            <h3
+                                class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white drop-shadow">
+                                <?php echo nl2br(esc_html($s_title)); ?>
+                            </h3>
+                            <div class="w-8 h-1 bg-success-green mb-1.5 group-hover:w-14 transition-all duration-300"></div>
 
-                        <!-- Slide Down Description on Hover -->
-                        <?php if ( ! empty( $s_desc ) ) : ?>
-                            <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                                <p class="text-xs text-white/95 leading-relaxed pt-2 drop-shadow-sm">
-                                    <?php echo esc_html( $s_desc ); ?>
-                                </p>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+                            <!-- Slide Down Description on Hover -->
+                            <?php if (!empty($s_desc)): ?>
+                                <div
+                                    class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                                    <p class="text-xs text-white/95 leading-relaxed pt-2 drop-shadow-sm">
+                                        <?php echo esc_html($s_desc); ?>
+                                    </p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
 
-                    <!-- Bottom Action Link -->
-                    <div class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300 drop-shadow">
-                        <span>Tìm hiểu thêm</span>
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </div>
-                </a>
-            <?php endwhile; ?>
-        </div>
-    <?php endif; ?>
-</section>
+                        <!-- Bottom Action Link -->
+                        <div
+                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300 drop-shadow">
+                            <span>Tìm hiểu thêm</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </div>
+                    </a>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
+    </section>
 <?php endif; ?>
 
 

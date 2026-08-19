@@ -197,6 +197,13 @@ function leadershub_register_field_groups() {
                 'type' => 'text',
             ),
             array(
+                'key' => 'field_home_services_desc',
+                'label' => 'Mô tả ngắn dịch vụ',
+                'name' => 'home_services_desc',
+                'type' => 'textarea',
+                'rows' => 3,
+            ),
+            array(
                 'key' => 'field_home_services_repeater',
                 'label' => 'Danh sách thẻ dịch vụ',
                 'name' => 'home_services_list',
