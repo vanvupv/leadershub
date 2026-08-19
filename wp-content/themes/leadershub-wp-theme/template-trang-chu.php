@@ -152,19 +152,20 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
                     <!-- Item <?php echo esc_attr($s_num); ?> -->
                     <a href="<?php echo esc_url($link_url); ?>"
                         class="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 w-full lg:w-1/5 flex-1 basis-0 min-w-0 border-b lg:border-b-0 border-r-0 lg:border-r border-white/20 last:border-r-0 min-h-[300px] lg:min-h-full">
-                        <!-- Background Image (Ban đầu sáng rõ 100% không overlay) -->
+                        <!-- Background Image -->
                         <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($s_title); ?>" loading="lazy" />
-                        
-                        <!-- Lớp phủ nền màu đen khi Hover (Ban đầu bỏ hết overlay) -->
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-[1]"></div>
+
+                        <!-- Lớp phủ nền: Ban đầu phủ nhẹ êm dịu (để chữ trắng nổi rõ), Hover vào phủ đen đậm -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 group-hover:from-black/85 group-hover:via-black/80 group-hover:to-black/85 transition-all duration-500 pointer-events-none z-[1]">
+                        </div>
 
                         <!-- Top Content -->
                         <div class="relative z-10">
                             <span
                                 class="text-2xl lg:text-3xl font-bold text-white mb-1.5 block font-display-lg"><?php echo esc_html($s_num); ?></span>
-                            <h3
-                                class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white">
+                            <h3 class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white">
                                 <?php echo nl2br(esc_html($s_title)); ?>
                             </h3>
                             <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-full transition-all duration-500"></div>
