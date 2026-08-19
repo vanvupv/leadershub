@@ -195,89 +195,6 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 <?php endif; ?>
 
 
-<!-- Pricing Cards Section -->
-<?php if (!empty($pricing_title) || (function_exists('have_rows') && have_rows('home_pricing_plans'))): ?>
-    <section class="py-section-padding-desktop bg-surface" id="pricing">
-        <div class="max-w-container-max mx-auto px-gutter">
-            <?php if (!empty($pricing_title) || !empty($pricing_desc)): ?>
-                <div class="text-center mb-16">
-                    <?php if (!empty($pricing_title)): ?>
-                        <h2 class="font-display-lg text-3xl md:text-4xl text-deep-navy mb-4 font-bold">
-                            <?php echo esc_html($pricing_title); ?>
-                        </h2>
-                    <?php endif; ?>
-                    <?php if (!empty($pricing_desc)): ?>
-                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-4xl mx-auto">
-                            <?php echo esc_html($pricing_desc); ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (function_exists('have_rows') && have_rows('home_pricing_plans')): ?>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <?php $i = 0;
-                    while (have_rows('home_pricing_plans')):
-                        the_row();
-                        $i++;
-                        $name = get_sub_field('name');
-                        $price = get_sub_field('price');
-                        $desc = get_sub_field('desc');
-                        $features = get_sub_field('features');
-                        $features_list = explode("\n", str_replace("\r", "", $features));
-
-                        if (empty($name))
-                            continue;
-                        ?>
-                        <div
-                            class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border <?php echo ($i === 2) ? 'border-2 border-prestige-gold relative scale-105 z-10' : 'border-surface-container-highest'; ?> flex flex-col group">
-                            <?php if ($i === 2): ?>
-                                <div
-                                    class="absolute top-0 right-8 -translate-y-1/2 bg-prestige-gold text-white px-4 py-1 rounded-full font-label-sm text-[12px] uppercase tracking-wider">
-                                    Phổ biến nhất</div>
-                            <?php endif; ?>
-                            <div class="mb-8">
-                                <h3 class="font-headline-md text-headline-md text-deep-navy font-bold">
-                                    <?php echo esc_html($name); ?>
-                                </h3>
-                                <?php if (!empty($desc)): ?>
-                                    <p class="text-on-surface-variant text-sm mt-2"><?php echo esc_html($desc); ?></p>
-                                <?php endif; ?>
-                            </div>
-                            <?php if (!empty($price)): ?>
-                                <div class="mb-8">
-                                    <span class="text-on-surface-variant text-sm">Chỉ từ</span>
-                                    <div class="flex items-baseline">
-                                        <span class="text-3xl font-bold text-deep-navy"><?php echo esc_html($price); ?></span>
-                                        <span class="text-on-surface-variant ml-1 font-label-sm">đ/tháng</span>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                            <?php if (!empty($features_list)): ?>
-                                <ul class="space-y-4 mb-8 flex-grow">
-                                    <?php foreach ($features_list as $feature):
-                                        if (trim($feature) === '')
-                                            continue; ?>
-                                        <li class="flex items-center gap-3 text-sm text-on-surface-variant">
-                                            <span class="material-symbols-outlined text-success-green text-lg">check_circle</span>
-                                            <?php echo esc_html($feature); ?>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php endif; ?>
-                            <a href="#register"
-                                class="w-full text-center py-3 border border-deep-navy rounded-lg font-label-sm text-sm font-semibold group-hover:bg-deep-navy group-hover:text-white transition-all">Chọn
-                                Gói Này</a>
-                        </div>
-                    <?php endwhile; ?>
-                </div>
-            <?php endif; ?>
-            <p class="text-center text-sm text-on-surface-variant/70 mt-8">* Giá chưa bao gồm VAT (nếu áp dụng)</p>
-        </div>
-    </section>
-<?php endif; ?>
-
-
 <!-- Environment Showcase Section -->
 <?php if (!empty($gallery_title) || (function_exists('have_rows') && have_rows('home_gallery_images'))): ?>
     <section class="py-section-padding-desktop bg-surface-container-low scroll-mt-20" id="space">
@@ -315,17 +232,19 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
                             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 src="<?php echo esc_url($img_url); ?>"
                                 alt="<?php echo esc_attr($title ?: 'Không gian thực tế tại The Leaders Hub'); ?>" loading="lazy" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <div>
-                                    <?php if (!empty($title)): ?>
-                                        <h4 class="text-white font-semibold text-lg"><?php echo esc_html($title); ?></h4>
-                                    <?php endif; ?>
-                                    <?php if (!empty($desc)): ?>
-                                        <p class="text-prestige-gold text-xs mt-1 leading-relaxed"><?php echo esc_html($desc); ?></p>
-                                    <?php endif; ?>
+                            <?php if (!empty($title) || !empty($desc)): ?>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                    <div>
+                                        <?php if (!empty($title)): ?>
+                                            <h4 class="text-white font-semibold text-lg"><?php echo esc_html($title); ?></h4>
+                                        <?php endif; ?>
+                                        <?php if (!empty($desc)): ?>
+                                            <p class="text-prestige-gold text-xs mt-1 leading-relaxed"><?php echo esc_html($desc); ?></p>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
                 </div>
