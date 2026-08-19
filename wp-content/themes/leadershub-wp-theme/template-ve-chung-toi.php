@@ -21,8 +21,10 @@ $story_image   = ( function_exists( 'get_field' ) ? get_field( 'about_story_imag
 // ACF Variables: Section 3 Core Values
 $values_title = ( function_exists( 'get_field' ) ? get_field( 'about_values_title' ) : '' ) ?: '';
 
-// ACF Variables: Section 4 Certifications & Partners
-$cert_title = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' ) : '' ) ?: '';
+// ACF Variables: Section 4 Certifications (2 Chứng chỉ)
+$cert_title = ( function_exists( 'get_field' ) ? get_field( 'about_cert_title' ) : '' ) ?: 'Chứng nhận tòa nhà văn phòng Capital Place';
+$cert_img_1 = ( function_exists( 'get_field' ) ? get_field( 'about_cert_img_1' ) : '' ) ?: '';
+$cert_img_2 = ( function_exists( 'get_field' ) ? get_field( 'about_cert_img_2' ) : '' ) ?: '';
 
 // ACF Variables: Section 5 Real Office Gallery
 $gallery_title = ( function_exists( 'get_field' ) ? get_field( 'about_gallery_title' ) : '' ) ?: '';
@@ -203,13 +205,32 @@ if ( ! function_exists( 'lh_field' ) ) {
 </section>
 <?php endif; ?>
  
-<!-- Certifications & Partners Section (Giao diện 2 Chứng Chỉ Đẳng Cấp) -->
-<?php if ( ! empty( $cert_title ) || ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) ) : ?>
-<section class="bg-deep-navy py-16 md:py-24 text-white overflow-hidden scroll-mt-20 relative" id="certifications">
-    <!-- Subtle luxury decorative background glow -->
-    <div class="absolute top-0 right-1/4 w-96 h-96 bg-prestige-gold/5 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-success-green/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Certifications & Standards Section (Giao diện 2 Hình Ảnh Chứng Chỉ) -->
+<?php 
+// Collect 2 certificate images from ACF
+$cert_images = array();
+if ( ! empty( $cert_img_1 ) ) {
+    $cert_images[] = is_array( $cert_img_1 ) ? ( $cert_img_1['url'] ?? '' ) : $cert_img_1;
+}
+if ( ! empty( $cert_img_2 ) ) {
+    $cert_images[] = is_array( $cert_img_2 ) ? ( $cert_img_2['url'] ?? '' ) : $cert_img_2;
+}
 
+// Fallback to legacy repeater if new fields are not filled yet
+if ( empty( $cert_images ) && function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) {
+    while ( have_rows( 'about_cert_logos' ) ) {
+        the_row();
+        $logo = get_sub_field( 'logo' );
+        $logo_url = is_array( $logo ) ? ( $logo['url'] ?? '' ) : $logo;
+        if ( ! empty( $logo_url ) ) {
+            $cert_images[] = $logo_url;
+        }
+        if ( count( $cert_images ) >= 2 ) break;
+    }
+}
+
+if ( ! empty( $cert_title ) || ! empty( $cert_images ) ) : ?>
+<section class="bg-deep-navy py-16 md:py-24 text-white overflow-hidden scroll-mt-20 relative" id="certifications">
     <div class="max-w-container-max mx-auto px-gutter relative z-10">
         <?php if ( ! empty( $cert_title ) ) : ?>
             <div class="text-center mb-12 md:mb-16">
@@ -223,40 +244,18 @@ if ( ! function_exists( 'lh_field' ) ) {
             </div>
         <?php endif; ?>
 
-        <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-stretch">
-                <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
-                    $c_name = get_sub_field( 'name' );
-                    $c_logo = get_sub_field( 'logo' );
-                    $c_desc = get_sub_field( 'desc' );
-
-                    if ( empty( $c_name ) && empty( $c_logo ) ) continue;
-                    $logo_url = is_array( $c_logo ) ? $c_logo['url'] : $c_logo;
+        <?php if ( ! empty( $cert_images ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-center">
+                <?php foreach ( $cert_images as $idx => $c_img_url ) : 
+                    if ( empty( $c_img_url ) ) continue;
                 ?>
-                    <div class="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-prestige-gold/50 rounded-3xl p-6 md:p-8 transition-all duration-500 flex flex-col justify-between backdrop-blur-sm shadow-xl">
-                        <?php if ( ! empty( $logo_url ) ) : ?>
-                            <div class="w-full h-64 md:h-72 lg:h-80 overflow-hidden rounded-2xl mb-6 relative bg-black/20 flex items-center justify-center border border-white/10">
-                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                                     src="<?php echo esc_url( $logo_url ); ?>" 
-                                     alt="<?php echo esc_attr( $c_name ?: 'Chứng nhận tiêu chuẩn' ); ?>" 
-                                     loading="lazy" />
-                            </div>
-                        <?php endif; ?>
-
-                        <div class="text-center mt-auto">
-                            <?php if ( ! empty( $c_name ) ) : ?>
-                                <h3 class="font-headline-md text-lg md:text-2xl text-white font-bold group-hover:text-prestige-gold transition-colors">
-                                    <?php echo esc_html( $c_name ); ?>
-                                </h3>
-                            <?php endif; ?>
-                            <?php if ( ! empty( $c_desc ) ) : ?>
-                                <p class="text-surface-variant/80 text-sm md:text-base leading-relaxed mt-2 max-w-md mx-auto">
-                                    <?php echo esc_html( $c_desc ); ?>
-                                </p>
-                            <?php endif; ?>
-                        </div>
+                    <div class="group relative rounded-2xl md:rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-prestige-gold/50 transition-all duration-500 shadow-xl flex items-center justify-center p-3 md:p-4">
+                        <img class="w-full h-auto max-h-[460px] md:max-h-[540px] object-contain rounded-xl md:rounded-2xl group-hover:scale-[1.02] transition-transform duration-500" 
+                             src="<?php echo esc_url( $c_img_url ); ?>" 
+                             alt="Chứng nhận tiêu chuẩn <?php echo esc_attr( $idx + 1 ); ?>" 
+                             loading="lazy" />
                     </div>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>

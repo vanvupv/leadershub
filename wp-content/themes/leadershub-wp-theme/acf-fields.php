@@ -1563,7 +1563,7 @@ function leadershub_register_field_groups() {
                 ),
             ),
 
-            // TAB 4: CERTIFICATIONS
+            // TAB 4: CERTIFICATIONS (2 Hình ảnh chứng chỉ)
             array(
                 'key' => 'tab_about_cert',
                 'label' => '4. Chứng Nhận Tòa Nhà',
@@ -1577,31 +1577,20 @@ function leadershub_register_field_groups() {
                 'default_value' => 'Chứng nhận tòa nhà văn phòng Capital Place',
             ),
             array(
-                'key' => 'field_about_cert_logos',
-                'label' => 'Danh sách chứng nhận & logo',
-                'name' => 'about_cert_logos',
-                'type' => 'repeater',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_cert_name',
-                        'label' => 'Tên chứng nhận (VD: LEED GOLD)',
-                        'name' => 'name',
-                        'type' => 'text',
-                    ),
-                    array(
-                        'key' => 'field_cert_logo',
-                        'label' => 'Hình ảnh Logo chứng nhận',
-                        'name' => 'logo',
-                        'type' => 'image',
-                        'return_format' => 'url',
-                    ),
-                    array(
-                        'key' => 'field_cert_desc',
-                        'label' => 'Mô tả ngắn chứng nhận',
-                        'name' => 'desc',
-                        'type' => 'text',
-                    ),
-                ),
+                'key' => 'field_about_cert_img_1',
+                'label' => 'Hình ảnh chứng nhận 1',
+                'name' => 'about_cert_img_1',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Tải lên hình ảnh chứng chỉ thứ nhất.',
+            ),
+            array(
+                'key' => 'field_about_cert_img_2',
+                'label' => 'Hình ảnh chứng nhận 2',
+                'name' => 'about_cert_img_2',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Tải lên hình ảnh chứng chỉ thứ hai.',
             ),
 
             // TAB 5: REAL OFFICE GALLERY
