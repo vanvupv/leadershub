@@ -160,18 +160,18 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
                         <!-- Top Content -->
                         <div class="relative z-10">
                             <span
-                                class="text-2xl lg:text-3xl font-bold text-white mb-1.5 block font-display-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"><?php echo esc_html($s_num); ?></span>
+                                class="text-2xl lg:text-3xl font-bold text-white mb-1.5 block font-display-lg"><?php echo esc_html($s_num); ?></span>
                             <h3
-                                class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                                class="text-base lg:text-lg font-bold uppercase tracking-wide leading-tight mb-2.5 text-white">
                                 <?php echo nl2br(esc_html($s_title)); ?>
                             </h3>
-                            <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-full transition-all duration-500 shadow"></div>
+                            <div class="w-10 h-1 bg-success-green mb-2 group-hover:w-full transition-all duration-500"></div>
 
                             <!-- Slide Down Description on Hover -->
                             <?php if (!empty($s_desc)): ?>
                                 <div
                                     class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-96 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                                    <p class="text-xs text-white leading-relaxed pt-2 drop-shadow-sm">
+                                    <p class="text-xs text-white leading-relaxed pt-2">
                                         <?php echo esc_html($s_desc); ?>
                                     </p>
                                 </div>
@@ -180,7 +180,7 @@ $gallery_title = lh_field('home_gallery_title', 'Không Gian Thực Tế Tại T
 
                         <!-- Bottom Action Link -->
                         <div
-                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                            class="relative z-10 pt-4 flex items-center gap-1.5 text-white group-hover:text-success-green font-semibold text-xs group-hover:translate-x-1 transition-all duration-300">
                             <span>Tìm hiểu thêm</span>
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </div>
