@@ -203,99 +203,61 @@ if ( ! function_exists( 'lh_field' ) ) {
 </section>
 <?php endif; ?>
  
-<!-- Certifications & Partners Section -->
+<!-- Certifications & Partners Section (Giao diện 2 Chứng Chỉ Đẳng Cấp) -->
 <?php if ( ! empty( $cert_title ) || ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) ) : ?>
-<section class="bg-deep-navy py-section-padding-desktop text-white overflow-hidden scroll-mt-20" id="certifications">
-    <div class="max-w-container-max mx-auto px-gutter">
+<section class="bg-deep-navy py-16 md:py-24 text-white overflow-hidden scroll-mt-20 relative" id="certifications">
+    <!-- Subtle luxury decorative background glow -->
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-prestige-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-success-green/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-container-max mx-auto px-gutter relative z-10">
         <?php if ( ! empty( $cert_title ) ) : ?>
-            <div class="text-center mb-12">
-                <span class="text-prestige-gold font-label-sm text-sm md:text-base uppercase tracking-widest block mb-2 font-bold text-center">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-prestige-gold font-label-sm text-xs md:text-sm uppercase tracking-widest block mb-2 font-bold text-center">
                     Chứng nhận & Tiêu chuẩn
                 </span>
-                <h2 class="font-display-lg text-3xl md:text-4xl text-white font-bold text-center">
+                <h2 class="font-display-lg text-2xl md:text-4xl lg:text-5xl text-white font-bold text-center max-w-3xl mx-auto leading-tight">
                     <?php echo esc_html( $cert_title ); ?>
                 </h2>
-                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4"></div>
+                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4 rounded-full"></div>
             </div>
         <?php endif; ?>
 
         <?php if ( function_exists( 'have_rows' ) && have_rows( 'about_cert_logos' ) ) : ?>
-            <div class="swiper partner-swiper overflow-hidden pb-12">
-                <div class="swiper-wrapper">
-                    <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
-                        $c_name = get_sub_field( 'name' );
-                        $c_logo = get_sub_field( 'logo' );
-                        $c_desc = get_sub_field( 'desc' );
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-stretch">
+                <?php while ( have_rows( 'about_cert_logos' ) ) : the_row();
+                    $c_name = get_sub_field( 'name' );
+                    $c_logo = get_sub_field( 'logo' );
+                    $c_desc = get_sub_field( 'desc' );
 
-                        if ( empty( $c_name ) && empty( $c_logo ) ) continue;
-                        $logo_url = is_array( $c_logo ) ? $c_logo['url'] : $c_logo;
-                    ?>
-                        <div class="swiper-slide h-auto">
-                            <div class="flex flex-col h-full group transition-all duration-300 text-center">
-                                <?php if ( ! empty( $logo_url ) ) : ?>
-                                    <div class="h-56 w-full overflow-hidden rounded-2xl mb-4 relative shadow-lg">
-                                        <img class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" 
-                                             src="<?php echo esc_url( $logo_url ); ?>" 
-                                             alt="<?php echo esc_attr( $c_name ?: 'Certification' ); ?>" 
-                                             loading="lazy" />
-                                    </div>
-                                <?php endif; ?>
-                                <div class="flex-grow flex flex-col justify-between text-center">
-                                    <div>
-                                        <?php if ( ! empty( $c_name ) ) : ?>
-                                            <h3 class="font-headline-md text-base md:text-lg text-white font-bold group-hover:text-prestige-gold transition-colors text-center">
-                                                <?php echo esc_html( $c_name ); ?>
-                                            </h3>
-                                        <?php endif; ?>
-                                        <?php if ( ! empty( $c_desc ) ) : ?>
-                                            <p class="text-surface-variant/80 text-sm leading-relaxed mt-1 text-center">
-                                                <?php echo esc_html( $c_desc ); ?>
-                                            </p>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+                    if ( empty( $c_name ) && empty( $c_logo ) ) continue;
+                    $logo_url = is_array( $c_logo ) ? $c_logo['url'] : $c_logo;
+                ?>
+                    <div class="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-prestige-gold/50 rounded-3xl p-6 md:p-8 transition-all duration-500 flex flex-col justify-between backdrop-blur-sm shadow-xl">
+                        <?php if ( ! empty( $logo_url ) ) : ?>
+                            <div class="w-full h-64 md:h-72 lg:h-80 overflow-hidden rounded-2xl mb-6 relative bg-black/20 flex items-center justify-center border border-white/10">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                     src="<?php echo esc_url( $logo_url ); ?>" 
+                                     alt="<?php echo esc_attr( $c_name ?: 'Chứng nhận tiêu chuẩn' ); ?>" 
+                                     loading="lazy" />
                             </div>
-                        </div>
-                    <?php endwhile; ?>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+                        <?php endif; ?>
 
-            <script>
-            (function() {
-                var retries = 0;
-                function initPartnerSwiper() {
-                    if (typeof Swiper !== 'undefined' && document.querySelector('.partner-swiper')) {
-                        new Swiper('.partner-swiper', {
-                            slidesPerView: 1,
-                            spaceBetween: 24,
-                            loop: true,
-                            autoplay: {
-                                delay: 3500,
-                                disableOnInteraction: false,
-                            },
-                            pagination: {
-                                el: '.partner-swiper .swiper-pagination',
-                                clickable: true,
-                            },
-                            breakpoints: {
-                                640: { slidesPerView: 2, spaceBetween: 24 },
-                                1024: { slidesPerView: 3, spaceBetween: 32 },
-                                1280: { slidesPerView: 4, spaceBetween: 32 }
-                            }
-                        });
-                    } else if (retries < 50) {
-                        retries++;
-                        setTimeout(initPartnerSwiper, 100);
-                    }
-                }
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initPartnerSwiper);
-                } else {
-                    initPartnerSwiper();
-                }
-            })();
-            </script>
+                        <div class="text-center mt-auto">
+                            <?php if ( ! empty( $c_name ) ) : ?>
+                                <h3 class="font-headline-md text-lg md:text-2xl text-white font-bold group-hover:text-prestige-gold transition-colors">
+                                    <?php echo esc_html( $c_name ); ?>
+                                </h3>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $c_desc ) ) : ?>
+                                <p class="text-surface-variant/80 text-sm md:text-base leading-relaxed mt-2 max-w-md mx-auto">
+                                    <?php echo esc_html( $c_desc ); ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </div>
         <?php endif; ?>
     </div>
 </section>
