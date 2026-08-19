@@ -1004,10 +1004,17 @@ function leadershub_register_field_groups() {
                 'sub_fields' => array(
                     array(
                         'key' => 'field_so_step_num',
-                        'label' => 'Số thứ tự',
+                        'label' => 'Số thứ tự (VD: 01, 02, 03)',
                         'name' => 'number',
                         'type' => 'text',
                         'default_value' => '01',
+                    ),
+                    array(
+                        'key' => 'field_so_step_icon',
+                        'label' => 'Material Symbol Icon (VD: tour, history_edu, business_center, support_agent)',
+                        'name' => 'icon',
+                        'type' => 'text',
+                        'default_value' => 'tour',
                     ),
                     array(
                         'key' => 'field_so_step_title',

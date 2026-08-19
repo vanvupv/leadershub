@@ -452,36 +452,56 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <?php endif; ?>
 
-<!-- Service Steps -->
-<?php if ( function_exists( 'have_rows' ) && have_rows( 'so_process_steps' ) ) : ?>
-<section class="py-section-padding-desktop bg-surface">
-    <div class="max-w-container-max mx-auto px-gutter">
+<!-- Service Steps Section -->
+<?php if ( ! empty( $process_title ) || ( function_exists( 'have_rows' ) && have_rows( 'so_process_steps' ) ) ) : ?>
+<section class="py-section-padding-desktop bg-surface overflow-hidden relative" id="process">
+    <div class="max-w-container-max mx-auto px-gutter relative z-10">
         <?php if ( ! empty( $process_title ) ) : ?>
-            <div class="text-center mb-12">
+            <div class="text-center mb-16">
                 <h3 class="font-display-lg text-3xl md:text-4xl text-deep-navy font-bold"><?php echo esc_html( $process_title ); ?></h3>
+                <div class="w-16 h-1 bg-prestige-gold mx-auto mt-4 rounded-full"></div>
             </div>
         <?php endif; ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <?php 
-            $step_idx = 1;
-            while ( have_rows( 'so_process_steps' ) ) : the_row();
-                $s_num   = get_sub_field( 'number' ) ?: sprintf( '%02d', $step_idx );
-                $s_title = get_sub_field( 'title' );
-                $s_desc  = get_sub_field( 'desc' );
-                $step_idx++;
+        <?php if ( function_exists( 'have_rows' ) && have_rows( 'so_process_steps' ) ) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <div class="hidden md:block absolute top-24 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-prestige-gold/30"></div>
+                <?php 
+                $default_icons = array( 'tour', 'history_edu', 'business_center' );
+                $step_idx = 1;
+                while ( have_rows( 'so_process_steps' ) ) : the_row();
+                    $s_num   = get_sub_field( 'number' ) ?: sprintf( '%02d', $step_idx );
+                    $s_icon  = get_sub_field( 'icon' ) ?: ( $default_icons[ ($step_idx - 1) % 3 ] ?? 'support_agent' );
+                    $s_title = get_sub_field( 'title' );
+                    $s_desc  = get_sub_field( 'desc' );
 
-                if ( empty( $s_title ) ) continue;
-            ?>
-                <div class="relative pt-12 group">
-                    <span class="absolute top-0 left-0 text-9xl font-bold text-deep-navy opacity-5 -z-10 transition-opacity group-hover:opacity-10 select-none"><?php echo esc_html( $s_num ); ?></span>
-                    <h4 class="font-headline-md text-lg text-deep-navy mb-4 font-bold"><?php echo esc_html( $s_title ); ?></h4>
-                    <?php if ( ! empty( $s_desc ) ) : ?>
-                        <p class="text-on-surface-variant text-sm"><?php echo esc_html( $s_desc ); ?></p>
-                    <?php endif; ?>
-                </div>
-            <?php endwhile; ?>
-        </div>
+                    if ( empty( $s_title ) ) {
+                        $step_idx++;
+                        continue;
+                    }
+                ?>
+                    <div class="relative text-center group">
+                        <div class="step-number text-[120px] leading-none text-deep-navy/5 absolute -top-12 left-1/2 -translate-x-1/2 select-none group-hover:text-prestige-gold/10 transition-colors font-bold">
+                            <?php echo esc_html( $s_num ); ?>
+                        </div>
+                        <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-surface-container-highest group-hover:border-prestige-gold transition-colors">
+                            <span class="material-symbols-outlined text-3xl text-prestige-gold"><?php echo esc_html( $s_icon ); ?></span>
+                        </div>
+                        <h4 class="font-headline-md text-xl text-deep-navy mb-4 font-bold">
+                            <?php echo esc_html( $s_title ); ?>
+                        </h4>
+                        <?php if ( ! empty( $s_desc ) ) : ?>
+                            <p class="text-on-surface-variant font-body-md text-sm leading-relaxed max-w-xs mx-auto">
+                                <?php echo esc_html( $s_desc ); ?>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+                <?php 
+                    $step_idx++;
+                endwhile; 
+                ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 <?php endif; ?>
