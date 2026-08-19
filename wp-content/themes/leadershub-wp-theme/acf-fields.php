@@ -473,17 +473,15 @@ function leadershub_register_field_groups() {
             ),
             array(
                 'key' => 'field_vo_hero_btn2_text',
-                'label' => 'Tên nút 2 (VD: Xem bảng giá)',
+                'label' => 'Tên nút 2 (VD: Xem bảng giá - Để trống nếu không dùng)',
                 'name' => 'vo_hero_btn2_text',
                 'type' => 'text',
-                'default_value' => 'Xem bảng giá',
             ),
             array(
                 'key' => 'field_vo_hero_btn2_url',
                 'label' => 'Đường dẫn nút 2 (VD: #pricing)',
                 'name' => 'vo_hero_btn2_url',
                 'type' => 'text',
-                'default_value' => '#pricing',
             ),
 
             // TAB 2: PRICING PLANS

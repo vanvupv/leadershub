@@ -16,19 +16,19 @@ $pricing_vat_note = ( function_exists( 'get_field' ) ? get_field( 'vo_pricing_va
 $process_title = ( function_exists( 'get_field' ) ? get_field( 'vo_process_title' ) : '' ) ?: '';
 
 // ACF Variables: Section 5 Environment Showcase
-$showcase_badge      = lh_field( 'vo_showcase_badge', 'VÌ SAO CHỌN THE LEADERS HUB' );
-$showcase_title      = lh_field( 'vo_showcase_title', 'Hạ tầng chuẩn mực / Dịch vụ tận tâm' );
-$showcase_content    = lh_field( 'vo_showcase_content', '<p>Chúng tôi hiểu rằng một địa chỉ giao dịch uy tín và chuyên nghiệp đóng vai trò quan trọng đối với sự thành công ban đầu của một thương hiệu. Do đó, Leaders Hub không chỉ cung cấp địa chỉ, mà còn cung cấp một đội ngũ hỗ trợ nhiệt tình đứng sau mọi giao dịch và tiếp đón khách hàng của bạn.</p>' );
-$showcase_image      = lh_field( 'vo_showcase_image', 'https://lh3.googleusercontent.com/aida/AP1WRLtyksja9WCL5cKjTcT3_BRk2m038DAazrOt-NquHXciE1NU1QnJCg48DfAGIEP9ZPvAEbb4cWAnjYp9WMlyi2lK77gsgOoxRToHb6EM_cjRAhHJhBRlMAGVfvcZG3_O_HB7UeC7dIEBozj0Ap2whBP_VKXP_gezK0X-mcB9bWe68yiFjRxIeIg81NtMiRxgMii4AhA3ZbqJ3OZVwMs90qntxXYe8pyHewB95ocmDalNJfT5fuTbblzXou0' );
-$showcase_badge_text = lh_field( 'vo_showcase_badge_text', 'Tiêu chuẩn 5 sao' );
-$showcase_card_desc  = lh_field( 'vo_showcase_card_desc', 'Môi trường làm việc chuyên nghiệp được thiết kế theo tiêu chuẩn quốc tế.' );
+$showcase_badge      = lh_field( 'vo_showcase_badge', '' );
+$showcase_title      = lh_field( 'vo_showcase_title', '' );
+$showcase_content    = lh_field( 'vo_showcase_content', '' );
+$showcase_image      = lh_field( 'vo_showcase_image', '' );
+$showcase_badge_text = lh_field( 'vo_showcase_badge_text', '' );
+$showcase_card_desc  = lh_field( 'vo_showcase_card_desc', '' );
 
 // ACF Variables: Section 6 Consultation Form & Contact
-$cta_title = lh_field( 'vo_cta_title', 'Sẵn sàng để vươn xa?' );
-$cta_desc  = lh_field( 'vo_cta_desc', 'Hãy gửi yêu cầu của bạn, đội ngũ tư vấn viên của The Leaders Hub sẽ liên hệ tư vấn trong thời gian sớm nhất trong giờ làm việc.' );
+$cta_title = lh_field( 'vo_cta_title', '' );
+$cta_desc  = lh_field( 'vo_cta_desc', '' );
 
 // ACF Variables: Section 7 FAQ
-$faq_title = lh_field( 'vo_faq_title', 'Câu hỏi thường gặp' );
+$faq_title = lh_field( 'vo_faq_title', '' );
 
 if ( ! function_exists( 'lh_field' ) ) {
     function lh_field( $name, $default = '' ) {
@@ -39,46 +39,67 @@ if ( ! function_exists( 'lh_field' ) ) {
         return $default;
     }
 }
+
+$hero_badge    = lh_field( 'vo_hero_badge', '' );
+$hero_title    = lh_field( 'vo_hero_title', '' );
+$hero_subtitle = lh_field( 'vo_hero_subtitle', '' );
+$hero_desc     = lh_field( 'vo_hero_desc', '' );
+$btn1_text     = lh_field( 'vo_hero_btn1_text', '' );
+$btn1_url      = lh_field( 'vo_hero_btn1_url', '#register' );
+$btn2_text     = lh_field( 'vo_hero_btn2_text', '' );
+$btn2_url      = lh_field( 'vo_hero_btn2_url', '#pricing' );
+$hero_image    = lh_field( 'vo_hero_image', '' );
 ?>
 
 <!-- Hero Banner -->
 <section class="relative min-h-[80vh] flex items-center mt-20 pt-10 overflow-hidden bg-surface" id="hero">
     <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent z-10"></div>
-    <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="relative z-20 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 <?php echo ! empty( $hero_image ) ? 'md:grid-cols-2' : ''; ?> gap-12 items-center">
         <div class="space-y-6">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-prestige-gold/10 text-prestige-gold font-label-sm text-sm md:text-base tracking-widest uppercase font-bold">Premium Business Solution</span>
-            <h1 class="font-display-lg text-4xl md:text-5xl text-deep-navy leading-tight font-bold">
-                <?php echo esc_html( lh_field( 'vo_hero_title', 'Gói văn phòng cơ bản' ) ); ?> <br />
-                <span class="text-prestige-gold"><?php echo esc_html( lh_field( 'vo_hero_subtitle', 'Địa chỉ kinh doanh hạng A' ) ); ?></span>
-            </h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
-                <?php echo esc_html( lh_field( 'vo_hero_desc', 'Thiết lập vị thế doanh nghiệp tại những tòa tháp tài chính biểu tượng. Giải pháp tối ưu chi phí, nâng tầm thương hiệu chuyên nghiệp ngay từ điểm khởi đầu.' ) ); ?>
-            </p>
-            <div class="flex flex-wrap gap-4 pt-4">
-                <?php 
-                $btn1_text = lh_field( 'vo_hero_btn1_text', 'Đăng ký tư vấn ngay' );
-                $btn1_url  = lh_field( 'vo_hero_btn1_url', '#register' );
-                $btn2_text = lh_field( 'vo_hero_btn2_text', 'Xem bảng giá' );
-                $btn2_url  = lh_field( 'vo_hero_btn2_url', '#pricing' );
-                ?>
-                <?php if ( ! empty( $btn1_text ) ) : ?>
-                    <a class="bg-deep-navy text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-prestige-gold transition-all duration-300 shadow-lg font-semibold" href="<?php echo esc_url( $btn1_url ); ?>">
-                        <?php echo esc_html( $btn1_text ); ?>
-                    </a>
-                <?php endif; ?>
-                <?php if ( ! empty( $btn2_text ) ) : ?>
-                    <a class="border border-deep-navy text-deep-navy px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-deep-navy/5 transition-all font-semibold" href="<?php echo esc_url( $btn2_url ); ?>">
-                        <?php echo esc_html( $btn2_text ); ?>
-                    </a>
-                <?php endif; ?>
-            </div>
+            <?php if ( ! empty( $hero_badge ) ) : ?>
+                <span class="inline-block px-4 py-1.5 rounded-full bg-prestige-gold/10 text-prestige-gold font-label-sm text-sm md:text-base tracking-widest uppercase font-bold"><?php echo esc_html( $hero_badge ); ?></span>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $hero_title ) || ! empty( $hero_subtitle ) ) : ?>
+                <h1 class="font-display-lg text-4xl md:text-5xl text-deep-navy leading-tight font-bold">
+                    <?php if ( ! empty( $hero_title ) ) : ?>
+                        <?php echo esc_html( $hero_title ); ?> <br />
+                    <?php endif; ?>
+                    <?php if ( ! empty( $hero_subtitle ) ) : ?>
+                        <span class="text-prestige-gold"><?php echo esc_html( $hero_subtitle ); ?></span>
+                    <?php endif; ?>
+                </h1>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $hero_desc ) ) : ?>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    <?php echo esc_html( $hero_desc ); ?>
+                </p>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $btn1_text ) || ! empty( $btn2_text ) ) : ?>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <?php if ( ! empty( $btn1_text ) ) : ?>
+                        <a class="bg-deep-navy text-white px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-prestige-gold transition-all duration-300 shadow-lg font-semibold" href="<?php echo esc_url( $btn1_url ); ?>">
+                            <?php echo esc_html( $btn1_text ); ?>
+                        </a>
+                    <?php endif; ?>
+                    <?php if ( ! empty( $btn2_text ) ) : ?>
+                        <a class="border border-deep-navy text-deep-navy px-8 py-4 rounded-lg font-label-sm text-sm hover:bg-deep-navy/5 transition-all font-semibold" href="<?php echo esc_url( $btn2_url ); ?>">
+                            <?php echo esc_html( $btn2_text ); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
-        <div class="hidden md:block relative group">
-            <div class="absolute -inset-4 bg-prestige-gold/20 rounded-2xl blur-2xl group-hover:bg-prestige-gold/30 transition-all"></div>
-            <div class="relative glass-card p-4 rounded-2xl shadow-2xl overflow-hidden aspect-[4/3]">
-                <img class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-110" src="<?php echo esc_url( lh_field( 'vo_hero_image', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAaakQuaYGl4qlZYaDDwDjg8pahGKkcecCBlDeRU7iLIb-4GEE-J-8eJyuHWqxT-a4UKzehBmb5CZmiAnZ5MERO2lHpBoZMNbj-L40MUSEVCd-447JiwyNfbG2LcUaU3VlgdD3rbLI-HYkgzkrZna2A3scY010khkmi-Zs-_h83R9bzeAZwebKGx_4kalXdibRbYKKnXP5B8zQpYVUZtWF7IZDWzt6xCAcY2ouE3S_JBgW6zoHf-bN4wJ3Wt3lNnojA8zj8mDpnSXqu' ) ); ?>" />
+        <?php if ( ! empty( $hero_image ) ) : ?>
+            <div class="hidden md:block relative group">
+                <div class="absolute -inset-4 bg-prestige-gold/20 rounded-2xl blur-2xl group-hover:bg-prestige-gold/30 transition-all"></div>
+                <div class="relative glass-card p-4 rounded-2xl shadow-2xl overflow-hidden aspect-[4/3]">
+                    <img class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-110" src="<?php echo esc_url( $hero_image ); ?>" />
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
 
